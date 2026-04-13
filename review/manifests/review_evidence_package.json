@@ -1,0 +1,34 @@
+{
+  "package_id": "sr_demo_001_evidence_package_v1",
+  "review_id": "sr_demo_001",
+  "readiness": "ready",
+  "protocol_id": "sr_demo_001",
+  "package_paths": [
+    "review/bias/bias_assessments.csv",
+    "review/extraction/extraction_table.csv",
+    "review/prisma/evidence_table.csv",
+    "review/prisma/exclusion_summary.csv",
+    "review/prisma/prisma_counts.yml",
+    "review/protocol/protocol.yml",
+    "review/queries/query_01_pubmed.yml",
+    "review/queries/query_02_epmc.yml",
+    "review/retrieval/dedup/dedup_log.csv",
+    "review/retrieval/normalized/normalized_records.csv",
+    "review/retrieval/raw/epmc_export.csv",
+    "review/retrieval/raw/pubmed_export.csv",
+    "review/screening/screening_log.csv"
+  ],
+  "included_studies": 25,
+  "databases": [
+    "Europe PMC",
+    "PubMed"
+  ],
+  "primary_outcomes": [
+    "Overall response rate",
+    "Progression-free survival"
+  ],
+  "secondary_outcomes": [
+    "Overall survival",
+    "Grade 3+ adverse events"
+  ]
+}

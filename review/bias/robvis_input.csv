@@ -1,0 +1,26 @@
+Study,D1,D2,D3,D4,D5,Overall,Weight
+R0001,Low,Low,Low,High,Low,High,1
+R0002,High,Some concerns,Low,High,High,High,1
+R0003,High,Low,Some concerns,Low,High,High,1
+R0004,Some concerns,Some concerns,Some concerns,Some concerns,High,High,1
+R0005,High,Some concerns,Some concerns,Some concerns,Some concerns,High,1
+R0006,High,Some concerns,Some concerns,Low,High,High,1
+R0007,Some concerns,Some concerns,Low,Some concerns,Some concerns,Some concerns,1
+R0008,Some concerns,Low,High,Low,High,High,1
+R0009,Low,Low,Some concerns,High,High,High,1
+R0010,High,High,Some concerns,Some concerns,Low,High,1
+R0011,Low,Some concerns,Low,Some concerns,High,High,1
+R0012,Low,Some concerns,High,High,High,High,1
+R0013,Some concerns,Some concerns,Some concerns,High,High,High,1
+R0014,High,Some concerns,Some concerns,Low,High,High,1
+R0015,Some concerns,Low,Low,High,High,High,1
+R0016,Some concerns,Low,High,High,Low,High,1
+R0017,High,Low,Low,High,Low,High,1
+R0018,Low,Some concerns,Low,High,Low,High,1
+R0019,Low,High,Low,Low,Low,High,1
+R0020,High,Some concerns,Some concerns,Low,High,High,1
+R0021,High,High,High,Some concerns,High,High,1
+R0022,Some concerns,Low,Low,High,High,High,1
+R0023,Some concerns,Low,Low,High,High,High,1
+R0024,Some concerns,High,Some concerns,Low,High,High,1
+R0025,High,High,Some concerns,Low,Low,High,1

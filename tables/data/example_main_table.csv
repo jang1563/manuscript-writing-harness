@@ -1,0 +1,6 @@
+model,cohort,n_samples,auroc,auprc,calibration_error
+Baseline Logistic,Internal,412,0.781,0.640,0.084
+Gradient Boosting,Internal,412,0.842,0.731,0.052
+Elastic Net,External,198,0.754,0.598,0.091
+Gradient Boosting,External,198,0.801,0.671,0.064
+

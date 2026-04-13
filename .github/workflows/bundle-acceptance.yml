@@ -1,0 +1,107 @@
+name: bundle-acceptance
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "release"
+
+      - name: Install Python dependencies
+        run: |
+          python3 -m pip install -r env/requirements-myst.txt
+          python3 -m pip install -r env/requirements-phase2.txt
+
+      - name: Install R dependencies
+        run: Rscript env/install_r_figure_deps.R
+
+      - name: Validate scaffold
+        run: python3 scripts/check_scaffold.py
+
+      - name: Build exemplar bundles
+        run: |
+          python3 scripts/figures_cli.py build-bundle --bundle bundle_bulk_omics_deg_exemplar
+          python3 scripts/figures_cli.py build-bundle --bundle bundle_ai_ml_evaluation_exemplar
+
+      - name: Review exemplar bundles
+        run: |
+          python3 scripts/figures_cli.py review-bundle --bundle bundle_bulk_omics_deg_exemplar
+          python3 scripts/figures_cli.py review-bundle --bundle bundle_ai_ml_evaluation_exemplar
+
+      - name: Validate exemplar bundles
+        run: |
+          python3 scripts/figures_cli.py validate-bundle --bundle bundle_bulk_omics_deg_exemplar
+          python3 scripts/figures_cli.py validate-bundle --bundle bundle_ai_ml_evaluation_exemplar
+
+      - name: Apply all bundles
+        run: python3 scripts/figures_cli.py apply-bundles --all
+
+      - name: Build manuscript HTML
+        working-directory: manuscript
+        run: myst build --html
+
+      - name: Write bundle acceptance summary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path(".")
+          summaries = [
+              root / "figures/output/bundles/bundle_bulk_omics_deg_exemplar/summary.json",
+              root / "figures/output/bundles/bundle_ai_ml_evaluation_exemplar/summary.json",
+          ]
+          lines = ["# Bundle Acceptance Summary", ""]
+          for path in summaries:
+              payload = json.loads(path.read_text(encoding="utf-8"))
+              lines.extend(
+                  [
+                      f"## {payload['bundle_id']}",
+                      "",
+                      f"- members: `{payload['member_count']}`",
+                      f"- renderers: `{', '.join(payload['renderers_present'])}`",
+                      f"- manuscript wiring: `{payload['manuscript_wiring_status']}`",
+                      "",
+                  ]
+              )
+          summary_path = root / "figures/output/bundles/bundle-acceptance-summary.md"
+          summary_path.parent.mkdir(parents=True, exist_ok=True)
+          summary_path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+          print(summary_path)
+          PY
+
+      - name: Upload bundle review artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-review-artifacts
+          path: |
+            figures/output/review/bundles
+            figures/output/bundles
+
+      - name: Upload manuscript html
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-manuscript-html
+          path: manuscript/_build/html

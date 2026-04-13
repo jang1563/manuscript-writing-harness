@@ -1,0 +1,28 @@
+{
+  "figure_id": "figure_08_training_dynamics",
+  "claim_ids": [
+    "claim_foundation_model_optimizes_stably",
+    "claim_foundation_model_reaches_higher_validation_auroc"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_foundation_model_optimizes_stably",
+      "statement": "The foundation model shows the lowest validation loss with minimal late-epoch divergence from training loss, indicating the most stable optimization profile among the compared models.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_08_panel_a.csv",
+      "evidence_type": "loss_trajectory_with_split_encoding"
+    },
+    {
+      "fact_id": "claim_foundation_model_reaches_higher_validation_auroc",
+      "statement": "The foundation model improves validation AUROC faster and plateaus at the highest level, while the comparator models saturate earlier at lower performance.",
+      "panel_id": "b",
+      "source_data": "figures/source_data/figure_08_panel_b.csv",
+      "evidence_type": "validation_metric_trajectory_with_best_checkpoint_marker"
+    }
+  ],
+  "design_notes": [
+    "Encode train and validation split with line style so color remains reserved for model identity.",
+    "Directly label final curves rather than relying on a detached legend for the main comparison.",
+    "Mark best validation checkpoints explicitly so late-epoch overfitting is visible rather than hidden by endpoint summaries."
+  ]
+}

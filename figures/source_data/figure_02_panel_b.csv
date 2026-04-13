@@ -1,0 +1,7 @@
+pathway,nes,fdr,direction,highlight_order,fdr_label
+Interferon alpha response,2.35,0.000002,up,1,FDR 2.0e-06
+Cytokine-mediated signaling,1.92,0.00008,up,2,FDR 8.0e-05
+Antigen processing and presentation,1.61,0.0009,up,3,FDR 9.0e-04
+DNA replication,-1.72,0.0012,down,6,FDR 1.2e-03
+Mitotic spindle,-1.84,0.0004,down,5,FDR 4.0e-04
+Cell cycle checkpoint,-2.18,0.00003,down,4,FDR 3.0e-05

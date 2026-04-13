@@ -1,0 +1,28 @@
+{
+  "figure_id": "figure_10_feature_importance_summary",
+  "claim_ids": [
+    "claim_model_relies_on_biologically_salient_features",
+    "claim_signed_feature_effects_align_with_domain_expectation"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_model_relies_on_biologically_salient_features",
+      "statement": "The highest-ranked features are fibrosis, inflammatory, proliferative, and interferon-related programs, while nuisance covariates such as batch score remain much lower in importance.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_10_panel_a.csv",
+      "evidence_type": "ranked_mean_absolute_feature_importance"
+    },
+    {
+      "fact_id": "claim_signed_feature_effects_align_with_domain_expectation",
+      "statement": "The dominant feature effects point in biologically coherent directions: fibrosis, inflammatory, and interferon signals increase predicted response, while proliferative activity suppresses it.",
+      "panel_id": "b",
+      "source_data": "figures/source_data/figure_10_panel_b.csv",
+      "evidence_type": "zero_centered_signed_feature_effect_summary"
+    }
+  ],
+  "design_notes": [
+    "Separate importance magnitude from effect direction so ranking and biological interpretation are not conflated.",
+    "Keep nuisance covariates in view but visually subordinate to biologically meaningful features.",
+    "Use a zero-centered directional panel so positive and negative effects can be read without ambiguity."
+  ]
+}

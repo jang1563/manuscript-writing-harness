@@ -1,0 +1,436 @@
+classes:
+  timecourse_endpoint:
+    class_id: "timecourse_endpoint"
+    class_version: 1
+    family: "bulk_omics"
+    expertise_track: "bioinformatics"
+    status: "implemented"
+    default_style_profile: "bulk_omics_professional"
+    intent: "Two-panel longitudinal response figure with a time-course trend panel and endpoint summary."
+    required_inputs:
+      - name: "measurements"
+        format: "csv"
+        columns:
+          - "timepoint_hours"
+          - "condition"
+          - "replicate"
+          - "response"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 183
+      height_mm: 76
+    qa_profile: "timecourse_dual"
+    review_preset: "timecourse_dual"
+    scaffold_templates:
+      spec: "timecourse_endpoint"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  volcano_pathway_compound:
+    class_id: "volcano_pathway_compound"
+    class_version: 1
+    family: "bulk_omics"
+    expertise_track: "bioinformatics"
+    status: "implemented"
+    default_style_profile: "bulk_omics_professional"
+    intent: "Two-panel omics figure combining a differential-expression volcano plot and a signed pathway summary."
+    required_inputs:
+      - name: "differential_expression"
+        format: "csv"
+        columns:
+          - "gene"
+          - "log2_fc"
+          - "padj"
+          - "highlight_label"
+      - name: "pathway_enrichment"
+        format: "csv"
+        columns:
+          - "pathway"
+          - "nes"
+          - "fdr"
+          - "direction"
+          - "highlight_order"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 183
+      height_mm: 84
+    qa_profile: "volcano_pathway_dual"
+    review_preset: "volcano_pathway_dual"
+    scaffold_templates:
+      spec: "volcano_pathway_compound"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  ma_plot:
+    class_id: "ma_plot"
+    class_version: 1
+    family: "bulk_omics"
+    expertise_track: "bioinformatics"
+    status: "implemented"
+    default_style_profile: "bulk_omics_professional"
+    intent: "Single-panel mean-abundance versus log-fold-change figure with selective labels."
+    required_inputs:
+      - name: "ma_points"
+        format: "csv"
+        columns:
+          - "gene"
+          - "mean_expression"
+          - "log2_fc"
+          - "padj"
+          - "highlight_label"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 140
+      height_mm: 90
+    qa_profile: "ma_plot_dual"
+    review_preset: "ma_plot_dual"
+    scaffold_templates:
+      spec: "ma_plot"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  sample_pca:
+    class_id: "sample_pca"
+    class_version: 1
+    family: "bulk_omics"
+    expertise_track: "bioinformatics"
+    status: "implemented"
+    default_style_profile: "bulk_omics_professional"
+    intent: "Single-panel principal-component scatter plot for sample-level separation."
+    required_inputs:
+      - name: "sample_scores"
+        format: "csv"
+        columns:
+          - "sample_id"
+          - "condition"
+          - "batch"
+          - "pc1"
+          - "pc2"
+          - "highlight_label"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 140
+      height_mm: 90
+    qa_profile: "sample_pca_dual"
+    review_preset: "sample_pca_dual"
+    scaffold_templates:
+      spec: "sample_pca"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  pathway_enrichment_dot:
+    class_id: "pathway_enrichment_dot"
+    class_version: 1
+    family: "bulk_omics"
+    expertise_track: "bioinformatics"
+    status: "implemented"
+    default_style_profile: "bulk_omics_professional"
+    intent: "Single-panel pathway enrichment dot plot using gene ratio, significance, and direction."
+    required_inputs:
+      - name: "pathway_enrichment"
+        format: "csv"
+        columns:
+          - "pathway"
+          - "gene_ratio"
+          - "neg_log10_fdr"
+          - "gene_count"
+          - "direction"
+          - "highlight_order"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 150
+      height_mm: 95
+    qa_profile: "pathway_dot_dual"
+    review_preset: "pathway_dot_dual"
+    scaffold_templates:
+      spec: "pathway_enrichment_dot"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  roc_pr_compound:
+    class_id: "roc_pr_compound"
+    class_version: 1
+    family: "ai_ml_professional"
+    expertise_track: "ai_for_science"
+    status: "implemented"
+    default_style_profile: "ai_ml_professional"
+    intent: "Two-panel model-evaluation figure combining ROC and precision-recall curves with uncertainty bands and operating points."
+    required_inputs:
+      - name: "performance_curves"
+        format: "csv"
+        columns:
+          - "model"
+          - "panel"
+          - "x"
+          - "y"
+          - "y_lower"
+          - "y_upper"
+          - "operating_point"
+      - name: "metric_summary"
+        format: "csv"
+        columns:
+          - "model"
+          - "display_order"
+          - "auroc"
+          - "auprc"
+          - "ece"
+          - "brier_score"
+          - "prevalence"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 183
+      height_mm: 86
+    qa_profile: "roc_pr_dual"
+    review_preset: "roc_pr_dual"
+    scaffold_templates:
+      spec: "roc_pr_compound"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  calibration_reliability:
+    class_id: "calibration_reliability"
+    class_version: 1
+    family: "ai_ml_professional"
+    expertise_track: "ai_for_science"
+    status: "implemented"
+    default_style_profile: "ai_ml_professional"
+    intent: "Two-panel calibration figure combining a reliability diagram with calibration-support distribution across confidence bins."
+    required_inputs:
+      - name: "calibration_bins"
+        format: "csv"
+        columns:
+          - "model"
+          - "display_order"
+          - "bin_center"
+          - "mean_predicted"
+          - "observed_rate"
+          - "observed_lower"
+          - "observed_upper"
+          - "sample_fraction"
+          - "sample_count"
+          - "label_bin"
+      - name: "metric_summary"
+        format: "csv"
+        columns:
+          - "model"
+          - "display_order"
+          - "ece"
+          - "max_calibration_gap"
+          - "brier_score"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 183
+      height_mm: 88
+    qa_profile: "calibration_reliability_dual"
+    review_preset: "calibration_reliability_dual"
+    scaffold_templates:
+      spec: "calibration_reliability"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  training_dynamics:
+    class_id: "training_dynamics"
+    class_version: 1
+    family: "ai_ml_professional"
+    expertise_track: "ai_for_science"
+    status: "implemented"
+    default_style_profile: "ai_ml_professional"
+    intent: "Two-panel optimization figure combining loss trajectories with validation metric dynamics across epochs."
+    required_inputs:
+      - name: "loss_history"
+        format: "csv"
+        columns:
+          - "model"
+          - "display_order"
+          - "epoch"
+          - "split"
+          - "loss"
+      - name: "validation_metric_history"
+        format: "csv"
+        columns:
+          - "model"
+          - "display_order"
+          - "epoch"
+          - "auroc"
+          - "label_epoch"
+          - "best_epoch"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 183
+      height_mm: 88
+    qa_profile: "training_dynamics_dual"
+    review_preset: "training_dynamics_dual"
+    scaffold_templates:
+      spec: "training_dynamics"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  confusion_matrix_normalized:
+    class_id: "confusion_matrix_normalized"
+    class_version: 1
+    family: "ai_ml_professional"
+    expertise_track: "ai_for_science"
+    status: "implemented"
+    default_style_profile: "ai_ml_professional"
+    intent: "Two-panel error-analysis figure combining a row-normalized confusion matrix with an off-diagonal confusion summary."
+    required_inputs:
+      - name: "confusion_matrix"
+        format: "csv"
+        columns:
+          - "true_label"
+          - "predicted_label"
+          - "true_order"
+          - "pred_order"
+          - "rate"
+          - "count"
+          - "label_cell"
+          - "is_diagonal"
+      - name: "off_diagonal_summary"
+        format: "csv"
+        columns:
+          - "source_class"
+          - "target_class"
+          - "error_rate"
+          - "display_order"
+          - "label_text"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 183
+      height_mm: 92
+    qa_profile: "confusion_matrix_normalized_dual"
+    review_preset: "confusion_matrix_normalized_dual"
+    scaffold_templates:
+      spec: "confusion_matrix_normalized"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  feature_importance_summary:
+    class_id: "feature_importance_summary"
+    class_version: 1
+    family: "ai_ml_professional"
+    expertise_track: "ai_for_science"
+    status: "implemented"
+    default_style_profile: "ai_ml_professional"
+    intent: "Two-panel interpretation figure combining ranked feature importance with signed directional effects for domain-aligned model interpretation."
+    required_inputs:
+      - name: "ranked_feature_importance"
+        format: "csv"
+        columns:
+          - "feature"
+          - "feature_group"
+          - "display_order"
+          - "mean_abs_importance"
+          - "label_feature"
+      - name: "signed_feature_effects"
+        format: "csv"
+        columns:
+          - "feature"
+          - "feature_group"
+          - "display_order"
+          - "signed_effect"
+          - "expected_direction"
+          - "label_feature"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 183
+      height_mm: 90
+    qa_profile: "feature_importance_summary_dual"
+    review_preset: "feature_importance_summary_dual"
+    scaffold_templates:
+      spec: "feature_importance_summary"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  ablation_summary:
+    class_id: "ablation_summary"
+    class_version: 1
+    family: "ai_ml_professional"
+    expertise_track: "ai_for_science"
+    status: "implemented"
+    default_style_profile: "ai_ml_professional"
+    intent: "Two-panel ablation figure combining primary-metric drops with secondary-metric shifts to justify architectural and training design choices."
+    required_inputs:
+      - name: "ablation_primary_metrics"
+        format: "csv"
+        columns:
+          - "variant"
+          - "module_group"
+          - "display_order"
+          - "auroc"
+          - "delta_auroc"
+          - "label_variant"
+      - name: "ablation_secondary_metrics"
+        format: "csv"
+        columns:
+          - "variant"
+          - "module_group"
+          - "display_order"
+          - "metric"
+          - "delta_value"
+          - "label_variant"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 183
+      height_mm: 92
+    qa_profile: "ablation_summary_dual"
+    review_preset: "ablation_summary_dual"
+    scaffold_templates:
+      spec: "ablation_summary"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"

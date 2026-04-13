@@ -1,0 +1,45 @@
+protocol_id: sr_demo_001
+title: 'Efficacy of transcription factor X inhibition on tumour response in solid
+  malignancies: a systematic review'
+version: 1.0.0
+status: frozen
+question:
+  population: Adults with histologically confirmed solid malignancies
+  intervention_or_exposure: Transcription factor X (TF-X) inhibitor monotherapy or
+    combination
+  comparator: Standard of care, placebo, or active comparator
+  outcomes:
+  - Overall response rate (ORR)
+  - Progression-free survival (PFS)
+  - Overall survival (OS)
+  - Adverse event profile
+  study_types:
+  - RCT
+  - prospective cohort
+  - single-arm trial
+inclusion_criteria:
+- Adults aged 18+ with confirmed solid malignancy
+- Received TF-X inhibitor as intervention
+- Reported at least one primary outcome
+- Published 2015-2025
+- English language
+exclusion_criteria:
+- Animal or in-vitro studies only
+- Haematological malignancies
+- Reviews, editorials, or commentaries
+- Paediatric populations
+- Conference abstracts without full-text
+databases:
+- PubMed
+- Europe PMC
+primary_outcomes:
+- Overall response rate
+- Progression-free survival
+secondary_outcomes:
+- Overall survival
+- Grade 3+ adverse events
+registration:
+  registry: internal_frozen_protocol
+  registration_id: sr_demo_001_frozen
+  date: '2026-04-09'
+amendments: []

@@ -1,0 +1,18 @@
+name: cell
+required_sections:
+  - highlights
+  - graphical_abstract
+  - summary
+  - introduction
+  - results
+  - discussion
+  - star_methods
+  - key_resources_table
+  - data_and_code_availability
+special_assets:
+  - graphical_abstract
+  - supplemental_figures
+  - key_resources_table
+notes:
+  - Map manuscript methods into STAR Methods during overlay generation.
+

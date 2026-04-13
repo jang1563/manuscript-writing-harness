@@ -1,0 +1,29 @@
+python:
+  primary: "3.12"
+  supported:
+    - "3.10"
+    - "3.11"
+    - "3.12"
+  ci_tested:
+    - "3.10"
+    - "3.11"
+    - "3.12"
+r:
+  primary: "release"
+  supported:
+    - "oldrel-1"
+    - "release"
+  ci_tested:
+    - "oldrel-1"
+    - "release"
+node:
+  primary: "20"
+  supported:
+    - "20"
+policy:
+  full_build:
+    python: "3.12"
+    r: "release"
+  compatibility_jobs:
+    python_matrix: "tests/figures/python"
+    r_matrix: "tests/figures/r/testthat.R"

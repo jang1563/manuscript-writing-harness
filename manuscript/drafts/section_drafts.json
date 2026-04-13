@@ -1,0 +1,551 @@
+{
+  "generated_from": {
+    "section_briefs": "manuscript/drafts/section_briefs.json",
+    "claim_packets": "manuscript/plans/claim_packets.json",
+    "reference_audit": "references/reports/reference_audit.json",
+    "review_evidence": "review/reports/evidence_summary.json"
+  },
+  "overall_status": "ready",
+  "section_count": 5,
+  "ready_section_count": 5,
+  "provisional_section_count": 0,
+  "blocked_section_count": 0,
+  "sections": [
+    {
+      "section_id": "summary",
+      "status": "ready",
+      "source": "manuscript/sections/01_summary.md",
+      "purpose": "State the main scientific question and the top-line claim.",
+      "recommended_opening": "Use one compact paragraph that names the question, the system, and the single strongest finding.",
+      "display_item_ids": [],
+      "claim_ids": [],
+      "subsection_plan": [
+        {
+          "paragraph_order": 1,
+          "goal": "Name the scientific problem and study framing in one sentence.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        },
+        {
+          "paragraph_order": 2,
+          "goal": "State only the strongest display-backed result and keep it concrete.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        },
+        {
+          "paragraph_order": 3,
+          "goal": "Close with one sentence on why the finding matters.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        }
+      ],
+      "drafting_constraints": [
+        "Treat this as a scaffold, not polished final prose.",
+        "Do not promote unsupported background assertions beyond visible evidence or citation coverage.",
+        "Revise once references move from provisional to ready."
+      ],
+      "reference_readiness": "ready",
+      "review_evidence_readiness": "ready",
+      "warnings": [],
+      "blocking_issues": []
+    },
+    {
+      "section_id": "introduction",
+      "status": "ready",
+      "source": "manuscript/sections/02_introduction.md",
+      "purpose": "Frame the background and why the problem matters.",
+      "recommended_opening": "Use 2 to 3 paragraphs: context, gap, then objective.",
+      "display_item_ids": [],
+      "claim_ids": [],
+      "subsection_plan": [
+        {
+          "paragraph_order": 1,
+          "goal": "Open with the broader biological or modeling problem.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        },
+        {
+          "paragraph_order": 2,
+          "goal": "Describe the gap that existing methods or studies leave unresolved.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        },
+        {
+          "paragraph_order": 3,
+          "goal": "End with the exact study objective and what the manuscript contributes.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        }
+      ],
+      "drafting_constraints": [
+        "Treat this as a scaffold, not polished final prose.",
+        "Do not promote unsupported background assertions beyond visible evidence or citation coverage.",
+        "Revise once references move from provisional to ready."
+      ],
+      "reference_readiness": "ready",
+      "review_evidence_readiness": "ready",
+      "warnings": [],
+      "blocking_issues": []
+    },
+    {
+      "section_id": "results",
+      "status": "ready",
+      "source": "manuscript/sections/03_results.md",
+      "purpose": "Present display-item-backed claims in a controlled order.",
+      "recommended_opening": "Use one subsection per display-backed claim cluster, following manuscript display order.",
+      "display_item_ids": [
+        "figure_01_example",
+        "figure_04_sample_pca",
+        "figure_03_ma_plot",
+        "figure_02_volcano_pathway",
+        "figure_05_pathway_enrichment_dot",
+        "figure_06_roc_pr_compound",
+        "figure_07_calibration_reliability",
+        "figure_08_training_dynamics",
+        "figure_09_confusion_matrix_normalized",
+        "figure_10_feature_importance_summary",
+        "figure_11_ablation_summary",
+        "table_01_main"
+      ],
+      "claim_ids": [
+        "claim_response_kinetics",
+        "claim_endpoint_shift",
+        "claim_condition_drives_primary_sample_separation",
+        "claim_high_abundance_interferon_shift",
+        "claim_interferon_gene_activation",
+        "claim_cell_cycle_pathway_suppression",
+        "claim_pathway_effect_sizes_align_with_directionality",
+        "claim_foundation_model_improves_discrimination",
+        "claim_foundation_model_retains_precision_under_imbalance",
+        "claim_foundation_model_best_calibrated",
+        "claim_high_confidence_support_is_not_tail_only",
+        "claim_foundation_model_optimizes_stably",
+        "claim_foundation_model_reaches_higher_validation_auroc",
+        "claim_errors_are_localized_to_adjacent_states",
+        "claim_terminal_states_remain_distinct",
+        "claim_model_relies_on_biologically_salient_features",
+        "claim_signed_feature_effects_align_with_domain_expectation",
+        "claim_context_encoder_and_fusion_drive_primary_performance",
+        "claim_calibration_loss_mainly_affects_probability_quality",
+        "claim_model_ranking"
+      ],
+      "subsection_plan": [
+        {
+          "subsection_id": "claim_response_kinetics",
+          "display_item_id": "figure_01_example",
+          "claim_id": "claim_response_kinetics",
+          "lead_sentence_target": "The treated condition separates from control over time, with a larger mean normalized signal visible by the 4- and 6-hour measurements.",
+          "support_points": [
+            "Reference `figure_01_example` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "weissgerberEtAl2015BeyondBar"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_endpoint_shift",
+          "display_item_id": "figure_01_example",
+          "claim_id": "claim_endpoint_shift",
+          "lead_sentence_target": "At 6 hours, the treated condition has a higher endpoint response than control, and the replicate-level points show the effect is not driven by a single sample.",
+          "support_points": [
+            "Reference `figure_01_example` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "weissgerberEtAl2015BeyondBar"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_condition_drives_primary_sample_separation",
+          "display_item_id": "figure_04_sample_pca",
+          "claim_id": "claim_condition_drives_primary_sample_separation",
+          "lead_sentence_target": "The primary sample separation occurs along PC1, where treatment samples occupy positive scores and control samples occupy negative scores while batch remains secondary.",
+          "support_points": [
+            "Reference `figure_04_sample_pca` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "abdiWilliams2010PCA"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_high_abundance_interferon_shift",
+          "display_item_id": "figure_03_ma_plot",
+          "claim_id": "claim_high_abundance_interferon_shift",
+          "lead_sentence_target": "Highly expressed interferon-response genes remain positively shifted in the MA plot, while negative fold changes cluster among proliferation-associated genes.",
+          "support_points": [
+            "Reference `figure_03_ma_plot` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "loveEtAl2014DESeq2"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_interferon_gene_activation",
+          "display_item_id": "figure_02_volcano_pathway",
+          "claim_id": "claim_interferon_gene_activation",
+          "lead_sentence_target": "The strongest positive differential-expression signals cluster in interferon-associated genes including CXCL10, IFIT1, and MX1, which exceed both the fold-change and false-discovery thresholds.",
+          "support_points": [
+            "Reference `figure_02_volcano_pathway` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "fgseaBioconductorPackage",
+            "subramanianEtAl2005GSEA",
+            "yuEtAl2012ClusterProfiler"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_cell_cycle_pathway_suppression",
+          "display_item_id": "figure_02_volcano_pathway",
+          "claim_id": "claim_cell_cycle_pathway_suppression",
+          "lead_sentence_target": "Negative enrichment scores for cell-cycle checkpoint, mitotic spindle, and DNA replication indicate coordinated suppression of proliferative programs relative to the upregulated immune-response pathways.",
+          "support_points": [
+            "Reference `figure_02_volcano_pathway` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "fgseaBioconductorPackage",
+            "subramanianEtAl2005GSEA",
+            "yuEtAl2012ClusterProfiler"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_pathway_effect_sizes_align_with_directionality",
+          "display_item_id": "figure_05_pathway_enrichment_dot",
+          "claim_id": "claim_pathway_effect_sizes_align_with_directionality",
+          "lead_sentence_target": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs.",
+          "support_points": [
+            "Reference `figure_05_pathway_enrichment_dot` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "fgseaBioconductorPackage",
+            "yuEtAl2012ClusterProfiler"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_foundation_model_improves_discrimination",
+          "display_item_id": "figure_06_roc_pr_compound",
+          "claim_id": "claim_foundation_model_improves_discrimination",
+          "lead_sentence_target": "The foundation model yields the strongest ROC profile and the highest AUROC, maintaining higher true-positive rate than the comparator models across clinically relevant false-positive rates.",
+          "support_points": [
+            "Reference `figure_06_roc_pr_compound` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "davisGoadrich2006PRROC"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_foundation_model_retains_precision_under_imbalance",
+          "display_item_id": "figure_06_roc_pr_compound",
+          "claim_id": "claim_foundation_model_retains_precision_under_imbalance",
+          "lead_sentence_target": "Under class imbalance, the foundation model preserves precision better than the comparator models across the recall range and remains far above the prevalence baseline, yielding the highest AUPRC.",
+          "support_points": [
+            "Reference `figure_06_roc_pr_compound` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "davisGoadrich2006PRROC"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_foundation_model_best_calibrated",
+          "display_item_id": "figure_07_calibration_reliability",
+          "claim_id": "claim_foundation_model_best_calibrated",
+          "lead_sentence_target": "The foundation model tracks the identity line more closely than the comparator models across confidence bins and has the lowest expected calibration error.",
+          "support_points": [
+            "Reference `figure_07_calibration_reliability` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "guoEtAl2017Calibration",
+            "niculescuMizilCaruana2005Probabilities"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_high_confidence_support_is_not_tail_only",
+          "display_item_id": "figure_07_calibration_reliability",
+          "claim_id": "claim_high_confidence_support_is_not_tail_only",
+          "lead_sentence_target": "The high-confidence calibration conclusion is supported by non-trivial prediction mass across upper-confidence bins rather than a sparse extreme tail.",
+          "support_points": [
+            "Reference `figure_07_calibration_reliability` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "guoEtAl2017Calibration"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_foundation_model_optimizes_stably",
+          "display_item_id": "figure_08_training_dynamics",
+          "claim_id": "claim_foundation_model_optimizes_stably",
+          "lead_sentence_target": "The foundation model shows the lowest validation loss with minimal late-epoch divergence from training loss, indicating the most stable optimization profile among the compared models.",
+          "support_points": [
+            "Reference `figure_08_training_dynamics` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "smithTopin2017SuperConvergence"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_foundation_model_reaches_higher_validation_auroc",
+          "display_item_id": "figure_08_training_dynamics",
+          "claim_id": "claim_foundation_model_reaches_higher_validation_auroc",
+          "lead_sentence_target": "The foundation model improves validation AUROC faster and plateaus at the highest level, while the comparator models saturate earlier at lower performance.",
+          "support_points": [
+            "Reference `figure_08_training_dynamics` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "smithTopin2017SuperConvergence"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_errors_are_localized_to_adjacent_states",
+          "display_item_id": "figure_09_confusion_matrix_normalized",
+          "claim_id": "claim_errors_are_localized_to_adjacent_states",
+          "lead_sentence_target": "Residual classifier errors are concentrated between inflammatory and proliferative states rather than being broadly distributed across all labels, indicating local ambiguity instead of global label collapse.",
+          "support_points": [
+            "Reference `figure_09_confusion_matrix_normalized` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "stehman1997ClassificationAccuracy"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_terminal_states_remain_distinct",
+          "display_item_id": "figure_09_confusion_matrix_normalized",
+          "claim_id": "claim_terminal_states_remain_distinct",
+          "lead_sentence_target": "Healthy and fibrotic states retain the strongest diagonal mass, indicating that terminal phenotypes remain well separated even when intermediate inflammatory and proliferative states are occasionally confused.",
+          "support_points": [
+            "Reference `figure_09_confusion_matrix_normalized` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "stehman1997ClassificationAccuracy"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_model_relies_on_biologically_salient_features",
+          "display_item_id": "figure_10_feature_importance_summary",
+          "claim_id": "claim_model_relies_on_biologically_salient_features",
+          "lead_sentence_target": "The highest-ranked features are fibrosis, inflammatory, proliferative, and interferon-related programs, while nuisance covariates such as batch score remain much lower in importance.",
+          "support_points": [
+            "Reference `figure_10_feature_importance_summary` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "lundbergLee2017SHAP"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_signed_feature_effects_align_with_domain_expectation",
+          "display_item_id": "figure_10_feature_importance_summary",
+          "claim_id": "claim_signed_feature_effects_align_with_domain_expectation",
+          "lead_sentence_target": "The dominant feature effects point in biologically coherent directions: fibrosis, inflammatory, and interferon signals increase predicted response, while proliferative activity suppresses it.",
+          "support_points": [
+            "Reference `figure_10_feature_importance_summary` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "lundbergLee2017SHAP"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+          "display_item_id": "figure_11_ablation_summary",
+          "claim_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+          "lead_sentence_target": "Removing the context encoder or multi-scale fusion causes the largest AUROC drops, indicating that architectural context integration is the main driver of top-line discrimination.",
+          "support_points": [
+            "Reference `figure_11_ablation_summary` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "liptonSteinhardt2018TroublingTrends"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_calibration_loss_mainly_affects_probability_quality",
+          "display_item_id": "figure_11_ablation_summary",
+          "claim_id": "claim_calibration_loss_mainly_affects_probability_quality",
+          "lead_sentence_target": "Removing the calibration loss causes only a modest AUROC drop but the largest increase in calibration error, indicating that this objective contributes more to probability quality than to raw discrimination.",
+          "support_points": [
+            "Reference `figure_11_ablation_summary` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "guoEtAl2017Calibration"
+          ],
+          "status": "ready"
+        },
+        {
+          "subsection_id": "claim_model_ranking",
+          "display_item_id": "table_01_main",
+          "claim_id": "claim_model_ranking",
+          "lead_sentence_target": "The highest-ranked model by AUROC appears first after deterministic sorting, preserving a reproducible performance ordering.",
+          "support_points": [
+            "Reference `table_01_main` before expanding interpretation.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the packet."
+          ],
+          "linked_reference_ids": [
+            "davisGoadrich2006PRROC"
+          ],
+          "status": "ready"
+        }
+      ],
+      "drafting_constraints": [
+        "Treat this as a scaffold, not polished final prose.",
+        "Do not promote unsupported background assertions beyond visible evidence or citation coverage.",
+        "Revise once references move from provisional to ready."
+      ],
+      "reference_readiness": "ready",
+      "review_evidence_readiness": "ready",
+      "warnings": [],
+      "blocking_issues": []
+    },
+    {
+      "section_id": "discussion",
+      "status": "ready",
+      "source": "manuscript/sections/04_discussion.md",
+      "purpose": "Interpret the main findings and their limits.",
+      "recommended_opening": "Use 3 paragraphs: interpretation, comparison/limitations, then forward-looking implication.",
+      "display_item_ids": [],
+      "claim_ids": [],
+      "subsection_plan": [
+        {
+          "paragraph_order": 1,
+          "goal": "Interpret the strongest results without repeating the Results text verbatim.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        },
+        {
+          "paragraph_order": 2,
+          "goal": "Compare to literature only where citation coverage is explicit and available.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        },
+        {
+          "paragraph_order": 3,
+          "goal": "Name limitations and next-step implications separately.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        }
+      ],
+      "drafting_constraints": [
+        "Treat this as a scaffold, not polished final prose.",
+        "Do not promote unsupported background assertions beyond visible evidence or citation coverage.",
+        "Revise once references move from provisional to ready."
+      ],
+      "reference_readiness": "ready",
+      "review_evidence_readiness": "ready",
+      "warnings": [],
+      "blocking_issues": []
+    },
+    {
+      "section_id": "methods",
+      "status": "ready",
+      "source": "manuscript/sections/05_methods.md",
+      "purpose": "Document data provenance, analytical choices, and reproducibility details.",
+      "recommended_opening": "Use reproducibility-first ordering: data provenance, analysis pipeline, then runtime/export details.",
+      "display_item_ids": [],
+      "claim_ids": [],
+      "subsection_plan": [
+        {
+          "paragraph_order": 1,
+          "goal": "Describe datasets, cohorts, or inputs and where they came from.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        },
+        {
+          "paragraph_order": 2,
+          "goal": "Describe the analysis/modeling pipeline in execution order.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        },
+        {
+          "paragraph_order": 3,
+          "goal": "Close with reproducibility assets, figure/table generation, and software/runtime details.",
+          "constraints": [
+            "reference_readiness=ready",
+            "review_evidence_readiness=ready"
+          ]
+        }
+      ],
+      "drafting_constraints": [
+        "Treat this as a scaffold, not polished final prose.",
+        "Do not promote unsupported background assertions beyond visible evidence or citation coverage.",
+        "Revise once references move from provisional to ready."
+      ],
+      "reference_readiness": "ready",
+      "review_evidence_readiness": "ready",
+      "warnings": [],
+      "blocking_issues": []
+    }
+  ]
+}

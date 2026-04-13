@@ -1,0 +1,45 @@
+figure_id: "figure_08_training_dynamics"
+class_id: "training_dynamics"
+class_version: 1
+title: "Training and validation dynamics for AI/ML models"
+theme_id: "manuscript_default"
+font_policy_id: "publication_sans"
+style_profile: "ai_ml_professional"
+target_profile: "nature_main_double_column"
+qa_profile: "training_dynamics_dual"
+review_preset: "training_dynamics_dual"
+parity_status: "dual"
+claim_ids:
+  - "claim_foundation_model_optimizes_stably"
+  - "claim_foundation_model_reaches_higher_validation_auroc"
+fact_sheet: "figures/fact_sheets/figure_08_training_dynamics.json"
+visualization_plan: "figures/plans/visualization_plan.json"
+legend_path: "manuscript/legends/figure_08_training_dynamics.md"
+size:
+  width_mm: 183
+  height_mm: 88
+data_inputs:
+  - "figures/data/training_loss_history.csv"
+  - "figures/data/validation_auroc_history.csv"
+source_data_outputs:
+  a: "figures/source_data/figure_08_panel_a.csv"
+  b: "figures/source_data/figure_08_panel_b.csv"
+panels:
+  - id: "a"
+    title: "Training and validation loss"
+    chart_type: "loss_trajectory"
+    x: "epoch"
+    y: "loss"
+  - id: "b"
+    title: "Validation AUROC trajectory"
+    chart_type: "metric_trajectory"
+    x: "epoch"
+    y: "auroc"
+renderers:
+  python:
+    enabled: true
+    output_dir: "figures/output/python"
+  r:
+    enabled: true
+    output_dir: "figures/output/r"
+caption_stub: "The training-dynamics figure pairs loss trajectories with validation AUROC trajectories so optimization stability, generalization behavior, and final ranking can be interpreted together."

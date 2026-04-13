@@ -1,0 +1,151 @@
+record_id,stage,decision,exclusion_reason,reviewer,timestamp
+R0001,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0002,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0003,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0004,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0005,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0006,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0007,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0008,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0009,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0010,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0011,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0012,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0013,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0014,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0015,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0016,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0017,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0018,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0019,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0020,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0021,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0022,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0023,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0024,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0025,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0026,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0027,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0028,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0029,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0030,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0031,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0032,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0033,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0034,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0035,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0036,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0037,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0038,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0039,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0040,title_abstract,include,,reviewer_A,2026-03-20T10:00:00
+R0041,title_abstract,exclude,wrong intervention,reviewer_A,2026-03-20T10:00:00
+R0042,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0043,title_abstract,exclude,wrong intervention,reviewer_A,2026-03-20T10:00:00
+R0044,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0045,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0046,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0047,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0048,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0049,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0050,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0051,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0052,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0053,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0054,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0055,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0056,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0057,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0058,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0059,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0060,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0061,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0062,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0063,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0064,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0065,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0066,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0067,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0068,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0069,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0070,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0071,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0072,title_abstract,exclude,wrong intervention,reviewer_A,2026-03-20T10:00:00
+R0073,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0074,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0075,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0076,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0077,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0078,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0079,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0080,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0081,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0082,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0083,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0084,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0085,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0086,title_abstract,exclude,wrong intervention,reviewer_A,2026-03-20T10:00:00
+R0087,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0088,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0089,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0090,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0091,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0092,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0093,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0094,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0095,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0096,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0097,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0098,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0099,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0100,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0101,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0102,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0103,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0104,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0105,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0106,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0107,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0108,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0109,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0110,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0111,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0112,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0113,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0114,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0115,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0116,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0117,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0118,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0119,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0120,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0121,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0122,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0123,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0124,title_abstract,exclude,wrong intervention,reviewer_A,2026-03-20T10:00:00
+R0125,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0126,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00
+R0127,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0128,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0129,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0130,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0131,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0132,title_abstract,exclude,wrong intervention,reviewer_A,2026-03-20T10:00:00
+R0133,title_abstract,exclude,duplicate publication,reviewer_A,2026-03-20T10:00:00
+R0134,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0135,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0136,title_abstract,exclude,pediatric only,reviewer_A,2026-03-20T10:00:00
+R0137,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0138,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0139,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0140,title_abstract,exclude,review or commentary,reviewer_A,2026-03-20T10:00:00
+R0141,title_abstract,exclude,not primary research,reviewer_A,2026-03-20T10:00:00
+R0142,title_abstract,exclude,wrong intervention,reviewer_A,2026-03-20T10:00:00
+R0143,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0144,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0145,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0146,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0147,title_abstract,exclude,animal study only,reviewer_A,2026-03-20T10:00:00
+R0148,title_abstract,exclude,wrong population,reviewer_A,2026-03-20T10:00:00
+R0149,title_abstract,exclude,wrong intervention,reviewer_A,2026-03-20T10:00:00
+R0150,title_abstract,exclude,wrong outcome,reviewer_A,2026-03-20T10:00:00

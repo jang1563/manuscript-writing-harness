@@ -1,0 +1,17 @@
+name: nature
+required_sections:
+  - abstract
+  - introduction
+  - results
+  - discussion
+  - methods
+  - data_availability
+  - code_availability
+  - author_contributions
+  - competing_interests
+special_assets:
+  - source_data
+  - extended_data
+notes:
+  - Validate against the exact target Nature journal before submission.
+

@@ -1,0 +1,39 @@
+figure_id: "figure_05_pathway_enrichment_dot"
+class_id: "pathway_enrichment_dot"
+class_version: 1
+title: "Pathway-enrichment dot-plot overview"
+theme_id: "manuscript_default"
+font_policy_id: "publication_sans"
+style_profile: "bulk_omics_professional"
+target_profile: "nature_main_double_column"
+qa_profile: "pathway_dot_dual"
+review_preset: "pathway_dot_dual"
+parity_status: "dual"
+claim_ids:
+  - "claim_pathway_effect_sizes_align_with_directionality"
+fact_sheet: "figures/fact_sheets/figure_05_pathway_enrichment_dot.json"
+visualization_plan: "figures/plans/visualization_plan.json"
+legend_path: "manuscript/legends/figure_05_pathway_enrichment_dot.md"
+size:
+  width_mm: 150
+  height_mm: 95
+data_inputs:
+  - "figures/data/pathway_enrichment_dot_demo.csv"
+generated_data_inputs:
+  - "pathways/results/active_fgsea/fgsea_pathway_dot_export.csv"
+source_data_outputs:
+  a: "figures/source_data/figure_05_panel_a.csv"
+panels:
+  - id: "a"
+    title: "Pathway enrichment dot plot"
+    chart_type: "dot_plot"
+    x: "gene_ratio"
+    y: "pathway"
+renderers:
+  python:
+    enabled: true
+    output_dir: "figures/output/python"
+  r:
+    enabled: true
+    output_dir: "figures/output/r"
+caption_stub: "The pathway dot plot uses position, color, size, and text annotation to summarize directionality, effect size, and significance in one panel."

@@ -1,0 +1,7 @@
+## Methods
+
+The manuscript harness is organized around tracked planning artifacts, script-generated figures and tables, and explicit manuscript overlays. Display items are specified in registry-backed figure classes, rendered in both Python and R where supported, and reviewed through generated QA surfaces before they are wired into the manuscript.
+
+For the bioinformatics demonstration branch, differential-expression style rankings are carried into pathway analysis through a scripted fgsea pipeline. Ranked statistics are read from a tracked CSV input, pathway definitions are loaded from a GMT file, fgsea is executed through an R wrapper, and the resulting preranked enrichment summary is exported as a normalized dot-plot table that is consumed directly by `figure_05_pathway_enrichment_dot`.
+
+Systematic-review style evidence is summarized through protocol, query, screening, extraction, bias, and PRISMA artifacts, while the reference layer maintains a bibliography, citation graph, claim-to-reference mappings, and an integrity audit that expose whether each claim has usable literature support. Drafting support is then generated in stages: claim packets summarize display-backed result statements, section briefs translate those packets into section-level writing constraints, and section prose drafts turn the resulting scaffolds into editable text artifacts without overwriting the canonical manuscript sections.

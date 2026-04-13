@@ -1,0 +1,13 @@
+study_id: "rnaseq_case_control_template"
+source_tool: "deseq2"
+input_table: "pathways/studies/rnaseq_case_control_template/inputs/raw/rnaseq_case_control_template_differential_expression.csv"
+output_ranks_csv: "pathways/studies/rnaseq_case_control_template/inputs/rnaseq_case_control_template_ranks.csv"
+summary_json: "pathways/studies/rnaseq_case_control_template/results/rank_prep/rank_prep_summary.json"
+summary_md: "pathways/studies/rnaseq_case_control_template/results/rank_prep/rank_prep_summary.md"
+method: "signed_neg_log10_significance"
+gene_column: "gene"
+effect_column: "log2FoldChange"
+significance_column: "padj"
+significance_floor: 1.0e-300
+deduplicate_by: "max_abs_score"
+sort_descending: true

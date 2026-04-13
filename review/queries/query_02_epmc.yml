@@ -1,0 +1,13 @@
+query_id: query_02_epmc
+protocol_id: sr_demo_001
+database: Europe PMC
+query_text: ("transcription factor X" OR "TF-X inhibitor") AND (tumour OR tumor)
+filters:
+  date_range: 2015-01-01 to 2025-12-31
+  language: English
+  article_types:
+  - Research Article
+date_run: '2026-03-15'
+export_format: csv
+hit_count: 90
+export_file: retrieval/raw/epmc_export.csv

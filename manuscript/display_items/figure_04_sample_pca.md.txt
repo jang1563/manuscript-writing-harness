@@ -1,0 +1,21 @@
+### Figure 4. Sample-Level Principal Component Separation
+
+```{figure} assets/generated/figure_04_sample_pca.png
+:alt: Single-panel PCA scatter plot showing sample separation on the first two principal components with condition encoded by color and batch encoded by marker shape.
+:width: 100%
+
+Sample-structure figure rendered from the synced manuscript preview asset. The canonical review surface compares the Python and R renderers side by side.
+```
+
+Figure legend:
+
+The PCA plot shows that the dominant separation follows condition while retaining batch identity as a secondary encoding, making cohort structure interpretable without overwhelming the primary signal.
+
+Audit artifacts:
+
+- `figures/output/review/index.html`
+- `figures/output/python/figure_04_sample_pca.svg`
+- `figures/output/r/figure_04_sample_pca.svg`
+- `figures/fact_sheets/figure_04_sample_pca.json`
+- `figures/plans/visualization_plan.json`
+- `figures/source_data/figure_04_panel_a.csv`

@@ -1,0 +1,6 @@
+Interferon alpha response	MSigDB-style demo pathway	IFIT1	IFIT3	ISG15	OAS1	STAT1	CXCL10	IFI6	IRF7
+Cytokine-mediated signaling	MSigDB-style demo pathway	CXCL10	IL6R	STAT1	SOCS1	IFIT1	B2M
+Antigen processing and presentation	MSigDB-style demo pathway	HLA-A	HLA-B	B2M	TAP1	TAPBP	PSMB8
+Cell cycle checkpoint	MSigDB-style demo pathway	CDK1	CCNB1	CCNB2	CDC20	BUB1	MKI67
+Mitotic spindle	MSigDB-style demo pathway	KIF11	TUBA1B	AURKB	TPX2	NUSAP1	CCNB2
+DNA replication	MSigDB-style demo pathway	MCM2	MCM5	PCNA	RRM2	TYMS	FEN1

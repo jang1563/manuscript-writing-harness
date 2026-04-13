@@ -1,0 +1,69 @@
+name: review-evidence-acceptance
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  review-evidence:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: python3 -m pip install -r env/requirements-phase2.txt
+
+      - name: Validate scaffold
+        run: python3 scripts/check_scaffold.py
+
+      - name: Run review demo
+        run: python3 scripts/review_cli.py demo
+
+      - name: Validate review artifacts
+        run: python3 scripts/review_cli.py validate
+
+      - name: Generate evidence summary
+        run: python3 scripts/review_cli.py evidence
+
+      - name: Run review tests
+        run: python3 -m pytest tests/review -q
+
+      - name: Write review evidence summary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("review/reports/evidence_summary.json").read_text(encoding="utf-8"))
+          lines = [
+              "# Review Evidence Acceptance Summary",
+              "",
+              f"- review_id: `{report['review_id']}`",
+              f"- readiness: `{report['readiness']}`",
+              f"- included studies: `{report['extraction']['included_studies']}`",
+              f"- databases: `{', '.join(report['queries']['databases'])}`",
+              f"- blocking issues: `{len(report['blocking_issues'])}`",
+              "",
+          ]
+          summary_path = Path("review/reports/review-evidence-acceptance-summary.md")
+          summary_path.write_text("\n".join(lines), encoding="utf-8")
+          print(summary_path)
+          PY
+
+      - name: Upload review evidence artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-evidence-artifacts
+          path: |
+            review/reports
+            review/manifests
+            review/prisma

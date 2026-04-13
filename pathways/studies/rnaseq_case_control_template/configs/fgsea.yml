@@ -1,0 +1,14 @@
+run_id: "rnaseq_case_control_template"
+raw_input_table: "pathways/studies/rnaseq_case_control_template/inputs/raw/rnaseq_case_control_template_differential_expression.csv"
+ranks_csv: "pathways/studies/rnaseq_case_control_template/inputs/rnaseq_case_control_template_ranks.csv"
+rank_prep_summary: "pathways/studies/rnaseq_case_control_template/results/rank_prep/rank_prep_summary.json"
+pathways_gmt: "pathways/studies/rnaseq_case_control_template/inputs/rnaseq_case_control_template_pathways.gmt"
+output_dir: "pathways/studies/rnaseq_case_control_template/results/fgsea"
+figure_export_csv: "pathways/studies/rnaseq_case_control_template/results/fgsea/fgsea_pathway_dot_export.csv"
+parameters:
+  min_size: 10
+  max_size: 500
+  score_type: "std"
+  eps: 0
+  seed: 42
+  top_n_per_direction: 5

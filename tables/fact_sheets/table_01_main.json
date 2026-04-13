@@ -1,0 +1,14 @@
+{
+  "table_id": "table_01_main",
+  "claim_ids": [
+    "claim_model_ranking"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_model_ranking",
+      "statement": "The highest-ranked model by AUROC appears first after deterministic sorting, preserving a reproducible performance ordering.",
+      "evidence_source": "tables/data/example_main_table.csv",
+      "evidence_type": "sorted_performance_summary"
+    }
+  ]
+}

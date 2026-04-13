@@ -1,0 +1,51 @@
+schema_version: 1
+description: >
+  Defines the required fields for a versioned search query.
+  Each query file records one database search for auditability.
+
+required_fields:
+  - name: query_id
+    type: string
+    description: Unique identifier for this query (e.g. query_01_pubmed)
+
+  - name: protocol_id
+    type: string
+    description: Back-reference to the parent protocol
+
+  - name: database
+    type: string
+    description: Source database (e.g. PubMed, Embase, Europe PMC)
+
+  - name: query_text
+    type: string
+    description: The literal search string as executed
+
+  - name: filters
+    type: object
+    description: Applied search filters
+    fields:
+      - name: date_range
+        type: string
+        description: e.g. 2015-01-01 to 2025-12-31
+      - name: language
+        type: string
+        description: e.g. English
+      - name: article_types
+        type: list
+        item_type: string
+
+  - name: date_run
+    type: string
+    description: ISO date when the query was executed
+
+  - name: export_format
+    type: string
+    description: Format of the raw export (e.g. csv, nbib, ris)
+
+  - name: hit_count
+    type: integer
+    description: Number of records returned
+
+  - name: export_file
+    type: string
+    description: Relative path to the raw export in retrieval/raw/

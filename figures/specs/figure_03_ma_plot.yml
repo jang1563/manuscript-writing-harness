@@ -1,0 +1,37 @@
+figure_id: "figure_03_ma_plot"
+class_id: "ma_plot"
+class_version: 1
+title: "Mean-abundance differential-signal summary"
+theme_id: "manuscript_default"
+font_policy_id: "publication_sans"
+style_profile: "bulk_omics_professional"
+target_profile: "nature_main_double_column"
+qa_profile: "ma_plot_dual"
+review_preset: "ma_plot_dual"
+parity_status: "dual"
+claim_ids:
+  - "claim_high_abundance_interferon_shift"
+fact_sheet: "figures/fact_sheets/figure_03_ma_plot.json"
+visualization_plan: "figures/plans/visualization_plan.json"
+legend_path: "manuscript/legends/figure_03_ma_plot.md"
+size:
+  width_mm: 140
+  height_mm: 90
+data_inputs:
+  - "figures/data/ma_plot_demo.csv"
+source_data_outputs:
+  a: "figures/source_data/figure_03_panel_a.csv"
+panels:
+  - id: "a"
+    title: "MA plot"
+    chart_type: "ma_plot"
+    x: "mean_expression"
+    y: "log2_fc"
+renderers:
+  python:
+    enabled: true
+    output_dir: "figures/output/python"
+  r:
+    enabled: true
+    output_dir: "figures/output/r"
+caption_stub: "The MA plot shows mean abundance versus fold change with selective labels for high-confidence interferon-response genes and negatively shifted proliferation markers."

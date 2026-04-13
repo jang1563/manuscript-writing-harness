@@ -1,0 +1,14 @@
+### figure_08_training_dynamics
+
+```{figure} assets/generated/figure_08_training_dynamics.png
+:alt: Two-panel training dynamics figure showing loss trajectories and validation AUROC trajectories for three AI and machine-learning models.
+:width: 100%
+
+Figure 8. Training and validation dynamics for AI/ML models. Panel a compares training and validation loss across epochs, showing that the foundation model converges with the smallest late-epoch generalization gap. Panel b tracks validation AUROC and marks the best checkpoint for each model, showing that the foundation model both improves faster and plateaus at the highest level.
+```
+
+Audit artifacts:
+
+- `figures/fact_sheets/figure_08_training_dynamics.json`
+- `manuscript/legends/figure_08_training_dynamics.md`
+- `figures/plans/visualization_plan.json`

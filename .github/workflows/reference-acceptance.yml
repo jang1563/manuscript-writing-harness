@@ -1,0 +1,74 @@
+name: reference-acceptance
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  references:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: python3 -m pip install -r env/requirements-phase2.txt
+
+      - name: Validate scaffold
+        run: python3 scripts/check_scaffold.py
+
+      - name: Synchronize citation graph
+        run: python3 scripts/build_citation_graph.py
+
+      - name: Build claim-reference map
+        run: python3 scripts/build_claim_reference_map.py
+
+      - name: Apply claim-reference map
+        run: python3 scripts/apply_claim_reference_map.py
+
+      - name: Check reference integrity
+        run: python3 scripts/check_reference_integrity.py --write --sync-graph
+
+      - name: Run reference tests
+        run: python3 -m pytest tests/references -q
+
+      - name: Write reference acceptance summary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("references/reports/reference_audit.json").read_text(encoding="utf-8"))
+          lines = [
+              "# Reference Acceptance Summary",
+              "",
+              f"- readiness: `{report['readiness']}`",
+              f"- bibliography entries: `{report['bibliography']['entry_count']}`",
+              f"- claim nodes: `{report['citation_graph']['claim_count']}`",
+              f"- edges: `{report['citation_graph']['edge_count']}`",
+              f"- warnings: `{len(report['warnings'])}`",
+              f"- blocking issues: `{len(report['blocking_issues'])}`",
+              "",
+          ]
+          summary_path = Path("references/reports/reference-acceptance-summary.md")
+          summary_path.write_text("\n".join(lines), encoding="utf-8")
+          print(summary_path)
+          PY
+
+      - name: Upload reference artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: reference-artifacts
+          path: |
+            references/reports
+            references/manifests
+            references/mappings
+            manuscript/plans/citation_graph.json

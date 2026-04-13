@@ -1,0 +1,19 @@
+{
+  "figure_id": "figure_03_ma_plot",
+  "claim_ids": [
+    "claim_high_abundance_interferon_shift"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_high_abundance_interferon_shift",
+      "statement": "Highly expressed interferon-response genes remain positively shifted in the MA plot, while negative fold changes cluster among proliferation-associated genes.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_03_panel_a.csv",
+      "evidence_type": "ma_plot_with_threshold_guides"
+    }
+  ],
+  "design_notes": [
+    "The MA plot should retain a zero-centered horizontal reference and selective direct labels for sentinel genes.",
+    "Background points should be visually de-emphasized relative to threshold-crossing highlights."
+  ]
+}

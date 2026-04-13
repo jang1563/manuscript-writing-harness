@@ -1,0 +1,14 @@
+### figure_11_ablation_summary
+
+```{figure} assets/generated/figure_11_ablation_summary.png
+:alt: Two-panel AI and machine-learning ablation figure showing AUROC drops and secondary metric shifts for model variants.
+:width: 100%
+
+Figure 11. Ablation summary for architectural and training design choices. Panel a shows that removing the context encoder or multi-scale fusion causes the largest AUROC loss relative to the full model. Panel b shows that removing the calibration loss has a smaller primary-performance penalty but the largest calibration-error increase, separating discrimination-critical components from probability-quality objectives.
+```
+
+Audit artifacts:
+
+- `figures/fact_sheets/figure_11_ablation_summary.json`
+- `manuscript/legends/figure_11_ablation_summary.md`
+- `figures/plans/visualization_plan.json`

@@ -1,0 +1,72 @@
+bundle_id: "bundle_bulk_omics_deg_exemplar"
+recipe_id: "bulk_omics_deg_story"
+family: "bulk_omics"
+expertise_track: "bioinformatics"
+acceptance_tier: "exemplar"
+target_manuscript_section: "results"
+wiring_mode: "additive_drafts"
+figure_order:
+  - "figure_04_sample_pca"
+  - "figure_03_ma_plot"
+  - "figure_02_volcano_pathway"
+  - "figure_05_pathway_enrichment_dot"
+figures:
+  - slot_id: "sample_structure"
+    class_id: "sample_pca"
+    figure_id: "figure_04_sample_pca"
+    role: "QC and cohort-separation overview"
+    display_order: 1
+    claim_ids:
+      - "claim_condition_drives_primary_sample_separation"
+    spec_path: "figures/specs/figure_04_sample_pca.yml"
+    fact_sheet: "figures/fact_sheets/figure_04_sample_pca.json"
+    legend_path: "manuscript/legends/figure_04_sample_pca.md"
+    source_data:
+      - "figures/source_data/figure_04_panel_a.csv"
+  - slot_id: "ma_overview"
+    class_id: "ma_plot"
+    figure_id: "figure_03_ma_plot"
+    role: "Global differential-signal overview"
+    display_order: 2
+    claim_ids:
+      - "claim_high_abundance_interferon_shift"
+    spec_path: "figures/specs/figure_03_ma_plot.yml"
+    fact_sheet: "figures/fact_sheets/figure_03_ma_plot.json"
+    legend_path: "manuscript/legends/figure_03_ma_plot.md"
+    source_data:
+      - "figures/source_data/figure_03_panel_a.csv"
+  - slot_id: "de_pathway_story"
+    class_id: "volcano_pathway_compound"
+    figure_id: "figure_02_volcano_pathway"
+    role: "Main differential-expression and pathway interpretation figure"
+    display_order: 3
+    claim_ids:
+      - "claim_interferon_gene_activation"
+      - "claim_cell_cycle_pathway_suppression"
+    spec_path: "figures/specs/figure_02_volcano_pathway.yml"
+    fact_sheet: "figures/fact_sheets/figure_02_volcano_pathway.json"
+    legend_path: "manuscript/legends/figure_02_volcano_pathway.md"
+    source_data:
+      - "figures/source_data/figure_02_panel_a.csv"
+      - "figures/source_data/figure_02_panel_b.csv"
+  - slot_id: "pathway_focus"
+    class_id: "pathway_enrichment_dot"
+    figure_id: "figure_05_pathway_enrichment_dot"
+    role: "Focused pathway-enrichment follow-up"
+    display_order: 4
+    claim_ids:
+      - "claim_pathway_effect_sizes_align_with_directionality"
+    spec_path: "figures/specs/figure_05_pathway_enrichment_dot.yml"
+    fact_sheet: "figures/fact_sheets/figure_05_pathway_enrichment_dot.json"
+    legend_path: "manuscript/legends/figure_05_pathway_enrichment_dot.md"
+    source_data:
+      - "figures/source_data/figure_05_panel_a.csv"
+bundle_outputs:
+  review_page: "figures/output/review/bundles/bundle_bulk_omics_deg_exemplar/index.html"
+  summary_json: "figures/output/bundles/bundle_bulk_omics_deg_exemplar/summary.json"
+manuscript_fragments:
+  display_item_map: "figures/bundles/bundle_bulk_omics_deg_exemplar/manuscript/display_item_map.fragment.json"
+  writing_plan: "figures/bundles/bundle_bulk_omics_deg_exemplar/manuscript/writing_plan.fragment.json"
+  results_fragment: "figures/bundles/bundle_bulk_omics_deg_exemplar/manuscript/results_fragment.md"
+  managed_include: "manuscript/display_items/_bundles/bundle_bulk_omics_deg_exemplar.md.txt"
+shared_claim_ids: []

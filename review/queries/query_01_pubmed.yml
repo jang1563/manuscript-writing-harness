@@ -1,0 +1,15 @@
+query_id: query_01_pubmed
+protocol_id: sr_demo_001
+database: PubMed
+query_text: ("transcription factor X" OR "TF-X inhibitor") AND (tumour OR tumor) AND
+  (response OR survival)
+filters:
+  date_range: 2015-01-01 to 2025-12-31
+  language: English
+  article_types:
+  - Journal Article
+  - Clinical Trial
+date_run: '2026-03-15'
+export_format: csv
+hit_count: 90
+export_file: retrieval/raw/pubmed_export.csv

@@ -1,0 +1,67 @@
+schema_version: 1
+description: >
+  Defines the fields for the study-level data extraction table.
+  One row per included study after full-text screening.
+
+required_fields:
+  - name: record_id
+    type: string
+    description: Links to the screening log record
+
+  - name: study_design
+    type: string
+    description: e.g. RCT, cohort, case-control, cross-sectional
+
+  - name: population
+    type: string
+
+  - name: intervention
+    type: string
+
+  - name: comparator
+    type: string
+
+  - name: sample_size
+    type: integer
+
+  - name: outcome_name
+    type: string
+    description: Primary outcome measured
+
+  - name: outcome_measure
+    type: string
+    description: e.g. mean difference, odds ratio, hazard ratio
+
+  - name: outcome_timing
+    type: string
+    description: Measurement timepoint
+
+  - name: effect_value
+    type: float
+    description: Point estimate of the effect size
+
+  - name: ci_lower
+    type: float
+    description: Lower bound of confidence interval
+
+  - name: ci_upper
+    type: float
+    description: Upper bound of confidence interval
+
+  - name: p_value
+    type: float
+
+  - name: extractor
+    type: string
+
+  - name: timestamp
+    type: string
+    description: ISO datetime
+
+optional_fields:
+  - name: subgroup_notes
+    type: string
+
+  - name: heterogeneity_flags
+    type: string
+    description: Comma-separated flags if applicable

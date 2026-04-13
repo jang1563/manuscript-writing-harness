@@ -1,0 +1,57 @@
+default_profile: "nature_main_double_column"
+profiles:
+  nature_main_single_column:
+    venue: "nature"
+    width_mm: 89
+    max_height_mm: 170
+    authoritative_formats:
+      - "pdf"
+      - "svg"
+    preview_format: "png"
+    preview_dpi: 300
+    raster_target_dpi: 450
+    color_space: "RGB"
+  nature_main_double_column:
+    venue: "nature"
+    width_mm: 183
+    max_height_mm: 170
+    authoritative_formats:
+      - "pdf"
+      - "svg"
+    preview_format: "png"
+    preview_dpi: 300
+    raster_target_dpi: 450
+    color_space: "RGB"
+  cell_main:
+    venue: "cell"
+    width_mm: 174
+    max_height_mm: 220
+    authoritative_formats:
+      - "pdf"
+      - "svg"
+    preview_format: "png"
+    preview_dpi: 300
+    raster_target_dpi: 450
+    color_space: "RGB"
+  science_main:
+    venue: "science"
+    width_mm: 183
+    max_height_mm: 235
+    authoritative_formats:
+      - "pdf"
+      - "svg"
+    preview_format: "png"
+    preview_dpi: 300
+    raster_target_dpi: 450
+    color_space: "RGB"
+  conference_default:
+    venue: "conference"
+    width_mm: 178
+    max_height_mm: 230
+    authoritative_formats:
+      - "pdf"
+      - "svg"
+    preview_format: "png"
+    preview_dpi: 300
+    raster_target_dpi: 300
+    color_space: "RGB"

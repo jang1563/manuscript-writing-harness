@@ -1,0 +1,61 @@
+schema_version: 1
+description: >
+  Defines the fields for each row in the screening log CSV.
+  Supports both title/abstract and full-text screening stages.
+
+required_fields:
+  - name: record_id
+    type: string
+    description: Normalized unique identifier for the record
+
+  - name: pmid
+    type: string
+    description: PubMed ID (empty if unavailable)
+
+  - name: doi
+    type: string
+    description: DOI (empty if unavailable)
+
+  - name: title
+    type: string
+
+  - name: authors
+    type: string
+
+  - name: year
+    type: integer
+
+  - name: abstract
+    type: string
+
+  - name: source_db
+    type: string
+    description: Originating database
+
+  - name: stage
+    type: enum
+    values: [title_abstract, full_text]
+    description: Current screening stage
+
+  - name: decision
+    type: enum
+    values: [include, exclude, pending]
+
+  - name: exclusion_reason
+    type: string
+    description: Required when decision is exclude; empty otherwise
+
+  - name: reviewer
+    type: string
+
+  - name: timestamp
+    type: string
+    description: ISO datetime of the decision
+
+optional_fields:
+  - name: ai_priority_score
+    type: float
+    description: Priority score from ASReview or similar tool
+
+  - name: notes
+    type: string

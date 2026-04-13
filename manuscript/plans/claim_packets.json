@@ -1,0 +1,1837 @@
+{
+  "generated_from": {
+    "display_item_map": "manuscript/plans/display_item_map.json",
+    "writing_plan": "manuscript/plans/writing_plan.json",
+    "revision_checks": "manuscript/plans/revision_checks.json",
+    "outline": "manuscript/plans/outline.json",
+    "citation_graph": "manuscript/plans/citation_graph.json",
+    "reference_audit": "references/reports/reference_audit.json",
+    "review_evidence": "review/reports/evidence_summary.json"
+  },
+  "overall_status": "ready",
+  "claim_count": 20,
+  "ready_claim_count": 20,
+  "provisional_claim_count": 0,
+  "blocked_claim_count": 0,
+  "claims": [
+    {
+      "claim_id": "claim_response_kinetics",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_01_example",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_01_example.png",
+        "spec_path": "figures/specs/figure_01_example.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_01_example.json",
+        "legend_path": "manuscript/legends/figure_01_example.md",
+        "source_data": [
+          "figures/source_data/figure_01_panel_a.csv",
+          "figures/source_data/figure_01_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_response_kinetics",
+          "statement": "The treated condition separates from control over time, with a larger mean normalized signal visible by the 4- and 6-hour measurements.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_01_panel_a.csv",
+          "evidence_type": "mean_with_standard_deviation"
+        }
+      ],
+      "legend_summary": "### Figure 1\n\nPanel a shows the time-course response by condition with mean and standard deviation at each time point.\n\nPanel b shows the 6-hour endpoint summary together with replicate-level points so within-group spread remains visible.",
+      "citations": {
+        "reference_ids": [
+          "weissgerberEtAl2015BeyondBar"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_endpoint_shift",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_01_example",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_01_example.png",
+        "spec_path": "figures/specs/figure_01_example.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_01_example.json",
+        "legend_path": "manuscript/legends/figure_01_example.md",
+        "source_data": [
+          "figures/source_data/figure_01_panel_a.csv",
+          "figures/source_data/figure_01_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_endpoint_shift",
+          "statement": "At 6 hours, the treated condition has a higher endpoint response than control, and the replicate-level points show the effect is not driven by a single sample.",
+          "panel_id": "b",
+          "source_data": "figures/source_data/figure_01_panel_b.csv",
+          "evidence_type": "group_summary_with_replicates"
+        }
+      ],
+      "legend_summary": "### Figure 1\n\nPanel a shows the time-course response by condition with mean and standard deviation at each time point.\n\nPanel b shows the 6-hour endpoint summary together with replicate-level points so within-group spread remains visible.",
+      "citations": {
+        "reference_ids": [
+          "weissgerberEtAl2015BeyondBar"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_condition_drives_primary_sample_separation",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_04_sample_pca",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_04_sample_pca.png",
+        "spec_path": "figures/specs/figure_04_sample_pca.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_04_sample_pca.json",
+        "legend_path": "manuscript/legends/figure_04_sample_pca.md",
+        "source_data": [
+          "figures/source_data/figure_04_panel_a.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_condition_drives_primary_sample_separation",
+          "statement": "The primary sample separation occurs along PC1, where treatment samples occupy positive scores and control samples occupy negative scores while batch remains secondary.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_04_panel_a.csv",
+          "evidence_type": "sample_scatter_projection"
+        }
+      ],
+      "legend_summary": "### Figure 4\n\nThe PCA plot shows sample-level separation by condition along the first principal component while preserving batch information through marker shape.",
+      "citations": {
+        "reference_ids": [
+          "abdiWilliams2010PCA"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_high_abundance_interferon_shift",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_03_ma_plot",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_03_ma_plot.png",
+        "spec_path": "figures/specs/figure_03_ma_plot.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_03_ma_plot.json",
+        "legend_path": "manuscript/legends/figure_03_ma_plot.md",
+        "source_data": [
+          "figures/source_data/figure_03_panel_a.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_high_abundance_interferon_shift",
+          "statement": "Highly expressed interferon-response genes remain positively shifted in the MA plot, while negative fold changes cluster among proliferation-associated genes.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_03_panel_a.csv",
+          "evidence_type": "ma_plot_with_threshold_guides"
+        }
+      ],
+      "legend_summary": "### Figure 3\n\nThe MA plot shows mean abundance versus log2 fold change, emphasizing sentinel genes that remain strongly shifted after filtering for adjusted significance.",
+      "citations": {
+        "reference_ids": [
+          "loveEtAl2014DESeq2"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_interferon_gene_activation",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_02_volcano_pathway",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_02_volcano_pathway.png",
+        "spec_path": "figures/specs/figure_02_volcano_pathway.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_02_volcano_pathway.json",
+        "legend_path": "manuscript/legends/figure_02_volcano_pathway.md",
+        "source_data": [
+          "figures/source_data/figure_02_panel_a.csv",
+          "figures/source_data/figure_02_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_interferon_gene_activation",
+          "statement": "The strongest positive differential-expression signals cluster in interferon-associated genes including CXCL10, IFIT1, and MX1, which exceed both the fold-change and false-discovery thresholds.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_02_panel_a.csv",
+          "evidence_type": "volcano_plot_with_threshold_guides"
+        }
+      ],
+      "legend_summary": "### Figure 2\n\nPanel a shows the volcano-plot differential-expression landscape with fold-change and false-discovery thresholds, while selectively labeling sentinel genes with the strongest directional shifts.\n\nPanel b shows signed pathway-enrichment scores for representative upregulated and downregulated programs, with false-discovery-rate annotations retained for rapid review.",
+      "citations": {
+        "reference_ids": [
+          "fgseaBioconductorPackage",
+          "subramanianEtAl2005GSEA",
+          "yuEtAl2012ClusterProfiler"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_cell_cycle_pathway_suppression",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_02_volcano_pathway",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_02_volcano_pathway.png",
+        "spec_path": "figures/specs/figure_02_volcano_pathway.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_02_volcano_pathway.json",
+        "legend_path": "manuscript/legends/figure_02_volcano_pathway.md",
+        "source_data": [
+          "figures/source_data/figure_02_panel_a.csv",
+          "figures/source_data/figure_02_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_cell_cycle_pathway_suppression",
+          "statement": "Negative enrichment scores for cell-cycle checkpoint, mitotic spindle, and DNA replication indicate coordinated suppression of proliferative programs relative to the upregulated immune-response pathways.",
+          "panel_id": "b",
+          "source_data": "figures/source_data/figure_02_panel_b.csv",
+          "evidence_type": "signed_pathway_enrichment_summary"
+        }
+      ],
+      "legend_summary": "### Figure 2\n\nPanel a shows the volcano-plot differential-expression landscape with fold-change and false-discovery thresholds, while selectively labeling sentinel genes with the strongest directional shifts.\n\nPanel b shows signed pathway-enrichment scores for representative upregulated and downregulated programs, with false-discovery-rate annotations retained for rapid review.",
+      "citations": {
+        "reference_ids": [
+          "fgseaBioconductorPackage",
+          "subramanianEtAl2005GSEA",
+          "yuEtAl2012ClusterProfiler"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_pathway_effect_sizes_align_with_directionality",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_05_pathway_enrichment_dot",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_05_pathway_enrichment_dot.png",
+        "spec_path": "figures/specs/figure_05_pathway_enrichment_dot.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_05_pathway_enrichment_dot.json",
+        "legend_path": "manuscript/legends/figure_05_pathway_enrichment_dot.md",
+        "source_data": [
+          "figures/source_data/figure_05_panel_a.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_pathway_effect_sizes_align_with_directionality",
+          "statement": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_05_panel_a.csv",
+          "evidence_type": "annotated_pathway_dot_plot"
+        }
+      ],
+      "legend_summary": "### Figure 5\n\nThe pathway-enrichment dot plot summarizes gene ratio, significance strength, and directionality in a single panel for rapid comparison across representative pathways.",
+      "citations": {
+        "reference_ids": [
+          "fgseaBioconductorPackage",
+          "yuEtAl2012ClusterProfiler"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_foundation_model_improves_discrimination",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_06_roc_pr_compound",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_06_roc_pr_compound.png",
+        "spec_path": "figures/specs/figure_06_roc_pr_compound.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_06_roc_pr_compound.json",
+        "legend_path": "manuscript/legends/figure_06_roc_pr_compound.md",
+        "source_data": [
+          "figures/source_data/figure_06_panel_a.csv",
+          "figures/source_data/figure_06_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_foundation_model_improves_discrimination",
+          "statement": "The foundation model yields the strongest ROC profile and the highest AUROC, maintaining higher true-positive rate than the comparator models across clinically relevant false-positive rates.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_06_panel_a.csv",
+          "evidence_type": "roc_curve_with_uncertainty_band"
+        }
+      ],
+      "legend_summary": "### Figure 6\n\nPanel a shows ROC curves with 95% bootstrap uncertainty ribbons and deployment-threshold operating points for three models.\n\nPanel b shows the matching precision-recall curves, preserving the same model ordering while marking the prevalence baseline so class-imbalance robustness stays visible.",
+      "citations": {
+        "reference_ids": [
+          "davisGoadrich2006PRROC"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_foundation_model_retains_precision_under_imbalance",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_06_roc_pr_compound",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_06_roc_pr_compound.png",
+        "spec_path": "figures/specs/figure_06_roc_pr_compound.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_06_roc_pr_compound.json",
+        "legend_path": "manuscript/legends/figure_06_roc_pr_compound.md",
+        "source_data": [
+          "figures/source_data/figure_06_panel_a.csv",
+          "figures/source_data/figure_06_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_foundation_model_retains_precision_under_imbalance",
+          "statement": "Under class imbalance, the foundation model preserves precision better than the comparator models across the recall range and remains far above the prevalence baseline, yielding the highest AUPRC.",
+          "panel_id": "b",
+          "source_data": "figures/source_data/figure_06_panel_b.csv",
+          "evidence_type": "precision_recall_curve_with_prevalence_baseline"
+        }
+      ],
+      "legend_summary": "### Figure 6\n\nPanel a shows ROC curves with 95% bootstrap uncertainty ribbons and deployment-threshold operating points for three models.\n\nPanel b shows the matching precision-recall curves, preserving the same model ordering while marking the prevalence baseline so class-imbalance robustness stays visible.",
+      "citations": {
+        "reference_ids": [
+          "davisGoadrich2006PRROC"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_foundation_model_best_calibrated",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_07_calibration_reliability",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_07_calibration_reliability.png",
+        "spec_path": "figures/specs/figure_07_calibration_reliability.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_07_calibration_reliability.json",
+        "legend_path": "manuscript/legends/figure_07_calibration_reliability.md",
+        "source_data": [
+          "figures/source_data/figure_07_panel_a.csv",
+          "figures/source_data/figure_07_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_foundation_model_best_calibrated",
+          "statement": "The foundation model tracks the identity line more closely than the comparator models across confidence bins and has the lowest expected calibration error.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_07_panel_a.csv",
+          "evidence_type": "reliability_diagram_with_error_band"
+        }
+      ],
+      "legend_summary": "### figure_07_calibration_reliability\n\nPanel a shows a reliability diagram for three models across matched probability bins, with the diagonal representing perfect calibration and vertical uncertainty envelopes reflecting bin-level outcome uncertainty. Panel b shows the fraction of predictions assigned to each confidence bin for the same models, preserving whether high-confidence behavior is supported by meaningful sample mass or only by sparse tails.",
+      "citations": {
+        "reference_ids": [
+          "guoEtAl2017Calibration",
+          "niculescuMizilCaruana2005Probabilities"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_high_confidence_support_is_not_tail_only",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_07_calibration_reliability",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_07_calibration_reliability.png",
+        "spec_path": "figures/specs/figure_07_calibration_reliability.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_07_calibration_reliability.json",
+        "legend_path": "manuscript/legends/figure_07_calibration_reliability.md",
+        "source_data": [
+          "figures/source_data/figure_07_panel_a.csv",
+          "figures/source_data/figure_07_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_high_confidence_support_is_not_tail_only",
+          "statement": "The high-confidence calibration conclusion is supported by non-trivial prediction mass across upper-confidence bins rather than a sparse extreme tail.",
+          "panel_id": "b",
+          "source_data": "figures/source_data/figure_07_panel_b.csv",
+          "evidence_type": "confidence_support_distribution"
+        }
+      ],
+      "legend_summary": "### figure_07_calibration_reliability\n\nPanel a shows a reliability diagram for three models across matched probability bins, with the diagonal representing perfect calibration and vertical uncertainty envelopes reflecting bin-level outcome uncertainty. Panel b shows the fraction of predictions assigned to each confidence bin for the same models, preserving whether high-confidence behavior is supported by meaningful sample mass or only by sparse tails.",
+      "citations": {
+        "reference_ids": [
+          "guoEtAl2017Calibration"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_foundation_model_optimizes_stably",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_08_training_dynamics",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_08_training_dynamics.png",
+        "spec_path": "figures/specs/figure_08_training_dynamics.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_08_training_dynamics.json",
+        "legend_path": "manuscript/legends/figure_08_training_dynamics.md",
+        "source_data": [
+          "figures/source_data/figure_08_panel_a.csv",
+          "figures/source_data/figure_08_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_foundation_model_optimizes_stably",
+          "statement": "The foundation model shows the lowest validation loss with minimal late-epoch divergence from training loss, indicating the most stable optimization profile among the compared models.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_08_panel_a.csv",
+          "evidence_type": "loss_trajectory_with_split_encoding"
+        }
+      ],
+      "legend_summary": "### figure_08_training_dynamics\n\nPanel a shows training and validation loss trajectories for three models across matched epochs, preserving where optimization remains stable versus where validation loss stops improving. Panel b shows validation AUROC trajectories over the same epochs and marks the best checkpoint for each model, allowing ranking and optimization behavior to be interpreted together rather than as disconnected endpoint metrics.",
+      "citations": {
+        "reference_ids": [
+          "smithTopin2017SuperConvergence"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_foundation_model_reaches_higher_validation_auroc",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_08_training_dynamics",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_08_training_dynamics.png",
+        "spec_path": "figures/specs/figure_08_training_dynamics.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_08_training_dynamics.json",
+        "legend_path": "manuscript/legends/figure_08_training_dynamics.md",
+        "source_data": [
+          "figures/source_data/figure_08_panel_a.csv",
+          "figures/source_data/figure_08_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_foundation_model_reaches_higher_validation_auroc",
+          "statement": "The foundation model improves validation AUROC faster and plateaus at the highest level, while the comparator models saturate earlier at lower performance.",
+          "panel_id": "b",
+          "source_data": "figures/source_data/figure_08_panel_b.csv",
+          "evidence_type": "validation_metric_trajectory_with_best_checkpoint_marker"
+        }
+      ],
+      "legend_summary": "### figure_08_training_dynamics\n\nPanel a shows training and validation loss trajectories for three models across matched epochs, preserving where optimization remains stable versus where validation loss stops improving. Panel b shows validation AUROC trajectories over the same epochs and marks the best checkpoint for each model, allowing ranking and optimization behavior to be interpreted together rather than as disconnected endpoint metrics.",
+      "citations": {
+        "reference_ids": [
+          "smithTopin2017SuperConvergence"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_errors_are_localized_to_adjacent_states",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_09_confusion_matrix_normalized",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_09_confusion_matrix_normalized.png",
+        "spec_path": "figures/specs/figure_09_confusion_matrix_normalized.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_09_confusion_matrix_normalized.json",
+        "legend_path": "manuscript/legends/figure_09_confusion_matrix_normalized.md",
+        "source_data": [
+          "figures/source_data/figure_09_panel_a.csv",
+          "figures/source_data/figure_09_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_errors_are_localized_to_adjacent_states",
+          "statement": "Residual classifier errors are concentrated between inflammatory and proliferative states rather than being broadly distributed across all labels, indicating local ambiguity instead of global label collapse.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_09_panel_a.csv",
+          "evidence_type": "row_normalized_confusion_matrix_with_annotated_off_diagonal_structure"
+        }
+      ],
+      "legend_summary": "### figure_09_confusion_matrix_normalized\n\nPanel a shows a row-normalized confusion matrix for four phenotype classes, annotating each cell with both normalized rate and raw count so diagonal retention and cross-class leakage can be read together. Panel b ranks the dominant off-diagonal confusions, making the most important failure pathways explicit rather than forcing the reader to scan the full matrix for error asymmetry.",
+      "citations": {
+        "reference_ids": [
+          "stehman1997ClassificationAccuracy"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_terminal_states_remain_distinct",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_09_confusion_matrix_normalized",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_09_confusion_matrix_normalized.png",
+        "spec_path": "figures/specs/figure_09_confusion_matrix_normalized.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_09_confusion_matrix_normalized.json",
+        "legend_path": "manuscript/legends/figure_09_confusion_matrix_normalized.md",
+        "source_data": [
+          "figures/source_data/figure_09_panel_a.csv",
+          "figures/source_data/figure_09_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_terminal_states_remain_distinct",
+          "statement": "Healthy and fibrotic states retain the strongest diagonal mass, indicating that terminal phenotypes remain well separated even when intermediate inflammatory and proliferative states are occasionally confused.",
+          "panel_id": "b",
+          "source_data": "figures/source_data/figure_09_panel_b.csv",
+          "evidence_type": "off_diagonal_confusion_ranking_with_class_level_error_summary"
+        }
+      ],
+      "legend_summary": "### figure_09_confusion_matrix_normalized\n\nPanel a shows a row-normalized confusion matrix for four phenotype classes, annotating each cell with both normalized rate and raw count so diagonal retention and cross-class leakage can be read together. Panel b ranks the dominant off-diagonal confusions, making the most important failure pathways explicit rather than forcing the reader to scan the full matrix for error asymmetry.",
+      "citations": {
+        "reference_ids": [
+          "stehman1997ClassificationAccuracy"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_model_relies_on_biologically_salient_features",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_10_feature_importance_summary",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_10_feature_importance_summary.png",
+        "spec_path": "figures/specs/figure_10_feature_importance_summary.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_10_feature_importance_summary.json",
+        "legend_path": "manuscript/legends/figure_10_feature_importance_summary.md",
+        "source_data": [
+          "figures/source_data/figure_10_panel_a.csv",
+          "figures/source_data/figure_10_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_model_relies_on_biologically_salient_features",
+          "statement": "The highest-ranked features are fibrosis, inflammatory, proliferative, and interferon-related programs, while nuisance covariates such as batch score remain much lower in importance.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_10_panel_a.csv",
+          "evidence_type": "ranked_mean_absolute_feature_importance"
+        }
+      ],
+      "legend_summary": "### figure_10_feature_importance_summary\n\nPanel a ranks the dominant model features by mean absolute importance, preserving whether the model is driven primarily by biologically meaningful programs or by nuisance covariates. Panel b shows the signed effect of those features on the predicted response relative to a zero reference, allowing feature directionality and domain alignment to be interpreted separately from raw importance magnitude.",
+      "citations": {
+        "reference_ids": [
+          "lundbergLee2017SHAP"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_signed_feature_effects_align_with_domain_expectation",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_10_feature_importance_summary",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_10_feature_importance_summary.png",
+        "spec_path": "figures/specs/figure_10_feature_importance_summary.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_10_feature_importance_summary.json",
+        "legend_path": "manuscript/legends/figure_10_feature_importance_summary.md",
+        "source_data": [
+          "figures/source_data/figure_10_panel_a.csv",
+          "figures/source_data/figure_10_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_signed_feature_effects_align_with_domain_expectation",
+          "statement": "The dominant feature effects point in biologically coherent directions: fibrosis, inflammatory, and interferon signals increase predicted response, while proliferative activity suppresses it.",
+          "panel_id": "b",
+          "source_data": "figures/source_data/figure_10_panel_b.csv",
+          "evidence_type": "zero_centered_signed_feature_effect_summary"
+        }
+      ],
+      "legend_summary": "### figure_10_feature_importance_summary\n\nPanel a ranks the dominant model features by mean absolute importance, preserving whether the model is driven primarily by biologically meaningful programs or by nuisance covariates. Panel b shows the signed effect of those features on the predicted response relative to a zero reference, allowing feature directionality and domain alignment to be interpreted separately from raw importance magnitude.",
+      "citations": {
+        "reference_ids": [
+          "lundbergLee2017SHAP"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_11_ablation_summary",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_11_ablation_summary.png",
+        "spec_path": "figures/specs/figure_11_ablation_summary.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_11_ablation_summary.json",
+        "legend_path": "manuscript/legends/figure_11_ablation_summary.md",
+        "source_data": [
+          "figures/source_data/figure_11_panel_a.csv",
+          "figures/source_data/figure_11_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+          "statement": "Removing the context encoder or multi-scale fusion causes the largest AUROC drops, indicating that architectural context integration is the main driver of top-line discrimination.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_11_panel_a.csv",
+          "evidence_type": "primary_metric_drop_vs_full_model"
+        }
+      ],
+      "legend_summary": "### figure_11_ablation_summary\n\nPanel a shows the AUROC drop for each ablated variant relative to the full model, preserving which architectural and training choices matter most for top-line discrimination. Panel b shows the corresponding secondary-metric shifts for AUPRC and calibration error, allowing the reader to distinguish ablations that mainly hurt ranking quality from those that primarily degrade probability quality.",
+      "citations": {
+        "reference_ids": [
+          "liptonSteinhardt2018TroublingTrends"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_calibration_loss_mainly_affects_probability_quality",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_11_ablation_summary",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_11_ablation_summary.png",
+        "spec_path": "figures/specs/figure_11_ablation_summary.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_11_ablation_summary.json",
+        "legend_path": "manuscript/legends/figure_11_ablation_summary.md",
+        "source_data": [
+          "figures/source_data/figure_11_panel_a.csv",
+          "figures/source_data/figure_11_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_calibration_loss_mainly_affects_probability_quality",
+          "statement": "Removing the calibration loss causes only a modest AUROC drop but the largest increase in calibration error, indicating that this objective contributes more to probability quality than to raw discrimination.",
+          "panel_id": "b",
+          "source_data": "figures/source_data/figure_11_panel_b.csv",
+          "evidence_type": "secondary_metric_shift_vs_full_model"
+        }
+      ],
+      "legend_summary": "### figure_11_ablation_summary\n\nPanel a shows the AUROC drop for each ablated variant relative to the full model, preserving which architectural and training choices matter most for top-line discrimination. Panel b shows the corresponding secondary-metric shifts for AUPRC and calibration error, allowing the reader to distinguish ablations that mainly hurt ranking quality from those that primarily degrade probability quality.",
+      "citations": {
+        "reference_ids": [
+          "guoEtAl2017Calibration"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_model_ranking",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "table_01_main",
+        "type": "table",
+        "preview_asset": null,
+        "spec_path": null,
+        "schema_path": "tables/schemas/main_table_schema.yml",
+        "fact_sheet": "tables/fact_sheets/table_01_main.json",
+        "legend_path": null,
+        "source_data": [],
+        "manifest_path": "tables/output/table_01_main.manifest.json"
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_model_ranking",
+          "statement": "The highest-ranked model by AUROC appears first after deterministic sorting, preserving a reproducible performance ordering.",
+          "evidence_source": "tables/data/example_main_table.csv",
+          "evidence_type": "sorted_performance_summary"
+        }
+      ],
+      "legend_summary": "",
+      "citations": {
+        "reference_ids": [
+          "davisGoadrich2006PRROC"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    }
+  ]
+}

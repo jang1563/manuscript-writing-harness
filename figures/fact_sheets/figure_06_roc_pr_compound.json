@@ -1,0 +1,28 @@
+{
+  "figure_id": "figure_06_roc_pr_compound",
+  "claim_ids": [
+    "claim_foundation_model_improves_discrimination",
+    "claim_foundation_model_retains_precision_under_imbalance"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_foundation_model_improves_discrimination",
+      "statement": "The foundation model yields the strongest ROC profile and the highest AUROC, maintaining higher true-positive rate than the comparator models across clinically relevant false-positive rates.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_06_panel_a.csv",
+      "evidence_type": "roc_curve_with_uncertainty_band"
+    },
+    {
+      "fact_id": "claim_foundation_model_retains_precision_under_imbalance",
+      "statement": "Under class imbalance, the foundation model preserves precision better than the comparator models across the recall range and remains far above the prevalence baseline, yielding the highest AUPRC.",
+      "panel_id": "b",
+      "source_data": "figures/source_data/figure_06_panel_b.csv",
+      "evidence_type": "precision_recall_curve_with_prevalence_baseline"
+    }
+  ],
+  "design_notes": [
+    "Show both ROC and PR so performance under class imbalance is not hidden by ROC alone.",
+    "Use uncertainty ribbons and operating-point markers to avoid leaderboard-only presentation.",
+    "Do not rely on color alone; keep line styles and marker shapes distinct across models."
+  ]
+}

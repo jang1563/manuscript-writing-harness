@@ -1,0 +1,7 @@
+pathway,gene_ratio,neg_log10_fdr,gene_count,direction,highlight_order
+Interferon alpha response,0.41,5.8,24,up,1
+Cytokine-mediated signaling,0.34,4.9,19,up,2
+Antigen processing and presentation,0.28,3.6,14,up,3
+Cell cycle checkpoint,0.22,4.5,17,down,4
+Mitotic spindle,0.19,3.9,13,down,5
+DNA replication,0.16,3.1,11,down,6

@@ -1,0 +1,9 @@
+{
+  "table_id": "key_resources_table",
+  "venue": "cell",
+  "description": "Tracked overlay skeleton for a Cell-style Key Resources Table.",
+  "source_files": [
+    "tables/key_resources/key_resources_table.csv",
+    "tables/key_resources/key_resources_table.md"
+  ]
+}

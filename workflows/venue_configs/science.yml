@@ -1,0 +1,15 @@
+name: science
+required_sections:
+  - abstract
+  - main_text
+  - references
+  - acknowledgements
+  - funding
+  - author_contributions
+  - competing_interests
+  - data_and_materials_availability
+special_assets:
+  - supplementary_materials
+notes:
+  - Validate final requirements against the exact Science-family journal at submission time.
+

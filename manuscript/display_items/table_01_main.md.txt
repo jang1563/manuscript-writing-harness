@@ -1,0 +1,14 @@
+### Table 1. Example Main Table
+
+```{include} ../../tables/output/table_01_main.md
+```
+
+Table legend:
+
+Example model-performance summary sorted deterministically by AUROC from canonical CSV input.
+
+Audit artifacts:
+
+- `tables/output/table_01_main.json`
+- `tables/output/table_01_main.manifest.json`
+- `tables/fact_sheets/table_01_main.json`

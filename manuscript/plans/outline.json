@@ -1,0 +1,48 @@
+{
+  "plan_id": "working_manuscript_outline_v1",
+  "manuscript_title": "Working Manuscript",
+  "sections": [
+    {
+      "section_id": "summary",
+      "source": "manuscript/sections/01_summary.md",
+      "purpose": "State the main scientific question and the top-line claim."
+    },
+    {
+      "section_id": "introduction",
+      "source": "manuscript/sections/02_introduction.md",
+      "purpose": "Frame the background and why the problem matters."
+    },
+    {
+      "section_id": "results",
+      "source": "manuscript/sections/03_results.md",
+      "purpose": "Present display-item-backed claims in a controlled order."
+    },
+    {
+      "section_id": "discussion",
+      "source": "manuscript/sections/04_discussion.md",
+      "purpose": "Interpret the main findings and their limits."
+    },
+    {
+      "section_id": "methods",
+      "source": "manuscript/sections/05_methods.md",
+      "purpose": "Document data provenance, analytical choices, and reproducibility details."
+    }
+  ],
+  "display_item_sequence": [
+    "figure_01_example",
+    "figure_04_sample_pca",
+    "figure_03_ma_plot",
+    "figure_02_volcano_pathway",
+    "figure_05_pathway_enrichment_dot",
+    "figure_06_roc_pr_compound",
+    "figure_07_calibration_reliability",
+    "figure_08_training_dynamics",
+    "figure_09_confusion_matrix_normalized",
+    "figure_10_feature_importance_summary",
+    "figure_11_ablation_summary",
+    "table_01_main"
+  ],
+  "visualization_plan_refs": [
+    "figures/plans/visualization_plan.json"
+  ]
+}

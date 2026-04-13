@@ -1,0 +1,28 @@
+{
+  "figure_id": "figure_09_confusion_matrix_normalized",
+  "claim_ids": [
+    "claim_errors_are_localized_to_adjacent_states",
+    "claim_terminal_states_remain_distinct"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_errors_are_localized_to_adjacent_states",
+      "statement": "Residual classifier errors are concentrated between inflammatory and proliferative states rather than being broadly distributed across all labels, indicating local ambiguity instead of global label collapse.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_09_panel_a.csv",
+      "evidence_type": "row_normalized_confusion_matrix_with_annotated_off_diagonal_structure"
+    },
+    {
+      "fact_id": "claim_terminal_states_remain_distinct",
+      "statement": "Healthy and fibrotic states retain the strongest diagonal mass, indicating that terminal phenotypes remain well separated even when intermediate inflammatory and proliferative states are occasionally confused.",
+      "panel_id": "b",
+      "source_data": "figures/source_data/figure_09_panel_b.csv",
+      "evidence_type": "off_diagonal_confusion_ranking_with_class_level_error_summary"
+    }
+  ],
+  "design_notes": [
+    "Row-normalize the confusion matrix so class-wise error asymmetry is directly interpretable.",
+    "Annotate every cell with percentages and counts so the reader does not have to infer important values from color alone.",
+    "Pair the heatmap with an explicit off-diagonal summary to make the dominant failure pathways readable without scanning the entire matrix."
+  ]
+}

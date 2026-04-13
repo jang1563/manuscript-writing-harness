@@ -1,0 +1,24 @@
+### Figure 1. Example Multi-Panel Response Figure
+
+```{figure} assets/generated/figure_01_example.png
+:alt: Two-panel response figure showing a time-course comparison between control and treated conditions and a 6-hour endpoint summary with replicate-level points.
+:width: 100%
+
+Example multi-panel response figure rendered from the synced manuscript preview asset. The canonical review surface compares the Python and R renderers side by side.
+```
+
+Figure legend:
+
+Panel a shows the time-course response by condition with mean and standard deviation at each time point.
+
+Panel b shows the 6-hour endpoint summary together with replicate-level points so within-group spread remains visible.
+
+Audit artifacts:
+
+- `figures/output/review/index.html`
+- `figures/output/python/figure_01_example.svg`
+- `figures/output/r/figure_01_example.svg`
+- `figures/fact_sheets/figure_01_example.json`
+- `figures/plans/visualization_plan.json`
+- `figures/source_data/figure_01_panel_a.csv`
+- `figures/source_data/figure_01_panel_b.csv`

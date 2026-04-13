@@ -1,0 +1,14 @@
+### figure_09_confusion_matrix_normalized
+
+```{figure} assets/generated/figure_09_confusion_matrix_normalized.png
+:alt: Two-panel AI and machine-learning error-analysis figure showing a normalized confusion matrix and a summary of dominant off-diagonal confusions.
+:width: 100%
+
+Figure 9. Normalized confusion structure and dominant failure pathways for phenotype classification. Panel a shows that healthy and fibrotic states retain the strongest diagonal mass, while the largest off-diagonal leakage is concentrated between inflammatory and proliferative states. Panel b makes those failure modes explicit by ranking the dominant off-diagonal confusions rather than leaving them implicit inside the matrix.
+```
+
+Audit artifacts:
+
+- `figures/fact_sheets/figure_09_confusion_matrix_normalized.json`
+- `manuscript/legends/figure_09_confusion_matrix_normalized.md`
+- `figures/plans/visualization_plan.json`

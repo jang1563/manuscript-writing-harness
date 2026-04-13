@@ -1,0 +1,19 @@
+{
+  "figure_id": "figure_04_sample_pca",
+  "claim_ids": [
+    "claim_condition_drives_primary_sample_separation"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_condition_drives_primary_sample_separation",
+      "statement": "The primary sample separation occurs along PC1, where treatment samples occupy positive scores and control samples occupy negative scores while batch remains secondary.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_04_panel_a.csv",
+      "evidence_type": "sample_scatter_projection"
+    }
+  ],
+  "design_notes": [
+    "Condition should be encoded by color and batch by marker shape.",
+    "Only a small number of sample labels should be rendered directly."
+  ]
+}

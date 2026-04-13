@@ -1,0 +1,117 @@
+name: archive-export-acceptance
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  archive-export:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "release"
+
+      - name: Install Python dependencies
+        run: |
+          python3 -m pip install -r env/requirements-myst.txt
+          python3 -m pip install -r env/requirements-phase2.txt
+
+      - name: Install R dependencies
+        run: Rscript env/install_r_figure_deps.R
+
+      - name: Validate scaffold
+        run: python3 scripts/check_scaffold.py
+
+      - name: Build release dependencies
+        run: |
+          python3 scripts/build_phase2.py
+          python3 scripts/figures_cli.py apply-bundles --all
+          python3 scripts/review_cli.py evidence
+          python3 scripts/build_citation_graph.py
+          python3 scripts/build_claim_reference_map.py
+          python3 scripts/apply_claim_reference_map.py
+          python3 scripts/check_reference_integrity.py --write --sync-graph
+          python3 scripts/build_claim_packets.py
+          python3 scripts/check_claim_coverage.py --write
+          python3 scripts/build_section_briefs.py
+          python3 scripts/check_section_briefs.py --write
+          python3 scripts/build_section_drafts.py
+          python3 scripts/check_section_drafts.py --write
+          python3 scripts/build_section_prose.py
+          python3 scripts/check_section_prose.py --write
+          python3 scripts/apply_section_prose.py
+          python3 scripts/check_venue_readiness.py --all --write --strict
+          python3 scripts/check_fgsea_study_dossier.py --config pathways/configs/fgsea_active.yml --write --json
+
+      - name: Build manuscript HTML
+        working-directory: manuscript
+        run: myst build --html
+
+      - name: Freeze release bundle and archive export
+        run: |
+          python3 scripts/check_release_bundle.py --profile integrated_demo_release --write --strict
+          python3 scripts/check_archive_export.py --profile integrated_demo_release --write --strict
+
+      - name: Run archive-export tests
+        run: python3 -m pytest tests/figures/python/test_archive_export.py -q
+
+      - name: Write archive-export acceptance summary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(
+              Path("workflows/release/reports/integrated_demo_release_archive.json").read_text(
+                  encoding="utf-8"
+              )
+          )
+          lines = [
+              "# Archive Export Acceptance Summary",
+              "",
+              f"- archive_id: `{report['archive_id']}`",
+              f"- readiness: `{report['readiness']}`",
+              f"- file_count: `{report['file_count']}`",
+              f"- total_bytes: `{report['total_bytes']}`",
+              f"- warnings: `{len(report['warnings'])}`",
+              f"- blocking issues: `{len(report['blocking_issues'])}`",
+              "",
+          ]
+          summary_path = Path("workflows/release/reports/archive-export-acceptance-summary.md")
+          summary_path.write_text("\n".join(lines), encoding="utf-8")
+          print(summary_path)
+          PY
+
+      - name: Upload archive-export artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-export-artifacts
+          path: |
+            workflows/release/reports
+            workflows/release/manifests
+            workflows/release/checksums
+            workflows/release/deposit
+
+      - name: Upload manuscript html
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-export-manuscript-html
+          path: manuscript/_build/html

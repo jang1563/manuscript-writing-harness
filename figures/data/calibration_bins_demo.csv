@@ -1,0 +1,25 @@
+model,display_order,bin_center,mean_predicted,observed_rate,observed_lower,observed_upper,sample_fraction,sample_count,label_bin
+Foundation model,1,0.05,0.05,0.04,0.02,0.06,0.05,50,no
+Foundation model,1,0.15,0.15,0.14,0.10,0.18,0.09,90,no
+Foundation model,1,0.25,0.25,0.25,0.20,0.30,0.14,140,no
+Foundation model,1,0.35,0.35,0.36,0.30,0.42,0.18,180,no
+Foundation model,1,0.45,0.45,0.45,0.39,0.51,0.19,190,no
+Foundation model,1,0.55,0.55,0.56,0.50,0.62,0.16,160,no
+Foundation model,1,0.70,0.70,0.69,0.62,0.76,0.12,120,no
+Foundation model,1,0.90,0.90,0.88,0.79,0.95,0.07,70,yes
+Hybrid GNN,2,0.05,0.05,0.03,0.01,0.05,0.06,60,no
+Hybrid GNN,2,0.15,0.15,0.10,0.07,0.13,0.10,100,no
+Hybrid GNN,2,0.25,0.25,0.19,0.14,0.24,0.15,150,no
+Hybrid GNN,2,0.35,0.35,0.29,0.23,0.35,0.19,190,no
+Hybrid GNN,2,0.45,0.45,0.39,0.33,0.45,0.18,180,no
+Hybrid GNN,2,0.55,0.55,0.49,0.42,0.56,0.14,140,no
+Hybrid GNN,2,0.70,0.70,0.61,0.53,0.69,0.10,100,no
+Hybrid GNN,2,0.90,0.90,0.76,0.66,0.84,0.08,80,yes
+CNN baseline,3,0.05,0.05,0.01,0,0.03,0.07,70,no
+CNN baseline,3,0.15,0.15,0.08,0.05,0.11,0.12,120,no
+CNN baseline,3,0.25,0.25,0.15,0.10,0.20,0.16,160,no
+CNN baseline,3,0.35,0.35,0.24,0.18,0.30,0.18,180,no
+CNN baseline,3,0.45,0.45,0.33,0.27,0.39,0.16,160,no
+CNN baseline,3,0.55,0.55,0.43,0.36,0.50,0.12,120,no
+CNN baseline,3,0.70,0.70,0.54,0.46,0.62,0.10,100,no
+CNN baseline,3,0.90,0.90,0.70,0.59,0.79,0.09,90,yes

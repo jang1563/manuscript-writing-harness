@@ -1,0 +1,90 @@
+name: runtime-compatibility
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  runtime-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install metadata check dependencies
+        run: python3 -m pip install PyYAML
+
+      - name: Validate runtime metadata
+        run: python3 scripts/check_runtime_support.py
+
+  python-compat:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.10"
+          - "3.11"
+          - "3.12"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Python dependencies
+        run: python3 -m pip install -r env/requirements-phase2.txt
+
+      - name: Validate scaffold
+        run: python3 scripts/check_scaffold.py
+
+      - name: Run Python figure tests
+        run: python3 -m pytest tests/figures/python
+
+  r-compat:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        r-version:
+          - "oldrel-1"
+          - "release"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ matrix.r-version }}
+
+      - name: Install Python dependencies
+        run: python3 -m pip install -r env/requirements-phase2.txt
+
+      - name: Install R dependencies
+        run: Rscript env/install_r_figure_deps.R
+
+      - name: Build figure smoke tests
+        run: |
+          python3 scripts/figures_cli.py build --figure figure_01_example
+          python3 scripts/figures_cli.py build --figure figure_03_ma_plot
+          python3 scripts/figures_cli.py review --figure figure_01_example
+          python3 scripts/figures_cli.py validate --figure figure_01_example
+
+      - name: Run R figure tests
+        run: Rscript tests/figures/r/testthat.R

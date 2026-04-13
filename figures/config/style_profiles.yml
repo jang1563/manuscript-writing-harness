@@ -1,0 +1,27 @@
+profiles:
+  bulk_omics_professional:
+    family: "bulk_omics"
+    positioning: "claim-first scientific figure with compact labels and source-data traceability"
+    defaults:
+      legend_mode: "direct_labels_when_small"
+      uncertainty_mode: "explicit_replicates_or_interval"
+      palette_mode: "scientific_muted"
+      annotation_density: "sparse"
+    quality_rules:
+      - "Prefer direct labels when the number of groups or series is small."
+      - "Keep replicate-level evidence visible whenever biological variability matters."
+      - "Use threshold guides sparingly and preserve sign around zero for directional effects."
+  ai_ml_professional:
+    family: "ai_ml_professional"
+    positioning: "conference-grade AI/ML figure with metric clarity, calibration visibility, and ablation readability"
+    defaults:
+      legend_mode: "compact_legend_or_direct_labels"
+      uncertainty_mode: "confidence_interval_or_error_band"
+      palette_mode: "metric_and_model_safe"
+      annotation_density: "moderate"
+    quality_rules:
+      - "Separate model identity, data split, and uncertainty with distinct visual channels."
+      - "Do not rely on color alone when multiple methods or ablations are compared."
+      - "Show calibration, uncertainty, or confidence information when model quality claims depend on them."
+      - "Order metrics and methods consistently across ROC, PR, calibration, confusion, and ablation figures."
+      - "Use conference-style concise titles and annotations that stay legible after column-width reduction."

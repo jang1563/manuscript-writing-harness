@@ -1,0 +1,14 @@
+name: conference
+required_sections:
+  - abstract
+  - introduction
+  - methods
+  - results
+  - discussion
+  - references
+special_assets:
+  - anonymization_check
+  - supplemental_appendix
+notes:
+  - Specialize this config per venue, such as ACM, IEEE, NeurIPS, or ICML.
+

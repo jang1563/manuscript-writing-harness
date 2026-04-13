@@ -1,0 +1,43 @@
+theme_id: "manuscript_default"
+typography:
+  base_font_size_pt: 7
+  axis_label_font_size_pt: 7
+  tick_label_font_size_pt: 6
+  title_font_size_pt: 7
+  annotation_font_size_pt: 6
+strokes:
+  axis_line_width_pt: 0.8
+  data_line_width_pt: 1.4
+  errorbar_line_width_pt: 0.8
+  marker_edge_width_pt: 0.8
+palette:
+  categorical:
+    - "#0072B2"
+    - "#D55E00"
+    - "#009E73"
+    - "#CC79A7"
+  neutral:
+    - "#111111"
+    - "#5C5C5C"
+    - "#B8B8B8"
+  sequential: "viridis"
+panel_labels:
+  font_size_pt: 8
+  font_weight: "bold"
+  case: "lower"
+  x_position_axes: -0.16
+  y_position_axes: 1.02
+layout:
+  constrained: true
+  constrained_w_pad_in: 0.08
+  constrained_h_pad_in: 0.08
+  constrained_wspace: 0.06
+  constrained_hspace: 0.08
+  panel_gap_wspace: 0.12
+export_defaults:
+  background: "white"
+  preview_dpi: 300
+  authoritative_formats:
+    - "pdf"
+    - "svg"
+  preview_format: "png"

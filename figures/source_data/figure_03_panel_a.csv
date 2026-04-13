@@ -1,0 +1,16 @@
+gene,mean_expression,log2_fc,padj,highlight_label,point_category
+CXCL10,6.8,2.3,0.000003,yes,highlighted
+IFIT1,6.4,2.1,0.00002,yes,highlighted
+MX1,6.1,1.8,0.00006,no,highlighted
+ISG15,5.9,1.5,0.0003,no,highlighted
+STAT1,5.7,1.2,0.0012,no,highlighted
+HLA-B,5.4,0.9,0.01,no,background
+VEGFA,5,0.4,0.09,no,background
+GAPDH,8.2,0,0.95,no,background
+ACTB,8.1,-0.1,0.92,no,background
+MKI67,6,-2,0.00002,yes,highlighted
+TOP2A,5.8,-1.9,0.00007,yes,highlighted
+CDK1,5.6,-1.7,0.0004,yes,highlighted
+PCNA,5.5,-1.4,0.0011,no,highlighted
+TYMS,5.1,-1.1,0.004,no,highlighted
+COL1A1,4.8,-0.7,0.08,no,background

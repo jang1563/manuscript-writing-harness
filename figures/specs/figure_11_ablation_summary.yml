@@ -1,0 +1,45 @@
+figure_id: "figure_11_ablation_summary"
+class_id: "ablation_summary"
+class_version: 1
+title: "Ablation summary for architectural and training design choices"
+theme_id: "manuscript_default"
+font_policy_id: "publication_sans"
+style_profile: "ai_ml_professional"
+target_profile: "nature_main_double_column"
+qa_profile: "ablation_summary_dual"
+review_preset: "ablation_summary_dual"
+parity_status: "dual"
+claim_ids:
+  - "claim_context_encoder_and_fusion_drive_primary_performance"
+  - "claim_calibration_loss_mainly_affects_probability_quality"
+fact_sheet: "figures/fact_sheets/figure_11_ablation_summary.json"
+visualization_plan: "figures/plans/visualization_plan.json"
+legend_path: "manuscript/legends/figure_11_ablation_summary.md"
+size:
+  width_mm: 183
+  height_mm: 92
+data_inputs:
+  - "figures/data/ablation_primary_metrics.csv"
+  - "figures/data/ablation_secondary_metrics.csv"
+source_data_outputs:
+  a: "figures/source_data/figure_11_panel_a.csv"
+  b: "figures/source_data/figure_11_panel_b.csv"
+panels:
+  - id: "a"
+    title: "AUROC drop vs full model"
+    chart_type: "ablation_primary_drop"
+    x: "delta_auroc"
+    y: "variant"
+  - id: "b"
+    title: "Secondary metric shifts"
+    chart_type: "ablation_secondary_shift"
+    x: "delta_value"
+    y: "variant"
+renderers:
+  python:
+    enabled: true
+    output_dir: "figures/output/python"
+  r:
+    enabled: true
+    output_dir: "figures/output/r"
+caption_stub: "The ablation figure should show which modules dominate primary performance and whether some ablations mainly harm calibration or secondary metrics rather than top-line discrimination."

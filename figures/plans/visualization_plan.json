@@ -1,0 +1,304 @@
+{
+  "plan_id": "visualization_plan_v1",
+  "strategy": "Plan figures before prose drafting and bind each display item to claims, source data, and a fact sheet.",
+  "figures": [
+    {
+      "figure_id": "figure_01_example",
+      "manuscript_section": "results",
+      "spec_path": "figures/specs/figure_01_example.yml",
+      "fact_sheet": "figures/fact_sheets/figure_01_example.json",
+      "claim_ids": [
+        "claim_response_kinetics",
+        "claim_endpoint_shift"
+      ],
+      "design_rules": [
+        "prefer direct labels when the number of series is small",
+        "show replicate-level data when possible instead of summary-only bars",
+        "preserve editable text in vector outputs",
+        "keep source-data exports aligned with each panel"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show the treatment-associated divergence in response kinetics over time.",
+          "evidence_source": "figures/source_data/figure_01_panel_a.csv"
+        },
+        {
+          "panel_id": "b",
+          "purpose": "Show the endpoint difference while preserving replicate-level observations.",
+          "evidence_source": "figures/source_data/figure_01_panel_b.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_02_volcano_pathway",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_bulk_omics_deg_exemplar",
+      "spec_path": "figures/specs/figure_02_volcano_pathway.yml",
+      "fact_sheet": "figures/fact_sheets/figure_02_volcano_pathway.json",
+      "claim_ids": [
+        "claim_interferon_gene_activation",
+        "claim_cell_cycle_pathway_suppression"
+      ],
+      "design_rules": [
+        "de-emphasize non-significant genes so threshold-crossing structure remains legible",
+        "use threshold guides for both fold change and adjusted significance without overpowering the data",
+        "label only prespecified sentinel genes on the volcano plot",
+        "preserve sign around zero for pathway-enrichment summaries",
+        "keep vector outputs editable and source-data exports panel-specific"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show the directional differential-expression landscape and identify sentinel genes that exceed both thresholds.",
+          "evidence_source": "figures/source_data/figure_02_panel_a.csv"
+        },
+        {
+          "panel_id": "b",
+          "purpose": "Summarize the pathway-level interpretation with signed enrichment values and retained false-discovery annotations.",
+          "evidence_source": "figures/source_data/figure_02_panel_b.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_03_ma_plot",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_bulk_omics_deg_exemplar",
+      "spec_path": "figures/specs/figure_03_ma_plot.yml",
+      "fact_sheet": "figures/fact_sheets/figure_03_ma_plot.json",
+      "claim_ids": [
+        "claim_high_abundance_interferon_shift"
+      ],
+      "design_rules": [
+        "keep the zero-centered fold-change reference visually obvious",
+        "de-emphasize background genes relative to labeled sentinel points",
+        "use the MA plot when abundance context matters more than significance ranking"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show fold-change structure as a function of mean abundance.",
+          "evidence_source": "figures/source_data/figure_03_panel_a.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_04_sample_pca",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_bulk_omics_deg_exemplar",
+      "spec_path": "figures/specs/figure_04_sample_pca.yml",
+      "fact_sheet": "figures/fact_sheets/figure_04_sample_pca.json",
+      "claim_ids": [
+        "claim_condition_drives_primary_sample_separation"
+      ],
+      "design_rules": [
+        "encode condition and batch with separate channels",
+        "reserve direct sample labels for a small number of noteworthy points",
+        "keep axes and origin references visible for orientation"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show sample-level separation on the first two principal components.",
+          "evidence_source": "figures/source_data/figure_04_panel_a.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_05_pathway_enrichment_dot",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_bulk_omics_deg_exemplar",
+      "spec_path": "figures/specs/figure_05_pathway_enrichment_dot.yml",
+      "fact_sheet": "figures/fact_sheets/figure_05_pathway_enrichment_dot.json",
+      "claim_ids": [
+        "claim_pathway_effect_sizes_align_with_directionality"
+      ],
+      "design_rules": [
+        "use dot size for pathway membership scale and color for directionality",
+        "annotate significance compactly without obscuring pathway names",
+        "sort pathways so the most interpretable effect-size pattern reads quickly"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Summarize pathway effect size, significance, and directionality in one panel.",
+          "evidence_source": "figures/source_data/figure_05_panel_a.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_06_roc_pr_compound",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_ai_ml_evaluation_exemplar",
+      "spec_path": "figures/specs/figure_06_roc_pr_compound.yml",
+      "fact_sheet": "figures/fact_sheets/figure_06_roc_pr_compound.json",
+      "claim_ids": [
+        "claim_foundation_model_improves_discrimination",
+        "claim_foundation_model_retains_precision_under_imbalance"
+      ],
+      "design_rules": [
+        "show ROC and precision-recall together when class imbalance matters",
+        "keep model identity consistent across panels with more than color alone",
+        "use uncertainty ribbons and explicit operating-point markers rather than headline metrics alone",
+        "preserve the prevalence baseline in the precision-recall panel"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show discrimination quality and ranking with ROC curves and uncertainty at matched false-positive rates.",
+          "evidence_source": "figures/source_data/figure_06_panel_a.csv"
+        },
+        {
+          "panel_id": "b",
+          "purpose": "Show class-imbalance robustness and ranking retention with precision-recall curves and a prevalence baseline.",
+          "evidence_source": "figures/source_data/figure_06_panel_b.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_07_calibration_reliability",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_ai_ml_evaluation_exemplar",
+      "spec_path": "figures/specs/figure_07_calibration_reliability.yml",
+      "fact_sheet": "figures/fact_sheets/figure_07_calibration_reliability.json",
+      "claim_ids": [
+        "claim_foundation_model_best_calibrated",
+        "claim_high_confidence_support_is_not_tail_only"
+      ],
+      "design_rules": [
+        "show the identity line explicitly so overconfidence and underconfidence are visually grounded",
+        "pair calibration quality with support-by-bin so probabilistic quality is not interpreted without coverage context",
+        "keep model identity stable across panels with direct labels, repeated color semantics, and non-color encodings",
+        "preserve panel-specific source-data exports for both reliability and support panels"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show how closely observed event rate follows predicted probability for each model across matched calibration bins.",
+          "evidence_source": "figures/source_data/figure_07_panel_a.csv"
+        },
+        {
+          "panel_id": "b",
+          "purpose": "Show where each model places prediction mass so high-confidence calibration is interpreted together with support.",
+          "evidence_source": "figures/source_data/figure_07_panel_b.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_08_training_dynamics",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_ai_ml_evaluation_exemplar",
+      "spec_path": "figures/specs/figure_08_training_dynamics.yml",
+      "fact_sheet": "figures/fact_sheets/figure_08_training_dynamics.json",
+      "claim_ids": [
+        "claim_foundation_model_optimizes_stably",
+        "claim_foundation_model_reaches_higher_validation_auroc"
+      ],
+      "design_rules": [
+        "show optimization and validation behavior as trajectories rather than endpoint snapshots only",
+        "encode train and validation split with line style so color remains reserved for model identity",
+        "label final model trajectories directly and mark best checkpoints explicitly",
+        "keep source-data exports panel-specific for loss and validation-metric trajectories"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show convergence behavior and late-epoch generalization gap across train and validation loss trajectories.",
+          "evidence_source": "figures/source_data/figure_08_panel_a.csv"
+        },
+        {
+          "panel_id": "b",
+          "purpose": "Show how validation discrimination evolves over training and where each model achieves its best checkpoint.",
+          "evidence_source": "figures/source_data/figure_08_panel_b.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_09_confusion_matrix_normalized",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_ai_ml_evaluation_exemplar",
+      "spec_path": "figures/specs/figure_09_confusion_matrix_normalized.yml",
+      "fact_sheet": "figures/fact_sheets/figure_09_confusion_matrix_normalized.json",
+      "claim_ids": [
+        "claim_errors_are_localized_to_adjacent_states",
+        "claim_terminal_states_remain_distinct"
+      ],
+      "design_rules": [
+        "row-normalize the confusion matrix so class-wise error asymmetry is interpretable",
+        "annotate every cell with percentages and counts so readers are not forced to infer from color alone",
+        "pair the matrix with an off-diagonal summary so the dominant failure pathways are explicit",
+        "keep source-data exports panel-specific for the matrix and confusion-summary views"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show class-wise retention and leakage with a row-normalized confusion matrix and explicit diagonal strength.",
+          "evidence_source": "figures/source_data/figure_09_panel_a.csv"
+        },
+        {
+          "panel_id": "b",
+          "purpose": "Show the dominant off-diagonal confusions so the most important failure modes can be read without scanning the full matrix.",
+          "evidence_source": "figures/source_data/figure_09_panel_b.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_10_feature_importance_summary",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_ai_ml_evaluation_exemplar",
+      "spec_path": "figures/specs/figure_10_feature_importance_summary.yml",
+      "fact_sheet": "figures/fact_sheets/figure_10_feature_importance_summary.json",
+      "claim_ids": [
+        "claim_model_relies_on_biologically_salient_features",
+        "claim_signed_feature_effects_align_with_domain_expectation"
+      ],
+      "design_rules": [
+        "rank individual features by mean absolute importance so dominant signals are visible without decoding raw coefficients",
+        "pair the ranking panel with a zero-centered signed-effect panel so directionality is interpreted separately from magnitude",
+        "keep nuisance covariates visibly lower-priority than biologically meaningful features",
+        "preserve source-data exports separately for the ranking and signed-effect panels"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show which features dominate model importance and whether those dominant signals come from biologically meaningful groups rather than nuisance covariates.",
+          "evidence_source": "figures/source_data/figure_10_panel_a.csv"
+        },
+        {
+          "panel_id": "b",
+          "purpose": "Show the direction of top feature effects relative to the predicted response so domain-aligned behavior is visually explicit.",
+          "evidence_source": "figures/source_data/figure_10_panel_b.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_11_ablation_summary",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_ai_ml_evaluation_exemplar",
+      "spec_path": "figures/specs/figure_11_ablation_summary.yml",
+      "fact_sheet": "figures/fact_sheets/figure_11_ablation_summary.json",
+      "claim_ids": [
+        "claim_context_encoder_and_fusion_drive_primary_performance",
+        "claim_calibration_loss_mainly_affects_probability_quality"
+      ],
+      "design_rules": [
+        "anchor all ablations to the explicit full-model zero reference",
+        "separate primary-metric loss from secondary-metric shifts so discrimination and calibration penalties are not conflated",
+        "encode ablation family and metric identity with different channels",
+        "preserve source-data exports separately for the primary and secondary panels"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show which architectural and training removals cause the largest primary-performance loss relative to the full model.",
+          "evidence_source": "figures/source_data/figure_11_panel_a.csv"
+        },
+        {
+          "panel_id": "b",
+          "purpose": "Show whether secondary-metric penalties are concentrated in ranking quality or calibration quality for each ablated variant.",
+          "evidence_source": "figures/source_data/figure_11_panel_b.csv"
+        }
+      ]
+    }
+  ]
+}

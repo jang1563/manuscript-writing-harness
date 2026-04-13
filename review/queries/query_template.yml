@@ -1,0 +1,20 @@
+# Search Query Template
+# Copy this file to query_NN_database.yml for each database search.
+# Record the query exactly as executed for reproducibility.
+
+query_id: ""             # Unique ID (e.g. query_01_pubmed)
+protocol_id: ""          # Must match protocol.yml protocol_id
+database: ""             # e.g. PubMed, Embase, Europe PMC, Cochrane
+
+query_text: ""           # The literal search string as executed
+
+filters:
+  date_range: ""         # e.g. "2015-01-01 to 2025-12-31"
+  language: ""           # e.g. English
+  article_types:         # e.g. Journal Article, Clinical Trial
+    - ""
+
+date_run: ""             # ISO date when the query was executed (YYYY-MM-DD)
+export_format: csv       # csv | nbib | ris
+hit_count: 0             # Number of records returned
+export_file: ""          # Relative path to raw export in retrieval/raw/

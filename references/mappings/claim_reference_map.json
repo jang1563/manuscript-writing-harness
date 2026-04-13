@@ -1,0 +1,733 @@
+{
+  "generated_from": {
+    "claim_packets": "manuscript/plans/claim_packets.json",
+    "citation_graph": "manuscript/plans/citation_graph.json",
+    "bibliography": "references/library.bib",
+    "suggested_candidates": "references/metadata/suggested_reference_candidates.json"
+  },
+  "overall_status": "ready",
+  "claim_count": 20,
+  "mapped_claim_count": 20,
+  "placeholder_claim_count": 0,
+  "unmapped_claim_count": 0,
+  "mappings": [
+    {
+      "claim_id": "claim_response_kinetics",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_01_example",
+      "fact_sheet": "figures/fact_sheets/figure_01_example.json",
+      "legend_path": "manuscript/legends/figure_01_example.md",
+      "current_reference_ids": [
+        "weissgerberEtAl2015BeyondBar"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "weissgerberEtAl2015BeyondBar"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Use a data-visibility reference for the time-course and replicate-aware endpoint presentation."
+    },
+    {
+      "claim_id": "claim_endpoint_shift",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_01_example",
+      "fact_sheet": "figures/fact_sheets/figure_01_example.json",
+      "legend_path": "manuscript/legends/figure_01_example.md",
+      "current_reference_ids": [
+        "weissgerberEtAl2015BeyondBar"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "weissgerberEtAl2015BeyondBar"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Replicate-level endpoint display follows continuous-data visualization guidance."
+    },
+    {
+      "claim_id": "claim_condition_drives_primary_sample_separation",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_04_sample_pca",
+      "fact_sheet": "figures/fact_sheets/figure_04_sample_pca.json",
+      "legend_path": "manuscript/legends/figure_04_sample_pca.md",
+      "current_reference_ids": [
+        "abdiWilliams2010PCA"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "abdiWilliams2010PCA"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Principal component interpretation is grounded in the PCA methods review."
+    },
+    {
+      "claim_id": "claim_high_abundance_interferon_shift",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_03_ma_plot",
+      "fact_sheet": "figures/fact_sheets/figure_03_ma_plot.json",
+      "legend_path": "manuscript/legends/figure_03_ma_plot.md",
+      "current_reference_ids": [
+        "loveEtAl2014DESeq2"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "loveEtAl2014DESeq2"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "MA-plot interpretation is linked to a canonical differential-expression workflow reference."
+    },
+    {
+      "claim_id": "claim_interferon_gene_activation",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_02_volcano_pathway",
+      "fact_sheet": "figures/fact_sheets/figure_02_volcano_pathway.json",
+      "legend_path": "manuscript/legends/figure_02_volcano_pathway.md",
+      "current_reference_ids": [
+        "fgseaBioconductorPackage",
+        "subramanianEtAl2005GSEA",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "current_relations": [
+        "background_context",
+        "background_context",
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "subramanianEtAl2005GSEA",
+        "yuEtAl2012ClusterProfiler",
+        "fgseaBioconductorPackage"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Pathway activation claims are linked to enrichment methodology, a widely used implementation, and the fgsea pipeline backend."
+    },
+    {
+      "claim_id": "claim_cell_cycle_pathway_suppression",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_02_volcano_pathway",
+      "fact_sheet": "figures/fact_sheets/figure_02_volcano_pathway.json",
+      "legend_path": "manuscript/legends/figure_02_volcano_pathway.md",
+      "current_reference_ids": [
+        "fgseaBioconductorPackage",
+        "subramanianEtAl2005GSEA",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "current_relations": [
+        "background_context",
+        "background_context",
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "subramanianEtAl2005GSEA",
+        "yuEtAl2012ClusterProfiler",
+        "fgseaBioconductorPackage"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Pathway suppression claims are linked to enrichment methodology, a widely used implementation, and the fgsea pipeline backend."
+    },
+    {
+      "claim_id": "claim_pathway_effect_sizes_align_with_directionality",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_05_pathway_enrichment_dot",
+      "fact_sheet": "figures/fact_sheets/figure_05_pathway_enrichment_dot.json",
+      "legend_path": "manuscript/legends/figure_05_pathway_enrichment_dot.md",
+      "current_reference_ids": [
+        "fgseaBioconductorPackage",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "current_relations": [
+        "background_context",
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "yuEtAl2012ClusterProfiler",
+        "fgseaBioconductorPackage"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Dot-plot pathway summary follows clusterProfiler-style enrichment reporting and can now be sourced from fgsea output."
+    },
+    {
+      "claim_id": "claim_foundation_model_improves_discrimination",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_06_roc_pr_compound",
+      "fact_sheet": "figures/fact_sheets/figure_06_roc_pr_compound.json",
+      "legend_path": "manuscript/legends/figure_06_roc_pr_compound.md",
+      "current_reference_ids": [
+        "davisGoadrich2006PRROC"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "davisGoadrich2006PRROC"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Discrimination claims are tied to a canonical ROC/PR evaluation reference."
+    },
+    {
+      "claim_id": "claim_foundation_model_retains_precision_under_imbalance",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_06_roc_pr_compound",
+      "fact_sheet": "figures/fact_sheets/figure_06_roc_pr_compound.json",
+      "legend_path": "manuscript/legends/figure_06_roc_pr_compound.md",
+      "current_reference_ids": [
+        "davisGoadrich2006PRROC"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "davisGoadrich2006PRROC"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Precision-recall behavior under imbalance is tied to the same ROC/PR reference."
+    },
+    {
+      "claim_id": "claim_foundation_model_best_calibrated",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_07_calibration_reliability",
+      "fact_sheet": "figures/fact_sheets/figure_07_calibration_reliability.json",
+      "legend_path": "manuscript/legends/figure_07_calibration_reliability.md",
+      "current_reference_ids": [
+        "guoEtAl2017Calibration",
+        "niculescuMizilCaruana2005Probabilities"
+      ],
+      "current_relations": [
+        "background_context",
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "niculescuMizilCaruana2005Probabilities",
+        "guoEtAl2017Calibration"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Calibration claims are anchored in probability estimation and modern neural-network calibration references."
+    },
+    {
+      "claim_id": "claim_high_confidence_support_is_not_tail_only",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_07_calibration_reliability",
+      "fact_sheet": "figures/fact_sheets/figure_07_calibration_reliability.json",
+      "legend_path": "manuscript/legends/figure_07_calibration_reliability.md",
+      "current_reference_ids": [
+        "guoEtAl2017Calibration"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "guoEtAl2017Calibration"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Confidence-support interpretation stays tied to the calibration literature."
+    },
+    {
+      "claim_id": "claim_foundation_model_optimizes_stably",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_08_training_dynamics",
+      "fact_sheet": "figures/fact_sheets/figure_08_training_dynamics.json",
+      "legend_path": "manuscript/legends/figure_08_training_dynamics.md",
+      "current_reference_ids": [
+        "smithTopin2017SuperConvergence"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "smithTopin2017SuperConvergence"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Optimization-stability framing is linked to a training-dynamics reference."
+    },
+    {
+      "claim_id": "claim_foundation_model_reaches_higher_validation_auroc",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_08_training_dynamics",
+      "fact_sheet": "figures/fact_sheets/figure_08_training_dynamics.json",
+      "legend_path": "manuscript/legends/figure_08_training_dynamics.md",
+      "current_reference_ids": [
+        "smithTopin2017SuperConvergence"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "smithTopin2017SuperConvergence"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Validation-trajectory interpretation is linked to a training-dynamics reference."
+    },
+    {
+      "claim_id": "claim_errors_are_localized_to_adjacent_states",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_09_confusion_matrix_normalized",
+      "fact_sheet": "figures/fact_sheets/figure_09_confusion_matrix_normalized.json",
+      "legend_path": "manuscript/legends/figure_09_confusion_matrix_normalized.md",
+      "current_reference_ids": [
+        "stehman1997ClassificationAccuracy"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "stehman1997ClassificationAccuracy"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Confusion localization is linked to a classification-accuracy reference."
+    },
+    {
+      "claim_id": "claim_terminal_states_remain_distinct",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_09_confusion_matrix_normalized",
+      "fact_sheet": "figures/fact_sheets/figure_09_confusion_matrix_normalized.json",
+      "legend_path": "manuscript/legends/figure_09_confusion_matrix_normalized.md",
+      "current_reference_ids": [
+        "stehman1997ClassificationAccuracy"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "stehman1997ClassificationAccuracy"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Terminal-state separation is linked to a classification-accuracy reference."
+    },
+    {
+      "claim_id": "claim_model_relies_on_biologically_salient_features",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_10_feature_importance_summary",
+      "fact_sheet": "figures/fact_sheets/figure_10_feature_importance_summary.json",
+      "legend_path": "manuscript/legends/figure_10_feature_importance_summary.md",
+      "current_reference_ids": [
+        "lundbergLee2017SHAP"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "lundbergLee2017SHAP"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Importance ranking is linked to SHAP-style additive feature attribution."
+    },
+    {
+      "claim_id": "claim_signed_feature_effects_align_with_domain_expectation",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_10_feature_importance_summary",
+      "fact_sheet": "figures/fact_sheets/figure_10_feature_importance_summary.json",
+      "legend_path": "manuscript/legends/figure_10_feature_importance_summary.md",
+      "current_reference_ids": [
+        "lundbergLee2017SHAP"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "lundbergLee2017SHAP"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Signed effect interpretation is linked to SHAP-style feature attribution."
+    },
+    {
+      "claim_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_11_ablation_summary",
+      "fact_sheet": "figures/fact_sheets/figure_11_ablation_summary.json",
+      "legend_path": "manuscript/legends/figure_11_ablation_summary.md",
+      "current_reference_ids": [
+        "liptonSteinhardt2018TroublingTrends"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "liptonSteinhardt2018TroublingTrends"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Ablation-based design-justification claims are linked to scholarship-quality guidance."
+    },
+    {
+      "claim_id": "claim_calibration_loss_mainly_affects_probability_quality",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_11_ablation_summary",
+      "fact_sheet": "figures/fact_sheets/figure_11_ablation_summary.json",
+      "legend_path": "manuscript/legends/figure_11_ablation_summary.md",
+      "current_reference_ids": [
+        "guoEtAl2017Calibration"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "guoEtAl2017Calibration"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Calibration-loss ablations are tied back to the calibration literature."
+    },
+    {
+      "claim_id": "claim_model_ranking",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "table_01_main",
+      "fact_sheet": "tables/fact_sheets/table_01_main.json",
+      "legend_path": null,
+      "current_reference_ids": [
+        "davisGoadrich2006PRROC"
+      ],
+      "current_relations": [
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "davisGoadrich2006PRROC"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Model ranking by AUROC is linked to the ROC/PR evaluation reference."
+    }
+  ]
+}

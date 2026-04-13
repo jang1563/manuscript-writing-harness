@@ -1,0 +1,17 @@
+true_label,predicted_label,true_order,pred_order,rate,count,label_cell,is_diagonal
+Healthy,Healthy,1,1,0.89,196,yes,yes
+Healthy,Inflammatory,1,2,0.07,15,no,no
+Healthy,Proliferative,1,3,0.03,7,no,no
+Healthy,Fibrotic,1,4,0.01,2,no,no
+Inflammatory,Healthy,2,1,0.08,14,no,no
+Inflammatory,Inflammatory,2,2,0.74,133,yes,yes
+Inflammatory,Proliferative,2,3,0.14,25,yes,no
+Inflammatory,Fibrotic,2,4,0.04,8,no,no
+Proliferative,Healthy,3,1,0.03,5,no,no
+Proliferative,Inflammatory,3,2,0.18,29,yes,no
+Proliferative,Proliferative,3,3,0.71,114,yes,yes
+Proliferative,Fibrotic,3,4,0.08,12,no,no
+Fibrotic,Healthy,4,1,0.01,1,no,no
+Fibrotic,Inflammatory,4,2,0.03,4,no,no
+Fibrotic,Proliferative,4,3,0.07,10,yes,no
+Fibrotic,Fibrotic,4,4,0.89,125,yes,yes

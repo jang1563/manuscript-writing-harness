@@ -1,0 +1,80 @@
+name: manuscript-claims-acceptance
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  manuscript-claims:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: python3 -m pip install -r env/requirements-phase2.txt
+
+      - name: Validate scaffold
+        run: python3 scripts/check_scaffold.py
+
+      - name: Synchronize supporting artifacts
+        run: |
+          python3 scripts/figures_cli.py apply-bundles --all
+          python3 scripts/build_citation_graph.py
+          python3 scripts/check_reference_integrity.py --write --sync-graph
+          python3 scripts/review_cli.py evidence
+
+      - name: Build claim packets
+        run: python3 scripts/build_claim_packets.py
+
+      - name: Check claim coverage
+        run: python3 scripts/check_claim_coverage.py --write
+
+      - name: Build section briefs
+        run: python3 scripts/build_section_briefs.py
+
+      - name: Check section briefs
+        run: python3 scripts/check_section_briefs.py --write
+
+      - name: Build section drafts
+        run: python3 scripts/build_section_drafts.py
+
+      - name: Check section drafts
+        run: python3 scripts/check_section_drafts.py --write
+
+      - name: Build section prose
+        run: python3 scripts/build_section_prose.py
+
+      - name: Check section prose
+        run: python3 scripts/check_section_prose.py --write
+
+      - name: Apply section prose
+        run: python3 scripts/apply_section_prose.py
+
+      - name: Run manuscript tests
+        run: python3 -m pytest tests/manuscript -q
+
+      - name: Upload manuscript claim artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: manuscript-claim-artifacts
+          path: |
+            manuscript/plans/claim_packets.json
+            manuscript/plans/claim_coverage.json
+            manuscript/drafts/results_claim_packets.md
+            manuscript/drafts/section_briefs.json
+            manuscript/drafts/section_briefs.md
+            manuscript/drafts/section_drafts.json
+            manuscript/drafts/section_drafts.md
+            manuscript/drafts/section_prose.json
+            manuscript/drafts/section_prose.md
+            manuscript/drafts/sections/
+            manuscript/drafts/section_bodies/

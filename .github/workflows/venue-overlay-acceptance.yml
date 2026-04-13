@@ -1,0 +1,91 @@
+name: venue-overlay-acceptance
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  venue-overlay:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "release"
+
+      - name: Install Python dependencies
+        run: |
+          python3 -m pip install -r env/requirements-myst.txt
+          python3 -m pip install -r env/requirements-phase2.txt
+
+      - name: Install R dependencies
+        run: Rscript env/install_r_figure_deps.R
+
+      - name: Validate scaffold
+        run: python3 scripts/check_scaffold.py
+
+      - name: Apply exemplar bundles
+        run: python3 scripts/figures_cli.py apply-bundles --all
+
+      - name: Check venue readiness
+        run: python3 scripts/check_venue_readiness.py --all --write --strict
+
+      - name: Build manuscript HTML
+        working-directory: manuscript
+        run: myst build --html
+
+      - name: Write venue overlay acceptance summary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          reports_dir = Path("workflows/release/reports")
+          lines = ["# Venue Overlay Acceptance Summary", ""]
+          for path in sorted(reports_dir.glob("*_readiness.json")):
+              payload = json.loads(path.read_text(encoding="utf-8"))
+              lines.extend(
+                  [
+                      f"## {payload['venue']}",
+                      "",
+                      f"- readiness: `{payload['readiness']}`",
+                      f"- blocking items: `{len(payload['blocking_items'])}`",
+                      f"- required sections: `{len(payload['required_sections'])}`",
+                      f"- special assets: `{len(payload['special_assets'])}`",
+                      "",
+                  ]
+              )
+          summary_path = reports_dir / "venue-overlay-acceptance-summary.md"
+          summary_path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+          print(summary_path)
+          PY
+
+      - name: Upload venue overlay artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: venue-overlay-artifacts
+          path: |
+            workflows/release/reports
+            workflows/release/manifests
+
+      - name: Upload manuscript html
+        uses: actions/upload-artifact@v4
+        with:
+          name: venue-overlay-manuscript-html
+          path: manuscript/_build/html

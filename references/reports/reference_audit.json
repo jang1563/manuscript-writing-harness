@@ -1,0 +1,54 @@
+{
+  "readiness": "ready",
+  "blocking_issues": [],
+  "warnings": [],
+  "bibliography": {
+    "entry_count": 13,
+    "keys": [
+      "abdiWilliams2010PCA",
+      "davisGoadrich2006PRROC",
+      "fgseaBioconductorPackage",
+      "guoEtAl2017Calibration",
+      "liptonSteinhardt2018TroublingTrends",
+      "loveEtAl2014DESeq2",
+      "lundbergLee2017SHAP",
+      "niculescuMizilCaruana2005Probabilities",
+      "smithTopin2017SuperConvergence",
+      "stehman1997ClassificationAccuracy",
+      "subramanianEtAl2005GSEA",
+      "weissgerberEtAl2015BeyondBar",
+      "yuEtAl2012ClusterProfiler"
+    ],
+    "placeholder_keys": [],
+    "missing_identifier_keys": [],
+    "uncited_keys": []
+  },
+  "citation_graph": {
+    "claim_count": 20,
+    "reference_node_count": 13,
+    "edge_count": 26,
+    "unlinked_claim_ids": [],
+    "unresolved_reference_nodes": []
+  },
+  "literature_intelligence": {
+    "candidate_status": "draft",
+    "generated_by": null,
+    "candidate_count": 0,
+    "separate_suggestion_store": "references/metadata/suggested_reference_candidates.json"
+  },
+  "claim_reference_mapping": {
+    "status": "ready",
+    "claim_count": 20,
+    "mapped_claim_count": 20,
+    "placeholder_claim_count": 0,
+    "unmapped_claim_count": 0,
+    "mapping_store": "references/mappings/claim_reference_map.json"
+  },
+  "package_paths": [
+    "references/library.bib",
+    "manuscript/plans/citation_graph.json",
+    "manuscript/plans/display_item_map.json",
+    "references/metadata/suggested_reference_candidates.json",
+    "references/mappings/claim_reference_map.json"
+  ]
+}

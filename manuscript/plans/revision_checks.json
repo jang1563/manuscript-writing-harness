@@ -1,0 +1,44 @@
+{
+  "checks": [
+    {
+      "check_id": "claim_display_alignment",
+      "status": "required",
+      "question": "Does each main claim map to a figure, table, or validated citation?"
+    },
+    {
+      "check_id": "display_item_evidence_alignment",
+      "status": "required",
+      "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+    },
+    {
+      "check_id": "venue_compliance_review",
+      "status": "required",
+      "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+    },
+    {
+      "check_id": "claim_packet_coverage",
+      "status": "required",
+      "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+    },
+    {
+      "check_id": "section_brief_coverage",
+      "status": "required",
+      "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+    },
+    {
+      "check_id": "section_draft_coverage",
+      "status": "required",
+      "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+    },
+    {
+      "check_id": "section_prose_coverage",
+      "status": "required",
+      "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+    },
+    {
+      "check_id": "section_prose_apply_integrity",
+      "status": "required",
+      "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+    }
+  ]
+}

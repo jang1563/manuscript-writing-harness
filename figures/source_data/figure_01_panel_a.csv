@@ -1,0 +1,9 @@
+condition,timepoint_hours,mean_response,std_response,n
+Control,0,0.973333,0.025166,3
+Control,2,1.006667,0.015275,3
+Control,4,1.04,0.01,3
+Control,6,1.07,0.01,3
+Treated,0,0.96,0.02,3
+Treated,2,1.146667,0.025166,3
+Treated,4,1.306667,0.025166,3
+Treated,6,1.52,0.03,3

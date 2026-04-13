@@ -1,0 +1,200 @@
+{
+  "review_id": "sr_demo_001",
+  "readiness": "ready",
+  "blocking_issues": [],
+  "warnings": [],
+  "protocol": {
+    "protocol_id": "sr_demo_001",
+    "title": "Efficacy of transcription factor X inhibition on tumour response in solid malignancies: a systematic review",
+    "version": "1.0.0",
+    "status": "frozen",
+    "databases": [
+      "PubMed",
+      "Europe PMC"
+    ],
+    "primary_outcomes": [
+      "Overall response rate",
+      "Progression-free survival"
+    ],
+    "secondary_outcomes": [
+      "Overall survival",
+      "Grade 3+ adverse events"
+    ],
+    "registration": {
+      "registry": "internal_frozen_protocol",
+      "registration_id": "sr_demo_001_frozen",
+      "date": "2026-04-09"
+    }
+  },
+  "queries": {
+    "count": 2,
+    "databases": [
+      "Europe PMC",
+      "PubMed"
+    ],
+    "hit_count_total": 180,
+    "date_run_min": "2026-03-15",
+    "date_run_max": "2026-03-15",
+    "package_paths": [
+      "review/queries/query_01_pubmed.yml",
+      "review/queries/query_02_epmc.yml",
+      "review/retrieval/raw/epmc_export.csv",
+      "review/retrieval/raw/pubmed_export.csv"
+    ]
+  },
+  "screening": {
+    "pending_title_abstract": 0,
+    "pending_full_text": 0,
+    "title_abstract_summary": {
+      "screened": 150,
+      "excluded": 110,
+      "included": 40,
+      "exclusion_reasons": {
+        "wrong intervention": 8,
+        "not primary research": 13,
+        "wrong outcome": 12,
+        "duplicate publication": 18,
+        "animal study only": 16,
+        "wrong population": 12,
+        "pediatric only": 15,
+        "review or commentary": 16
+      }
+    },
+    "full_text_summary": {
+      "assessed": 40,
+      "excluded": 15,
+      "included": 25,
+      "exclusion_reasons": {
+        "conference abstract only": 4,
+        "overlapping cohort": 4,
+        "insufficient outcome data": 3,
+        "wrong comparator": 3,
+        "wrong study design": 1
+      }
+    }
+  },
+  "prisma": {
+    "identification": {
+      "databases_searched": {
+        "PubMed": 90,
+        "Europe PMC": 90
+      },
+      "total_identified": 180,
+      "duplicates_removed": 30,
+      "records_after_dedup": 150
+    },
+    "screening": {
+      "title_abstract": {
+        "screened": 150,
+        "excluded": 110,
+        "included": 40,
+        "exclusion_reasons": {
+          "wrong intervention": 8,
+          "not primary research": 13,
+          "wrong outcome": 12,
+          "duplicate publication": 18,
+          "animal study only": 16,
+          "wrong population": 12,
+          "pediatric only": 15,
+          "review or commentary": 16
+        }
+      },
+      "full_text": {
+        "assessed": 40,
+        "excluded": 15,
+        "included": 25,
+        "exclusion_reasons": {
+          "conference abstract only": 4,
+          "overlapping cohort": 4,
+          "insufficient outcome data": 3,
+          "wrong comparator": 3,
+          "wrong study design": 1
+        }
+      }
+    },
+    "included_in_synthesis": 25
+  },
+  "extraction": {
+    "included_studies": 25,
+    "study_design_counts": {
+      "RCT": 8,
+      "case-control": 7,
+      "cohort": 5,
+      "single-arm trial": 5
+    },
+    "outcome_counts": {
+      "progression-free survival": 12,
+      "overall survival": 11,
+      "overall response rate": 2
+    },
+    "population_counts": {
+      "Adults with NSCLC": 6,
+      "Adults with melanoma": 6,
+      "Adults with breast cancer": 5,
+      "Adults with CRC": 4,
+      "Adults with RCC": 4
+    },
+    "sample_size_summary": {
+      "count": 25,
+      "min": 46,
+      "median": 259.0,
+      "max": 499
+    },
+    "required_field_issues": []
+  },
+  "bias": {
+    "assessed_studies": 25,
+    "overall_counts": {
+      "high": 24,
+      "some_concerns": 1
+    },
+    "domain_counts": {
+      "D1_randomisation": {
+        "low": 6,
+        "high": 10,
+        "some_concerns": 9
+      },
+      "D2_deviations": {
+        "low": 9,
+        "some_concerns": 11,
+        "high": 5
+      },
+      "D3_missing_data": {
+        "low": 10,
+        "some_concerns": 11,
+        "high": 4
+      },
+      "D4_measurement": {
+        "high": 11,
+        "low": 8,
+        "some_concerns": 6
+      },
+      "D5_selection_reporting": {
+        "low": 7,
+        "high": 16,
+        "some_concerns": 2
+      }
+    },
+    "tool_counts": {
+      "rob2": 25
+    },
+    "ai_assisted_counts": {
+      "false": 25
+    }
+  },
+  "package_paths": [
+    "review/bias/bias_assessments.csv",
+    "review/extraction/extraction_table.csv",
+    "review/prisma/evidence_table.csv",
+    "review/prisma/exclusion_summary.csv",
+    "review/prisma/prisma_counts.yml",
+    "review/protocol/protocol.yml",
+    "review/queries/query_01_pubmed.yml",
+    "review/queries/query_02_epmc.yml",
+    "review/retrieval/dedup/dedup_log.csv",
+    "review/retrieval/normalized/normalized_records.csv",
+    "review/retrieval/raw/epmc_export.csv",
+    "review/retrieval/raw/pubmed_export.csv",
+    "review/screening/screening_log.csv"
+  ]
+}

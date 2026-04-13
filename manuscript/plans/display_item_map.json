@@ -1,0 +1,196 @@
+{
+  "items": [
+    {
+      "display_item_id": "figure_01_example",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_response_kinetics",
+        "claim_endpoint_shift"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_01_example.png",
+      "spec_path": "figures/specs/figure_01_example.yml",
+      "fact_sheet": "figures/fact_sheets/figure_01_example.json",
+      "legend_path": "manuscript/legends/figure_01_example.md",
+      "source_data": [
+        "figures/source_data/figure_01_panel_a.csv",
+        "figures/source_data/figure_01_panel_b.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_04_sample_pca",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_condition_drives_primary_sample_separation"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_04_sample_pca.png",
+      "spec_path": "figures/specs/figure_04_sample_pca.yml",
+      "fact_sheet": "figures/fact_sheets/figure_04_sample_pca.json",
+      "legend_path": "manuscript/legends/figure_04_sample_pca.md",
+      "source_data": [
+        "figures/source_data/figure_04_panel_a.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_03_ma_plot",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_high_abundance_interferon_shift"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_03_ma_plot.png",
+      "spec_path": "figures/specs/figure_03_ma_plot.yml",
+      "fact_sheet": "figures/fact_sheets/figure_03_ma_plot.json",
+      "legend_path": "manuscript/legends/figure_03_ma_plot.md",
+      "source_data": [
+        "figures/source_data/figure_03_panel_a.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_02_volcano_pathway",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_interferon_gene_activation",
+        "claim_cell_cycle_pathway_suppression"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_02_volcano_pathway.png",
+      "spec_path": "figures/specs/figure_02_volcano_pathway.yml",
+      "fact_sheet": "figures/fact_sheets/figure_02_volcano_pathway.json",
+      "legend_path": "manuscript/legends/figure_02_volcano_pathway.md",
+      "source_data": [
+        "figures/source_data/figure_02_panel_a.csv",
+        "figures/source_data/figure_02_panel_b.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_05_pathway_enrichment_dot",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_pathway_effect_sizes_align_with_directionality"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_05_pathway_enrichment_dot.png",
+      "spec_path": "figures/specs/figure_05_pathway_enrichment_dot.yml",
+      "fact_sheet": "figures/fact_sheets/figure_05_pathway_enrichment_dot.json",
+      "legend_path": "manuscript/legends/figure_05_pathway_enrichment_dot.md",
+      "source_data": [
+        "figures/source_data/figure_05_panel_a.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_06_roc_pr_compound",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_foundation_model_improves_discrimination",
+        "claim_foundation_model_retains_precision_under_imbalance"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_06_roc_pr_compound.png",
+      "spec_path": "figures/specs/figure_06_roc_pr_compound.yml",
+      "fact_sheet": "figures/fact_sheets/figure_06_roc_pr_compound.json",
+      "legend_path": "manuscript/legends/figure_06_roc_pr_compound.md",
+      "source_data": [
+        "figures/source_data/figure_06_panel_a.csv",
+        "figures/source_data/figure_06_panel_b.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_07_calibration_reliability",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_foundation_model_best_calibrated",
+        "claim_high_confidence_support_is_not_tail_only"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_07_calibration_reliability.png",
+      "spec_path": "figures/specs/figure_07_calibration_reliability.yml",
+      "fact_sheet": "figures/fact_sheets/figure_07_calibration_reliability.json",
+      "legend_path": "manuscript/legends/figure_07_calibration_reliability.md",
+      "source_data": [
+        "figures/source_data/figure_07_panel_a.csv",
+        "figures/source_data/figure_07_panel_b.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_08_training_dynamics",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_foundation_model_optimizes_stably",
+        "claim_foundation_model_reaches_higher_validation_auroc"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_08_training_dynamics.png",
+      "spec_path": "figures/specs/figure_08_training_dynamics.yml",
+      "fact_sheet": "figures/fact_sheets/figure_08_training_dynamics.json",
+      "legend_path": "manuscript/legends/figure_08_training_dynamics.md",
+      "source_data": [
+        "figures/source_data/figure_08_panel_a.csv",
+        "figures/source_data/figure_08_panel_b.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_09_confusion_matrix_normalized",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_errors_are_localized_to_adjacent_states",
+        "claim_terminal_states_remain_distinct"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_09_confusion_matrix_normalized.png",
+      "spec_path": "figures/specs/figure_09_confusion_matrix_normalized.yml",
+      "fact_sheet": "figures/fact_sheets/figure_09_confusion_matrix_normalized.json",
+      "legend_path": "manuscript/legends/figure_09_confusion_matrix_normalized.md",
+      "source_data": [
+        "figures/source_data/figure_09_panel_a.csv",
+        "figures/source_data/figure_09_panel_b.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_10_feature_importance_summary",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_model_relies_on_biologically_salient_features",
+        "claim_signed_feature_effects_align_with_domain_expectation"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_10_feature_importance_summary.png",
+      "spec_path": "figures/specs/figure_10_feature_importance_summary.yml",
+      "fact_sheet": "figures/fact_sheets/figure_10_feature_importance_summary.json",
+      "legend_path": "manuscript/legends/figure_10_feature_importance_summary.md",
+      "source_data": [
+        "figures/source_data/figure_10_panel_a.csv",
+        "figures/source_data/figure_10_panel_b.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_11_ablation_summary",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_context_encoder_and_fusion_drive_primary_performance",
+        "claim_calibration_loss_mainly_affects_probability_quality"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_11_ablation_summary.png",
+      "spec_path": "figures/specs/figure_11_ablation_summary.yml",
+      "fact_sheet": "figures/fact_sheets/figure_11_ablation_summary.json",
+      "legend_path": "manuscript/legends/figure_11_ablation_summary.md",
+      "source_data": [
+        "figures/source_data/figure_11_panel_a.csv",
+        "figures/source_data/figure_11_panel_b.csv"
+      ]
+    },
+    {
+      "display_item_id": "table_01_main",
+      "type": "table",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_model_ranking"
+      ],
+      "schema_path": "tables/schemas/main_table_schema.yml",
+      "fact_sheet": "tables/fact_sheets/table_01_main.json",
+      "manifest_path": "tables/output/table_01_main.manifest.json"
+    }
+  ]
+}

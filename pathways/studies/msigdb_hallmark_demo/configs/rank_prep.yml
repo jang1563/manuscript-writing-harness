@@ -1,0 +1,13 @@
+study_id: "msigdb_hallmark_demo"
+source_tool: "deseq2"
+input_table: "pathways/studies/msigdb_hallmark_demo/inputs/raw/msigdb_hallmark_demo_differential_expression.csv"
+output_ranks_csv: "pathways/studies/msigdb_hallmark_demo/inputs/msigdb_hallmark_demo_ranks.csv"
+summary_json: "pathways/studies/msigdb_hallmark_demo/results/rank_prep/rank_prep_summary.json"
+summary_md: "pathways/studies/msigdb_hallmark_demo/results/rank_prep/rank_prep_summary.md"
+method: "signed_neg_log10_significance"
+gene_column: "gene"
+effect_column: "log2FoldChange"
+significance_column: "padj"
+significance_floor: 1.0e-300
+deduplicate_by: "max_abs_score"
+sort_descending: true

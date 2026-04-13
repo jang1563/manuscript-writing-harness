@@ -1,0 +1,28 @@
+{
+  "figure_id": "figure_11_ablation_summary",
+  "claim_ids": [
+    "claim_context_encoder_and_fusion_drive_primary_performance",
+    "claim_calibration_loss_mainly_affects_probability_quality"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+      "statement": "Removing the context encoder or multi-scale fusion causes the largest AUROC drops, indicating that architectural context integration is the main driver of top-line discrimination.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_11_panel_a.csv",
+      "evidence_type": "primary_metric_drop_vs_full_model"
+    },
+    {
+      "fact_id": "claim_calibration_loss_mainly_affects_probability_quality",
+      "statement": "Removing the calibration loss causes only a modest AUROC drop but the largest increase in calibration error, indicating that this objective contributes more to probability quality than to raw discrimination.",
+      "panel_id": "b",
+      "source_data": "figures/source_data/figure_11_panel_b.csv",
+      "evidence_type": "secondary_metric_shift_vs_full_model"
+    }
+  ],
+  "design_notes": [
+    "Separate primary-metric loss from secondary-metric shifts so discrimination and calibration penalties are not conflated.",
+    "Keep the full model in view as the explicit zero-reference anchor.",
+    "Encode ablation family and metric identity with different channels so the figure remains decodable without color alone."
+  ]
+}

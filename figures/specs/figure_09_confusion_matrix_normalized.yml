@@ -1,0 +1,45 @@
+figure_id: "figure_09_confusion_matrix_normalized"
+class_id: "confusion_matrix_normalized"
+class_version: 1
+title: "Normalized confusion structure and dominant error pathways for phenotype classification"
+theme_id: "manuscript_default"
+font_policy_id: "publication_sans"
+style_profile: "ai_ml_professional"
+target_profile: "nature_main_double_column"
+qa_profile: "confusion_matrix_normalized_dual"
+review_preset: "confusion_matrix_normalized_dual"
+parity_status: "dual"
+claim_ids:
+  - "claim_errors_are_localized_to_adjacent_states"
+  - "claim_terminal_states_remain_distinct"
+fact_sheet: "figures/fact_sheets/figure_09_confusion_matrix_normalized.json"
+visualization_plan: "figures/plans/visualization_plan.json"
+legend_path: "manuscript/legends/figure_09_confusion_matrix_normalized.md"
+size:
+  width_mm: 183
+  height_mm: 92
+data_inputs:
+  - "figures/data/confusion_matrix_demo.csv"
+  - "figures/data/confusion_error_summary.csv"
+source_data_outputs:
+  a: "figures/source_data/figure_09_panel_a.csv"
+  b: "figures/source_data/figure_09_panel_b.csv"
+panels:
+  - id: "a"
+    title: "Normalized confusion matrix"
+    chart_type: "row_normalized_confusion_matrix"
+    x: "predicted_label"
+    y: "true_label"
+  - id: "b"
+    title: "Dominant off-diagonal confusion"
+    chart_type: "off_diagonal_error_summary"
+    x: "error_rate"
+    y: "label_text"
+renderers:
+  python:
+    enabled: true
+    output_dir: "figures/output/python"
+  r:
+    enabled: true
+    output_dir: "figures/output/r"
+caption_stub: "The normalized confusion figure should show whether residual errors are localized between biologically adjacent states or diffuse across all classes, pairing the matrix with an explicit off-diagonal summary."

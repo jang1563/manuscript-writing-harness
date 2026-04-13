@@ -1,0 +1,21 @@
+### Figure 5. Pathway-Enrichment Dot-Plot Overview
+
+```{figure} assets/generated/figure_05_pathway_enrichment_dot.png
+:alt: Single-panel pathway-enrichment dot plot using position, color, and point size to summarize pathway directionality, gene ratio, and significance.
+:width: 100%
+
+Focused pathway-enrichment figure rendered from the synced manuscript preview asset. The canonical review surface compares the Python and R renderers side by side.
+```
+
+Figure legend:
+
+The dot plot keeps pathway directionality, gene-ratio scale, and adjusted significance in one compact panel so follow-up pathway interpretation remains readable at manuscript scale.
+
+Audit artifacts:
+
+- `figures/output/review/index.html`
+- `figures/output/python/figure_05_pathway_enrichment_dot.svg`
+- `figures/output/r/figure_05_pathway_enrichment_dot.svg`
+- `figures/fact_sheets/figure_05_pathway_enrichment_dot.json`
+- `figures/plans/visualization_plan.json`
+- `figures/source_data/figure_05_panel_a.csv`

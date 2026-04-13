@@ -1,0 +1,14 @@
+stage,exclusion_reason,count
+full_text,conference abstract only,4
+full_text,insufficient outcome data,3
+full_text,overlapping cohort,4
+full_text,wrong comparator,3
+full_text,wrong study design,1
+title_abstract,animal study only,16
+title_abstract,duplicate publication,18
+title_abstract,not primary research,13
+title_abstract,pediatric only,15
+title_abstract,review or commentary,16
+title_abstract,wrong intervention,8
+title_abstract,wrong outcome,12
+title_abstract,wrong population,12

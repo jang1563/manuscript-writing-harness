@@ -1,0 +1,24 @@
+### Figure 6. ROC and Precision-Recall Evaluation
+
+```{figure} assets/generated/figure_06_roc_pr_compound.png
+:alt: Two-panel AI/ML evaluation figure with ROC curves on the left and precision-recall curves on the right, comparing three models with uncertainty ribbons and operating-point markers.
+:width: 100%
+
+AI/ML evaluation figure rendered from the synced manuscript preview asset. The canonical review surface compares the Python and R renderers side by side.
+```
+
+Figure legend:
+
+Panel a compares ROC curves with uncertainty ribbons, a chance diagonal, and operating-point markers so discrimination quality is visible beyond a single AUROC value.
+
+Panel b compares precision-recall curves against the prevalence baseline, making class-imbalance robustness and ranking differences visually explicit.
+
+Audit artifacts:
+
+- `figures/output/review/index.html`
+- `figures/output/python/figure_06_roc_pr_compound.svg`
+- `figures/output/r/figure_06_roc_pr_compound.svg`
+- `figures/fact_sheets/figure_06_roc_pr_compound.json`
+- `figures/plans/visualization_plan.json`
+- `figures/source_data/figure_06_panel_a.csv`
+- `figures/source_data/figure_06_panel_b.csv`

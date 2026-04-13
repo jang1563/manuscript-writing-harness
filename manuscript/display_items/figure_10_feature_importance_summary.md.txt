@@ -1,0 +1,14 @@
+### figure_10_feature_importance_summary
+
+```{figure} assets/generated/figure_10_feature_importance_summary.png
+:alt: Two-panel AI and machine-learning interpretation figure showing ranked feature importance and signed directional feature effects.
+:width: 100%
+
+Figure 10. Feature importance rank and directional effects for model interpretation. Panel a shows that fibrosis, inflammatory, proliferative, and interferon features dominate the model importance ranking while nuisance covariates stay lower. Panel b shows that the strongest feature effects point in biologically coherent directions, separating domain-aligned signals from weak nuisance effects.
+```
+
+Audit artifacts:
+
+- `figures/fact_sheets/figure_10_feature_importance_summary.json`
+- `manuscript/legends/figure_10_feature_importance_summary.md`
+- `figures/plans/visualization_plan.json`

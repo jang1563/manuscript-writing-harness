@@ -1,0 +1,8 @@
+feature,feature_group,display_order,signed_effect,expected_direction,label_feature
+Fibrosis score,Fibrotic remodeling,1,0.134,increases_response,yes
+IL6 program,Inflammatory state,2,0.118,increases_response,yes
+Cell-cycle checkpoint,Proliferative state,3,-0.109,decreases_response,yes
+Interferon response,Immune activation,4,0.086,increases_response,yes
+ECM remodeling,Fibrotic remodeling,5,0.074,increases_response,yes
+Stress response,Inflammatory state,6,0.051,increases_response,yes
+Batch score,Nuisance covariate,7,-0.012,neutral,no

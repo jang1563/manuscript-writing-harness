@@ -1,0 +1,12 @@
+run_id: "fgsea_demo"
+ranks_csv: "pathways/data/fgsea_demo_ranks.csv"
+pathways_gmt: "pathways/data/fgsea_demo_pathways.gmt"
+output_dir: "pathways/results/demo_fgsea"
+figure_export_csv: "pathways/results/demo_fgsea/fgsea_pathway_dot_export.csv"
+parameters:
+  min_size: 3
+  max_size: 500
+  score_type: "std"
+  eps: 1.0e-10
+  seed: 42
+  top_n_per_direction: 3

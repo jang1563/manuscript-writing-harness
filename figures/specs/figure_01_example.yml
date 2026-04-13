@@ -1,0 +1,45 @@
+figure_id: "figure_01_example"
+class_id: "timecourse_endpoint"
+class_version: 1
+title: "Example multi-panel response figure"
+figure_class: "main"
+theme_id: "manuscript_default"
+font_policy_id: "publication_sans"
+style_profile: "bulk_omics_professional"
+target_profile: "nature_main_double_column"
+qa_profile: "timecourse_dual"
+review_preset: "timecourse_dual"
+parity_status: "dual"
+claim_ids:
+  - "claim_response_kinetics"
+  - "claim_endpoint_shift"
+fact_sheet: "figures/fact_sheets/figure_01_example.json"
+visualization_plan: "figures/plans/visualization_plan.json"
+legend_path: "manuscript/legends/figure_01_example.md"
+size:
+  width_mm: 183
+  height_mm: 76
+data_inputs:
+  - "figures/data/example_timecourse.csv"
+source_data_outputs:
+  a: "figures/source_data/figure_01_panel_a.csv"
+  b: "figures/source_data/figure_01_panel_b.csv"
+panels:
+  - id: "a"
+    title: "Time-course response"
+    chart_type: "line_with_error_band"
+    x: "timepoint_hours"
+    y: "mean_response"
+  - id: "b"
+    title: "Endpoint summary"
+    chart_type: "column_with_replicates"
+    x: "condition"
+    y: "mean_response"
+renderers:
+  python:
+    enabled: true
+    output_dir: "figures/output/python"
+  r:
+    enabled: true
+    output_dir: "figures/output/r"
+caption_stub: "Panel a shows mean response over time by condition; panel b shows endpoint response with replicate-level points."

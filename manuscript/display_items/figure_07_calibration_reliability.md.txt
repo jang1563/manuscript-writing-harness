@@ -1,0 +1,14 @@
+### figure_07_calibration_reliability
+
+```{figure} assets/generated/figure_07_calibration_reliability.png
+:alt: Reliability diagram and confidence-support panel comparing calibration across three AI and machine-learning models.
+:width: 100%
+
+Figure 7. Calibration reliability and confidence support for AI/ML models. Panel a compares observed event rate against mean predicted probability across matched bins, showing that the foundation model stays closest to the identity line and yields the smallest expected calibration error. Panel b shows how prediction mass is distributed across confidence bins so the calibration interpretation is read together with support, not as a metric divorced from coverage.
+```
+
+Audit artifacts:
+
+- `figures/fact_sheets/figure_07_calibration_reliability.json`
+- `manuscript/legends/figure_07_calibration_reliability.md`
+- `figures/plans/visualization_plan.json`

@@ -1,0 +1,21 @@
+run_id: msigdb_hallmark_demo
+raw_input_table: pathways/studies/msigdb_hallmark_demo/inputs/raw/msigdb_hallmark_demo_differential_expression.csv
+ranks_csv: pathways/studies/msigdb_hallmark_demo/inputs/msigdb_hallmark_demo_ranks.csv
+rank_prep_summary: pathways/studies/msigdb_hallmark_demo/results/rank_prep/rank_prep_summary.json
+pathways_gmt: pathways/studies/msigdb_hallmark_demo/inputs/msigdb/msigdb_hallmark_demo_H_2026.1.Hs_gene_symbol.gmt
+output_dir: pathways/studies/msigdb_hallmark_demo/results/fgsea
+figure_export_csv: pathways/studies/msigdb_hallmark_demo/results/fgsea/fgsea_pathway_dot_export.csv
+gene_set_source:
+  provider: msigdb
+  species: human
+  collection: H
+  version: 2026.1.Hs
+  identifier_type: gene_symbol
+  registration_required: true
+parameters:
+  min_size: 10
+  max_size: 500
+  score_type: std
+  eps: 0
+  seed: 42
+  top_n_per_direction: 5

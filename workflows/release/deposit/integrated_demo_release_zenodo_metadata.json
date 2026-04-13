@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "title": "Integrated Demo Release Bundle",
+    "upload_type": "software",
+    "publication_type": "other",
+    "description": "Frozen demonstration release for the manuscript writing harness, including manuscript, figure, evidence, reference, and pathway-analysis artifacts.",
+    "creators": [
+      {
+        "name": "Team, Manuscript Harness",
+        "affiliation": "Manuscript Writing Harness Project"
+      }
+    ],
+    "keywords": [
+      "manuscript",
+      "scientific writing",
+      "reproducibility",
+      "systematic review",
+      "scientific figures"
+    ],
+    "version": "v1",
+    "notes": "Generated from release profile integrated_demo_release"
+  }
+}

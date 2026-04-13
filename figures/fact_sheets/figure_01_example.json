@@ -1,0 +1,28 @@
+{
+  "figure_id": "figure_01_example",
+  "claim_ids": [
+    "claim_response_kinetics",
+    "claim_endpoint_shift"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_response_kinetics",
+      "statement": "The treated condition separates from control over time, with a larger mean normalized signal visible by the 4- and 6-hour measurements.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_01_panel_a.csv",
+      "evidence_type": "mean_with_standard_deviation"
+    },
+    {
+      "fact_id": "claim_endpoint_shift",
+      "statement": "At 6 hours, the treated condition has a higher endpoint response than control, and the replicate-level points show the effect is not driven by a single sample.",
+      "panel_id": "b",
+      "source_data": "figures/source_data/figure_01_panel_b.csv",
+      "evidence_type": "group_summary_with_replicates"
+    }
+  ],
+  "design_notes": [
+    "Direct labels are preferred over a detached legend for panel a because there are only two series.",
+    "Panel b should retain replicate-level points so the summary bars do not hide within-group spread.",
+    "This figure should export to editable PDF and SVG with journal-safe font sizes."
+  ]
+}

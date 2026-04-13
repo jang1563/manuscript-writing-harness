@@ -1,0 +1,88 @@
+schema_version: 1
+description: >
+  Defines the required and optional fields for a systematic review protocol.
+  Conforms to PRISMA 2020 and PROSPERO registration expectations.
+
+required_fields:
+  - name: protocol_id
+    type: string
+    description: Unique identifier for this protocol
+
+  - name: title
+    type: string
+    description: Full title of the systematic review
+
+  - name: version
+    type: string
+    description: Semantic version (e.g. 1.0.0)
+
+  - name: status
+    type: enum
+    values: [draft, registered, frozen, amended]
+    description: Current lifecycle status
+
+  - name: question
+    type: object
+    description: Structured PICO(S) research question
+    fields:
+      - name: population
+        type: string
+      - name: intervention_or_exposure
+        type: string
+      - name: comparator
+        type: string
+      - name: outcomes
+        type: list
+        item_type: string
+      - name: study_types
+        type: list
+        item_type: string
+
+  - name: inclusion_criteria
+    type: list
+    item_type: string
+    description: Criteria for including studies
+
+  - name: exclusion_criteria
+    type: list
+    item_type: string
+    description: Criteria for excluding studies
+
+  - name: databases
+    type: list
+    item_type: string
+    description: Databases to search (e.g. PubMed, Embase, Europe PMC)
+
+  - name: primary_outcomes
+    type: list
+    item_type: string
+
+  - name: secondary_outcomes
+    type: list
+    item_type: string
+
+optional_fields:
+  - name: registration
+    type: object
+    description: Protocol registration details
+    fields:
+      - name: registry
+        type: string
+        description: e.g. PROSPERO
+      - name: registration_id
+        type: string
+      - name: date
+        type: string
+        description: ISO date
+
+  - name: amendments
+    type: list
+    item_type: object
+    description: Tracked changes after protocol freeze
+    fields:
+      - name: date
+        type: string
+      - name: description
+        type: string
+      - name: rationale
+        type: string

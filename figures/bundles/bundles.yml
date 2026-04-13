@@ -1,0 +1,11 @@
+bundles:
+  bundle_bulk_omics_deg_exemplar:
+    bundle_id: "bundle_bulk_omics_deg_exemplar"
+    path: "figures/bundles/bundle_bulk_omics_deg_exemplar/bundle.yml"
+    recipe_id: "bulk_omics_deg_story"
+    acceptance_tier: "exemplar"
+  bundle_ai_ml_evaluation_exemplar:
+    bundle_id: "bundle_ai_ml_evaluation_exemplar"
+    path: "figures/bundles/bundle_ai_ml_evaluation_exemplar/bundle.yml"
+    recipe_id: "ai_ml_evaluation_story"
+    acceptance_tier: "exemplar"

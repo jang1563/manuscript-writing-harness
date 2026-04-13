@@ -1,0 +1,28 @@
+{
+  "figure_id": "figure_07_calibration_reliability",
+  "claim_ids": [
+    "claim_foundation_model_best_calibrated",
+    "claim_high_confidence_support_is_not_tail_only"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_foundation_model_best_calibrated",
+      "statement": "The foundation model tracks the identity line more closely than the comparator models across confidence bins and has the lowest expected calibration error.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_07_panel_a.csv",
+      "evidence_type": "reliability_diagram_with_error_band"
+    },
+    {
+      "fact_id": "claim_high_confidence_support_is_not_tail_only",
+      "statement": "The high-confidence calibration conclusion is supported by non-trivial prediction mass across upper-confidence bins rather than a sparse extreme tail.",
+      "panel_id": "b",
+      "source_data": "figures/source_data/figure_07_panel_b.csv",
+      "evidence_type": "confidence_support_distribution"
+    }
+  ],
+  "design_notes": [
+    "Show the calibration reference line explicitly so overconfidence and underconfidence are visually grounded.",
+    "Pair calibration quality with support-by-bin so ECE is not interpreted without coverage context.",
+    "Keep model identity consistent across panels with direct labels and repeated styling, not color alone."
+  ]
+}

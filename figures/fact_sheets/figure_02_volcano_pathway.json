@@ -1,0 +1,29 @@
+{
+  "figure_id": "figure_02_volcano_pathway",
+  "claim_ids": [
+    "claim_interferon_gene_activation",
+    "claim_cell_cycle_pathway_suppression"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_interferon_gene_activation",
+      "statement": "The strongest positive differential-expression signals cluster in interferon-associated genes including CXCL10, IFIT1, and MX1, which exceed both the fold-change and false-discovery thresholds.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_02_panel_a.csv",
+      "evidence_type": "volcano_plot_with_threshold_guides"
+    },
+    {
+      "fact_id": "claim_cell_cycle_pathway_suppression",
+      "statement": "Negative enrichment scores for cell-cycle checkpoint, mitotic spindle, and DNA replication indicate coordinated suppression of proliferative programs relative to the upregulated immune-response pathways.",
+      "panel_id": "b",
+      "source_data": "figures/source_data/figure_02_panel_b.csv",
+      "evidence_type": "signed_pathway_enrichment_summary"
+    }
+  ],
+  "design_notes": [
+    "Non-significant genes should be visually de-emphasized so the reader's attention stays on the threshold-crossing signals.",
+    "Only a small set of sentinel genes should be labeled directly to avoid collision-heavy volcano plots.",
+    "The enrichment panel should preserve sign around zero so pathway activation and suppression are visible at a glance.",
+    "Both panels should export as editable vector graphics with journal-safe font sizes."
+  ]
+}

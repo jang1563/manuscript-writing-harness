@@ -1,0 +1,26 @@
+record_id,study_design,population,intervention,comparator,sample_size,outcome_name,outcome_measure,effect_value,ci_lower,ci_upper,p_value
+R0001,RCT,Adults with RCC,TF-X inhibitor,placebo,303,overall survival,mean difference,1.4,1.26,1.68,0.015
+R0002,RCT,Adults with melanoma,TF-X inhibitor,standard chemotherapy,125,overall survival,hazard ratio,0.31,0.1,0.43,0.079
+R0003,case-control,Adults with melanoma,TF-X inhibitor,active comparator,308,overall survival,hazard ratio,1.32,1.13,1.46,0.01
+R0004,cohort,Adults with melanoma,TF-X inhibitor,active comparator,161,overall survival,odds ratio,1.18,0.92,1.39,0.061
+R0005,cohort,Adults with RCC,TF-X inhibitor,active comparator,489,progression-free survival,hazard ratio,0.4,0.17,0.54,0.012
+R0006,case-control,Adults with CRC,TF-X inhibitor,placebo,163,progression-free survival,odds ratio,1.2,0.91,1.36,0.058
+R0007,RCT,Adults with breast cancer,TF-X inhibitor,active comparator,214,overall survival,odds ratio,1.1,0.91,1.23,0.055
+R0008,case-control,Adults with NSCLC,TF-X inhibitor,active comparator,499,progression-free survival,hazard ratio,0.56,0.43,0.69,0.06
+R0009,case-control,Adults with melanoma,TF-X inhibitor,active comparator,311,progression-free survival,mean difference,1.21,0.97,1.43,0.063
+R0010,single-arm trial,Adults with RCC,TF-X inhibitor,active comparator,215,overall response rate,mean difference,0.37,0.16,0.57,0.046
+R0011,cohort,Adults with CRC,TF-X inhibitor,standard chemotherapy,467,overall survival,hazard ratio,1.12,0.88,1.32,0.072
+R0012,single-arm trial,Adults with NSCLC,TF-X inhibitor,standard chemotherapy,97,overall survival,hazard ratio,0.98,0.77,1.21,0.025
+R0013,RCT,Adults with melanoma,TF-X inhibitor,standard chemotherapy,448,overall response rate,mean difference,0.99,0.88,1.16,0.006
+R0014,RCT,Adults with NSCLC,TF-X inhibitor,standard chemotherapy,46,progression-free survival,hazard ratio,1.22,0.97,1.52,0.052
+R0015,single-arm trial,Adults with breast cancer,TF-X inhibitor,standard chemotherapy,259,progression-free survival,hazard ratio,1.12,0.89,1.33,0.053
+R0016,case-control,Adults with NSCLC,TF-X inhibitor,placebo,305,progression-free survival,mean difference,1.17,1.03,1.27,0.003
+R0017,case-control,Adults with melanoma,TF-X inhibitor,active comparator,398,overall survival,hazard ratio,1.29,1.14,1.46,0.023
+R0018,RCT,Adults with NSCLC,TF-X inhibitor,active comparator,244,overall survival,odds ratio,0.55,0.43,0.66,0.048
+R0019,RCT,Adults with CRC,TF-X inhibitor,active comparator,52,progression-free survival,hazard ratio,0.95,0.7,1.21,0.012
+R0020,case-control,Adults with CRC,TF-X inhibitor,active comparator,324,progression-free survival,mean difference,0.58,0.3,0.88,0.042
+R0021,single-arm trial,Adults with breast cancer,TF-X inhibitor,standard chemotherapy,61,overall survival,mean difference,1.05,0.86,1.25,0.078
+R0022,single-arm trial,Adults with RCC,TF-X inhibitor,standard chemotherapy,386,progression-free survival,hazard ratio,0.66,0.52,0.87,0.02
+R0023,cohort,Adults with breast cancer,TF-X inhibitor,active comparator,103,progression-free survival,odds ratio,1.46,1.25,1.59,0.02
+R0024,cohort,Adults with breast cancer,TF-X inhibitor,active comparator,70,progression-free survival,hazard ratio,0.94,0.67,1.05,0.031
+R0025,RCT,Adults with NSCLC,TF-X inhibitor,placebo,441,overall survival,mean difference,0.88,0.61,1.05,0.077

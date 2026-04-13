@@ -1,0 +1,190 @@
+{
+  "generated_from": {
+    "outline": "manuscript/plans/outline.json",
+    "writing_plan": "manuscript/plans/writing_plan.json",
+    "display_item_map": "manuscript/plans/display_item_map.json",
+    "claim_packets": "manuscript/plans/claim_packets.json",
+    "reference_audit": "references/reports/reference_audit.json",
+    "review_evidence": "review/reports/evidence_summary.json"
+  },
+  "overall_status": "ready",
+  "section_count": 5,
+  "ready_section_count": 5,
+  "provisional_section_count": 0,
+  "blocked_section_count": 0,
+  "sections": [
+    {
+      "section_id": "summary",
+      "source": "manuscript/sections/01_summary.md",
+      "purpose": "State the main scientific question and the top-line claim.",
+      "status": "ready",
+      "display_item_ids": [],
+      "claim_ids": [],
+      "claim_packet_count": 0,
+      "reference_context": {
+        "readiness": "ready",
+        "citation_edge_count": 0,
+        "linked_reference_ids": []
+      },
+      "review_context": {
+        "readiness": "ready",
+        "included_studies": 25,
+        "path": "review/reports/evidence_summary.json"
+      },
+      "drafting_guidance": [
+        "Lead with the main scientific question, then name only the highest-signal result.",
+        "Avoid introducing methods detail unless it is required to interpret scope or credibility."
+      ],
+      "warnings": [],
+      "blocking_issues": []
+    },
+    {
+      "section_id": "introduction",
+      "source": "manuscript/sections/02_introduction.md",
+      "purpose": "Frame the background and why the problem matters.",
+      "status": "ready",
+      "display_item_ids": [],
+      "claim_ids": [],
+      "claim_packet_count": 0,
+      "reference_context": {
+        "readiness": "ready",
+        "citation_edge_count": 0,
+        "linked_reference_ids": []
+      },
+      "review_context": {
+        "readiness": "ready",
+        "included_studies": 25,
+        "path": "review/reports/evidence_summary.json"
+      },
+      "drafting_guidance": [
+        "Use literature-backed context to frame the gap before naming the study objective.",
+        "Do not present display-backed result claims as settled background knowledge."
+      ],
+      "warnings": [],
+      "blocking_issues": []
+    },
+    {
+      "section_id": "results",
+      "source": "manuscript/sections/03_results.md",
+      "purpose": "Present display-item-backed claims in a controlled order.",
+      "status": "ready",
+      "display_item_ids": [
+        "figure_01_example",
+        "figure_04_sample_pca",
+        "figure_03_ma_plot",
+        "figure_02_volcano_pathway",
+        "figure_05_pathway_enrichment_dot",
+        "figure_06_roc_pr_compound",
+        "figure_07_calibration_reliability",
+        "figure_08_training_dynamics",
+        "figure_09_confusion_matrix_normalized",
+        "figure_10_feature_importance_summary",
+        "figure_11_ablation_summary",
+        "table_01_main"
+      ],
+      "claim_ids": [
+        "claim_response_kinetics",
+        "claim_endpoint_shift",
+        "claim_condition_drives_primary_sample_separation",
+        "claim_high_abundance_interferon_shift",
+        "claim_interferon_gene_activation",
+        "claim_cell_cycle_pathway_suppression",
+        "claim_pathway_effect_sizes_align_with_directionality",
+        "claim_foundation_model_improves_discrimination",
+        "claim_foundation_model_retains_precision_under_imbalance",
+        "claim_foundation_model_best_calibrated",
+        "claim_high_confidence_support_is_not_tail_only",
+        "claim_foundation_model_optimizes_stably",
+        "claim_foundation_model_reaches_higher_validation_auroc",
+        "claim_errors_are_localized_to_adjacent_states",
+        "claim_terminal_states_remain_distinct",
+        "claim_model_relies_on_biologically_salient_features",
+        "claim_signed_feature_effects_align_with_domain_expectation",
+        "claim_context_encoder_and_fusion_drive_primary_performance",
+        "claim_calibration_loss_mainly_affects_probability_quality",
+        "claim_model_ranking"
+      ],
+      "claim_packet_count": 20,
+      "reference_context": {
+        "readiness": "ready",
+        "citation_edge_count": 13,
+        "linked_reference_ids": [
+          "abdiWilliams2010PCA",
+          "davisGoadrich2006PRROC",
+          "fgseaBioconductorPackage",
+          "guoEtAl2017Calibration",
+          "liptonSteinhardt2018TroublingTrends",
+          "loveEtAl2014DESeq2",
+          "lundbergLee2017SHAP",
+          "niculescuMizilCaruana2005Probabilities",
+          "smithTopin2017SuperConvergence",
+          "stehman1997ClassificationAccuracy",
+          "subramanianEtAl2005GSEA",
+          "weissgerberEtAl2015BeyondBar",
+          "yuEtAl2012ClusterProfiler"
+        ]
+      },
+      "review_context": {
+        "readiness": "ready",
+        "included_studies": 25,
+        "path": "review/reports/evidence_summary.json"
+      },
+      "drafting_guidance": [
+        "Write in display order and keep each subsection anchored to visible evidence.",
+        "Use claim packets as the first-pass source of truth before polishing prose."
+      ],
+      "warnings": [],
+      "blocking_issues": []
+    },
+    {
+      "section_id": "discussion",
+      "source": "manuscript/sections/04_discussion.md",
+      "purpose": "Interpret the main findings and their limits.",
+      "status": "ready",
+      "display_item_ids": [],
+      "claim_ids": [],
+      "claim_packet_count": 0,
+      "reference_context": {
+        "readiness": "ready",
+        "citation_edge_count": 0,
+        "linked_reference_ids": []
+      },
+      "review_context": {
+        "readiness": "ready",
+        "included_studies": 25,
+        "path": "review/reports/evidence_summary.json"
+      },
+      "drafting_guidance": [
+        "Interpret the strongest claims without simply restating figure legends.",
+        "Separate implication, limitation, and external comparison into distinct paragraphs."
+      ],
+      "warnings": [],
+      "blocking_issues": []
+    },
+    {
+      "section_id": "methods",
+      "source": "manuscript/sections/05_methods.md",
+      "purpose": "Document data provenance, analytical choices, and reproducibility details.",
+      "status": "ready",
+      "display_item_ids": [],
+      "claim_ids": [],
+      "claim_packet_count": 0,
+      "reference_context": {
+        "readiness": "ready",
+        "citation_edge_count": 0,
+        "linked_reference_ids": []
+      },
+      "review_context": {
+        "readiness": "ready",
+        "included_studies": 25,
+        "path": "review/reports/evidence_summary.json"
+      },
+      "drafting_guidance": [
+        "Document data provenance, analytic choices, and reproducibility hooks explicitly.",
+        "Point back to stable artifacts rather than describing untracked runtime state."
+      ],
+      "warnings": [],
+      "blocking_issues": []
+    }
+  ]
+}

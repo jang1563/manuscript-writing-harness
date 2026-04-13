@@ -1,0 +1,7 @@
+variant,module_group,display_order,auroc,delta_auroc,label_variant
+Full model,Full system,1,0.882,0.000,yes
+No context encoder,Architectural module,2,0.821,-0.061,yes
+No multi-scale fusion,Architectural module,3,0.836,-0.046,yes
+No curriculum training,Training recipe,4,0.854,-0.028,yes
+No calibration loss,Objective design,5,0.866,-0.016,yes
+No metadata covariate,Auxiliary input,6,0.872,-0.010,no

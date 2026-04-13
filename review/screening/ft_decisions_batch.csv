@@ -1,0 +1,41 @@
+record_id,stage,decision,exclusion_reason,reviewer,timestamp
+R0001,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0002,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0003,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0004,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0005,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0006,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0007,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0008,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0009,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0010,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0011,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0012,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0013,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0014,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0015,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0016,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0017,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0018,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0019,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0020,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0021,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0022,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0023,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0024,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0025,full_text,include,,reviewer_B,2026-04-01T14:00:00
+R0026,full_text,exclude,conference abstract only,reviewer_B,2026-04-01T14:00:00
+R0027,full_text,exclude,overlapping cohort,reviewer_B,2026-04-01T14:00:00
+R0028,full_text,exclude,insufficient outcome data,reviewer_B,2026-04-01T14:00:00
+R0029,full_text,exclude,wrong comparator,reviewer_B,2026-04-01T14:00:00
+R0030,full_text,exclude,insufficient outcome data,reviewer_B,2026-04-01T14:00:00
+R0031,full_text,exclude,wrong study design,reviewer_B,2026-04-01T14:00:00
+R0032,full_text,exclude,wrong comparator,reviewer_B,2026-04-01T14:00:00
+R0033,full_text,exclude,overlapping cohort,reviewer_B,2026-04-01T14:00:00
+R0034,full_text,exclude,overlapping cohort,reviewer_B,2026-04-01T14:00:00
+R0035,full_text,exclude,overlapping cohort,reviewer_B,2026-04-01T14:00:00
+R0036,full_text,exclude,wrong comparator,reviewer_B,2026-04-01T14:00:00
+R0037,full_text,exclude,conference abstract only,reviewer_B,2026-04-01T14:00:00
+R0038,full_text,exclude,conference abstract only,reviewer_B,2026-04-01T14:00:00
+R0039,full_text,exclude,conference abstract only,reviewer_B,2026-04-01T14:00:00
+R0040,full_text,exclude,insufficient outcome data,reviewer_B,2026-04-01T14:00:00

@@ -1,0 +1,24 @@
+### Figure 2. Differential Expression and Pathway-Enrichment Landscape
+
+```{figure} assets/generated/figure_02_volcano_pathway.png
+:alt: Two-panel bioinformatics figure showing a volcano plot with highlighted genes and a signed pathway-enrichment summary with positive and negative normalized enrichment scores.
+:width: 100%
+
+Differential-expression and pathway-enrichment figure rendered from the synced manuscript preview asset. The canonical review surface compares the Python and R renderers side by side.
+```
+
+Figure legend:
+
+Panel a shows the volcano-plot differential-expression landscape with selective direct labels for sentinel genes and visual threshold guides for fold change and adjusted significance.
+
+Panel b shows signed pathway-enrichment scores so immune-response activation and cell-cycle suppression remain visually separable around zero.
+
+Audit artifacts:
+
+- `figures/output/review/index.html`
+- `figures/output/python/figure_02_volcano_pathway.svg`
+- `figures/output/r/figure_02_volcano_pathway.svg`
+- `figures/fact_sheets/figure_02_volcano_pathway.json`
+- `figures/plans/visualization_plan.json`
+- `figures/source_data/figure_02_panel_a.csv`
+- `figures/source_data/figure_02_panel_b.csv`

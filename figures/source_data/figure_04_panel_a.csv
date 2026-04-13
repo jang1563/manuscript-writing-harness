@@ -1,0 +1,9 @@
+sample_id,condition,batch,pc1,pc2,highlight_label
+C1,Control,Batch1,-3.1,-0.7,yes
+C2,Control,Batch1,-2.6,0.2,no
+C3,Control,Batch2,-2.2,1.1,no
+C4,Control,Batch2,-1.9,-0.4,no
+T1,Treatment,Batch1,2,-0.2,no
+T2,Treatment,Batch1,2.4,0.7,yes
+T3,Treatment,Batch2,2.8,1.5,no
+T4,Treatment,Batch2,3.2,-0.8,no

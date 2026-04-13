@@ -1,0 +1,7 @@
+condition,endpoint_hours,replicate,response,mean_response,std_response
+Control,6,1,1.08,1.07,0.01
+Control,6,2,1.06,1.07,0.01
+Control,6,3,1.07,1.07,0.01
+Treated,6,1,1.52,1.52,0.03
+Treated,6,2,1.49,1.52,0.03
+Treated,6,3,1.55,1.52,0.03

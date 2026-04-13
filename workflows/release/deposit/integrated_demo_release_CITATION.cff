@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: If you use this release, please cite it using the metadata below.
+title: Integrated Demo Release Bundle
+version: v1
+date-released: '2026-04-13'
+type: software
+authors:
+- family-names: Team
+  given-names: Manuscript Harness
+  affiliation: Manuscript Writing Harness Project
+keywords:
+- manuscript
+- scientific writing
+- reproducibility
+- systematic review
+- scientific figures
+abstract: Frozen demonstration release for the manuscript writing harness, including
+  manuscript, figure, evidence, reference, and pathway-analysis artifacts.
+identifiers:
+- type: other
+  value: integrated_demo_release_deposit_metadata_v1
+  description: Internal deposit metadata identifier

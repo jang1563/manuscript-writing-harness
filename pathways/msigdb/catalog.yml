@@ -1,0 +1,52 @@
+current_versions:
+  human: "2026.1.Hs"
+  mouse: "2026.1.Mm"
+
+download_requirements:
+  registration_required: true
+  file_format: "gmt"
+  identifier_types:
+    - "gene_symbol"
+    - "entrez"
+
+collections:
+  H:
+    species:
+      - "human"
+    label: "Hallmark"
+    best_for: "compact first-pass pathway summaries"
+  C2:CP:
+    species:
+      - "human"
+    label: "Canonical pathways"
+    best_for: "curated pathway databases and mechanism-facing interpretation"
+  C5:BP:
+    species:
+      - "human"
+    label: "GO biological process"
+    best_for: "broad process-level enrichment scans"
+  C7:
+    species:
+      - "human"
+    label: "Immunologic signatures"
+    best_for: "immune-state and perturbation analyses"
+  MH:
+    species:
+      - "mouse"
+    label: "Mouse hallmark"
+    best_for: "compact first-pass pathway summaries in mouse studies"
+  M2:CP:
+    species:
+      - "mouse"
+    label: "Mouse canonical pathways"
+    best_for: "curated pathway databases in mouse studies"
+  M5:BP:
+    species:
+      - "mouse"
+    label: "Mouse GO biological process"
+    best_for: "broad process-level enrichment scans in mouse studies"
+  M7:
+    species:
+      - "mouse"
+    label: "Mouse immunologic signatures"
+    best_for: "immune-state and perturbation analyses in mouse studies"

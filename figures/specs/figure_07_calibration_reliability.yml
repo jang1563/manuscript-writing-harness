@@ -1,0 +1,45 @@
+figure_id: "figure_07_calibration_reliability"
+class_id: "calibration_reliability"
+class_version: 1
+title: "Calibration reliability and confidence support for AI/ML models"
+theme_id: "manuscript_default"
+font_policy_id: "publication_sans"
+style_profile: "ai_ml_professional"
+target_profile: "nature_main_double_column"
+qa_profile: "calibration_reliability_dual"
+review_preset: "calibration_reliability_dual"
+parity_status: "dual"
+claim_ids:
+  - "claim_foundation_model_best_calibrated"
+  - "claim_high_confidence_support_is_not_tail_only"
+fact_sheet: "figures/fact_sheets/figure_07_calibration_reliability.json"
+visualization_plan: "figures/plans/visualization_plan.json"
+legend_path: "manuscript/legends/figure_07_calibration_reliability.md"
+size:
+  width_mm: 183
+  height_mm: 88
+data_inputs:
+  - "figures/data/calibration_bins_demo.csv"
+  - "figures/data/calibration_metric_summary.csv"
+source_data_outputs:
+  a: "figures/source_data/figure_07_panel_a.csv"
+  b: "figures/source_data/figure_07_panel_b.csv"
+panels:
+  - id: "a"
+    title: "Reliability diagram"
+    chart_type: "reliability_diagram"
+    x: "mean_predicted"
+    y: "observed_rate"
+  - id: "b"
+    title: "Confidence support by bin"
+    chart_type: "confidence_support_histogram"
+    x: "bin_center"
+    y: "sample_fraction"
+renderers:
+  python:
+    enabled: true
+    output_dir: "figures/output/python"
+  r:
+    enabled: true
+    output_dir: "figures/output/r"
+caption_stub: "The calibration figure pairs a reliability diagram with confidence-support bars so probabilistic calibration is interpreted together with where the model places its prediction mass."

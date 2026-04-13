@@ -1,0 +1,13 @@
+variant,module_group,display_order,metric,delta_value,label_variant
+Full model,Full system,1,AUPRC,0.000,yes
+Full model,Full system,1,ECE,0.000,yes
+No context encoder,Architectural module,2,AUPRC,-0.073,yes
+No context encoder,Architectural module,2,ECE,0.024,yes
+No multi-scale fusion,Architectural module,3,AUPRC,-0.055,yes
+No multi-scale fusion,Architectural module,3,ECE,0.017,yes
+No curriculum training,Training recipe,4,AUPRC,-0.034,yes
+No curriculum training,Training recipe,4,ECE,0.012,yes
+No calibration loss,Objective design,5,AUPRC,-0.014,yes
+No calibration loss,Objective design,5,ECE,0.031,yes
+No metadata covariate,Auxiliary input,6,AUPRC,-0.009,no
+No metadata covariate,Auxiliary input,6,ECE,0.005,no

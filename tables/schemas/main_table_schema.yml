@@ -1,0 +1,41 @@
+table_id: table_01_main
+title: Example main table
+caption: Example model-performance summary generated from canonical CSV input.
+input_path: tables/data/example_main_table.csv
+output_basename: table_01_main
+claim_ids:
+  - claim_model_ranking
+fact_sheet: tables/fact_sheets/table_01_main.json
+sort:
+  by: auroc
+  order: descending
+default_decimals: 3
+columns:
+  - name: model
+    label: Model
+    type: string
+    align: left
+  - name: cohort
+    label: Cohort
+    type: string
+    align: left
+  - name: n_samples
+    label: N
+    type: integer
+    align: right
+  - name: auroc
+    label: AUROC
+    type: float
+    decimals: 3
+    align: right
+  - name: auprc
+    label: AUPRC
+    type: float
+    decimals: 3
+    align: right
+  - name: calibration_error
+    label: Calibration Error
+    type: float
+    decimals: 3
+    align: right
+footnotes: []

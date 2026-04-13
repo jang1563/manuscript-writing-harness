@@ -1,0 +1,66 @@
+{
+  "items": [
+    {
+      "display_item_id": "figure_04_sample_pca",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_condition_drives_primary_sample_separation"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_04_sample_pca.png",
+      "spec_path": "figures/specs/figure_04_sample_pca.yml",
+      "fact_sheet": "figures/fact_sheets/figure_04_sample_pca.json",
+      "legend_path": "manuscript/legends/figure_04_sample_pca.md",
+      "source_data": [
+        "figures/source_data/figure_04_panel_a.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_03_ma_plot",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_high_abundance_interferon_shift"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_03_ma_plot.png",
+      "spec_path": "figures/specs/figure_03_ma_plot.yml",
+      "fact_sheet": "figures/fact_sheets/figure_03_ma_plot.json",
+      "legend_path": "manuscript/legends/figure_03_ma_plot.md",
+      "source_data": [
+        "figures/source_data/figure_03_panel_a.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_02_volcano_pathway",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_interferon_gene_activation",
+        "claim_cell_cycle_pathway_suppression"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_02_volcano_pathway.png",
+      "spec_path": "figures/specs/figure_02_volcano_pathway.yml",
+      "fact_sheet": "figures/fact_sheets/figure_02_volcano_pathway.json",
+      "legend_path": "manuscript/legends/figure_02_volcano_pathway.md",
+      "source_data": [
+        "figures/source_data/figure_02_panel_a.csv",
+        "figures/source_data/figure_02_panel_b.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_05_pathway_enrichment_dot",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_pathway_effect_sizes_align_with_directionality"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_05_pathway_enrichment_dot.png",
+      "spec_path": "figures/specs/figure_05_pathway_enrichment_dot.yml",
+      "fact_sheet": "figures/fact_sheets/figure_05_pathway_enrichment_dot.json",
+      "legend_path": "manuscript/legends/figure_05_pathway_enrichment_dot.md",
+      "source_data": [
+        "figures/source_data/figure_05_panel_a.csv"
+      ]
+    }
+  ]
+}

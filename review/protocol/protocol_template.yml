@@ -1,0 +1,52 @@
+# Systematic Review Protocol Template
+# Copy this file to protocol.yml and fill in all fields.
+# Status should remain 'draft' until registration or freeze.
+
+protocol_id: ""          # Unique identifier (e.g. sr_001)
+title: ""                # Full title of the systematic review
+version: "1.0.0"         # Semantic version
+status: draft            # draft | registered | frozen | amended
+
+# Structured PICO(S) research question
+question:
+  population: ""         # Target population or condition
+  intervention_or_exposure: ""  # Intervention or exposure of interest
+  comparator: ""         # Comparison group or control
+  outcomes:              # List of outcomes to evaluate
+    - ""
+  study_types:           # Eligible study designs
+    - ""                 # e.g. RCT, cohort, case-control
+
+# Study eligibility
+inclusion_criteria:
+  - ""                   # e.g. "Adults aged 18+ with confirmed diagnosis"
+
+exclusion_criteria:
+  - ""                   # e.g. "Animal studies"
+
+# Search strategy
+databases:
+  - PubMed
+  - ""                   # Add additional databases
+
+# Outcomes
+primary_outcomes:
+  - ""
+
+secondary_outcomes:
+  - ""
+
+# Optional: Protocol registration
+# Fill this block for PROSPERO or a similar registry.
+# If external registration is not applicable, use a frozen in-repo identifier so
+# downstream release metadata can still trace protocol provenance.
+# registration:
+#   registry: PROSPERO            # or internal_frozen_protocol
+#   registration_id: ""
+#   date: ""             # ISO date (YYYY-MM-DD)
+
+# Amendments (append entries after protocol freeze)
+amendments: []
+# - date: "2026-01-15"
+#   description: "Added secondary outcome X"
+#   rationale: "Reviewer feedback during screening"

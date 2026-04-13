@@ -1,0 +1,72 @@
+# Build artifacts
+_build/
+manuscript/_build/
+figures/output/
+tables/output/
+
+# Environment / language managers
+.venv/
+venv/
+.nodeenv/
+.r_libs/
+node_modules/
+
+# Caches
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs and temp
+*.log
+*.tmp
+*.bak
+
+# Generated / local-run reports
+reports/overnight/
+reports/ci_soak/
+workflows/release/reports/
+workflows/release/manifests/
+
+# Generated release bundles (regenerated from sources)
+workflows/release/exports/*.zip
+workflows/release/exports/*.tar.gz
+workflows/release/exports/*.tar
+workflows/release/exports/*_checksums.txt
+workflows/release/exports/*_manifest.json
+workflows/release/exports/*_export.json
+workflows/release/exports/*_export.md
+!workflows/release/exports/README.md
+
+# Review pipeline raw inputs (should come from database exports, not committed)
+review/retrieval/raw/
+review/screening/exports/
+
+# Pathway / study results (large, regenerated)
+pathways/results/*
+!pathways/results/README.md
+pathways/studies/*/results/*
+!pathways/studies/*/results/README.md
+
+# Local Claude settings
+.claude/
+
+# Secrets (defense in depth - none should exist)
+.env
+.env.*
+!.env.example
+*.pem
+!**/certifi/**/*.pem
+secrets.yml
+credentials.json

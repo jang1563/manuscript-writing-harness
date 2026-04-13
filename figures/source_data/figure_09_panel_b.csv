@@ -1,0 +1,5 @@
+source_class,target_class,error_rate,display_order,label_text
+Inflammatory,Proliferative,0.14,1,Inflammatory -> Proliferative
+Proliferative,Inflammatory,0.18,2,Proliferative -> Inflammatory
+Healthy,Inflammatory,0.07,3,Healthy -> Inflammatory
+Fibrotic,Proliferative,0.07,4,Fibrotic -> Proliferative

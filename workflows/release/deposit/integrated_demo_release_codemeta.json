@@ -1,0 +1,28 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "integrated_demo_release_deposit_metadata_v1",
+  "name": "Integrated Demo Release Bundle",
+  "version": "v1",
+  "description": "Frozen demonstration release for the manuscript writing harness, including manuscript, figure, evidence, reference, and pathway-analysis artifacts.",
+  "datePublished": "2026-04-13",
+  "keywords": [
+    "manuscript",
+    "scientific writing",
+    "reproducibility",
+    "systematic review",
+    "scientific figures"
+  ],
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Manuscript Harness Team",
+      "givenName": "Manuscript Harness",
+      "familyName": "Team",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Manuscript Writing Harness Project"
+      }
+    }
+  ]
+}

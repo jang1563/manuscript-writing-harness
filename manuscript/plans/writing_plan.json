@@ -1,0 +1,42 @@
+{
+  "section_order": [
+    "summary",
+    "introduction",
+    "results",
+    "discussion",
+    "methods"
+  ],
+  "display_item_refs": [
+    "figure_01_example",
+    "figure_04_sample_pca",
+    "figure_03_ma_plot",
+    "figure_02_volcano_pathway",
+    "figure_05_pathway_enrichment_dot",
+    "figure_06_roc_pr_compound",
+    "figure_07_calibration_reliability",
+    "figure_08_training_dynamics",
+    "figure_09_confusion_matrix_normalized",
+    "figure_10_feature_importance_summary",
+    "figure_11_ablation_summary",
+    "table_01_main"
+  ],
+  "claim_packet_path": "manuscript/plans/claim_packets.json",
+  "draft_packet_markdown": "manuscript/drafts/results_claim_packets.md",
+  "section_brief_path": "manuscript/drafts/section_briefs.json",
+  "section_brief_markdown": "manuscript/drafts/section_briefs.md",
+  "section_draft_path": "manuscript/drafts/section_drafts.json",
+  "section_draft_markdown": "manuscript/drafts/section_drafts.md",
+  "section_prose_path": "manuscript/drafts/section_prose.json",
+  "section_prose_markdown": "manuscript/drafts/section_prose.md",
+  "section_prose_apply_mode": "managed_blocks",
+  "drafting_rules": [
+    "Write results around display-item-backed claims instead of free-floating narrative.",
+    "Treat figure and table fact sheets as the minimum evidence contract for claims.",
+    "Do not introduce citations into prose unless they are represented in the citation graph.",
+    "Use claim packets to draft result prose before polishing section-level narrative.",
+    "Use section briefs to decide what each manuscript section should and should not attempt.",
+    "Use section drafts as structured scaffolds before any polished narrative rewrite.",
+    "Use generated section prose only as editable first-pass text, not as final submission prose.",
+    "Apply generated section prose only through managed blocks so freeform author edits remain outside the automated region."
+  ]
+}

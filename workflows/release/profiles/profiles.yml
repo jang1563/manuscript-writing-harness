@@ -1,0 +1,33 @@
+profiles:
+  integrated_demo_release:
+    profile_id: "integrated_demo_release"
+    title: "Integrated Demo Release Bundle"
+    venue_id: "nature"
+    release_metadata:
+      title: "Integrated Demo Release Bundle"
+      description: "Frozen demonstration release for the manuscript writing harness, including manuscript, figure, evidence, reference, and pathway-analysis artifacts."
+      date_released: "2026-04-13"
+      keywords:
+        - "manuscript"
+        - "scientific writing"
+        - "reproducibility"
+        - "systematic review"
+        - "scientific figures"
+      creators:
+        - name: "Manuscript Harness Team"
+          affiliation: "Manuscript Writing Harness Project"
+    figure_bundles:
+      - "bundle_bulk_omics_deg_exemplar"
+      - "bundle_ai_ml_evaluation_exemplar"
+    include_review_evidence: true
+    include_reference_integrity: true
+    include_active_fgsea_study: true
+    include_claim_coverage: true
+    include_section_prose: true
+    required_artifacts:
+      - "figures/output/review/index.html"
+      - "manuscript/_build/html/index.html"
+      - "manuscript/_build/html/results/index.html"
+      - "review/reports/evidence_summary.json"
+      - "references/reports/reference_audit.json"
+      - "pathways/results/active_fgsea/study_dossier.json"

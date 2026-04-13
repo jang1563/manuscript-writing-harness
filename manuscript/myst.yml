@@ -1,0 +1,17 @@
+version: 1
+project:
+  id: manuscript-writing-harness
+  title: Manuscript Writing Harness
+  description: Semantic manuscript scaffold for high-quality scientific papers.
+  keywords:
+    - manuscript
+    - scientific writing
+    - reproducibility
+    - systematic review
+  authors:
+    - name: Manuscript Harness Team
+  bibliography:
+    - ../references/library.bib
+site:
+  template: book-theme
+  title: Manuscript Writing Harness

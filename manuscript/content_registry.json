@@ -1,0 +1,185 @@
+{
+  "sections": {
+    "abstract": {
+      "status": "available",
+      "source": [
+        "manuscript/index.md#abstract"
+      ]
+    },
+    "summary": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/01_summary.md"
+      ]
+    },
+    "introduction": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/02_introduction.md"
+      ]
+    },
+    "results": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/03_results.md"
+      ]
+    },
+    "discussion": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/04_discussion.md"
+      ]
+    },
+    "methods": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/05_methods.md"
+      ]
+    },
+    "acknowledgements": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/06_acknowledgements.md"
+      ]
+    },
+    "funding": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/07_funding_and_statements.md#funding"
+      ]
+    },
+    "data_availability": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/07_funding_and_statements.md#data-availability"
+      ]
+    },
+    "code_availability": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/07_funding_and_statements.md#code-availability"
+      ]
+    },
+    "data_and_code_availability": {
+      "status": "mapped",
+      "source": [
+        "manuscript/sections/07_funding_and_statements.md#data-and-code-availability"
+      ],
+      "maps_from": [
+        "data_availability",
+        "code_availability"
+      ]
+    },
+    "data_and_materials_availability": {
+      "status": "mapped",
+      "source": [
+        "manuscript/sections/07_funding_and_statements.md#data-and-materials-availability"
+      ],
+      "maps_from": [
+        "data_availability",
+        "code_availability"
+      ]
+    },
+    "author_contributions": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/07_funding_and_statements.md#author-contributions"
+      ]
+    },
+    "competing_interests": {
+      "status": "available",
+      "source": [
+        "manuscript/sections/07_funding_and_statements.md#competing-interests"
+      ]
+    },
+    "main_text": {
+      "status": "generated",
+      "source": [
+        "manuscript/index.md plus included section files"
+      ]
+    },
+    "references": {
+      "status": "generated",
+      "source": [
+        "references/library.bib"
+      ]
+    },
+    "highlights": {
+      "status": "available",
+      "source": [
+        "manuscript/frontmatter/highlights.md"
+      ]
+    },
+    "graphical_abstract": {
+      "status": "available",
+      "source": [
+        "manuscript/frontmatter/graphical_abstract.md"
+      ]
+    },
+    "star_methods": {
+      "status": "mapped",
+      "source": [
+        "manuscript/sections/05_methods.md"
+      ],
+      "maps_from": [
+        "methods"
+      ]
+    },
+    "key_resources_table": {
+      "status": "available",
+      "source": [
+        "tables/key_resources/key_resources_table.md"
+      ]
+    }
+  },
+  "special_assets": {
+    "source_data": {
+      "status": "available",
+      "source": [
+        "figures/source_data/"
+      ]
+    },
+    "extended_data": {
+      "status": "available",
+      "source": [
+        "manuscript/supplementary/extended_data/README.md"
+      ]
+    },
+    "graphical_abstract": {
+      "status": "available",
+      "source": [
+        "manuscript/frontmatter/graphical_abstract.md"
+      ]
+    },
+    "supplemental_figures": {
+      "status": "available",
+      "source": [
+        "manuscript/supplementary/supplemental_figures/README.md"
+      ]
+    },
+    "key_resources_table": {
+      "status": "available",
+      "source": [
+        "tables/key_resources/key_resources_table.md"
+      ]
+    },
+    "supplementary_materials": {
+      "status": "available",
+      "source": [
+        "manuscript/supplementary/science_package/README.md"
+      ]
+    },
+    "anonymization_check": {
+      "status": "available",
+      "source": [
+        "workflows/release/anonymization_check.md"
+      ]
+    },
+    "supplemental_appendix": {
+      "status": "available",
+      "source": [
+        "manuscript/supplementary/conference_appendix/README.md"
+      ]
+    }
+  }
+}

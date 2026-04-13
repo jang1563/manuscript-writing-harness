@@ -1,0 +1,25 @@
+model,display_order,bin_center,sample_fraction,sample_count,label_bin,ece,max_calibration_gap,brier_score
+Foundation model,1,0.05,0.05,50,no,0.018,0.04,0.092
+Foundation model,1,0.15,0.09,90,no,0.018,0.04,0.092
+Foundation model,1,0.25,0.14,140,no,0.018,0.04,0.092
+Foundation model,1,0.35,0.18,180,no,0.018,0.04,0.092
+Foundation model,1,0.45,0.19,190,no,0.018,0.04,0.092
+Foundation model,1,0.55,0.16,160,no,0.018,0.04,0.092
+Foundation model,1,0.7,0.12,120,no,0.018,0.04,0.092
+Foundation model,1,0.9,0.07,70,yes,0.018,0.04,0.092
+Hybrid GNN,2,0.05,0.06,60,no,0.071,0.14,0.121
+Hybrid GNN,2,0.15,0.1,100,no,0.071,0.14,0.121
+Hybrid GNN,2,0.25,0.15,150,no,0.071,0.14,0.121
+Hybrid GNN,2,0.35,0.19,190,no,0.071,0.14,0.121
+Hybrid GNN,2,0.45,0.18,180,no,0.071,0.14,0.121
+Hybrid GNN,2,0.55,0.14,140,no,0.071,0.14,0.121
+Hybrid GNN,2,0.7,0.1,100,no,0.071,0.14,0.121
+Hybrid GNN,2,0.9,0.08,80,yes,0.071,0.14,0.121
+CNN baseline,3,0.05,0.07,70,no,0.128,0.2,0.149
+CNN baseline,3,0.15,0.12,120,no,0.128,0.2,0.149
+CNN baseline,3,0.25,0.16,160,no,0.128,0.2,0.149
+CNN baseline,3,0.35,0.18,180,no,0.128,0.2,0.149
+CNN baseline,3,0.45,0.16,160,no,0.128,0.2,0.149
+CNN baseline,3,0.55,0.12,120,no,0.128,0.2,0.149
+CNN baseline,3,0.7,0.1,100,no,0.128,0.2,0.149
+CNN baseline,3,0.9,0.09,90,yes,0.128,0.2,0.149

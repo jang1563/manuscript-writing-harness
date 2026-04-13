@@ -1,0 +1,20 @@
+{
+  "figure_id": "figure_05_pathway_enrichment_dot",
+  "claim_ids": [
+    "claim_pathway_effect_sizes_align_with_directionality"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_pathway_effect_sizes_align_with_directionality",
+      "statement": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs, and the panel can be sourced directly from the active fgsea export rather than a hand-maintained summary table.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_05_panel_a.csv",
+      "evidence_type": "annotated_pathway_dot_plot"
+    }
+  ],
+  "design_notes": [
+    "Dot size should encode pathway gene count, and color should encode directionality.",
+    "Numeric significance labels should remain legible without overpowering the pathway names.",
+    "When generated input is present, provenance should remain visible so reviewers can trace the panel back to the active fgsea profile."
+  ]
+}

@@ -1,0 +1,21 @@
+### Figure 3. Mean-Abundance Differential-Signal Summary
+
+```{figure} assets/generated/figure_03_ma_plot.png
+:alt: Single-panel MA plot showing mean abundance versus log2 fold change with a zero-centered reference line and selected direct labels for sentinel genes.
+:width: 100%
+
+Abundance-aware differential-signal figure rendered from the synced manuscript preview asset. The canonical review surface compares the Python and R renderers side by side.
+```
+
+Figure legend:
+
+The MA plot keeps abundance context visible while highlighting the directional shift of sentinel interferon-response genes and the opposing depletion of proliferative markers.
+
+Audit artifacts:
+
+- `figures/output/review/index.html`
+- `figures/output/python/figure_03_ma_plot.svg`
+- `figures/output/r/figure_03_ma_plot.svg`
+- `figures/fact_sheets/figure_03_ma_plot.json`
+- `figures/plans/visualization_plan.json`
+- `figures/source_data/figure_03_panel_a.csv`

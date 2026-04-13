@@ -1,0 +1,4 @@
+model,display_order,ece,max_calibration_gap,brier_score
+Foundation model,1,0.018,0.040,0.092
+Hybrid GNN,2,0.071,0.140,0.121
+CNN baseline,3,0.128,0.200,0.149

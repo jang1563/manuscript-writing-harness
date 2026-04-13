@@ -1,0 +1,283 @@
+{
+  "claim_nodes": [
+    {
+      "id": "claim_response_kinetics",
+      "section": "results"
+    },
+    {
+      "id": "claim_endpoint_shift",
+      "section": "results"
+    },
+    {
+      "id": "claim_condition_drives_primary_sample_separation",
+      "section": "results"
+    },
+    {
+      "id": "claim_high_abundance_interferon_shift",
+      "section": "results"
+    },
+    {
+      "id": "claim_interferon_gene_activation",
+      "section": "results"
+    },
+    {
+      "id": "claim_cell_cycle_pathway_suppression",
+      "section": "results"
+    },
+    {
+      "id": "claim_pathway_effect_sizes_align_with_directionality",
+      "section": "results"
+    },
+    {
+      "id": "claim_foundation_model_improves_discrimination",
+      "section": "results"
+    },
+    {
+      "id": "claim_foundation_model_retains_precision_under_imbalance",
+      "section": "results"
+    },
+    {
+      "id": "claim_foundation_model_best_calibrated",
+      "section": "results"
+    },
+    {
+      "id": "claim_high_confidence_support_is_not_tail_only",
+      "section": "results"
+    },
+    {
+      "id": "claim_foundation_model_optimizes_stably",
+      "section": "results"
+    },
+    {
+      "id": "claim_foundation_model_reaches_higher_validation_auroc",
+      "section": "results"
+    },
+    {
+      "id": "claim_errors_are_localized_to_adjacent_states",
+      "section": "results"
+    },
+    {
+      "id": "claim_terminal_states_remain_distinct",
+      "section": "results"
+    },
+    {
+      "id": "claim_model_relies_on_biologically_salient_features",
+      "section": "results"
+    },
+    {
+      "id": "claim_signed_feature_effects_align_with_domain_expectation",
+      "section": "results"
+    },
+    {
+      "id": "claim_context_encoder_and_fusion_drive_primary_performance",
+      "section": "results"
+    },
+    {
+      "id": "claim_calibration_loss_mainly_affects_probability_quality",
+      "section": "results"
+    },
+    {
+      "id": "claim_model_ranking",
+      "section": "results"
+    }
+  ],
+  "reference_nodes": [
+    {
+      "id": "abdiWilliams2010PCA",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "davisGoadrich2006PRROC",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "fgseaBioconductorPackage",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "guoEtAl2017Calibration",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "liptonSteinhardt2018TroublingTrends",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "loveEtAl2014DESeq2",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "lundbergLee2017SHAP",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "niculescuMizilCaruana2005Probabilities",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "smithTopin2017SuperConvergence",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "stehman1997ClassificationAccuracy",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "subramanianEtAl2005GSEA",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "weissgerberEtAl2015BeyondBar",
+      "source": "references/library.bib",
+      "status": "accepted"
+    },
+    {
+      "id": "yuEtAl2012ClusterProfiler",
+      "source": "references/library.bib",
+      "status": "accepted"
+    }
+  ],
+  "edges": [
+    {
+      "from": "claim_calibration_loss_mainly_affects_probability_quality",
+      "to": "guoEtAl2017Calibration",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_cell_cycle_pathway_suppression",
+      "to": "fgseaBioconductorPackage",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_cell_cycle_pathway_suppression",
+      "to": "subramanianEtAl2005GSEA",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_cell_cycle_pathway_suppression",
+      "to": "yuEtAl2012ClusterProfiler",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_condition_drives_primary_sample_separation",
+      "to": "abdiWilliams2010PCA",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_context_encoder_and_fusion_drive_primary_performance",
+      "to": "liptonSteinhardt2018TroublingTrends",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_endpoint_shift",
+      "to": "weissgerberEtAl2015BeyondBar",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_errors_are_localized_to_adjacent_states",
+      "to": "stehman1997ClassificationAccuracy",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_foundation_model_best_calibrated",
+      "to": "guoEtAl2017Calibration",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_foundation_model_best_calibrated",
+      "to": "niculescuMizilCaruana2005Probabilities",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_foundation_model_improves_discrimination",
+      "to": "davisGoadrich2006PRROC",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_foundation_model_optimizes_stably",
+      "to": "smithTopin2017SuperConvergence",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_foundation_model_reaches_higher_validation_auroc",
+      "to": "smithTopin2017SuperConvergence",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_foundation_model_retains_precision_under_imbalance",
+      "to": "davisGoadrich2006PRROC",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_high_abundance_interferon_shift",
+      "to": "loveEtAl2014DESeq2",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_high_confidence_support_is_not_tail_only",
+      "to": "guoEtAl2017Calibration",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_interferon_gene_activation",
+      "to": "fgseaBioconductorPackage",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_interferon_gene_activation",
+      "to": "subramanianEtAl2005GSEA",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_interferon_gene_activation",
+      "to": "yuEtAl2012ClusterProfiler",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_model_ranking",
+      "to": "davisGoadrich2006PRROC",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_model_relies_on_biologically_salient_features",
+      "to": "lundbergLee2017SHAP",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_pathway_effect_sizes_align_with_directionality",
+      "to": "fgseaBioconductorPackage",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_pathway_effect_sizes_align_with_directionality",
+      "to": "yuEtAl2012ClusterProfiler",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_response_kinetics",
+      "to": "weissgerberEtAl2015BeyondBar",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_signed_feature_effects_align_with_domain_expectation",
+      "to": "lundbergLee2017SHAP",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_terminal_states_remain_distinct",
+      "to": "stehman1997ClassificationAccuracy",
+      "relation": "background_context"
+    }
+  ]
+}

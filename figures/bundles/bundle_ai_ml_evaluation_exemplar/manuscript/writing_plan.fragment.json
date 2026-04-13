@@ -1,0 +1,10 @@
+{
+  "display_item_refs": [
+    "figure_06_roc_pr_compound",
+    "figure_07_calibration_reliability",
+    "figure_08_training_dynamics",
+    "figure_09_confusion_matrix_normalized",
+    "figure_10_feature_importance_summary",
+    "figure_11_ablation_summary"
+  ]
+}

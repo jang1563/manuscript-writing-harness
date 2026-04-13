@@ -1,0 +1,32 @@
+identification:
+  databases_searched:
+    PubMed: 90
+    Europe PMC: 90
+  total_identified: 180
+  duplicates_removed: 30
+  records_after_dedup: 150
+screening:
+  title_abstract:
+    screened: 150
+    excluded: 110
+    included: 40
+    exclusion_reasons:
+      wrong intervention: 8
+      not primary research: 13
+      wrong outcome: 12
+      duplicate publication: 18
+      animal study only: 16
+      wrong population: 12
+      pediatric only: 15
+      review or commentary: 16
+  full_text:
+    assessed: 40
+    excluded: 15
+    included: 25
+    exclusion_reasons:
+      conference abstract only: 4
+      overlapping cohort: 4
+      insufficient outcome data: 3
+      wrong comparator: 3
+      wrong study design: 1
+included_in_synthesis: 25

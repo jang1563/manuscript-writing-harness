@@ -1,0 +1,104 @@
+{
+  "nodes": [
+    {
+      "id": "idea_summary",
+      "type": "input_artifact"
+    },
+    {
+      "id": "experimental_log",
+      "type": "input_artifact"
+    },
+    {
+      "id": "display_item_map",
+      "type": "planning_artifact",
+      "path": "manuscript/plans/display_item_map.json"
+    },
+    {
+      "id": "citation_graph",
+      "type": "planning_artifact",
+      "path": "manuscript/plans/citation_graph.json"
+    },
+    {
+      "id": "claim_packets",
+      "type": "planning_artifact",
+      "path": "manuscript/plans/claim_packets.json"
+    },
+    {
+      "id": "section_briefs",
+      "type": "planning_artifact",
+      "path": "manuscript/drafts/section_briefs.json"
+    },
+    {
+      "id": "section_drafts",
+      "type": "planning_artifact",
+      "path": "manuscript/drafts/section_drafts.json"
+    },
+    {
+      "id": "section_prose",
+      "type": "planning_artifact",
+      "path": "manuscript/drafts/section_prose.json"
+    },
+    {
+      "id": "section_prose_apply",
+      "type": "manuscript_projection",
+      "path": "manuscript/sections/02_introduction.md"
+    }
+  ],
+  "edges": [
+    {
+      "from": "idea_summary",
+      "to": "display_item_map",
+      "relation": "shapes_claim_structure"
+    },
+    {
+      "from": "experimental_log",
+      "to": "display_item_map",
+      "relation": "supplies_display_item_evidence"
+    },
+    {
+      "from": "idea_summary",
+      "to": "citation_graph",
+      "relation": "determines_background_questions"
+    },
+    {
+      "from": "display_item_map",
+      "to": "claim_packets",
+      "relation": "supplies_display_backed_claims"
+    },
+    {
+      "from": "citation_graph",
+      "to": "claim_packets",
+      "relation": "supplies_allowed_reference_links"
+    },
+    {
+      "from": "claim_packets",
+      "to": "section_briefs",
+      "relation": "packages_display_backed_results_for_drafting"
+    },
+    {
+      "from": "citation_graph",
+      "to": "section_briefs",
+      "relation": "sets_reference_readiness_for_section_briefs"
+    },
+    {
+      "from": "section_briefs",
+      "to": "section_drafts",
+      "relation": "constrains_section_level_draft_structure"
+    },
+    {
+      "from": "claim_packets",
+      "to": "section_drafts",
+      "relation": "supplies_display_backed_result_scaffolds"
+    },
+    {
+      "from": "section_drafts",
+      "to": "section_prose",
+      "relation": "drives_first_pass_draft_text"
+    },
+    {
+      "from": "section_prose",
+      "to": "section_prose_apply",
+      "relation": "projects_generated_text_into_managed_section_blocks"
+    }
+  ]
+}
