@@ -176,6 +176,32 @@ python3 scripts/run_msigdb_profile.py \
   --json
 ```
 
+For a real-project scaffold that pairs an MSigDB study with release metadata placeholders:
+
+```bash
+python3 scripts/scaffold_project_release.py \
+  --project-id my_project \
+  --title "My Project Release" \
+  --species human \
+  --collection H \
+  --json
+
+python3 scripts/check_project_release.py --project my_project --write --json
+python3 scripts/check_release_policy.py --project my_project --write --json
+python3 scripts/check_anonymized_release.py --project my_project --write --json
+python3 scripts/check_project_handoff.py --project my_project --write --json
+```
+
+Exact one-line forms used by scaffold validation:
+
+```bash
+python3 scripts/scaffold_project_release.py --project-id my_project --title "My Project Release" --species human --collection H --json
+python3 scripts/check_project_release.py --project rnaseq_real_project_template --write --json
+python3 scripts/check_release_policy.py --project rnaseq_real_project_template --write --json
+python3 scripts/check_anonymized_release.py --project rnaseq_real_project_template --write --json
+python3 scripts/check_project_handoff.py --project rnaseq_real_project_template --write --json
+```
+
 For study handoff artifacts:
 
 ```bash
@@ -308,3 +334,16 @@ The same CI acceptance sequence can be run locally with:
 3. Wire Zotero auto-export to `references/library.bib`.
 4. Promote the current example outputs into manuscript-cited display items.
 5. Validate the first `nature` and `cell` overlay rules against the example assets.
+
+## License
+
+This project is dual-licensed.
+
+- **Noncommercial use** (academic research, non-profit organizations, students, hobbyists, government institutions): free under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+- **Commercial use** (for-profit companies, commercial products, paid consulting, SaaS): requires a separate commercial license. See [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md) for terms and how to obtain one.
+
+If you are a university researcher, non-profit lab, or government scientist, you can use this software without contacting anyone -- the LICENSE covers your use.
+
+For-profit organizations should review [COMMERCIAL-LICENSE.md](COMMERCIAL-LICENSE.md) before deploying this software internally or building products on top of it.
+
+Third-party components bundled or referenced by this project are listed with their respective licenses in [NOTICE](NOTICE).

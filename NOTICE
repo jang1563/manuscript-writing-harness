@@ -1,0 +1,56 @@
+manuscript-writing-harness
+Copyright (c) jang1563 (https://github.com/jang1563)
+
+This product is licensed under the PolyForm Noncommercial License 1.0.0
+(see LICENSE) for noncommercial use, with separate commercial licensing
+available (see COMMERCIAL-LICENSE.md).
+
+This product bundles or depends on third-party components, each
+distributed under its own license. Notable components:
+
+----------------------------------------------------------------------
+CSL Citation Styles (references/csl/nature.csl, cell.csl, science.csl)
+----------------------------------------------------------------------
+
+CSL style files distributed under the
+Creative Commons Attribution-ShareAlike 3.0 License
+https://creativecommons.org/licenses/by-sa/3.0/
+
+Source: Zotero Style Repository -- https://www.zotero.org/styles
+Original style authors are credited within each .csl file's <info>
+block. Modifications, if any, are noted in those files.
+
+----------------------------------------------------------------------
+Runtime dependencies (declared in env/)
+----------------------------------------------------------------------
+
+Python:
+  - mystmd                      (MIT)
+  - matplotlib                  (PSF-based)
+  - PyYAML                      (MIT)
+  - adjustText                  (MIT)
+  - pytest, pytest-mpl          (MIT)
+
+R:
+  - ggplot2, patchwork, svglite, ragg, ggrepel, yaml, jsonlite,
+    systemfonts, testthat, vdiffr  (MIT / GPL-2 / GPL-3 -- see each
+    package's DESCRIPTION on CRAN)
+
+Node.js:
+  - mystmd CLI and template ecosystem (MIT)
+
+These dependencies are used as installed via standard package managers
+and are not redistributed in this repository.
+
+----------------------------------------------------------------------
+Standards and reporting frameworks referenced (not bundled)
+----------------------------------------------------------------------
+
+  - PRISMA 2020 reporting checklist (https://www.prisma-statement.org)
+  - PROSPERO protocol registration guidance
+  - Cochrane Handbook for Systematic Reviews of Interventions
+  - RoB 2 / ROBINS-I risk-of-bias frameworks
+
+These frameworks are referenced for compliance and reporting structure.
+No copyrighted text from these standards is included; users are
+responsible for accessing the official documents directly.

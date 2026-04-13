@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "manuscript-writing-harness"
+abstract: >-
+  A MyST-first manuscript writing harness providing semantic source,
+  venue-agnostic overlays, a class-based figure library, a systematic
+  review pipeline (PRISMA 2020), and citation tooling for high-quality
+  scientific papers.
+type: software
+authors:
+  - alias: jang1563
+    website: "https://github.com/jang1563"
+repository-code: "https://github.com/jang1563/manuscript-writing-harness"
+url: "https://github.com/jang1563/manuscript-writing-harness"
+license: "LicenseRef-PolyForm-Noncommercial-1.0.0"
+license-url: "https://polyformproject.org/licenses/noncommercial/1.0.0"
+keywords:
+  - manuscript-authoring
+  - myst-markdown
+  - scientific-writing
+  - reproducibility
+  - systematic-review
+  - prisma-2020
+  - scientific-figures
+  - bibliography
+  - citation-management
+  - venue-overlay
