@@ -2,9 +2,16 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import subprocess
+import sys
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+import check_scaffold  # noqa: E402
 
 
 def test_figures_readme_uses_repo_safe_links() -> None:
@@ -31,3 +38,21 @@ def test_figure_manifests_do_not_embed_absolute_font_paths() -> None:
         assert "/" not in public_path
         assert "/Users/" not in public_path
         assert "\\" not in public_path
+
+
+def test_scaffold_required_paths_are_tracked_sources() -> None:
+    tracked_paths = set(
+        subprocess.run(
+            ["git", "ls-files"],
+            cwd=REPO_ROOT,
+            text=True,
+            capture_output=True,
+            check=True,
+        ).stdout.splitlines()
+    )
+
+    untracked_required_paths = sorted(
+        path for path in check_scaffold.required_paths() if path not in tracked_paths
+    )
+
+    assert untracked_required_paths == []
