@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+from datetime import date
 import json
 from pathlib import Path
 from typing import Any
@@ -22,6 +23,8 @@ CONTENT_REGISTRY_PATH = REPO_ROOT / "manuscript" / "content_registry.json"
 
 READY_STATUSES = {"available", "generated", "mapped"}
 BLOCKING_STATUSES = {"planned"}
+DEFAULT_STALE_AFTER_DAYS = 180
+CURRENT_VERIFICATION_STATUS = "current"
 
 
 def _strip_anchor(value: str) -> str:
@@ -43,6 +46,91 @@ def _relative_or_absolute(path: Path, repo_root: Path) -> str:
         return str(path.relative_to(repo_root))
     except ValueError:
         return str(path)
+
+
+def _today() -> date:
+    return date.today()
+
+
+def _evaluate_verification(config: dict[str, Any]) -> dict[str, Any]:
+    verification = config.get("verification", {})
+    if not isinstance(verification, dict):
+        verification = {}
+
+    last_verified_raw = str(verification.get("last_verified", "")).strip()
+    source_summary = str(verification.get("source_summary", "")).strip()
+    stale_after_days = verification.get("stale_after_days", DEFAULT_STALE_AFTER_DAYS)
+    final_confirmation_required = bool(verification.get("final_confirmation_required", False))
+
+    issues: list[str] = []
+    days_since_verification: int | None = None
+    stale = False
+    last_verified: str | None = None
+
+    if not isinstance(stale_after_days, int) or stale_after_days < 0:
+        issues.append("verification.stale_after_days must be a non-negative integer")
+        stale_after_days = DEFAULT_STALE_AFTER_DAYS
+
+    if last_verified_raw:
+        try:
+            parsed = date.fromisoformat(last_verified_raw)
+            last_verified = parsed.isoformat()
+            today = _today()
+            if parsed > today:
+                issues.append("verification.last_verified must not be in the future")
+            else:
+                days_since_verification = (today - parsed).days
+                stale = days_since_verification > stale_after_days
+        except ValueError:
+            issues.append("verification.last_verified must use YYYY-MM-DD format")
+    else:
+        issues.append("verification.last_verified is required")
+
+    if not source_summary:
+        issues.append("verification.source_summary is required")
+
+    if issues:
+        status = "invalid"
+    elif stale:
+        status = "stale"
+    elif final_confirmation_required:
+        status = "needs_submission_confirmation"
+    else:
+        status = "current"
+
+    return {
+        "status": status,
+        "last_verified": last_verified,
+        "days_since_verification": days_since_verification,
+        "stale_after_days": stale_after_days,
+        "stale": stale,
+        "final_confirmation_required": final_confirmation_required,
+        "source_summary": source_summary,
+        "issues": issues,
+    }
+
+
+def build_submission_gate(reports: list[dict[str, Any]]) -> dict[str, Any]:
+    """Summarize whether venue verification is current enough for real submission."""
+
+    failed_venues: list[dict[str, str]] = []
+    for report in reports:
+        verification_status = str(report.get("verification", {}).get("status", "unknown"))
+        if verification_status != CURRENT_VERIFICATION_STATUS:
+            failed_venues.append(
+                {
+                    "venue": str(report.get("venue")),
+                    "display_name": str(report.get("display_name", report.get("venue"))),
+                    "verification_status": verification_status,
+                }
+            )
+
+    return {
+        "status": "ready" if not failed_venues else "blocked",
+        "required_verification_status": CURRENT_VERIFICATION_STATUS,
+        "failed_count": len(failed_venues),
+        "failed_venues": failed_venues,
+    }
 
 
 def _normalize_requirement_items(items: list[str], registry_group: dict[str, Any]) -> list[dict[str, Any]]:
@@ -102,13 +190,18 @@ def evaluate_venue(venue_id: str, repo_root: Path = REPO_ROOT) -> dict[str, Any]
     asset_items = _normalize_requirement_items(special_assets, assets_registry)
     checklist_path = venue_checklist_path(venue_id)
     config_path = VENUE_CONFIG_DIR / f"{venue_id}.yml"
+    verification = _evaluate_verification(config)
+    verification_blocking_issues = [
+        f"invalid verification metadata: {issue}"
+        for issue in verification.get("issues", [])
+    ] if verification.get("status") == "invalid" else []
 
     blocking_items = [
         item["id"]
         for item in section_items + asset_items
         if item["blocking"]
     ]
-    readiness = "ready" if not blocking_items else "blocked"
+    readiness = "ready" if not (blocking_items or verification_blocking_issues) else "blocked"
 
     package_paths = [
         str(config_path.relative_to(repo_root)),
@@ -121,11 +214,14 @@ def evaluate_venue(venue_id: str, repo_root: Path = REPO_ROOT) -> dict[str, Any]
 
     return {
         "venue": venue_id,
+        "display_name": str(config.get("name", venue_id)),
         "readiness": readiness,
         "blocking_items": blocking_items,
+        "blocking_issues": verification_blocking_issues,
         "required_sections": section_items,
         "special_assets": asset_items,
         "notes": list(config.get("notes", [])),
+        "verification": verification,
         "config_path": str(config_path.relative_to(repo_root)),
         "checklist_path": str(checklist_path.relative_to(repo_root)),
         "package_paths": package_paths,
@@ -137,7 +233,9 @@ def build_submission_manifest(venue_id: str, repo_root: Path = REPO_ROOT) -> dic
     return {
         "package_id": f"{venue_id}_submission_package_v1",
         "venue": venue_id,
+        "display_name": report["display_name"],
         "readiness": report["readiness"],
+        "verification": report["verification"],
         "config_path": report["config_path"],
         "checklist_path": report["checklist_path"],
         "required_sections": [
@@ -162,15 +260,32 @@ def build_submission_manifest(venue_id: str, repo_root: Path = REPO_ROOT) -> dic
 
 def render_readiness_markdown(report: dict[str, Any]) -> str:
     lines = [
-        f"# {report['venue'].capitalize()} Venue Readiness",
+        f"# {report.get('display_name', report['venue'].capitalize())} Venue Readiness",
         "",
         f"- readiness: `{report['readiness']}`",
         f"- config: `{report['config_path']}`",
         f"- checklist: `{report['checklist_path']}`",
+        f"- verification: `{report['verification']['status']}`",
         "",
-        "## Required Sections",
+        "## Verification",
         "",
+        f"- status: `{report['verification']['status']}`",
+        f"- last_verified: `{report['verification']['last_verified']}`",
+        f"- stale_after_days: `{report['verification']['stale_after_days']}`",
+        f"- final_confirmation_required: `{report['verification']['final_confirmation_required']}`",
+        f"- source_summary: {report['verification']['source_summary']}",
     ]
+    if report["verification"]["days_since_verification"] is not None:
+        lines.append(f"- days_since_verification: `{report['verification']['days_since_verification']}`")
+    if report["verification"]["issues"]:
+        lines.append("- issues:")
+        for issue in report["verification"]["issues"]:
+            lines.append(f"  - {issue}")
+    if report["blocking_issues"]:
+        lines.extend(["", "## Blocking Issues", ""])
+        for issue in report["blocking_issues"]:
+            lines.append(f"- {issue}")
+    lines.extend(["", "## Required Sections", ""])
     for item in report["required_sections"]:
         lines.append(f"- `{item['id']}`: `{item['status']}`")
         for source in item["sources"]:

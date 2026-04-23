@@ -6,16 +6,18 @@ date-released: '2026-04-13'
 type: software
 authors:
 - family-names: Team
-  given-names: Manuscript Harness
-  affiliation: Manuscript Writing Harness Project
+  given-names: Multi-Agent Manuscript System
+  affiliation: Multi-Agent Manuscript System Project
 keywords:
 - manuscript
 - scientific writing
+- multi-agent systems
 - reproducibility
 - systematic review
 - scientific figures
-abstract: Frozen demonstration release for the manuscript writing harness, including
-  manuscript, figure, evidence, reference, and pathway-analysis artifacts.
+abstract: Frozen demonstration release for the artifact-driven multi-agent manuscript
+  system, including manuscript, figure, evidence, reference, pathway-analysis, and
+  agent-architecture artifacts.
 identifiers:
 - type: other
   value: integrated_demo_release_deposit_metadata_v1

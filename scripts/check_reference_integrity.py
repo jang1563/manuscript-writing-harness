@@ -16,6 +16,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--strict", action="store_true", help="Exit non-zero unless readiness is fully ready.")
     parser.add_argument("--json", action="store_true", help="Emit JSON instead of markdown.")
     parser.add_argument("--sync-graph", action="store_true", help="Synchronize manuscript/plans/citation_graph.json claim nodes from display items.")
+    parser.add_argument(
+        "--require-confirmed-manuscript-bibliography",
+        action="store_true",
+        help="Exit non-zero unless the tracked bibliography export is confirmed for the real manuscript.",
+    )
     return parser.parse_args()
 
 
@@ -37,7 +42,21 @@ def main() -> int:
             print(f"- `{writes['report_md']}`")
             print(f"- `{writes['report_json']}`")
             print(f"- `{writes['manifest']}`")
+        if args.require_confirmed_manuscript_bibliography:
+            print()
+            print("Bibliography scope gate:")
+            print(f"- status: `{report['bibliography_scope_gate']['status']}`")
+            print(
+                "- required_manuscript_scope_status: "
+                f"`{report['bibliography_scope_gate']['required_manuscript_scope_status']}`"
+            )
+            print(
+                "- current_manuscript_scope_status: "
+                f"`{report['bibliography_scope_gate']['current_manuscript_scope_status']}`"
+            )
 
+    if args.require_confirmed_manuscript_bibliography and report["bibliography_scope_gate"]["status"] != "ready":
+        return 1
     if args.strict:
         return 0 if report["readiness"] == "ready" else 1
     return 0 if report["readiness"] != "blocked" else 1

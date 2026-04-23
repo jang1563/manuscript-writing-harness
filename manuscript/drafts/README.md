@@ -2,6 +2,9 @@
 
 This directory stores generated drafting aids that connect manuscript claims to display items, fact sheets, legends, and citation coverage.
 
+Before regenerating these artifacts for a real manuscript, add topic and claim notes to
+`manuscript/plans/author_content_inputs.json`.
+
 Current primary artifact:
 
 - `results_claim_packets.md`

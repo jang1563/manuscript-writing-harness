@@ -1,1 +1,1 @@
-"""Script helpers for the manuscript harness."""
+"""Script helpers for the multi-agent manuscript system."""

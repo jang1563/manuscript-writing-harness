@@ -1,0 +1,134 @@
+{
+  "suite_id": "paperwritingbench_style_heldout_v1",
+  "definition_type": "bundle",
+  "adapter_type": "paperwritingbench_style_bundle",
+  "benchmark_family": "paperwritingbench_style_bundle",
+  "reference_benchmark": "PaperWritingBench",
+  "description": "Held-out PaperWritingBench-style sample package for the multi-agent manuscript system that shifts emphasis from opening-response claims to model calibration and ranking evidence later in Results.",
+  "notes": [
+    "This is a tracked held-out sample package, not an official PaperWritingBench release.",
+    "The held-out case exercises a different real claim id so the benchmark matrix covers more than the opening response-kinetics path."
+  ],
+  "suite_path": "benchmarks/bundles/paperwritingbench_style_heldout_v1.json",
+  "case_count": 2,
+  "passed_case_count": 2,
+  "failed_case_count": 0,
+  "overall_score": 100.0,
+  "readiness": "ready",
+  "failed_case_ids": [],
+  "cases": [
+    {
+      "case_id": "heldout_bundle_calibration_authoring",
+      "kind": "author_input_propagation",
+      "description": "A held-out PaperWritingBench-style case should propagate a calibration-focused story into the Results section without relying on the original response-kinetics demo fixture.",
+      "dimension": "structured_authoring",
+      "weight": 0.7,
+      "status": "pass",
+      "score": 100.0,
+      "check_count": 7,
+      "passed_check_count": 7,
+      "checks": [
+        {
+          "label": "topic",
+          "passed": true,
+          "actual": "Calibration-aware foundation model ranking for imbalanced disease states",
+          "expected": "Calibration-aware foundation model ranking for imbalanced disease states"
+        },
+        {
+          "label": "claim_coverage_status",
+          "passed": true,
+          "actual": "ready",
+          "expected": "ready"
+        },
+        {
+          "label": "section_briefs_status",
+          "passed": true,
+          "actual": "ready",
+          "expected": "ready"
+        },
+        {
+          "label": "section_drafts_status",
+          "passed": true,
+          "actual": "ready",
+          "expected": "ready"
+        },
+        {
+          "label": "results_section_note_contains",
+          "passed": true,
+          "actual": "Lead the mid-results narrative with the calibration-quality comparison.",
+          "expected_contains": "calibration-quality comparison"
+        },
+        {
+          "label": "claim_calibration_loss_mainly_affects_probability_quality_claim_packet_note_contains",
+          "passed": true,
+          "actual": "Use this to anchor the probability-quality subsection before the broader ranking synthesis.",
+          "expected_contains": "probability-quality subsection"
+        },
+        {
+          "label": "claim_calibration_loss_mainly_affects_probability_quality_draft_subsection_note_contains",
+          "passed": true,
+          "actual": "Use this to anchor the probability-quality subsection before the broader ranking synthesis.",
+          "expected_contains": "probability-quality subsection"
+        }
+      ],
+      "metrics": {
+        "topic": "Calibration-aware foundation model ranking for imbalanced disease states",
+        "claim_coverage_status": "ready",
+        "section_briefs_status": "ready",
+        "section_drafts_status": "ready",
+        "section_note": "Lead the mid-results narrative with the calibration-quality comparison.",
+        "claim_packet_note": "Use this to anchor the probability-quality subsection before the broader ranking synthesis.",
+        "draft_subsection_note": "Use this to anchor the probability-quality subsection before the broader ranking synthesis."
+      },
+      "source_materials": {
+        "venue_template": "icml",
+        "idea_summary": {
+          "title": "Calibration-aware foundation model ranking for imbalanced disease states",
+          "objective": "Use the model-comparison subsection to foreground probability quality before the broader ranking synthesis."
+        },
+        "experimental_log": "The held-out benchmark case emphasizes comparative model behavior under class imbalance.\nKeep the Results narrative focused on calibration quality before summarizing global ranking.",
+        "guidelines": "Prioritize the calibration-focused evidence before broader synthesis claims.\nAvoid rewriting the opening response-kinetics framing from the original demo bundle."
+      },
+      "adapter_type": "paperwritingbench_style_bundle"
+    },
+    {
+      "case_id": "heldout_bundle_unknown_claim_guardrail",
+      "kind": "author_input_error",
+      "description": "The held-out PaperWritingBench-style path should preserve the same guardrail behavior when its mapping points to a claim id that does not exist in the repo.",
+      "dimension": "guardrails",
+      "weight": 0.3,
+      "status": "pass",
+      "score": 100.0,
+      "check_count": 1,
+      "passed_check_count": 1,
+      "checks": [
+        {
+          "label": "expected_error_contains",
+          "passed": true,
+          "actual": "author_content_inputs.json contains unknown claim_ids: claim_not_in_repo_calibration. Decide whether to add or replace the underlying fact-sheet/display-item claim before generating drafts.",
+          "expected_contains": "unknown claim_ids"
+        }
+      ],
+      "metrics": {
+        "error_message": "author_content_inputs.json contains unknown claim_ids: claim_not_in_repo_calibration. Decide whether to add or replace the underlying fact-sheet/display-item claim before generating drafts."
+      },
+      "source_materials": {
+        "venue_template": "icml",
+        "idea_summary": {
+          "title": "Held-out calibration guardrail case",
+          "objective": "Preserve the unknown-claim stop condition even when the package otherwise looks valid."
+        },
+        "experimental_log": "This negative case mirrors a real pre-writing package shape but points to an invalid claim id.",
+        "guidelines": "The importer and benchmark adapter should accept the package shape but the manuscript system must still block generation on the invalid claim reference."
+      },
+      "adapter_type": "paperwritingbench_style_bundle"
+    }
+  ],
+  "package_paths": [
+    "benchmarks/bundles/paperwritingbench_style_heldout_v1.json",
+    "scripts/check_harness_benchmark.py",
+    "scripts/harness_benchmark.py",
+    "tests/manuscript/test_harness_benchmark.py"
+  ],
+  "repo_root": "."
+}

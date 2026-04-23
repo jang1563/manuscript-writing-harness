@@ -1,0 +1,72 @@
+{
+  "suite_id": "paper_writing_bench_like_internal_v1",
+  "benchmark_family": "paper_writing_bench_like_internal",
+  "reference_benchmark": "PaperWritingBench",
+  "description": "Internal structured-input benchmark for the artifact-driven multi-agent manuscript system. It scores the current repo against stable drafting, evidence, and guardrail expectations without claiming official external benchmark equivalence.",
+  "notes": [
+    "This suite is inspired by PaperWritingBench's pre-writing-material framing, but it runs entirely on repo-local artifacts.",
+    "The score reflects manuscript-system integrity and harness-substrate guardrails, not human-judged prose quality."
+  ],
+  "cases": [
+    {
+      "case_id": "tracked_demo_readiness",
+      "kind": "repo_readiness",
+      "dimension": "integrated_readiness",
+      "weight": 0.5,
+      "description": "The tracked demo manuscript should remain structurally ready across claim coverage, section scaffolding, references, review evidence, and the cross-cutting audit while still distinguishing real-submission gates from general repo health.",
+      "expect": {
+        "claim_count": 20,
+        "claim_coverage_status": "ready",
+        "section_briefs_status": "ready",
+        "section_drafts_status": "ready",
+        "reference_integrity_status": "ready",
+        "review_evidence_status": "ready",
+        "review_validation_status": "ready",
+        "pre_submission_audit_status": "ready",
+        "submission_gate_status": "blocked",
+        "bibliography_scope_gate_status": "blocked"
+      }
+    },
+    {
+      "case_id": "author_input_propagation",
+      "kind": "author_input_propagation",
+      "dimension": "results_first_authoring",
+      "weight": 0.3,
+      "description": "Author-supplied topic, section framing, and claim-specific notes should propagate cleanly from the author-input file through claim packets, section briefs, and draft scaffolds without breaking readiness.",
+      "author_inputs": {
+        "topic": "Therapy response trajectories in a multimodal benchmark",
+        "section_notes": {
+          "results": "Start the Results with the strongest treatment-response separation."
+        },
+        "claim_notes": {
+          "claim_response_kinetics": "Use this as the opening sentence for the first results subsection."
+        }
+      },
+      "expect": {
+        "topic": "Therapy response trajectories in a multimodal benchmark",
+        "claim_coverage_status": "ready",
+        "section_briefs_status": "ready",
+        "section_drafts_status": "ready",
+        "section_note_section": "results",
+        "section_note_contains": "Start the Results",
+        "claim_note_claim_id": "claim_response_kinetics",
+        "claim_note_contains": "opening sentence"
+      }
+    },
+    {
+      "case_id": "unknown_claim_guardrail",
+      "kind": "author_input_error",
+      "dimension": "guardrails",
+      "weight": 0.2,
+      "description": "The pipeline should fail early and clearly when an author note targets a claim id that is not present in the tracked evidence layer.",
+      "author_inputs": {
+        "topic": "Example topic",
+        "section_notes": {},
+        "claim_notes": {
+          "claim_not_in_repo": "This should stop generation until the claim source is clarified."
+        }
+      },
+      "expect_error_contains": "unknown claim_ids"
+    }
+  ]
+}

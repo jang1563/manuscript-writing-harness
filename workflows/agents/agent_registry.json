@@ -1,0 +1,521 @@
+{
+  "system_id": "manuscript-writing-harness",
+  "display_name": "Multi-Agent Manuscript System",
+  "external_positioning": "Artifact-driven multi-agent manuscript system for scientific writing and submission.",
+  "internal_substrate": "Deterministic harness substrate with tracked artifacts, explicit validators, and compatibility-preserving legacy identifiers.",
+  "orchestration_model": "Artifact-and-validator DAG where specialized agents consume tracked artifacts, write machine-readable outputs, and hand off through deterministic checks rather than unrestricted autonomous execution.",
+  "authoritative_truths": [
+    "manuscript/plans/*.json",
+    "references/library.bib",
+    "references/metadata/bibliography_source.yml",
+    "review/protocol/protocol.yml",
+    "workflows/venue_configs/*.yml",
+    "workflows/release/profiles/profiles.yml",
+    "benchmarks/suites/*.json",
+    "benchmarks/bundles/*.json",
+    "tracked validators in scripts/check_*.py"
+  ],
+  "agents": [
+    {
+      "agent_id": "planning_agent",
+      "display_name": "Planning Agent",
+      "purpose": "Translate display-backed evidence and author guidance into claim packets and readiness-aware planning artifacts.",
+      "implementation_status": "implemented",
+      "runtime_mode": "deterministic",
+      "entrypoints": [
+        "scripts/manuscript_claims.py",
+        "scripts/build_claim_packets.py",
+        "scripts/check_claim_coverage.py"
+      ],
+      "consumes": [
+        "manuscript/plans/author_content_inputs.json",
+        "manuscript/plans/outline.json",
+        "manuscript/plans/display_item_map.json",
+        "references/mappings/claim_reference_map.json",
+        "review/reports/evidence_summary.json"
+      ],
+      "produces": [
+        "manuscript/plans/claim_packets.json",
+        "manuscript/plans/claim_coverage.json",
+        "manuscript/drafts/results_claim_packets.md"
+      ],
+      "validators": [
+        "scripts/check_claim_coverage.py"
+      ],
+      "upstream_agents": [
+        "figure_agent",
+        "review_evidence_agent"
+      ],
+      "downstream_agents": [
+        "literature_grounding_agent",
+        "section_writing_agent",
+        "submission_readiness_agent",
+        "evaluation_agent"
+      ],
+      "authoritative_outputs": [
+        "manuscript/plans/claim_packets.json",
+        "manuscript/plans/claim_coverage.json"
+      ],
+      "public_description": "Keeps result planning tied to tracked display items, author notes, and readiness constraints before narrative prose is expanded."
+    },
+    {
+      "agent_id": "figure_agent",
+      "display_name": "Figure Agent",
+      "purpose": "Render, bundle, and review display items from tracked figure classes, bundle manifests, and pathway-analysis exports.",
+      "implementation_status": "implemented",
+      "runtime_mode": "deterministic",
+      "entrypoints": [
+        "scripts/figures_bundle.py",
+        "scripts/build_figure_review.py",
+        "scripts/run_msigdb_profile.py"
+      ],
+      "consumes": [
+        "figures/registry/classes.yml",
+        "figures/bundles/bundles.yml",
+        "pathways/configs/fgsea_active.yml",
+        "manuscript/content_registry.json"
+      ],
+      "produces": [
+        "figures/bundles/bundle_bulk_omics_deg_exemplar/manuscript/display_item_map.fragment.json",
+        "figures/bundles/bundle_ai_ml_evaluation_exemplar/manuscript/display_item_map.fragment.json",
+        "figures/output/review/index.html",
+        "pathways/results/active_fgsea/study_dossier.json"
+      ],
+      "validators": [
+        "scripts/figures_bundle.py",
+        "scripts/check_generated_artifacts.py"
+      ],
+      "upstream_agents": [],
+      "downstream_agents": [
+        "planning_agent",
+        "section_writing_agent",
+        "venue_compliance_agent",
+        "release_packaging_agent"
+      ],
+      "authoritative_outputs": [
+        "figures/bundles/bundle_bulk_omics_deg_exemplar/manuscript/display_item_map.fragment.json",
+        "figures/bundles/bundle_ai_ml_evaluation_exemplar/manuscript/display_item_map.fragment.json",
+        "pathways/results/active_fgsea/study_dossier.json"
+      ],
+      "public_description": "Owns figure-class execution, bundle wiring, and pathway-backed display outputs that feed manuscript writing and release packaging."
+    },
+    {
+      "agent_id": "literature_grounding_agent",
+      "display_name": "Literature Grounding Agent",
+      "purpose": "Maintain bibliography integrity, citation graph coverage, and claim-to-reference linkage scaffolds.",
+      "implementation_status": "implemented",
+      "runtime_mode": "deterministic",
+      "entrypoints": [
+        "scripts/reference_integrity.py",
+        "scripts/build_citation_graph.py",
+        "scripts/reference_mapping.py",
+        "scripts/check_reference_integrity.py"
+      ],
+      "consumes": [
+        "references/library.bib",
+        "references/metadata/bibliography_source.yml",
+        "manuscript/plans/claim_packets.json",
+        "manuscript/index.md"
+      ],
+      "produces": [
+        "manuscript/plans/citation_graph.json",
+        "references/mappings/claim_reference_map.json",
+        "references/reports/reference_audit.json"
+      ],
+      "validators": [
+        "scripts/check_reference_integrity.py"
+      ],
+      "upstream_agents": [
+        "planning_agent"
+      ],
+      "downstream_agents": [
+        "section_writing_agent",
+        "venue_compliance_agent",
+        "submission_readiness_agent",
+        "release_packaging_agent"
+      ],
+      "authoritative_outputs": [
+        "references/library.bib",
+        "references/metadata/bibliography_source.yml",
+        "manuscript/plans/citation_graph.json",
+        "references/mappings/claim_reference_map.json"
+      ],
+      "public_description": "Keeps manuscript claims tied to real bibliography entries, tracked citation graphs, and explicit reference-mapping scaffolds."
+    },
+    {
+      "agent_id": "review_evidence_agent",
+      "display_name": "Review Evidence Agent",
+      "purpose": "Assemble protocol, query, screening, extraction, bias, and PRISMA artifacts into one evidence package.",
+      "implementation_status": "implemented",
+      "runtime_mode": "deterministic",
+      "entrypoints": [
+        "scripts/review_evidence.py",
+        "scripts/review_cli.py",
+        "scripts/review_screen.py",
+        "scripts/review_bias.py"
+      ],
+      "consumes": [
+        "review/protocol/protocol.yml",
+        "review/queries/query_01_pubmed.yml",
+        "review/screening/screening_log.csv",
+        "review/extraction/extraction_table.csv",
+        "review/bias/bias_assessments.csv",
+        "review/prisma/prisma_counts.yml"
+      ],
+      "produces": [
+        "review/reports/evidence_summary.json",
+        "review/manifests/review_evidence_package.json"
+      ],
+      "validators": [
+        "scripts/review_cli.py",
+        "scripts/review_common.py"
+      ],
+      "upstream_agents": [],
+      "downstream_agents": [
+        "planning_agent",
+        "section_writing_agent",
+        "submission_readiness_agent",
+        "release_packaging_agent"
+      ],
+      "authoritative_outputs": [
+        "review/prisma/prisma_counts.yml",
+        "review/manifests/review_evidence_package.json"
+      ],
+      "public_description": "Summarizes systematic-review evidence into a tracked package that downstream drafting and submission checks can consume directly."
+    },
+    {
+      "agent_id": "section_writing_agent",
+      "display_name": "Section Writing Agent",
+      "purpose": "Convert claim packets and readiness-aware evidence into section briefs, draft scaffolds, and editable prose artifacts.",
+      "implementation_status": "partial",
+      "runtime_mode": "deterministic",
+      "entrypoints": [
+        "scripts/manuscript_section_briefs.py",
+        "scripts/build_section_briefs.py",
+        "scripts/manuscript_section_drafts.py",
+        "scripts/build_section_drafts.py",
+        "scripts/manuscript_section_prose.py",
+        "scripts/build_section_prose.py",
+        "scripts/apply_section_prose.py"
+      ],
+      "consumes": [
+        "manuscript/plans/claim_packets.json",
+        "review/reports/evidence_summary.json",
+        "manuscript/plans/citation_graph.json",
+        "manuscript/plans/author_content_inputs.json"
+      ],
+      "produces": [
+        "manuscript/drafts/section_briefs.json",
+        "manuscript/drafts/section_drafts.json",
+        "manuscript/drafts/section_prose.json",
+        "manuscript/sections/01_summary.md",
+        "manuscript/sections/02_introduction.md",
+        "manuscript/sections/04_discussion.md",
+        "manuscript/sections/05_methods.md"
+      ],
+      "validators": [
+        "scripts/check_section_briefs.py",
+        "scripts/check_section_drafts.py",
+        "scripts/check_section_prose.py"
+      ],
+      "upstream_agents": [
+        "planning_agent",
+        "figure_agent",
+        "literature_grounding_agent",
+        "review_evidence_agent"
+      ],
+      "downstream_agents": [
+        "venue_compliance_agent",
+        "submission_readiness_agent",
+        "release_packaging_agent",
+        "project_handoff_agent"
+      ],
+      "authoritative_outputs": [
+        "manuscript/drafts/section_briefs.json",
+        "manuscript/drafts/section_drafts.json",
+        "manuscript/drafts/section_prose.json"
+      ],
+      "public_description": "Provides artifact-bounded drafting support that turns validated planning artifacts into editable manuscript prose without claiming full autonomous authorship."
+    },
+    {
+      "agent_id": "venue_compliance_agent",
+      "display_name": "Venue Compliance Agent",
+      "purpose": "Interpret tracked venue overlays and confirmation metadata to keep submission packages aligned with current venue rules.",
+      "implementation_status": "implemented",
+      "runtime_mode": "deterministic",
+      "entrypoints": [
+        "scripts/venue_overlay.py",
+        "scripts/check_venue_readiness.py",
+        "scripts/confirm_venue_verification.py"
+      ],
+      "consumes": [
+        "manuscript/content_registry.json",
+        "manuscript/sections/01_summary.md",
+        "references/library.bib",
+        "workflows/venue_configs/nature.yml",
+        "workflows/venue_configs/cell.yml",
+        "workflows/venue_configs/science.yml",
+        "workflows/venue_configs/conference.yml",
+        "workflows/venue_configs/acm_sigconf.yml",
+        "workflows/venue_configs/ieee_vis.yml",
+        "workflows/venue_configs/neurips.yml",
+        "workflows/venue_configs/icml.yml"
+      ],
+      "produces": [
+        "workflows/release/reports/nature_readiness.json",
+        "workflows/release/manifests/nature_submission_package.json",
+        "workflows/release/reports/cell_readiness.json",
+        "workflows/release/reports/science_readiness.json",
+        "workflows/release/reports/conference_readiness.json"
+      ],
+      "validators": [
+        "scripts/check_venue_readiness.py"
+      ],
+      "upstream_agents": [
+        "figure_agent",
+        "literature_grounding_agent",
+        "section_writing_agent"
+      ],
+      "downstream_agents": [
+        "submission_readiness_agent",
+        "release_packaging_agent",
+        "project_handoff_agent"
+      ],
+      "authoritative_outputs": [
+        "workflows/venue_configs/nature.yml",
+        "workflows/venue_configs/cell.yml",
+        "workflows/venue_configs/science.yml",
+        "workflows/venue_configs/conference.yml",
+        "workflows/venue_configs/acm_sigconf.yml",
+        "workflows/venue_configs/ieee_vis.yml",
+        "workflows/venue_configs/neurips.yml",
+        "workflows/venue_configs/icml.yml"
+      ],
+      "public_description": "Owns the venue-rule layer by keeping tracked overlays and confirmation state aligned with the manuscript package."
+    },
+    {
+      "agent_id": "submission_readiness_agent",
+      "display_name": "Submission Readiness Agent",
+      "purpose": "Aggregate scope, venue, bibliography, audit, and acceptance evidence into machine-readable go or no-go signals.",
+      "implementation_status": "implemented",
+      "runtime_mode": "deterministic",
+      "entrypoints": [
+        "scripts/pre_submission_audit.py",
+        "scripts/check_pre_submission_audit.py",
+        "scripts/run_submission_gate.py",
+        "scripts/check_repo_maturity.py",
+        "scripts/run_repo_maturity_acceptance.py",
+        "scripts/run_repo_maturity_nightly.py"
+      ],
+      "consumes": [
+        "manuscript/plans/manuscript_scope.json",
+        "references/metadata/bibliography_source.yml",
+        "workflows/venue_configs/nature.yml",
+        "workflows/release/profiles/profiles.yml",
+        "workflows/agents/agent_registry.json"
+      ],
+      "produces": [
+        "workflows/release/reports/pre_submission_audit.json",
+        "workflows/release/manifests/pre_submission_audit.json",
+        "workflows/release/reports/repo_maturity_submission-framework.json",
+        "workflows/release/manifests/repo_maturity_submission-framework.json",
+        "workflows/release/manifests/repo_maturity_submission-framework_acceptance.json"
+      ],
+      "validators": [
+        "scripts/check_pre_submission_audit.py",
+        "scripts/check_repo_maturity.py",
+        "scripts/check_repo_maturity_acceptance.py",
+        "scripts/check_repo_maturity_nightly.py"
+      ],
+      "upstream_agents": [
+        "planning_agent",
+        "literature_grounding_agent",
+        "review_evidence_agent",
+        "section_writing_agent",
+        "venue_compliance_agent"
+      ],
+      "downstream_agents": [
+        "release_packaging_agent",
+        "project_handoff_agent",
+        "evaluation_agent"
+      ],
+      "authoritative_outputs": [
+        "manuscript/plans/manuscript_scope.json",
+        "references/metadata/bibliography_source.yml",
+        "workflows/venue_configs/nature.yml"
+      ],
+      "public_description": "Turns cross-cutting manuscript gates into explicit readiness signals for submission, acceptance, and nightly monitoring."
+    },
+    {
+      "agent_id": "release_packaging_agent",
+      "display_name": "Release Packaging Agent",
+      "purpose": "Assemble release bundles, frozen archives, export deliverables, and deposit metadata from validated repo artifacts.",
+      "implementation_status": "implemented",
+      "runtime_mode": "deterministic",
+      "entrypoints": [
+        "scripts/release_bundle.py",
+        "scripts/build_release_bundle.py",
+        "scripts/archive_export.py",
+        "scripts/build_archive_export.py",
+        "scripts/export_bundle.py",
+        "scripts/build_export_bundle.py",
+        "scripts/deposit_metadata.py",
+        "scripts/build_deposit_metadata.py"
+      ],
+      "consumes": [
+        "workflows/release/profiles/profiles.yml",
+        "workflows/agents/agent_registry.json",
+        "research/13_agent_system_positioning.md",
+        "manuscript/_build/html/index.html",
+        "figures/output/review/index.html"
+      ],
+      "produces": [
+        "workflows/release/reports/integrated_demo_release_bundle.json",
+        "workflows/release/reports/integrated_demo_release_archive.json",
+        "workflows/release/exports/integrated_demo_release_export.tar.gz",
+        "workflows/release/exports/integrated_demo_release_export.zip",
+        "workflows/release/deposit/integrated_demo_release_CITATION.cff",
+        "workflows/release/deposit/integrated_demo_release_codemeta.json",
+        "workflows/release/deposit/integrated_demo_release_zenodo_metadata.json",
+        "workflows/release/deposit/integrated_demo_release_osf_metadata.json"
+      ],
+      "validators": [
+        "scripts/check_release_bundle.py",
+        "scripts/check_archive_export.py",
+        "scripts/check_export_bundle.py",
+        "scripts/check_deposit_metadata.py"
+      ],
+      "upstream_agents": [
+        "figure_agent",
+        "literature_grounding_agent",
+        "review_evidence_agent",
+        "section_writing_agent",
+        "venue_compliance_agent",
+        "submission_readiness_agent"
+      ],
+      "downstream_agents": [
+        "project_handoff_agent",
+        "evaluation_agent"
+      ],
+      "authoritative_outputs": [
+        "workflows/release/profiles/profiles.yml",
+        "workflows/release/exports/integrated_demo_release_export.tar.gz",
+        "workflows/release/exports/integrated_demo_release_export.zip",
+        "workflows/release/deposit/integrated_demo_release_CITATION.cff",
+        "workflows/release/deposit/integrated_demo_release_codemeta.json",
+        "workflows/release/deposit/integrated_demo_release_zenodo_metadata.json",
+        "workflows/release/deposit/integrated_demo_release_osf_metadata.json"
+      ],
+      "public_description": "Packages the validated system state into release, archive, export, and deposit surfaces without renaming the legacy compatibility layer."
+    },
+    {
+      "agent_id": "project_handoff_agent",
+      "display_name": "Project Handoff Agent",
+      "purpose": "Prepare real-project onboarding, policy readiness, anonymized preview, and handoff surfaces on top of the demo system.",
+      "implementation_status": "implemented",
+      "runtime_mode": "deterministic",
+      "entrypoints": [
+        "scripts/project_release.py",
+        "scripts/build_project_release.py",
+        "scripts/check_project_release.py",
+        "scripts/release_policy.py",
+        "scripts/build_release_policy.py",
+        "scripts/check_release_policy.py",
+        "scripts/anonymized_release.py",
+        "scripts/build_anonymized_release.py",
+        "scripts/check_anonymized_release.py",
+        "scripts/project_handoff.py",
+        "scripts/build_project_handoff.py",
+        "scripts/check_project_handoff.py"
+      ],
+      "consumes": [
+        "workflows/release/projects/rnaseq_real_project_template/project.yml",
+        "workflows/release/policies/rnaseq_real_project_template.yml",
+        "workflows/release/profiles/profiles.yml",
+        "workflows/release/deposit/integrated_demo_release_CITATION.cff"
+      ],
+      "produces": [
+        "workflows/release/projects/rnaseq_real_project_template/project_readiness.json",
+        "workflows/release/projects/rnaseq_real_project_template/policy_readiness.json",
+        "workflows/release/projects/rnaseq_real_project_template/anonymized_release.json",
+        "workflows/release/projects/rnaseq_real_project_template/handoff.json",
+        "workflows/release/projects/rnaseq_real_project_template/anonymized/metadata/release_metadata_redacted.json",
+        "workflows/release/projects/rnaseq_real_project_template/anonymized/manuscript/myst.yml"
+      ],
+      "validators": [
+        "scripts/check_project_release.py",
+        "scripts/check_release_policy.py",
+        "scripts/check_anonymized_release.py",
+        "scripts/check_project_handoff.py"
+      ],
+      "upstream_agents": [
+        "section_writing_agent",
+        "venue_compliance_agent",
+        "submission_readiness_agent",
+        "release_packaging_agent"
+      ],
+      "downstream_agents": [],
+      "authoritative_outputs": [
+        "workflows/release/projects/rnaseq_real_project_template/project.yml",
+        "workflows/release/policies/rnaseq_real_project_template.yml",
+        "workflows/release/projects/rnaseq_real_project_template/anonymized/metadata/release_metadata_redacted.json",
+        "workflows/release/projects/rnaseq_real_project_template/anonymized/manuscript/myst.yml"
+      ],
+      "public_description": "Carries the validated release state into project-local onboarding, anonymization, and handoff artifacts for real studies."
+    },
+    {
+      "agent_id": "evaluation_agent",
+      "display_name": "Evaluation Agent",
+      "purpose": "Score the system against tracked suites, adapter bundles, and public benchmark packages while preserving local provenance.",
+      "implementation_status": "implemented",
+      "runtime_mode": "deterministic",
+      "entrypoints": [
+        "scripts/harness_benchmark.py",
+        "scripts/check_harness_benchmark.py",
+        "scripts/check_harness_benchmark_matrix.py",
+        "scripts/run_public_benchmark_package.py",
+        "scripts/check_public_benchmark_run.py",
+        "scripts/check_public_benchmark_runs.py"
+      ],
+      "consumes": [
+        "benchmarks/suites/paper_writing_bench_like_internal_v1.json",
+        "benchmarks/bundles/paperwritingbench_style_demo_v1.json",
+        "benchmarks/bundles/paperwritingbench_style_heldout_v1.json",
+        "benchmarks/bundles/generic_author_input_demo_v1.json",
+        "benchmarks/packages/paperwritingbench_style_source_demo_v1/package_manifest.json",
+        "benchmarks/packages/paperwritingbench_style_source_heldout_v1/package_manifest.json",
+        "benchmarks/packages/generic_author_input_source_demo_v1/package_manifest.json"
+      ],
+      "produces": [
+        "benchmarks/reports/paper_writing_bench_like_internal_v1.json",
+        "benchmarks/reports/paperwritingbench_style_demo_v1.json",
+        "benchmarks/reports/paperwritingbench_style_heldout_v1.json",
+        "benchmarks/reports/generic_author_input_demo_v1.json",
+        "benchmarks/reports/harness_benchmark_matrix.json",
+        "benchmarks/manifests/harness_benchmark_matrix.json"
+      ],
+      "validators": [
+        "scripts/check_harness_benchmark.py",
+        "scripts/check_harness_benchmark_matrix.py",
+        "scripts/check_public_benchmark_run.py",
+        "scripts/check_public_benchmark_runs.py"
+      ],
+      "upstream_agents": [
+        "planning_agent",
+        "submission_readiness_agent",
+        "release_packaging_agent"
+      ],
+      "downstream_agents": [],
+      "authoritative_outputs": [
+        "benchmarks/suites/paper_writing_bench_like_internal_v1.json",
+        "benchmarks/bundles/paperwritingbench_style_demo_v1.json",
+        "benchmarks/bundles/paperwritingbench_style_heldout_v1.json",
+        "benchmarks/bundles/generic_author_input_demo_v1.json",
+        "benchmarks/packages/paperwritingbench_style_source_demo_v1/package_manifest.json",
+        "benchmarks/packages/paperwritingbench_style_source_heldout_v1/package_manifest.json",
+        "benchmarks/packages/generic_author_input_source_demo_v1/package_manifest.json"
+      ],
+      "public_description": "Evaluates the tracked manuscript system with internal and adapter-ready benchmark definitions while preserving stable benchmark provenance."
+    }
+  ]
+}

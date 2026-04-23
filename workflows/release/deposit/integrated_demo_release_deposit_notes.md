@@ -8,7 +8,7 @@
 ## Suggested Deposit Metadata
 
 - title: `integrated_demo_release` archive export
-- description: frozen archive of the manuscript harness release package
+- description: frozen archive of the multi-agent manuscript system release package
 - artifact scope: manuscript, figures, references, review evidence, pathway provenance
 
 ## Required Files

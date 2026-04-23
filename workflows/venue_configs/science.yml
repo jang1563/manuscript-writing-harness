@@ -1,4 +1,9 @@
-name: science
+name: Science
+verification:
+  last_verified: 2026-04-16
+  stale_after_days: 180
+  final_confirmation_required: true
+  source_summary: Baseline Science-family requirements were last checked against current public author guidance.
 required_sections:
   - abstract
   - main_text
@@ -12,4 +17,3 @@ special_assets:
   - supplementary_materials
 notes:
   - Validate final requirements against the exact Science-family journal at submission time.
-

@@ -16,6 +16,8 @@
       "status": "ready",
       "source": "manuscript/sections/01_summary.md",
       "purpose": "State the main scientific question and the top-line claim.",
+      "manuscript_topic": "",
+      "section_note": "",
       "recommended_opening": "Use one compact paragraph that names the question, the system, and the single strongest finding.",
       "display_item_ids": [],
       "claim_ids": [],
@@ -60,6 +62,8 @@
       "status": "ready",
       "source": "manuscript/sections/02_introduction.md",
       "purpose": "Frame the background and why the problem matters.",
+      "manuscript_topic": "",
+      "section_note": "",
       "recommended_opening": "Use 2 to 3 paragraphs: context, gap, then objective.",
       "display_item_ids": [],
       "claim_ids": [],
@@ -104,6 +108,8 @@
       "status": "ready",
       "source": "manuscript/sections/03_results.md",
       "purpose": "Present display-item-backed claims in a controlled order.",
+      "manuscript_topic": "",
+      "section_note": "",
       "recommended_opening": "Use one subsection per display-backed claim cluster, following manuscript display order.",
       "display_item_ids": [
         "figure_01_example",
@@ -155,6 +161,7 @@
           "linked_reference_ids": [
             "weissgerberEtAl2015BeyondBar"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -170,6 +177,7 @@
           "linked_reference_ids": [
             "weissgerberEtAl2015BeyondBar"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -185,6 +193,7 @@
           "linked_reference_ids": [
             "abdiWilliams2010PCA"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -200,6 +209,7 @@
           "linked_reference_ids": [
             "loveEtAl2014DESeq2"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -217,6 +227,7 @@
             "subramanianEtAl2005GSEA",
             "yuEtAl2012ClusterProfiler"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -234,13 +245,14 @@
             "subramanianEtAl2005GSEA",
             "yuEtAl2012ClusterProfiler"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
           "subsection_id": "claim_pathway_effect_sizes_align_with_directionality",
           "display_item_id": "figure_05_pathway_enrichment_dot",
           "claim_id": "claim_pathway_effect_sizes_align_with_directionality",
-          "lead_sentence_target": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs.",
+          "lead_sentence_target": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs, and the panel can be sourced directly from the active fgsea export rather than a hand-maintained summary table.",
           "support_points": [
             "Reference `figure_05_pathway_enrichment_dot` before expanding interpretation.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
@@ -250,6 +262,7 @@
             "fgseaBioconductorPackage",
             "yuEtAl2012ClusterProfiler"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -265,6 +278,7 @@
           "linked_reference_ids": [
             "davisGoadrich2006PRROC"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -280,6 +294,7 @@
           "linked_reference_ids": [
             "davisGoadrich2006PRROC"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -296,6 +311,7 @@
             "guoEtAl2017Calibration",
             "niculescuMizilCaruana2005Probabilities"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -311,6 +327,7 @@
           "linked_reference_ids": [
             "guoEtAl2017Calibration"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -326,6 +343,7 @@
           "linked_reference_ids": [
             "smithTopin2017SuperConvergence"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -341,6 +359,7 @@
           "linked_reference_ids": [
             "smithTopin2017SuperConvergence"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -356,6 +375,7 @@
           "linked_reference_ids": [
             "stehman1997ClassificationAccuracy"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -371,6 +391,7 @@
           "linked_reference_ids": [
             "stehman1997ClassificationAccuracy"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -386,6 +407,7 @@
           "linked_reference_ids": [
             "lundbergLee2017SHAP"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -401,6 +423,7 @@
           "linked_reference_ids": [
             "lundbergLee2017SHAP"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -416,6 +439,7 @@
           "linked_reference_ids": [
             "liptonSteinhardt2018TroublingTrends"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -431,6 +455,7 @@
           "linked_reference_ids": [
             "guoEtAl2017Calibration"
           ],
+          "author_note": "",
           "status": "ready"
         },
         {
@@ -446,6 +471,7 @@
           "linked_reference_ids": [
             "davisGoadrich2006PRROC"
           ],
+          "author_note": "",
           "status": "ready"
         }
       ],
@@ -464,6 +490,8 @@
       "status": "ready",
       "source": "manuscript/sections/04_discussion.md",
       "purpose": "Interpret the main findings and their limits.",
+      "manuscript_topic": "",
+      "section_note": "",
       "recommended_opening": "Use 3 paragraphs: interpretation, comparison/limitations, then forward-looking implication.",
       "display_item_ids": [],
       "claim_ids": [],
@@ -508,6 +536,8 @@
       "status": "ready",
       "source": "manuscript/sections/05_methods.md",
       "purpose": "Document data provenance, analytical choices, and reproducibility details.",
+      "manuscript_topic": "",
+      "section_note": "",
       "recommended_opening": "Use reproducibility-first ordering: data provenance, analysis pipeline, then runtime/export details.",
       "display_item_ids": [],
       "claim_ids": [],

@@ -1,0 +1,26 @@
+{
+  "project_id": "rnaseq_real_project_template",
+  "policy_id": "rnaseq_real_project_template_policy",
+  "profile_id": "rnaseq_real_project_template_release",
+  "readiness": "provisional",
+  "blocking_issues": [],
+  "warnings": [
+    "deposit_contact still contains a placeholder",
+    "manuscript_identity_scrubbed is not yet confirmed for anonymized review",
+    "supplement_identity_scrubbed is not yet confirmed for anonymized review",
+    "metadata_identity_scrubbed is not yet confirmed for anonymized review",
+    "msigdb_license_confirmed is not yet true for an MSigDB-backed project"
+  ],
+  "review_model": "double_blind",
+  "anonymization_required": true,
+  "human_subject_data": false,
+  "controlled_access_required": false,
+  "raw_data_release": "public",
+  "code_release": "public",
+  "msigdb_license_confirmed": false,
+  "deposit_contact": "Add release contact",
+  "package_paths": [
+    "workflows/release/policies/rnaseq_real_project_template.yml",
+    "workflows/release/projects/rnaseq_real_project_template/project.yml"
+  ]
+}

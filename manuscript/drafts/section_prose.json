@@ -13,9 +13,9 @@
       "warnings": [],
       "blocking_issues": [],
       "paragraphs": [
-        "We set out to test whether a reproducible manuscript harness can keep biological and AI/ML claims tightly bound to the figures, tables, and planning artifacts that support them.",
+        "We set out to test whether an artifact-driven multi-agent manuscript system, built on a deterministic harness substrate, can keep biological and AI/ML claims tightly bound to the figures, tables, and planning artifacts that support them.",
         "Across the current example assets, the strongest display-backed findings include treatment-associated response divergence, interferon-skewed differential expression, and pathway-level directionality recovered through a reproducible fgsea export in the biological track, together with consistently better discrimination, calibration, and training stability in the foundation-model evaluation track.",
-        "Together, these outputs show how the harness can surface result-ready claims before polishing narrative prose, while keeping figure provenance, pathway-analysis artifacts, and reference readiness visible as drafting constraints rather than hidden cleanup tasks."
+        "Together, these outputs show how the manuscript system can surface result-ready claims before polishing narrative prose, while keeping figure provenance, pathway-analysis artifacts, and reference readiness visible as drafting constraints rather than hidden cleanup tasks."
       ]
     },
     {
@@ -27,7 +27,7 @@
       "blocking_issues": [],
       "paragraphs": [
         "Scientific manuscripts often lose traceability when the prose, figures, tables, pathway-analysis outputs, and literature context evolve separately. That problem becomes more acute when a project spans both bioinformatics-style evidence summaries and AI/ML model-evaluation figures, because the writing layer can drift away from the display items that actually carry the claim.",
-        "The present harness is designed to reduce that drift by making planning artifacts, figure specifications, fact sheets, evidence summaries, citation graphs, and generated analysis exports explicit. Instead of asking the writer to reconstruct the evidence path from memory, it keeps display-backed claims visible at drafting time and exposes whether pathway summaries, review evidence, and citations are already ready.",
+        "The present manuscript system is designed to reduce that drift by making planning artifacts, figure specifications, fact sheets, evidence summaries, citation graphs, and generated analysis exports explicit. Instead of asking the writer to reconstruct the evidence path from memory, it keeps display-backed claims visible at drafting time and exposes whether pathway summaries, review evidence, and citations are already ready.",
         "Within that framing, the manuscript objective is not only to present biological and model-evaluation results but also to demonstrate a reproducible writing workflow in which figure bundles, evidence packages, fgsea-derived pathway summaries, and citation coverage remain inspectable throughout drafting."
       ]
     },
@@ -79,7 +79,7 @@
           "subsection_id": "claim_pathway_effect_sizes_align_with_directionality",
           "display_item_id": "figure_05_pathway_enrichment_dot",
           "heading": "Pathway effect sizes align with directionality",
-          "paragraph": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs. The fgsea-derived dot-plot export therefore acts as the downstream pathway summary of the ranked-expression analysis, preserving both effect magnitude and biological directionality in a format that stays aligned with the upstream gene-level figures."
+          "paragraph": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs, and the panel can be sourced directly from the active fgsea export rather than a hand-maintained summary table. The fgsea-derived dot-plot export therefore acts as the downstream pathway summary of the ranked-expression analysis, preserving both effect magnitude and biological directionality in a format that stays aligned with the upstream gene-level figures."
         },
         {
           "subsection_id": "claim_foundation_model_improves_discrimination",
@@ -169,7 +169,7 @@
       "warnings": [],
       "blocking_issues": [],
       "paragraphs": [
-        "The current outputs suggest that the strongest value of the harness is organizational rather than cosmetic: it keeps major claims anchored to explicit display items, and it makes figure provenance, pathway-analysis exports, and reference support inspectable while drafting.",
+        "The current outputs suggest that the strongest value of the manuscript system is organizational rather than cosmetic: it keeps major claims anchored to explicit display items, and it makes figure provenance, pathway-analysis exports, and reference support inspectable while drafting.",
         "That structure is especially useful when the manuscript mixes biological interpretation with AI/ML evaluation. The figure bundles and claim packets let us compare modalities without collapsing them into one undifferentiated narrative, while the fgsea-backed pathway branch shows how an upstream analysis artifact can be carried forward into a publication-quality figure without manual copy-paste.",
         "The main limitation at this stage is no longer the bibliography layer, which is now tracked and ready, but the fact that the current figures and prose still revolve around exemplar datasets. The next submission-facing step is therefore to swap the demo inputs for study-specific data while preserving the same evidence path and review checks."
       ]
@@ -182,9 +182,9 @@
       "warnings": [],
       "blocking_issues": [],
       "paragraphs": [
-        "The manuscript harness is organized around tracked planning artifacts, script-generated figures and tables, and explicit manuscript overlays. Display items are specified in registry-backed figure classes, rendered in both Python and R where supported, and reviewed through generated QA surfaces before they are wired into the manuscript.",
+        "The manuscript system is organized around tracked planning artifacts, script-generated figures and tables, explicit manuscript overlays, and an artifact-bounded agent graph built on a deterministic harness substrate. Display items are specified in registry-backed figure classes, rendered in both Python and R where supported, and reviewed through generated QA surfaces before they are wired into the manuscript.",
         "For the bioinformatics demonstration branch, differential-expression style rankings are carried into pathway analysis through a scripted fgsea pipeline. Ranked statistics are read from a tracked CSV input, pathway definitions are loaded from a GMT file, fgsea is executed through an R wrapper, and the resulting preranked enrichment summary is exported as a normalized dot-plot table that is consumed directly by `figure_05_pathway_enrichment_dot`.",
-        "Systematic-review style evidence is summarized through protocol, query, screening, extraction, bias, and PRISMA artifacts, while the reference layer maintains a bibliography, citation graph, claim-to-reference mappings, and an integrity audit that expose whether each claim has usable literature support. Drafting support is then generated in stages: claim packets summarize display-backed result statements, section briefs translate those packets into section-level writing constraints, and section prose drafts turn the resulting scaffolds into editable text artifacts without overwriting the canonical manuscript sections."
+        "Systematic-review style evidence is summarized through protocol, query, screening, extraction, bias, and PRISMA artifacts, while the reference layer maintains a bibliography, citation graph, claim-to-reference mappings, and an integrity audit that expose whether each claim has usable literature support. Specialized agents then operate through those tracked artifacts: planning outputs summarize display-backed result statements, section-brief outputs translate those packets into section-level writing constraints, and section-prose outputs turn the resulting scaffolds into editable text artifacts without overwriting the canonical manuscript sections."
       ]
     }
   ]

@@ -1,0 +1,16 @@
+name: ICML
+verification:
+  last_verified: 2026-04-16
+  stale_after_days: 180
+  final_confirmation_required: true
+  source_summary: ICML baseline was last checked against current public author instructions.
+required_sections:
+  - abstract
+  - main_text
+  - references
+special_assets:
+  - anonymization_check
+notes:
+  - "Based on current ICML author instructions: the submission body is limited to 8 content pages, followed by references and appendices in the same PDF."
+  - Supplementary manuscripts, code, and data are optional but must preserve double-blind anonymity when included.
+  - Omit acknowledgements, grant numbers, and non-anonymized repository links from submission-time builds.

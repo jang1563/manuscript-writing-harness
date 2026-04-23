@@ -1,0 +1,13 @@
+policy_id: rnaseq_real_project_template_policy
+project_id: rnaseq_real_project_template
+review_model: double_blind
+anonymization_required: true
+manuscript_identity_scrubbed: false
+supplement_identity_scrubbed: false
+metadata_identity_scrubbed: false
+human_subject_data: false
+controlled_access_required: false
+raw_data_release: public
+code_release: public
+msigdb_license_confirmed: false
+deposit_contact: Add release contact

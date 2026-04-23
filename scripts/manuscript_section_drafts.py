@@ -41,6 +41,13 @@ def write_text(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def _relative_or_absolute(path: Path) -> str:
+    try:
+        return str(path.relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
+
+
 def _load_optional_json(path: Path) -> dict[str, Any] | None:
     if not path.exists():
         return None
@@ -80,6 +87,7 @@ def _results_subsections(section_packets: list[dict[str, Any]]) -> list[dict[str
                     "Do not add external references beyond the citation graph allowances in the packet.",
                 ],
                 "linked_reference_ids": list(packet.get("citations", {}).get("reference_ids", [])),
+                "author_note": str(packet.get("author_input", {}).get("claim_note", "")),
                 "status": str(packet.get("status", "ready")),
             }
         )
@@ -147,11 +155,14 @@ def build_section_drafts() -> dict[str, Any]:
             subsection_plan = _results_subsections(section_packets)
         else:
             subsection_plan = _generic_paragraph_plan(section_id, brief)
+        author_input = brief.get("author_input", {})
         scaffold = {
             "section_id": section_id,
             "status": section_status,
             "source": brief.get("source"),
             "purpose": brief.get("purpose"),
+            "manuscript_topic": str(author_input.get("topic", "")),
+            "section_note": str(author_input.get("section_note", "")),
             "recommended_opening": SECTION_OPENERS.get(section_id, ""),
             "display_item_ids": list(brief.get("display_item_ids", [])),
             "claim_ids": list(brief.get("claim_ids", [])),
@@ -180,8 +191,8 @@ def build_section_drafts() -> dict[str, Any]:
 
     return {
         "generated_from": {
-            "section_briefs": str(SECTION_BRIEFS_JSON_PATH.relative_to(REPO_ROOT)),
-            "claim_packets": str(CLAIM_PACKETS_PATH.relative_to(REPO_ROOT)),
+            "section_briefs": _relative_or_absolute(SECTION_BRIEFS_JSON_PATH),
+            "claim_packets": _relative_or_absolute(CLAIM_PACKETS_PATH),
             "reference_audit": str(REFERENCE_AUDIT_PATH.relative_to(REPO_ROOT)),
             "review_evidence": str(REVIEW_EVIDENCE_PATH.relative_to(REPO_ROOT)),
         },
@@ -213,17 +224,24 @@ def render_section_drafts_markdown(drafts: dict[str, Any]) -> str:
                 f"- status: `{section['status']}`",
                 f"- source: `{section.get('source')}`",
                 f"- recommended_opening: {section.get('recommended_opening')}",
+                f"- topic: {section.get('manuscript_topic') or 'not set'}",
                 f"- display_item_ids: `{', '.join(section.get('display_item_ids', [])) or 'none'}`",
                 "",
                 "### Subsection Plan",
                 "",
             ]
         )
+        if section.get("section_note"):
+            lines.extend(["### Author Inputs", "", f"- section_note: {section['section_note']}", ""])
         for item in section.get("subsection_plan", []):
             if "subsection_id" in item:
-                lines.append(
-                    f"- `{item['subsection_id']}` via `{item.get('display_item_id')}`: {item.get('lead_sentence_target')}"
+                line = (
+                    f"- `{item['subsection_id']}` via `{item.get('display_item_id')}`: "
+                    f"{item.get('lead_sentence_target')}"
                 )
+                if item.get("author_note"):
+                    line += f" | author_note: {item['author_note']}"
+                lines.append(line)
             else:
                 lines.append(
                     f"- paragraph {item.get('paragraph_order')}: {item.get('goal')}"

@@ -1,0 +1,74 @@
+{
+  "bundle_id": "paperwritingbench_style_demo_v1",
+  "adapter_type": "paperwritingbench_style_bundle",
+  "benchmark_family": "paperwritingbench_style_bundle",
+  "reference_benchmark": "PaperWritingBench",
+  "description": "Example adapter-ready benchmark bundle that carries pre-writing materials and maps them into the multi-agent manuscript system author-input surface built on the deterministic harness substrate.",
+  "notes": [
+    "This is a tracked demo bundle for the adapter layer, not an official PaperWritingBench release.",
+    "The adapter derives the manuscript topic from source_materials.idea_summary when author_inputs.topic is omitted."
+  ],
+  "import_source": {
+    "package_dir": "benchmarks/packages/paperwritingbench_style_source_demo_v1",
+    "manifest_path": "benchmarks/packages/paperwritingbench_style_source_demo_v1/package_manifest.json"
+  },
+  "cases": [
+    {
+      "case_id": "bundle_authoring_from_prewriting_materials",
+      "kind": "paperwritingbench_style_authoring",
+      "dimension": "structured_authoring",
+      "weight": 0.7,
+      "description": "A PaperWritingBench-style case should carry idea-summary and venue-guideline context, then map those materials into author inputs that propagate through the manuscript system's planning, briefing, and drafting artifacts.",
+      "source_materials": {
+        "venue_template": "neurips",
+        "idea_summary": {
+          "title": "Therapy response trajectories in a multimodal benchmark",
+          "objective": "Lead the manuscript with the strongest treatment-associated response divergence and keep the first Results subsection tightly display-backed."
+        },
+        "experimental_log": "The display-backed response claim should anchor the first Results subsection before broader interpretation.",
+        "guidelines": "Start the Results with the clearest quantitative separation and avoid unsupported background expansion."
+      },
+      "mapping": {
+        "section_notes": {
+          "results": "Start the Results with the strongest treatment-response separation."
+        },
+        "claim_notes": {
+          "claim_response_kinetics": "Use this as the opening sentence for the first results subsection."
+        }
+      },
+      "author_inputs": {},
+      "expect": {
+        "topic": "Therapy response trajectories in a multimodal benchmark",
+        "claim_coverage_status": "ready",
+        "section_briefs_status": "ready",
+        "section_drafts_status": "ready",
+        "section_note_section": "results",
+        "section_note_contains": "Start the Results",
+        "claim_note_claim_id": "claim_response_kinetics",
+        "claim_note_contains": "opening sentence"
+      }
+    },
+    {
+      "case_id": "bundle_unknown_claim_guardrail",
+      "kind": "paperwritingbench_style_error",
+      "dimension": "guardrails",
+      "weight": 0.3,
+      "description": "The adapter path should preserve the same guardrail behavior as the repo-local suite when a pre-writing bundle points to an unknown claim id.",
+      "source_materials": {
+        "venue_template": "conference",
+        "idea_summary": {
+          "title": "Example topic"
+        },
+        "experimental_log": "This case is intentionally malformed to verify the unknown-claim stop condition.",
+        "guidelines": "Do not invent unsupported claims."
+      },
+      "expect_error_contains": "unknown claim_ids",
+      "mapping": {
+        "claim_notes": {
+          "claim_not_in_repo": "This should stop generation until the claim source is clarified."
+        }
+      },
+      "author_inputs": {}
+    }
+  ]
+}

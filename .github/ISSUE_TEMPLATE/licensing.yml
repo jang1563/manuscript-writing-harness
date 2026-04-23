@@ -1,0 +1,33 @@
+name: Licensing question
+description: Ask about using the multi-agent manuscript system under the noncommercial or commercial terms.
+title: "[licensing]: "
+labels:
+  - licensing
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not include confidential business terms or undisclosed customer information.
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Describe your use case
+      description: Explain who is using the project, in what context, and whether money changes hands.
+      placeholder: We are a university lab using the manuscript system for...
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What do you need clarified?
+      description: Ask the specific licensing question you need answered.
+      placeholder: Does this fall under noncommercial use?
+    validations:
+      required: true
+  - type: checkboxes
+    id: reviewed_terms
+    attributes:
+      label: Before submitting
+      options:
+        - label: I reviewed LICENSE and COMMERCIAL-LICENSE.md first.
+          required: true

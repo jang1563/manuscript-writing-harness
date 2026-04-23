@@ -205,14 +205,14 @@ def bias_summary(table_path: Path | None = None) -> dict[str, dict[str, int]]:
     domain_counts: dict[str, dict[str, int]] = {}
 
     for row in rows:
-        oj = row.get("overall_judgment", "unassessed") or "unassessed"
+        oj = row.get("overall_judgment", "").strip() or "unassessed"
         overall[oj] = overall.get(oj, 0) + 1
 
-        tool = row.get("tool", "")
+        tool = row.get("tool", "").strip()
         for d in _domain_columns(tool):
             if d not in domain_counts:
                 domain_counts[d] = {}
-            val = row.get(d, "unassessed") or "unassessed"
+            val = row.get(d, "").strip() or "unassessed"
             domain_counts[d][val] = domain_counts[d].get(val, 0) + 1
 
     return {"overall": overall, "domains": domain_counts}

@@ -91,10 +91,17 @@ def analyze_png(path: Path) -> dict[str, Any]:
 
     def strip_fraction(box: tuple[int, int, int, int]) -> float:
         strip = image.crop(box)
-        total = strip.size[0] * strip.size[1]
+        strip_width, strip_height = strip.size
+        total = strip_width * strip_height
         if total <= 0:
             return 0.0
-        ink_pixels = sum(1 for pixel in strip.getdata() if _pixel_is_ink(pixel))
+        strip_pixels = strip.load()
+        ink_pixels = sum(
+            1
+            for x_pos in range(strip_width)
+            for y_pos in range(strip_height)
+            if _pixel_is_ink(strip_pixels[x_pos, y_pos])
+        )
         return ink_pixels / total
 
     edge_ink_fraction = {

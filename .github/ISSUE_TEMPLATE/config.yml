@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/jang1563/manuscript-writing-harness/security/policy
+    about: Use the private reporting instructions in SECURITY.md for undisclosed vulnerabilities.
+  - name: Commercial licensing
+    url: https://github.com/jang1563/manuscript-writing-harness/blob/main/COMMERCIAL-LICENSE.md
+    about: Review commercial-use terms before opening a licensing request.

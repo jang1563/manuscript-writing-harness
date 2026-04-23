@@ -1,0 +1,9 @@
+{
+  "topic": "Direct author input negative case",
+  "section_notes": {
+    "results": "Keep the Results evidence-first."
+  },
+  "claim_notes": {
+    "claim_not_in_repo": "This should still stop generation until the evidence source is clarified."
+  }
+}

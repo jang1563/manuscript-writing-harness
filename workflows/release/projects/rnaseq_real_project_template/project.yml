@@ -1,0 +1,15 @@
+project_id: rnaseq_real_project_template
+title: RNA-seq Real Project Template
+release_profile_id: rnaseq_real_project_template_release
+study_id: msigdb_hallmark_demo
+venue_id: nature
+pathway_strategy:
+  provider: msigdb
+  species: human
+  collection: H
+  version: 2026.1.Hs
+  identifier_type: gene_symbol
+notes:
+  status: scaffolded
+  release_summary: Replace with a project-specific summary before deposit.
+  activation: Activate the project study profile after validating the licensed MSigDB GMT and fgsea results.

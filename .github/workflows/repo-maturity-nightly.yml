@@ -1,0 +1,61 @@
+name: repo-maturity-nightly
+
+on:
+  schedule:
+    - cron: "17 9 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: repo-maturity-nightly
+  cancel-in-progress: false
+
+jobs:
+  repo-maturity-nightly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "release"
+
+      - name: Install Python dependencies
+        run: |
+          python3 -m pip install -r env/requirements-myst.txt
+          python3 -m pip install -r env/requirements-phase2.txt
+
+      - name: Install R dependencies
+        run: Rscript env/install_r_figure_deps.R
+
+      - name: Run nightly repo maturity monitoring
+        run: |
+          python3 scripts/run_repo_maturity_nightly.py \
+            --profile submission-framework \
+            --output-dir "$RUNNER_TEMP/repo-maturity-nightly" \
+            --public-runs-dir "$RUNNER_TEMP/repo-maturity-nightly/public_runs" \
+            --write-step-summary
+
+      - name: Check nightly repo maturity artifact
+        run: |
+          python3 scripts/check_repo_maturity_nightly.py \
+            --profile submission-framework \
+            --nightly-json "$RUNNER_TEMP/repo-maturity-nightly/repo-maturity-nightly.json" \
+            --summary-md "$RUNNER_TEMP/repo-maturity-nightly/repo-maturity-nightly-summary.md" \
+            --json
+
+      - name: Upload nightly repo maturity artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: repo-maturity-nightly-artifacts
+          path: |
+            ${{ runner.temp }}/repo-maturity-nightly

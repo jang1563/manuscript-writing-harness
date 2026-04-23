@@ -17,3 +17,9 @@ Profiles may also define `release_metadata` overrides for deposit-facing outputs
 - release date
 - keyword lists
 - creators and affiliations used by `CITATION.cff`, `codemeta.json`, Zenodo, and OSF metadata
+
+For real-project onboarding, pair a release profile with a project scaffold under `workflows/release/projects/` and validate it with:
+
+```bash
+python3 scripts/check_project_release.py --project rnaseq_real_project_template --write --json
+```

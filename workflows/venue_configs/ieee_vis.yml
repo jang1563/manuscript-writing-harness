@@ -1,0 +1,15 @@
+name: IEEE VIS
+verification:
+  last_verified: 2026-04-16
+  stale_after_days: 180
+  final_confirmation_required: true
+  source_summary: IEEE VIS baseline was last checked against current public submission guidance.
+required_sections:
+  - abstract
+  - main_text
+  - references
+special_assets: []
+notes:
+  - "Based on recent IEEE VIS paper guidance: the paper body is limited separately from additional material such as references, acknowledgements, and supplemental links; verify the exact year-specific CFP before submission."
+  - IEEE VIS allows single-blind or double-blind submission; run anonymization checks when opting into double-blind review.
+  - Supplemental material can be submitted separately, but essential claims must remain in the main paper body.

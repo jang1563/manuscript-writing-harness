@@ -13,7 +13,7 @@ Core files:
 - `studies/README.md`: study-specific scaffold and activation workflow
 - `studies/rnaseq_case_control_template/`: tracked starter template for a case-control RNA-seq style study profile
 - `msigdb/README.md`: MSigDB-specific guidance for local GMT usage
-- `msigdb/catalog.yml`: tracked recommendations for supported MSigDB collections in this harness
+- `msigdb/catalog.yml`: tracked recommendations for supported MSigDB collections in this manuscript system pathway layer
 - `results/README.md`: notes about generated outputs
 
 Validate the active or demo configuration:

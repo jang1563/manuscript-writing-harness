@@ -17,6 +17,7 @@ WRITING_PLAN_PATH = PLANS_DIR / "writing_plan.json"
 REVISION_CHECKS_PATH = PLANS_DIR / "revision_checks.json"
 OUTLINE_PATH = PLANS_DIR / "outline.json"
 CITATION_GRAPH_PATH = PLANS_DIR / "citation_graph.json"
+AUTHOR_CONTENT_INPUTS_PATH = PLANS_DIR / "author_content_inputs.json"
 REFERENCE_AUDIT_PATH = REPO_ROOT / "references" / "reports" / "reference_audit.json"
 REVIEW_EVIDENCE_PATH = REPO_ROOT / "review" / "reports" / "evidence_summary.json"
 CLAIM_PACKETS_PATH = PLANS_DIR / "claim_packets.json"
@@ -36,6 +37,13 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
 def write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
+
+
+def _relative_or_absolute(path: Path) -> str:
+    try:
+        return str(path.relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
 
 
 def _load_optional_json(path: Path) -> dict[str, Any] | None:
@@ -89,6 +97,54 @@ def _citation_lookup(graph: dict[str, Any]) -> dict[str, list[str]]:
     return mapping
 
 
+def _default_author_content_inputs() -> dict[str, Any]:
+    return {
+        "topic": "",
+        "section_notes": {
+            "summary": "",
+            "introduction": "",
+            "results": "",
+            "discussion": "",
+            "methods": "",
+        },
+        "claim_notes": {},
+    }
+
+
+def _load_author_content_inputs(valid_claim_ids: set[str]) -> dict[str, Any]:
+    payload = _default_author_content_inputs()
+    if not AUTHOR_CONTENT_INPUTS_PATH.exists():
+        return payload
+
+    loaded = load_json(AUTHOR_CONTENT_INPUTS_PATH)
+    topic = loaded.get("topic", "")
+    payload["topic"] = str(topic) if isinstance(topic, str) else ""
+
+    section_notes = loaded.get("section_notes", {})
+    if isinstance(section_notes, dict):
+        for section_id in payload["section_notes"]:
+            note = section_notes.get(section_id, "")
+            payload["section_notes"][section_id] = str(note) if isinstance(note, str) else ""
+
+    claim_notes = loaded.get("claim_notes", {})
+    if isinstance(claim_notes, dict):
+        unknown_claim_ids = sorted(set(claim_notes) - valid_claim_ids)
+        if unknown_claim_ids:
+            joined = ", ".join(unknown_claim_ids)
+            raise ValueError(
+                "author_content_inputs.json contains unknown claim_ids: "
+                f"{joined}. Decide whether to add or replace the underlying fact-sheet/display-item "
+                "claim before generating drafts."
+            )
+        payload["claim_notes"] = {
+            str(claim_id): str(note)
+            for claim_id, note in claim_notes.items()
+            if isinstance(note, str)
+        }
+
+    return payload
+
+
 def build_claim_packets() -> dict[str, Any]:
     display_map = load_json(DISPLAY_ITEM_MAP_PATH)
     writing_plan = load_json(WRITING_PLAN_PATH)
@@ -109,6 +165,12 @@ def build_claim_packets() -> dict[str, Any]:
         for section in outline.get("sections", [])
         if isinstance(section, dict)
     }
+    all_claim_ids = {
+        claim_id
+        for item in display_items
+        for claim_id in [str(raw_claim_id) for raw_claim_id in item.get("claim_ids", [])]
+    }
+    author_inputs = _load_author_content_inputs(all_claim_ids)
 
     packets: list[dict[str, Any]] = []
     blocked_claims: list[str] = []
@@ -178,6 +240,14 @@ def build_claim_packets() -> dict[str, Any]:
                     if REFERENCE_AUDIT_PATH.exists()
                     else None,
                 },
+                "author_input": {
+                    "topic": author_inputs["topic"],
+                    "section_note": author_inputs["section_notes"].get(
+                        str(item.get("manuscript_section", "results")),
+                        "",
+                    ),
+                    "claim_note": author_inputs["claim_notes"].get(claim_id, ""),
+                },
                 "status": claim_status,
                 "blocking_issues": claim_blockers,
                 "warnings": claim_warnings,
@@ -201,8 +271,14 @@ def build_claim_packets() -> dict[str, Any]:
             "revision_checks": str(REVISION_CHECKS_PATH.relative_to(REPO_ROOT)),
             "outline": str(OUTLINE_PATH.relative_to(REPO_ROOT)),
             "citation_graph": str(CITATION_GRAPH_PATH.relative_to(REPO_ROOT)),
+            "author_content_inputs": _relative_or_absolute(AUTHOR_CONTENT_INPUTS_PATH),
             "reference_audit": str(REFERENCE_AUDIT_PATH.relative_to(REPO_ROOT)),
             "review_evidence": str(REVIEW_EVIDENCE_PATH.relative_to(REPO_ROOT)),
+        },
+        "author_inputs": {
+            "topic": author_inputs["topic"],
+            "section_notes": author_inputs["section_notes"],
+            "claim_note_count": len(author_inputs["claim_notes"]),
         },
         "overall_status": overall_status,
         "claim_count": len(packets),
@@ -249,6 +325,7 @@ def render_results_claim_packets_markdown(packets: dict[str, Any]) -> str:
         f"- ready_claim_count: `{packets['ready_claim_count']}`",
         f"- provisional_claim_count: `{packets['provisional_claim_count']}`",
         f"- blocked_claim_count: `{packets['blocked_claim_count']}`",
+        f"- topic: {packets.get('author_inputs', {}).get('topic') or 'not set' }",
         "",
     ]
     for packet in packets.get("claims", []):
@@ -271,6 +348,14 @@ def render_results_claim_packets_markdown(packets: dict[str, Any]) -> str:
             lines.append(f"- `{fact.get('fact_id')}`: {fact.get('statement')}")
         if packet.get("legend_summary"):
             lines.extend(["", "### Legend Summary", "", packet["legend_summary"], ""])
+        author_input = packet.get("author_input", {})
+        if author_input.get("claim_note") or author_input.get("section_note"):
+            lines.extend(["### Author Inputs", ""])
+            if author_input.get("section_note"):
+                lines.append(f"- section_note: {author_input['section_note']}")
+            if author_input.get("claim_note"):
+                lines.append(f"- claim_note: {author_input['claim_note']}")
+            lines.append("")
         if packet.get("citations", {}).get("reference_ids"):
             lines.extend(["### Citation Links", ""])
             for reference_id in packet["citations"]["reference_ids"]:

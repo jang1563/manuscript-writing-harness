@@ -315,7 +315,7 @@ def cmd_run(args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="fgsea pipeline harness")
+    parser = argparse.ArgumentParser(description="fgsea pipeline interface for the manuscript system")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     validate_parser = subparsers.add_parser("validate", help="validate fgsea config")

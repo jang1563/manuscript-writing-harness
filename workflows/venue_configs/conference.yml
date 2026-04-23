@@ -1,4 +1,9 @@
-name: conference
+name: Conference
+verification:
+  last_verified: 2026-04-16
+  stale_after_days: 180
+  final_confirmation_required: true
+  source_summary: Generic conference requirements are a lightweight fallback and should be revalidated for the target venue and year.
 required_sections:
   - abstract
   - introduction
@@ -11,4 +16,3 @@ special_assets:
   - supplemental_appendix
 notes:
   - Specialize this config per venue, such as ACM, IEEE, NeurIPS, or ICML.
-

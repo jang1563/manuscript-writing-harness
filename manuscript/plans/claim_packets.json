@@ -5,8 +5,20 @@
     "revision_checks": "manuscript/plans/revision_checks.json",
     "outline": "manuscript/plans/outline.json",
     "citation_graph": "manuscript/plans/citation_graph.json",
+    "author_content_inputs": "manuscript/plans/author_content_inputs.json",
     "reference_audit": "references/reports/reference_audit.json",
     "review_evidence": "review/reports/evidence_summary.json"
+  },
+  "author_inputs": {
+    "topic": "",
+    "section_notes": {
+      "summary": "",
+      "introduction": "",
+      "results": "",
+      "discussion": "",
+      "methods": ""
+    },
+    "claim_note_count": 0
   },
   "overall_status": "ready",
   "claim_count": 20,
@@ -101,6 +113,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -192,6 +209,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -282,6 +304,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -371,6 +398,11 @@
         "review_evidence_readiness": "ready",
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
       },
       "status": "ready",
       "blocking_issues": [],
@@ -465,6 +497,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -558,6 +595,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -582,13 +624,13 @@
       "evidence_facts": [
         {
           "fact_id": "claim_pathway_effect_sizes_align_with_directionality",
-          "statement": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs.",
+          "statement": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs, and the panel can be sourced directly from the active fgsea export rather than a hand-maintained summary table.",
           "panel_id": "a",
           "source_data": "figures/source_data/figure_05_panel_a.csv",
           "evidence_type": "annotated_pathway_dot_plot"
         }
       ],
-      "legend_summary": "### Figure 5\n\nThe pathway-enrichment dot plot summarizes gene ratio, significance strength, and directionality in a single panel for rapid comparison across representative pathways.",
+      "legend_summary": "### Figure 5\n\nThe pathway-enrichment dot plot summarizes gene ratio, significance strength, and directionality in a single panel for rapid comparison across representative pathways.\n\nIn the default build, this panel preferentially consumes the active `fgsea` export when it exists, so the figure remains a downstream summary of the tracked preranked enrichment branch rather than a separately curated pathway table.",
       "citations": {
         "reference_ids": [
           "fgseaBioconductorPackage",
@@ -648,6 +690,11 @@
         "review_evidence_readiness": "ready",
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
       },
       "status": "ready",
       "blocking_issues": [],
@@ -740,6 +787,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -830,6 +882,11 @@
         "review_evidence_readiness": "ready",
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
       },
       "status": "ready",
       "blocking_issues": [],
@@ -923,6 +980,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -1013,6 +1075,11 @@
         "review_evidence_readiness": "ready",
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
       },
       "status": "ready",
       "blocking_issues": [],
@@ -1105,6 +1172,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -1195,6 +1267,11 @@
         "review_evidence_readiness": "ready",
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
       },
       "status": "ready",
       "blocking_issues": [],
@@ -1287,6 +1364,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -1377,6 +1459,11 @@
         "review_evidence_readiness": "ready",
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
       },
       "status": "ready",
       "blocking_issues": [],
@@ -1469,6 +1556,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -1559,6 +1651,11 @@
         "review_evidence_readiness": "ready",
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
       },
       "status": "ready",
       "blocking_issues": [],
@@ -1651,6 +1748,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -1742,6 +1844,11 @@
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
       "status": "ready",
       "blocking_issues": [],
       "warnings": []
@@ -1828,6 +1935,11 @@
         "review_evidence_readiness": "ready",
         "review_evidence_path": "review/reports/evidence_summary.json",
         "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
       },
       "status": "ready",
       "blocking_issues": [],

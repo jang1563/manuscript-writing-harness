@@ -116,6 +116,10 @@ display_repo_path <- function(path, repo_root = figure_repo_root()) {
   normalized
 }
 
+public_font_reference <- function(path) {
+  basename(path)
+}
+
 load_fgsea_summary_for_export <- function(export_path, repo_root = figure_repo_root()) {
   summary_path <- file.path(dirname(export_path), "fgsea_summary.json")
   if (!file.exists(summary_path)) {
@@ -218,7 +222,7 @@ register_bundled_font <- function(repo_root, family) {
       )
       list(
         family = alias,
-        path = font_paths$plain
+        path = public_font_reference(font_paths$plain)
       )
     },
     error = function(...) NULL
@@ -245,7 +249,7 @@ resolve_font <- function(font_policy) {
     if (!is.null(match$path) && nzchar(match$path)) {
       return(list(
         family = candidate,
-        path = match$path,
+        path = public_font_reference(match$path),
         candidates = candidates,
         source_family = candidate
       ))

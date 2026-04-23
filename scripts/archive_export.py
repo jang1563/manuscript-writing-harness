@@ -211,7 +211,7 @@ def render_deposit_notes(report: dict[str, Any]) -> str:
             "## Suggested Deposit Metadata",
             "",
             f"- title: `{report['release_bundle']['profile_id']}` archive export",
-            "- description: frozen archive of the manuscript harness release package",
+            "- description: frozen archive of the multi-agent manuscript system release package",
             "- artifact scope: manuscript, figures, references, review evidence, pathway provenance",
             "",
             "## Required Files",

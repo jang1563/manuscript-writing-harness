@@ -71,6 +71,10 @@ def _display_repo_path(path: Path, repo_root: Path = REPO_ROOT) -> str:
         return str(path)
 
 
+def _public_font_reference(path: str | Path) -> str:
+    return Path(path).name
+
+
 def load_fgsea_summary_for_export(export_path: Path, *, repo_root: Path = REPO_ROOT) -> dict[str, Any] | None:
     summary_path = export_path.parent / "fgsea_summary.json"
     if not summary_path.exists():
@@ -195,7 +199,11 @@ def resolve_font_stack(font_policy: dict[str, Any]) -> dict[str, Any]:
             )
         except ValueError:
             continue
-        return {"family": family, "path": font_path, "candidates": candidates}
+        return {
+            "family": family,
+            "path": _public_font_reference(font_path),
+            "candidates": candidates,
+        }
     raise RuntimeError("Could not resolve any font from the configured sans-serif stack")
 
 

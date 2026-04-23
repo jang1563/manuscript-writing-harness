@@ -1,0 +1,58 @@
+name: submission-gate
+
+on:
+  workflow_dispatch:
+    inputs:
+      venue:
+        description: "Target venue id from the tracked venue-config set"
+        required: true
+        type: choice
+        options:
+          - acm_sigconf
+          - cell
+          - conference
+          - icml
+          - ieee_vis
+          - nature
+          - neurips
+          - science
+
+jobs:
+  submission-gate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: python3 -m pip install -r env/requirements-phase2.txt
+
+      - name: Validate scaffold
+        run: python3 scripts/check_scaffold.py
+
+      - name: Run submission gate
+        run: |
+          python3 scripts/run_submission_gate.py \
+            --venue "${{ inputs.venue }}" \
+            --output-dir . \
+            --write-step-summary
+
+      - name: Upload submission gate artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: submission-gate-artifacts
+          path: |
+            submission-gate-venue.json
+            submission-gate-venue.stderr
+            submission-gate-audit.json
+            submission-gate-audit.stderr
+            submission-gate-summary.md
+            submission-gate-venue.exit
+            submission-gate-audit.exit

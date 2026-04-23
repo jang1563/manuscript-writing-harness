@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from manuscript_claims import CLAIM_PACKETS_PATH, WRITING_PLAN_PATH, build_claim_packets
+from manuscript_claims import AUTHOR_CONTENT_INPUTS_PATH, CLAIM_PACKETS_PATH, WRITING_PLAN_PATH, build_claim_packets
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -59,6 +59,13 @@ def write_text(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def _relative_or_absolute(path: Path) -> str:
+    try:
+        return str(path.relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
+
+
 def _load_optional_json(path: Path) -> dict[str, Any] | None:
     if not path.exists():
         return None
@@ -90,6 +97,7 @@ def build_section_briefs() -> dict[str, Any]:
     for packet in claim_packets.get("claims", []):
         section_id = str(packet.get("manuscript_section", "results"))
         packets_by_section.setdefault(section_id, []).append(packet)
+    author_inputs = claim_packets.get("author_inputs", {})
 
     outline_map = {
         str(section.get("section_id")): section
@@ -106,6 +114,11 @@ def build_section_briefs() -> dict[str, Any]:
         section_display_items = display_items_by_section.get(section_id, [])
         section_packets = packets_by_section.get(section_id, [])
         claim_ids = [str(packet.get("claim_id")) for packet in section_packets]
+        claim_notes = {
+            str(packet.get("claim_id")): str(packet.get("author_input", {}).get("claim_note", ""))
+            for packet in section_packets
+            if str(packet.get("author_input", {}).get("claim_note", "")).strip()
+        }
         citation_refs = sorted(
             {
                 reference_id
@@ -165,6 +178,11 @@ def build_section_briefs() -> dict[str, Any]:
                 if REVIEW_EVIDENCE_PATH.exists()
                 else None,
             },
+            "author_input": {
+                "topic": str(author_inputs.get("topic", "")),
+                "section_note": str(author_inputs.get("section_notes", {}).get(section_id, "")),
+                "claim_notes": claim_notes,
+            },
             "drafting_guidance": SECTION_GUIDANCE.get(section_id, []),
             "warnings": warnings,
             "blocking_issues": blocking_issues,
@@ -186,7 +204,8 @@ def build_section_briefs() -> dict[str, Any]:
             "outline": str(OUTLINE_PATH.relative_to(REPO_ROOT)),
             "writing_plan": str(WRITING_PLAN_PATH.relative_to(REPO_ROOT)),
             "display_item_map": str(DISPLAY_ITEM_MAP_PATH.relative_to(REPO_ROOT)),
-            "claim_packets": str(CLAIM_PACKETS_PATH.relative_to(REPO_ROOT)),
+            "claim_packets": _relative_or_absolute(CLAIM_PACKETS_PATH),
+            "author_content_inputs": _relative_or_absolute(AUTHOR_CONTENT_INPUTS_PATH),
             "reference_audit": str(REFERENCE_AUDIT_PATH.relative_to(REPO_ROOT)),
             "review_evidence": str(REVIEW_EVIDENCE_PATH.relative_to(REPO_ROOT)),
         },
@@ -222,11 +241,20 @@ def render_section_briefs_markdown(briefs: dict[str, Any]) -> str:
                 f"- claim_packet_count: `{brief.get('claim_packet_count', 0)}`",
                 f"- reference_readiness: `{brief.get('reference_context', {}).get('readiness')}`",
                 f"- review_evidence_readiness: `{brief.get('review_context', {}).get('readiness')}`",
+                f"- topic: {brief.get('author_input', {}).get('topic') or 'not set'}",
                 "",
                 "### Drafting Guidance",
                 "",
             ]
         )
+        author_input = brief.get("author_input", {})
+        if author_input.get("section_note") or author_input.get("claim_notes"):
+            lines.extend(["### Author Inputs", ""])
+            if author_input.get("section_note"):
+                lines.append(f"- section_note: {author_input['section_note']}")
+            for claim_id, note in sorted(author_input.get("claim_notes", {}).items()):
+                lines.append(f"- {claim_id}: {note}")
+            lines.append("")
         for rule in brief.get("drafting_guidance", []):
             lines.append(f"- {rule}")
         if brief.get("warnings"):

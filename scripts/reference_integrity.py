@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from reference_common import (
+from reference_graph_common import (
     ARTICLE_LIKE_TYPES,
     CITATION_GRAPH_PATH,
     DISPLAY_ITEM_MAP_PATH,
@@ -21,8 +21,19 @@ from reference_common import (
     write_json,
     write_text,
 )
+from bibliography_common import bibliography_source_status
 
 CLAIM_REFERENCE_MAP_PATH = REFERENCE_BIB_PATH.parent / "mappings" / "claim_reference_map.json"
+
+
+def build_bibliography_scope_gate(source: dict[str, Any]) -> dict[str, Any]:
+    manuscript_scope_status = str(source.get("manuscript_scope_status", "unknown"))
+    return {
+        "status": "ready" if manuscript_scope_status == "confirmed" else "blocked",
+        "required_manuscript_scope_status": "confirmed",
+        "current_manuscript_scope_status": manuscript_scope_status,
+        "note": source.get("manuscript_scope_note"),
+    }
 
 
 def _suggested_candidates() -> dict[str, Any]:
@@ -56,8 +67,10 @@ def _claim_reference_map() -> dict[str, Any]:
 def build_reference_report(sync_graph: bool = False) -> dict[str, Any]:
     graph = sync_citation_graph(write=sync_graph)
     entries = load_bibliography_entries()
+    source = bibliography_source_status()
     suggestions = _suggested_candidates()
     claim_reference_map = _claim_reference_map()
+    bibliography_scope_gate = build_bibliography_scope_gate(source)
 
     key_to_entry = {entry["key"]: entry for entry in entries}
     key_counts: dict[str, int] = {}
@@ -111,6 +124,12 @@ def build_reference_report(sync_graph: bool = False) -> dict[str, Any]:
         blocking_issues.append(
             f"citation graph references missing bibliography keys: {', '.join(unresolved_reference_nodes)}"
         )
+    if source["status"] == "blocked":
+        blocking_issues.extend(f"bibliography source: {issue}" for issue in source["issues"])
+    if source["manuscript_scope_status"] == "invalid":
+        blocking_issues.extend(
+            f"bibliography manuscript scope: {issue}" for issue in source["manuscript_scope_issues"]
+        )
 
     if duplicate_titles:
         warnings.append(f"duplicate titles detected: {', '.join(duplicate_titles)}")
@@ -124,6 +143,8 @@ def build_reference_report(sync_graph: bool = False) -> dict[str, Any]:
         warnings.append(f"bibliography entries not linked from citation graph: {', '.join(uncited_bibliography_keys)}")
     if unlinked_claim_ids:
         warnings.append(f"claim nodes without citation edges: {', '.join(unlinked_claim_ids)}")
+    if source["status"] == "provisional":
+        warnings.extend(f"bibliography source: {warning}" for warning in source["warnings"])
 
     readiness = "ready"
     if blocking_issues:
@@ -149,6 +170,24 @@ def build_reference_report(sync_graph: bool = False) -> dict[str, Any]:
             "unlinked_claim_ids": unlinked_claim_ids,
             "unresolved_reference_nodes": unresolved_reference_nodes,
         },
+        "bibliography_source": {
+            "status": source["status"],
+            "manifest_path": source["manifest_path"],
+            "source_type": source["source_type"],
+            "manifest_state": source["manifest_state"],
+            "translator": source["translator"],
+            "export_mode": source["export_mode"],
+            "target_path": source["target_path"],
+            "issues": source["issues"],
+            "warnings": source["warnings"],
+            "manuscript_scope_status": source["manuscript_scope_status"],
+            "manuscript_scope_confirmed": source["manuscript_scope_confirmed"],
+            "manuscript_scope_note": source["manuscript_scope_note"],
+            "manuscript_scope_confirmed_on": source["manuscript_scope_confirmed_on"],
+            "manuscript_scope_issues": source["manuscript_scope_issues"],
+            "manuscript_scope_warnings": source["manuscript_scope_warnings"],
+        },
+        "bibliography_scope_gate": bibliography_scope_gate,
         "literature_intelligence": {
             "candidate_status": suggestions.get("status", "absent"),
             "generated_by": suggestions.get("generated_by"),
@@ -167,6 +206,7 @@ def build_reference_report(sync_graph: bool = False) -> dict[str, Any]:
             str(REFERENCE_BIB_PATH.relative_to(REFERENCE_BIB_PATH.parent.parent)),
             str(CITATION_GRAPH_PATH.relative_to(REFERENCE_BIB_PATH.parent.parent)),
             str(DISPLAY_ITEM_MAP_PATH.relative_to(REFERENCE_BIB_PATH.parent.parent)),
+            source["manifest_path"],
             str(SUGGESTED_CANDIDATES_PATH.relative_to(REFERENCE_BIB_PATH.parent.parent)),
             str(CLAIM_REFERENCE_MAP_PATH.relative_to(REFERENCE_BIB_PATH.parent.parent)),
         ],
@@ -178,6 +218,8 @@ def build_reference_manifest(report: dict[str, Any]) -> dict[str, Any]:
         "package_id": "reference_integrity_package_v1",
         "readiness": report["readiness"],
         "entry_count": report["bibliography"]["entry_count"],
+        "bibliography_source_status": report["bibliography_source"]["status"],
+        "bibliography_manuscript_scope_status": report["bibliography_source"]["manuscript_scope_status"],
         "claim_count": report["citation_graph"]["claim_count"],
         "reference_node_count": report["citation_graph"]["reference_node_count"],
         "edge_count": report["citation_graph"]["edge_count"],
@@ -191,6 +233,7 @@ def render_reference_markdown(report: dict[str, Any]) -> str:
         "",
         f"- readiness: `{report['readiness']}`",
         f"- bibliography entries: `{report['bibliography']['entry_count']}`",
+        f"- bibliography source: `{report['bibliography_source']['status']}`",
         f"- citation-graph claims: `{report['citation_graph']['claim_count']}`",
         f"- citation-graph edges: `{report['citation_graph']['edge_count']}`",
         f"- literature-intelligence candidates: `{report['literature_intelligence']['candidate_count']}`",
@@ -201,6 +244,43 @@ def render_reference_markdown(report: dict[str, Any]) -> str:
     ]
     for key in report["bibliography"]["keys"]:
         lines.append(f"- `{key}`")
+    lines.extend(["", "## Bibliography Source", ""])
+    lines.append(f"- manifest: `{report['bibliography_source']['manifest_path']}`")
+    lines.append(f"- source_type: `{report['bibliography_source']['source_type']}`")
+    lines.append(f"- manifest_state: `{report['bibliography_source']['manifest_state']}`")
+    lines.append(f"- export_mode: `{report['bibliography_source']['export_mode']}`")
+    lines.append(f"- target_path: `{report['bibliography_source']['target_path']}`")
+    lines.append(f"- manuscript_scope: `{report['bibliography_source']['manuscript_scope_status']}`")
+    if report["bibliography_source"]["manuscript_scope_confirmed_on"]:
+        lines.append(f"- manuscript_scope_confirmed_on: `{report['bibliography_source']['manuscript_scope_confirmed_on']}`")
+    if report["bibliography_source"]["manuscript_scope_note"]:
+        lines.append(f"- manuscript_scope_note: {report['bibliography_source']['manuscript_scope_note']}")
+    if report["bibliography_source"]["issues"]:
+        lines.append("- issues:")
+        for issue in report["bibliography_source"]["issues"]:
+            lines.append(f"  - {issue}")
+    if report["bibliography_source"]["warnings"]:
+        lines.append("- warnings:")
+        for warning in report["bibliography_source"]["warnings"]:
+            lines.append(f"  - {warning}")
+    if report["bibliography_source"]["manuscript_scope_issues"]:
+        lines.append("- manuscript_scope_issues:")
+        for issue in report["bibliography_source"]["manuscript_scope_issues"]:
+            lines.append(f"  - {issue}")
+    if report["bibliography_source"]["manuscript_scope_warnings"]:
+        lines.append("- manuscript_scope_warnings:")
+        for warning in report["bibliography_source"]["manuscript_scope_warnings"]:
+            lines.append(f"  - {warning}")
+    lines.extend(["", "## Bibliography Scope Gate", ""])
+    lines.append(f"- status: `{report['bibliography_scope_gate']['status']}`")
+    lines.append(
+        "- required_manuscript_scope_status: "
+        f"`{report['bibliography_scope_gate']['required_manuscript_scope_status']}`"
+    )
+    lines.append(
+        "- current_manuscript_scope_status: "
+        f"`{report['bibliography_scope_gate']['current_manuscript_scope_status']}`"
+    )
     if report["blocking_issues"]:
         lines.extend(["", "## Blocking Issues", ""])
         for issue in report["blocking_issues"]:

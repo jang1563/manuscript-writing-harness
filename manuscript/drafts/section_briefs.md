@@ -15,6 +15,7 @@
 - claim_packet_count: `0`
 - reference_readiness: `ready`
 - review_evidence_readiness: `ready`
+- topic: not set
 
 ### Drafting Guidance
 
@@ -30,6 +31,7 @@
 - claim_packet_count: `0`
 - reference_readiness: `ready`
 - review_evidence_readiness: `ready`
+- topic: not set
 
 ### Drafting Guidance
 
@@ -45,6 +47,7 @@
 - claim_packet_count: `20`
 - reference_readiness: `ready`
 - review_evidence_readiness: `ready`
+- topic: not set
 
 ### Drafting Guidance
 
@@ -60,6 +63,7 @@
 - claim_packet_count: `0`
 - reference_readiness: `ready`
 - review_evidence_readiness: `ready`
+- topic: not set
 
 ### Drafting Guidance
 
@@ -75,6 +79,7 @@
 - claim_packet_count: `0`
 - reference_readiness: `ready`
 - review_evidence_readiness: `ready`
+- topic: not set
 
 ### Drafting Guidance
 

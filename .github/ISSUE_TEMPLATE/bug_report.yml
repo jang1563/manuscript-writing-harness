@@ -1,0 +1,50 @@
+name: Bug report
+description: Report a reproducible defect in the multi-agent manuscript system.
+title: "[bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. Please include a minimal reproduction and the exact commands you ran.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the bug and the user-visible impact.
+      placeholder: The expected build passed locally, but check_scaffold failed because...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      description: Share the exact commands, files, or workflow steps needed to reproduce the issue.
+      placeholder: |
+        1. Create a fresh venv
+        2. Run `./.venv/bin/python scripts/check_scaffold.py`
+        3. Observe...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: The scaffold check should pass with no missing paths.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include OS, Python, R, Node, and any relevant local/runtime details.
+      placeholder: macOS 15, Python 3.11.2, R 4.3.x, Node 20.x
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or screenshots
+      description: Paste the most useful output only.
+      render: shell

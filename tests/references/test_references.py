@@ -13,11 +13,14 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 SCRIPTS_DIR = REPO_ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS_DIR))
 
-from references_common import (
+from bibliography_common import (
+    BIBLIOGRAPHY_SOURCE_TYPE,
     LintMessage,
+    bibliography_source_status,
     cross_reference_check,
     extract_cite_keys_from_manuscript,
     lint_entries,
+    load_bibliography_source,
     parse_bibtex,
 )
 
@@ -209,30 +212,185 @@ class TestCrossReference:
 
 class TestKeyExtraction:
     def test_myst_cite_pattern(self, tmp_path, monkeypatch):
-        import references_common
+        import bibliography_common
         sections = tmp_path / "sections"
         sections.mkdir()
         (sections / "test.md").write_text(
             "As shown {cite}`smith2020`, and {cite:p}`jones2019,lee2021`."
         )
-        monkeypatch.setattr(references_common, "MANUSCRIPT_DIR", tmp_path)
+        monkeypatch.setattr(bibliography_common, "MANUSCRIPT_DIR", tmp_path)
         keys = extract_cite_keys_from_manuscript()
         assert keys == {"smith2020", "jones2019", "lee2021"}
 
     def test_pandoc_cite_pattern(self, tmp_path, monkeypatch):
-        import references_common
+        import bibliography_common
         sections = tmp_path / "sections"
         sections.mkdir()
         (sections / "test.md").write_text("Results confirm [@smith2020; @jones2019].")
-        monkeypatch.setattr(references_common, "MANUSCRIPT_DIR", tmp_path)
+        monkeypatch.setattr(bibliography_common, "MANUSCRIPT_DIR", tmp_path)
         keys = extract_cite_keys_from_manuscript()
         assert keys == {"smith2020", "jones2019"}
 
     def test_no_sections_dir(self, tmp_path, monkeypatch):
-        import references_common
-        monkeypatch.setattr(references_common, "MANUSCRIPT_DIR", tmp_path)
+        import bibliography_common
+        monkeypatch.setattr(bibliography_common, "MANUSCRIPT_DIR", tmp_path)
         keys = extract_cite_keys_from_manuscript()
         assert keys == set()
+
+
+# ---------------------------------------------------------------------------
+# Bibliography source manifest tests
+# ---------------------------------------------------------------------------
+
+
+class TestBibliographySourceManifest:
+    def test_load_bibliography_source_manifest(self, tmp_path: Path):
+        manifest = tmp_path / "bibliography_source.yml"
+        manifest.write_text(
+            "\n".join(
+                [
+                    "source_type: zotero_better_bibtex_auto_export",
+                    "status: configured",
+                    "translator: Better BibTeX",
+                    "export_mode: keep_updated",
+                    "output:",
+                    "  path: references/library.bib",
+                    "  relative_to: repo_root",
+                    "  format: bibtex",
+                    "  encoding: utf-8",
+                    "policy:",
+                    "  allow_manual_edits: false",
+                    "manuscript_scope:",
+                    "  confirmed: true",
+                    "  note: Confirmed against the accepted manuscript Zotero export.",
+                    "  confirmed_on: 2026-04-18",
+                ]
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
+        payload = load_bibliography_source(manifest)
+        assert payload["source_type"] == BIBLIOGRAPHY_SOURCE_TYPE
+        assert payload["output"]["path"] == "references/library.bib"
+
+    def test_bibliography_source_status_ready(self, tmp_path: Path):
+        manifest = tmp_path / "bibliography_source.yml"
+        library = tmp_path / "references" / "library.bib"
+        library.parent.mkdir(parents=True)
+        library.write_text(SAMPLE_BIB, encoding="utf-8")
+        manifest.write_text(
+            "\n".join(
+                [
+                    "source_type: zotero_better_bibtex_auto_export",
+                    "status: configured",
+                    "translator: Better BibTeX",
+                    "export_mode: keep_updated",
+                    "output:",
+                    f"  path: {library.relative_to(tmp_path)}",
+                    "  relative_to: repo_root",
+                    "  format: bibtex",
+                    "  encoding: utf-8",
+                    "policy:",
+                    "  allow_manual_edits: false",
+                    "manuscript_scope:",
+                    "  confirmed: true",
+                    "  note: Confirmed against the accepted manuscript Zotero export.",
+                    "  confirmed_on: 2026-04-18",
+                ]
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
+        import bibliography_common
+
+        original_root = bibliography_common.REPO_ROOT
+        try:
+            bibliography_common.REPO_ROOT = tmp_path
+            status = bibliography_source_status(manifest_path=manifest, library_path=library)
+        finally:
+            bibliography_common.REPO_ROOT = original_root
+
+        assert status["status"] == "ready"
+        assert status["target_path"] == "references/library.bib"
+        assert status["manuscript_scope_status"] == "confirmed"
+        assert status["manuscript_scope_confirmed"] is True
+
+    def test_bibliography_source_status_blocks_mismatched_output_path(self, tmp_path: Path):
+        manifest = tmp_path / "bibliography_source.yml"
+        library = tmp_path / "references" / "library.bib"
+        library.parent.mkdir(parents=True)
+        library.write_text(SAMPLE_BIB, encoding="utf-8")
+        manifest.write_text(
+            "\n".join(
+                [
+                    "source_type: zotero_better_bibtex_auto_export",
+                    "status: configured",
+                    "translator: Better BibTeX",
+                    "export_mode: keep_updated",
+                    "output:",
+                    "  path: references/not_library.bib",
+                    "  relative_to: repo_root",
+                    "  format: bibtex",
+                    "  encoding: utf-8",
+                    "policy:",
+                    "  allow_manual_edits: false",
+                ]
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
+        import bibliography_common
+
+        original_root = bibliography_common.REPO_ROOT
+        try:
+            bibliography_common.REPO_ROOT = tmp_path
+            status = bibliography_source_status(manifest_path=manifest, library_path=library)
+        finally:
+            bibliography_common.REPO_ROOT = original_root
+
+        assert status["status"] == "blocked"
+        assert any("output.path" in issue for issue in status["issues"])
+
+    def test_bibliography_source_status_defaults_to_unconfirmed_scope(self, tmp_path: Path):
+        manifest = tmp_path / "bibliography_source.yml"
+        library = tmp_path / "references" / "library.bib"
+        library.parent.mkdir(parents=True)
+        library.write_text(SAMPLE_BIB, encoding="utf-8")
+        manifest.write_text(
+            "\n".join(
+                [
+                    "source_type: zotero_better_bibtex_auto_export",
+                    "status: configured",
+                    "translator: Better BibTeX",
+                    "export_mode: keep_updated",
+                    "output:",
+                    f"  path: {library.relative_to(tmp_path)}",
+                    "  relative_to: repo_root",
+                    "  format: bibtex",
+                    "  encoding: utf-8",
+                    "policy:",
+                    "  allow_manual_edits: false",
+                ]
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
+        import bibliography_common
+
+        original_root = bibliography_common.REPO_ROOT
+        try:
+            bibliography_common.REPO_ROOT = tmp_path
+            status = bibliography_source_status(manifest_path=manifest, library_path=library)
+        finally:
+            bibliography_common.REPO_ROOT = original_root
+
+        assert status["status"] == "ready"
+        assert status["manuscript_scope_status"] == "unconfirmed"
+        assert status["manuscript_scope_confirmed"] is False
 
 
 # ---------------------------------------------------------------------------
@@ -263,6 +421,7 @@ class TestCLI:
         result = _run_cli("status", check=False)
         assert result.returncode == 0
         assert "Bibliography" in result.stdout
+        assert "Bibliography source" in result.stdout
 
     def test_lint(self):
         result = _run_cli("lint", "--verbose", check=False)
@@ -273,6 +432,7 @@ class TestCLI:
         result = _run_cli("validate", check=False)
         assert result.returncode in (0, 1)
         assert "Library" in result.stdout
+        assert "Bibliography source" in result.stdout
 
     def test_list_styles(self):
         result = _run_cli("list-styles", check=False)

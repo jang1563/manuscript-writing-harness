@@ -1,6 +1,6 @@
 # Environment Notes
 
-This harness will likely need:
+This multi-agent manuscript system will likely need:
 
 - `Python` for manuscript utilities, figure scripts, metadata tooling, and validation
 - `Node.js` for `mystmd`
@@ -17,11 +17,19 @@ For the current scaffold, the only required local dependency is:
 Install with:
 
 ```bash
-python3 -m pip install -r env/requirements-myst.txt
-python3 -m pip install -r env/requirements-phase2.txt
+# Start from a supported interpreter (3.10-3.12) before creating .venv.
+python3.11 -m venv .venv
+source .venv/bin/activate
+python --version
+python scripts/check_runtime_support.py
+python -m pip install -r env/requirements-myst.txt
+python -m pip install -r env/requirements-phase2.txt
 Rscript env/install_r_figure_deps.R
 myst -v
 ```
+
+If your system `python3` still points to Python 3.8 or older, create `.venv` from a
+specific supported interpreter instead of the system default.
 
 `mystmd` requires `node` v20+.
 
@@ -36,7 +44,7 @@ For reproducibility, local development and CI should always install the same pin
 
 ## Runtime Support Matrix
 
-The harness now tracks supported interpreter versions explicitly in `env/runtime_support.yml`.
+The deterministic harness substrate now tracks supported interpreter versions explicitly in `env/runtime_support.yml`.
 
 Current support policy:
 
@@ -58,7 +66,7 @@ For local multi-version work, the expected workflow is:
 Validate that the runtime metadata and workflows stay aligned with:
 
 ```bash
-python3 scripts/check_runtime_support.py
+./.venv/bin/python scripts/check_runtime_support.py
 ```
 
 ## Planned Environment Expansion
@@ -79,7 +87,7 @@ Later phases should likely add:
 
 ## Optional fgsea Pathway Stack
 
-The harness now includes an optional `fgsea` preranked enrichment pipeline under `pathways/`.
+The manuscript system now includes an optional `fgsea` preranked enrichment pipeline under `pathways/`.
 
 Install support with the same R dependency bootstrap:
 

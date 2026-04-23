@@ -34,6 +34,11 @@ def test_build_release_bundle_is_ready_for_current_demo_repo() -> None:
     assert report["section_prose"]["overall_status"] == "ready"
     assert report["active_fgsea_study"]["readiness"] == "ready"
     assert all(item["status"] == "present" for item in report["required_artifacts"])
+    assert {item["path"] for item in report["required_artifacts"]} >= {
+        "research/13_agent_system_positioning.md",
+        "workflows/agents/README.md",
+        "workflows/agents/agent_registry.json",
+    }
 
 
 def test_write_release_outputs_can_be_redirected(tmp_path, monkeypatch) -> None:
@@ -68,6 +73,7 @@ def test_release_markdown_mentions_active_fgsea_and_required_artifacts() -> None
     assert "active fgsea study" in markdown
     assert "## Required Artifacts" in markdown
     assert "`manuscript/_build/html/results/index.html`" in markdown
+    assert "`workflows/agents/agent_registry.json`" in markdown
 
 
 def test_cli_check_release_bundle_strict_json() -> None:

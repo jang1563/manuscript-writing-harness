@@ -5,17 +5,18 @@ profiles:
     venue_id: "nature"
     release_metadata:
       title: "Integrated Demo Release Bundle"
-      description: "Frozen demonstration release for the manuscript writing harness, including manuscript, figure, evidence, reference, and pathway-analysis artifacts."
+      description: "Frozen demonstration release for the artifact-driven multi-agent manuscript system, including manuscript, figure, evidence, reference, pathway-analysis, and agent-architecture artifacts."
       date_released: "2026-04-13"
       keywords:
         - "manuscript"
         - "scientific writing"
+        - "multi-agent systems"
         - "reproducibility"
         - "systematic review"
         - "scientific figures"
       creators:
-        - name: "Manuscript Harness Team"
-          affiliation: "Manuscript Writing Harness Project"
+        - name: "Multi-Agent Manuscript System Team"
+          affiliation: "Multi-Agent Manuscript System Project"
     figure_bundles:
       - "bundle_bulk_omics_deg_exemplar"
       - "bundle_ai_ml_evaluation_exemplar"
@@ -31,3 +32,45 @@ profiles:
       - "review/reports/evidence_summary.json"
       - "references/reports/reference_audit.json"
       - "pathways/results/active_fgsea/study_dossier.json"
+      - "research/13_agent_system_positioning.md"
+      - "workflows/agents/README.md"
+      - "workflows/agents/agent_registry.json"
+  rnaseq_real_project_template_release:
+    profile_id: "rnaseq_real_project_template_release"
+    title: "RNA-seq Real Project Template"
+    venue_id: "nature"
+    release_metadata:
+      title: "RNA-seq Real Project Template"
+      description: "Replace with a project-specific release summary for RNA-seq Real Project Template."
+      date_released: "2026-04-13"
+      keywords:
+        - "manuscript"
+        - "scientific writing"
+        - "multi-agent systems"
+        - "bioinformatics"
+        - "fgsea"
+        - "msigdb"
+      creators:
+        - name: "Add Lead Author"
+          affiliation: "Add Institution"
+    figure_bundles:
+      - "bundle_bulk_omics_deg_exemplar"
+      - "bundle_ai_ml_evaluation_exemplar"
+    include_review_evidence: true
+    include_reference_integrity: true
+    include_active_fgsea_study: true
+    include_claim_coverage: true
+    include_section_prose: true
+    required_artifacts:
+      - "figures/output/review/index.html"
+      - "manuscript/_build/html/index.html"
+      - "manuscript/_build/html/results/index.html"
+      - "review/reports/evidence_summary.json"
+      - "references/reports/reference_audit.json"
+      - "pathways/results/active_fgsea/study_dossier.json"
+      - "research/13_agent_system_positioning.md"
+      - "workflows/agents/README.md"
+      - "workflows/agents/agent_registry.json"
+    project_context:
+      study_id: "msigdb_hallmark_demo"
+      notes: "Update release metadata and activate the project study profile before generating a final release bundle."

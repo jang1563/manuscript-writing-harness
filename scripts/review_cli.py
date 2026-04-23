@@ -10,23 +10,15 @@ from pathlib import Path
 
 from review_common import (
     BIAS_DIR,
-    BIAS_REQUIRED_COLUMNS,
-    EXTRACTION_DIR,
-    EXTRACTION_REQUIRED_COLUMNS,
     PROTOCOL_DIR,
-    PROTOCOL_REQUIRED_FIELDS,
     QUERIES_DIR,
-    QUERY_REQUIRED_FIELDS,
     REVIEW_ROOT,
-    SCREENING_DIR,
-    SCREENING_REQUIRED_COLUMNS,
     load_bias_assessments,
     load_extraction_table,
     load_protocol,
     load_queries,
     load_screening_log,
-    validate_csv_columns,
-    validate_yaml_fields,
+    validate_review_artifacts,
 )
 
 
@@ -240,55 +232,12 @@ def cmd_status(args: argparse.Namespace) -> int:
 
 def cmd_validate(args: argparse.Namespace) -> int:
     """Validate all review artifacts against schemas."""
-    all_errors: list[str] = []
+    validation = validate_review_artifacts()
 
-    # Protocol
-    try:
-        protocol = load_protocol()
-        all_errors.extend(validate_yaml_fields(protocol, PROTOCOL_REQUIRED_FIELDS, "protocol"))
-    except FileNotFoundError:
-        all_errors.append("protocol: file not found")
-
-    # Queries
-    queries = load_queries()
-    for q in queries:
-        all_errors.extend(
-            validate_yaml_fields(q, QUERY_REQUIRED_FIELDS, f"query:{q.get('query_id', '?')}")
-        )
-
-    # Screening
-    try:
-        screening = load_screening_log()
-        all_errors.extend(validate_csv_columns(screening, SCREENING_REQUIRED_COLUMNS, "screening_log"))
-    except FileNotFoundError:
-        pass  # Not an error if screening hasn't started
-
-    # Extraction
-    try:
-        extraction = load_extraction_table()
-        all_errors.extend(
-            validate_csv_columns(extraction, EXTRACTION_REQUIRED_COLUMNS, "extraction_table")
-        )
-        # Field-level validation (only if columns are present)
-        from review_extract import validate_extraction
-        all_errors.extend(validate_extraction())
-    except FileNotFoundError:
-        pass
-
-    # Bias
-    try:
-        bias = load_bias_assessments()
-        all_errors.extend(validate_csv_columns(bias, BIAS_REQUIRED_COLUMNS, "bias_assessments"))
-        # Field-level validation (only if columns are present)
-        from review_bias import validate_bias
-        all_errors.extend(validate_bias())
-    except FileNotFoundError:
-        pass
-
-    if all_errors:
-        print(f"Validation found {len(all_errors)} issue(s):")
-        for e in all_errors:
-            print(f"  - {e}")
+    if validation["issues"]:
+        print(f"Validation found {validation['issue_count']} issue(s):")
+        for issue in validation["issues"]:
+            print(f"  - {issue}")
         return 1
 
     print("All artifacts valid.")

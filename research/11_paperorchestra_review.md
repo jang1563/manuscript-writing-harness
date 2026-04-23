@@ -4,6 +4,8 @@ Reviewed: 2026-04-09
 
 ## Objective
 
+Forward-looking note: the current repo framing is captured in [13_agent_system_positioning.md](./13_agent_system_positioning.md). This note remains a historical architecture review of PaperOrchestra against the repo's deterministic harness substrate.
+
 Review `PaperOrchestra: A Multi-Agent Framework for Automated AI Research Paper Writing` carefully and translate the useful parts into concrete design guidance for this repository.
 
 ## Source Status

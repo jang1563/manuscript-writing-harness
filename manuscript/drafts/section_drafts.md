@@ -11,6 +11,7 @@
 - status: `ready`
 - source: `manuscript/sections/01_summary.md`
 - recommended_opening: Use one compact paragraph that names the question, the system, and the single strongest finding.
+- topic: not set
 - display_item_ids: `none`
 
 ### Subsection Plan
@@ -24,6 +25,7 @@
 - status: `ready`
 - source: `manuscript/sections/02_introduction.md`
 - recommended_opening: Use 2 to 3 paragraphs: context, gap, then objective.
+- topic: not set
 - display_item_ids: `none`
 
 ### Subsection Plan
@@ -37,6 +39,7 @@
 - status: `ready`
 - source: `manuscript/sections/03_results.md`
 - recommended_opening: Use one subsection per display-backed claim cluster, following manuscript display order.
+- topic: not set
 - display_item_ids: `figure_01_example, figure_04_sample_pca, figure_03_ma_plot, figure_02_volcano_pathway, figure_05_pathway_enrichment_dot, figure_06_roc_pr_compound, figure_07_calibration_reliability, figure_08_training_dynamics, figure_09_confusion_matrix_normalized, figure_10_feature_importance_summary, figure_11_ablation_summary, table_01_main`
 
 ### Subsection Plan
@@ -47,7 +50,7 @@
 - `claim_high_abundance_interferon_shift` via `figure_03_ma_plot`: Highly expressed interferon-response genes remain positively shifted in the MA plot, while negative fold changes cluster among proliferation-associated genes.
 - `claim_interferon_gene_activation` via `figure_02_volcano_pathway`: The strongest positive differential-expression signals cluster in interferon-associated genes including CXCL10, IFIT1, and MX1, which exceed both the fold-change and false-discovery thresholds.
 - `claim_cell_cycle_pathway_suppression` via `figure_02_volcano_pathway`: Negative enrichment scores for cell-cycle checkpoint, mitotic spindle, and DNA replication indicate coordinated suppression of proliferative programs relative to the upregulated immune-response pathways.
-- `claim_pathway_effect_sizes_align_with_directionality` via `figure_05_pathway_enrichment_dot`: Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs.
+- `claim_pathway_effect_sizes_align_with_directionality` via `figure_05_pathway_enrichment_dot`: Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs, and the panel can be sourced directly from the active fgsea export rather than a hand-maintained summary table.
 - `claim_foundation_model_improves_discrimination` via `figure_06_roc_pr_compound`: The foundation model yields the strongest ROC profile and the highest AUROC, maintaining higher true-positive rate than the comparator models across clinically relevant false-positive rates.
 - `claim_foundation_model_retains_precision_under_imbalance` via `figure_06_roc_pr_compound`: Under class imbalance, the foundation model preserves precision better than the comparator models across the recall range and remains far above the prevalence baseline, yielding the highest AUPRC.
 - `claim_foundation_model_best_calibrated` via `figure_07_calibration_reliability`: The foundation model tracks the identity line more closely than the comparator models across confidence bins and has the lowest expected calibration error.
@@ -67,6 +70,7 @@
 - status: `ready`
 - source: `manuscript/sections/04_discussion.md`
 - recommended_opening: Use 3 paragraphs: interpretation, comparison/limitations, then forward-looking implication.
+- topic: not set
 - display_item_ids: `none`
 
 ### Subsection Plan
@@ -80,6 +84,7 @@
 - status: `ready`
 - source: `manuscript/sections/05_methods.md`
 - recommended_opening: Use reproducibility-first ordering: data provenance, analysis pipeline, then runtime/export details.
+- topic: not set
 - display_item_ids: `none`
 
 ### Subsection Plan

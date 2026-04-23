@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from reference_common import (
+from reference_graph_common import (
     CITATION_GRAPH_PATH,
     REFERENCE_BIB_PATH,
     REFERENCE_METADATA_DIR,

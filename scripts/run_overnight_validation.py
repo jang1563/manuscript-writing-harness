@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run an isolated local overnight soak-validation loop for the manuscript harness."""
+"""Run an isolated local overnight soak-validation loop for the multi-agent manuscript system."""
 
 from __future__ import annotations
 

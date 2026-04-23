@@ -36,6 +36,7 @@ def test_prose_markdown_mentions_introduction_and_results() -> None:
     assert "# Section Prose Drafts" in markdown
     assert "## Introduction" in markdown
     assert "## Results" in markdown
+    assert "artifact-driven multi-agent manuscript system" in markdown
 
 
 def test_write_section_prose_outputs_creates_artifacts() -> None:
@@ -61,3 +62,11 @@ def test_section_prose_cli_exits_zero_for_ready_state() -> None:
     assert result.returncode == 0
     payload = json.loads(result.stdout)
     assert payload["prose"]["overall_status"] == "ready"
+
+
+def test_methods_section_mentions_agent_graph_and_harness_substrate() -> None:
+    prose = build_section_prose()
+    methods = next(section for section in prose["sections"] if section["section_id"] == "methods")
+    paragraph = methods["paragraphs"][0]
+    assert "artifact-bounded agent graph" in paragraph
+    assert "deterministic harness substrate" in paragraph

@@ -171,6 +171,11 @@ def run_demo() -> None:
         "databases": ["PubMed", "Europe PMC"],
         "primary_outcomes": ["Overall response rate", "Progression-free survival"],
         "secondary_outcomes": ["Overall survival", "Grade 3+ adverse events"],
+        "registration": {
+            "registry": "internal_frozen_protocol",
+            "registration_id": "sr_demo_001_frozen",
+            "date": "2026-04-09",
+        },
         "amendments": [],
     }
     write_yaml(PROTOCOL_DIR / "protocol.yml", protocol)

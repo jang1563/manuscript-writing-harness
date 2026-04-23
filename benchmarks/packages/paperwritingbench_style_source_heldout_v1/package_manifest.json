@@ -1,0 +1,47 @@
+{
+  "bundle_id": "paperwritingbench_style_heldout_v1",
+  "adapter_type": "paperwritingbench_style_bundle",
+  "benchmark_family": "paperwritingbench_style_bundle",
+  "reference_benchmark": "PaperWritingBench",
+  "description": "Held-out PaperWritingBench-style sample package for the multi-agent manuscript system that shifts emphasis from opening-response claims to model calibration and ranking evidence later in Results.",
+  "notes": [
+    "This is a tracked held-out sample package, not an official PaperWritingBench release.",
+    "The held-out case exercises a different real claim id so the benchmark matrix covers more than the opening response-kinetics path."
+  ],
+  "cases": [
+    {
+      "case_id": "heldout_bundle_calibration_authoring",
+      "kind": "paperwritingbench_style_authoring",
+      "dimension": "structured_authoring",
+      "weight": 0.7,
+      "description": "A held-out PaperWritingBench-style case should propagate a calibration-focused story into the Results section without relying on the original response-kinetics demo fixture.",
+      "source_materials": {
+        "venue_template": "icml"
+      },
+      "source_material_files": {
+        "idea_summary": "cases/heldout_bundle_calibration_authoring/idea_summary.json",
+        "experimental_log": "cases/heldout_bundle_calibration_authoring/experimental_log.md",
+        "guidelines": "cases/heldout_bundle_calibration_authoring/guidelines.md"
+      },
+      "mapping_file": "cases/heldout_bundle_calibration_authoring/mapping.json",
+      "expect_file": "cases/heldout_bundle_calibration_authoring/expect.json"
+    },
+    {
+      "case_id": "heldout_bundle_unknown_claim_guardrail",
+      "kind": "paperwritingbench_style_error",
+      "dimension": "guardrails",
+      "weight": 0.3,
+      "description": "The held-out PaperWritingBench-style path should preserve the same guardrail behavior when its mapping points to a claim id that does not exist in the repo.",
+      "source_materials": {
+        "venue_template": "icml"
+      },
+      "source_material_files": {
+        "idea_summary": "cases/heldout_bundle_unknown_claim_guardrail/idea_summary.json",
+        "experimental_log": "cases/heldout_bundle_unknown_claim_guardrail/experimental_log.md",
+        "guidelines": "cases/heldout_bundle_unknown_claim_guardrail/guidelines.md"
+      },
+      "mapping_file": "cases/heldout_bundle_unknown_claim_guardrail/mapping.json",
+      "expect_error_contains": "unknown claim_ids"
+    }
+  ]
+}

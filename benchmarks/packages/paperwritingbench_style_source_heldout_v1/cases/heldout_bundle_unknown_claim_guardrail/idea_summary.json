@@ -1,0 +1,4 @@
+{
+  "title": "Held-out calibration guardrail case",
+  "objective": "Preserve the unknown-claim stop condition even when the package otherwise looks valid."
+}

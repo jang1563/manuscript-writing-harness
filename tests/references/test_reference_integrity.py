@@ -14,7 +14,7 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-from reference_common import all_display_claim_ids, load_bibliography_entries, sync_citation_graph
+from reference_graph_common import all_display_claim_ids, load_bibliography_entries, sync_citation_graph
 from reference_integrity import build_reference_report, render_reference_markdown, write_reference_outputs
 
 
@@ -36,6 +36,9 @@ def test_reference_report_is_not_blocked() -> None:
     assert report["readiness"] in {"provisional", "ready"}
     assert report["blocking_issues"] == []
     assert report["bibliography"]["entry_count"] >= 1
+    assert report["bibliography_source"]["status"] == "ready"
+    assert report["bibliography_source"]["manuscript_scope_status"] == "unconfirmed"
+    assert report["bibliography_scope_gate"]["status"] == "blocked"
     assert report["citation_graph"]["claim_count"] == len(all_display_claim_ids())
     assert report["bibliography"]["placeholder_keys"] == []
 
@@ -43,9 +46,12 @@ def test_reference_report_is_not_blocked() -> None:
 def test_reference_markdown_mentions_warnings_and_package_paths() -> None:
     markdown = render_reference_markdown(build_reference_report(sync_graph=False))
     assert "# Reference Integrity Audit" in markdown
+    assert "## Bibliography Source" in markdown
+    assert "## Bibliography Scope Gate" in markdown
     assert "## Warnings" not in markdown or "- " in markdown
     assert "## Package Paths" in markdown
     assert "`references/library.bib`" in markdown
+    assert "`references/metadata/bibliography_source.yml`" in markdown
 
 
 def test_write_reference_outputs_creates_artifacts() -> None:
@@ -72,3 +78,21 @@ def test_cli_check_reference_integrity_exits_zero_for_provisional() -> None:
     assert "Reference Integrity Audit" in result.stdout
     payload = json.loads((REPO_ROOT / "references/reports/reference_audit.json").read_text(encoding="utf-8"))
     assert payload["readiness"] in {"provisional", "ready"}
+
+
+def test_cli_check_reference_integrity_can_require_confirmed_manuscript_bibliography() -> None:
+    result = subprocess.run(
+        [
+            sys.executable,
+            "scripts/check_reference_integrity.py",
+            "--json",
+            "--require-confirmed-manuscript-bibliography",
+        ],
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 1
+    payload = json.loads(result.stdout)
+    assert payload["report"]["bibliography_scope_gate"]["status"] == "blocked"

@@ -4,11 +4,12 @@
   "identifier": "integrated_demo_release_deposit_metadata_v1",
   "name": "Integrated Demo Release Bundle",
   "version": "v1",
-  "description": "Frozen demonstration release for the manuscript writing harness, including manuscript, figure, evidence, reference, and pathway-analysis artifacts.",
+  "description": "Frozen demonstration release for the artifact-driven multi-agent manuscript system, including manuscript, figure, evidence, reference, pathway-analysis, and agent-architecture artifacts.",
   "datePublished": "2026-04-13",
   "keywords": [
     "manuscript",
     "scientific writing",
+    "multi-agent systems",
     "reproducibility",
     "systematic review",
     "scientific figures"
@@ -16,12 +17,12 @@
   "author": [
     {
       "@type": "Person",
-      "name": "Manuscript Harness Team",
-      "givenName": "Manuscript Harness",
+      "name": "Multi-Agent Manuscript System Team",
+      "givenName": "Multi-Agent Manuscript System",
       "familyName": "Team",
       "affiliation": {
         "@type": "Organization",
-        "name": "Manuscript Writing Harness Project"
+        "name": "Multi-Agent Manuscript System Project"
       }
     }
   ]

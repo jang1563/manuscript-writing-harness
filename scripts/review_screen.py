@@ -140,8 +140,8 @@ def screening_summary(log_path: Path | None = None) -> dict[str, dict[str, int]]
 
     summary: dict[str, dict[str, int]] = {}
     for row in log_rows:
-        stage = row.get("stage", "unknown")
-        decision = row.get("decision", "unknown")
+        stage = row.get("stage", "").strip() or "unknown"
+        decision = row.get("decision", "").strip() or "unknown"
         if stage not in summary:
             summary[stage] = {}
         summary[stage][decision] = summary[stage].get(decision, 0) + 1

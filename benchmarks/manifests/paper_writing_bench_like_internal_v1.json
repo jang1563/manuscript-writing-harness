@@ -1,0 +1,19 @@
+{
+  "suite_id": "paper_writing_bench_like_internal_v1",
+  "definition_type": "suite",
+  "adapter_type": "",
+  "benchmark_family": "paper_writing_bench_like_internal",
+  "reference_benchmark": "PaperWritingBench",
+  "readiness": "ready",
+  "overall_score": 100.0,
+  "case_count": 3,
+  "passed_case_count": 3,
+  "failed_case_count": 0,
+  "failed_case_ids": [],
+  "package_paths": [
+    "benchmarks/suites/paper_writing_bench_like_internal_v1.json",
+    "scripts/check_harness_benchmark.py",
+    "scripts/harness_benchmark.py",
+    "tests/manuscript/test_harness_benchmark.py"
+  ]
+}

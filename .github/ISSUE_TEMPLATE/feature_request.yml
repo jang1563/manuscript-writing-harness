@@ -1,0 +1,38 @@
+name: Feature request
+description: Propose a new capability or workflow improvement for the multi-agent manuscript system.
+title: "[enhancement]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please describe the user need first, then the implementation idea.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or goal
+      description: What user need, workflow gap, or repeated friction are you trying to solve?
+      placeholder: We need a way to...
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: Share the rough solution, CLI, schema, or UX shape you have in mind.
+      placeholder: Add a script that...
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Mention any workarounds or rejected approaches.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: What would success look like?
+      description: Describe the user-facing outcome or acceptance criteria.
+    validations:
+      required: true

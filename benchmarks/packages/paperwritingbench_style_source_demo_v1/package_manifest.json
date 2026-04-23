@@ -1,0 +1,47 @@
+{
+  "bundle_id": "paperwritingbench_style_demo_v1",
+  "adapter_type": "paperwritingbench_style_bundle",
+  "benchmark_family": "paperwritingbench_style_bundle",
+  "reference_benchmark": "PaperWritingBench",
+  "description": "Example adapter-ready benchmark bundle that carries pre-writing materials and maps them into the multi-agent manuscript system author-input surface built on the deterministic harness substrate.",
+  "notes": [
+    "This is a tracked demo bundle for the adapter layer, not an official PaperWritingBench release.",
+    "The adapter derives the manuscript topic from source_materials.idea_summary when author_inputs.topic is omitted."
+  ],
+  "cases": [
+    {
+      "case_id": "bundle_authoring_from_prewriting_materials",
+      "kind": "paperwritingbench_style_authoring",
+      "dimension": "structured_authoring",
+      "weight": 0.7,
+      "description": "A PaperWritingBench-style case should carry idea-summary and venue-guideline context, then map those materials into author inputs that propagate through the manuscript system's planning, briefing, and drafting artifacts.",
+      "source_materials": {
+        "venue_template": "neurips"
+      },
+      "source_material_files": {
+        "idea_summary": "cases/bundle_authoring_from_prewriting_materials/idea_summary.json",
+        "experimental_log": "cases/bundle_authoring_from_prewriting_materials/experimental_log.md",
+        "guidelines": "cases/bundle_authoring_from_prewriting_materials/guidelines.md"
+      },
+      "mapping_file": "cases/bundle_authoring_from_prewriting_materials/mapping.json",
+      "expect_file": "cases/bundle_authoring_from_prewriting_materials/expect.json"
+    },
+    {
+      "case_id": "bundle_unknown_claim_guardrail",
+      "kind": "paperwritingbench_style_error",
+      "dimension": "guardrails",
+      "weight": 0.3,
+      "description": "The adapter path should preserve the same guardrail behavior as the repo-local suite when a pre-writing bundle points to an unknown claim id.",
+      "source_materials": {
+        "venue_template": "conference"
+      },
+      "source_material_files": {
+        "idea_summary": "cases/bundle_unknown_claim_guardrail/idea_summary.json",
+        "experimental_log": "cases/bundle_unknown_claim_guardrail/experimental_log.md",
+        "guidelines": "cases/bundle_unknown_claim_guardrail/guidelines.md"
+      },
+      "mapping_file": "cases/bundle_unknown_claim_guardrail/mapping.json",
+      "expect_error_contains": "unknown claim_ids"
+    }
+  ]
+}

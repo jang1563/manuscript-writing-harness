@@ -1,0 +1,12 @@
+- name: bug
+  color: d73a4a
+  description: Something is broken or behaving incorrectly.
+- name: enhancement
+  color: a2eeef
+  description: New capability or improvement request.
+- name: documentation
+  color: 0075ca
+  description: Docs clarification, onboarding, or reference updates.
+- name: licensing
+  color: 5319e7
+  description: Questions about noncommercial coverage or commercial terms.

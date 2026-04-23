@@ -1,0 +1,13 @@
+{
+  "project_id": "rnaseq_real_project_template",
+  "release_profile_id": "rnaseq_real_project_template_release",
+  "title": "RNA-seq Real Project Template",
+  "review_model": "double_blind",
+  "anonymization_required": true,
+  "redacted_creators": [
+    "Anonymous Authors"
+  ],
+  "redacted_affiliations": [
+    "Withheld for blind review"
+  ]
+}

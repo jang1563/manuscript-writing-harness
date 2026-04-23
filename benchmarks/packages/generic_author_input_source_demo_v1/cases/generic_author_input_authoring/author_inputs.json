@@ -1,0 +1,9 @@
+{
+  "topic": "Direct author input benchmark for therapeutic response",
+  "section_notes": {
+    "results": "Lead the Results with the strongest treatment-response separation."
+  },
+  "claim_notes": {
+    "claim_response_kinetics": "Open the first results subsection with this response-divergence claim."
+  }
+}

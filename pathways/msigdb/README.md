@@ -8,7 +8,7 @@ Important constraints:
 - This repo does not vendor official MSigDB GMT files.
 - The intended workflow is to download the GMT locally, place it into a study profile under `pathways/studies/<study_id>/inputs/msigdb/`, validate the config, and then activate that profile.
 
-Recommended collections in this harness:
+Recommended collections for this manuscript system pathway layer:
 
 - `H` / `MH`: compact first-pass biology summaries
 - `C2:CP` / `M2:CP`: curated canonical pathways

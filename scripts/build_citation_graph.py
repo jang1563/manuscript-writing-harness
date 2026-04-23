@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 import sys
 
-from reference_common import CITATION_GRAPH_PATH, sync_citation_graph
+from reference_graph_common import CITATION_GRAPH_PATH, sync_citation_graph
 
 
 def main() -> int:

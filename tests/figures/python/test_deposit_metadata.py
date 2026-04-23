@@ -63,6 +63,7 @@ def test_write_deposit_outputs_can_be_redirected(tmp_path, monkeypatch) -> None:
     cff_payload = yaml.safe_load(citation_cff.read_text(encoding="utf-8"))
     assert cff_payload["cff-version"] == "1.2.0"
     assert cff_payload["title"]
+    assert "multi-agent manuscript system" in cff_payload["abstract"].lower()
 
 
 def test_cli_check_deposit_metadata_strict_json() -> None:

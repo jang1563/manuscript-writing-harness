@@ -6,12 +6,14 @@ from __future__ import annotations
 import argparse
 import sys
 
-from references_common import (
+from bibliography_common import (
+    BIBLIOGRAPHY_SOURCE_MANIFEST,
     CSL_DIR,
     LIBRARY_BIB,
     MANUSCRIPT_DIR,
     REFERENCES_DIR,
     available_csl_styles,
+    bibliography_source_status,
     cross_reference_check,
     extract_cite_keys_from_manuscript,
     lint_entries,
@@ -43,13 +45,48 @@ def cmd_status(args: argparse.Namespace) -> int:
 
     except FileNotFoundError:
         print(f"Bibliography: not found ({LIBRARY_BIB})")
-        return 0
+        entries = []
 
     # CSL styles
     styles = available_csl_styles()
     print(f"\nCSL styles: {len(styles)}")
     for s in styles:
         print(f"  {s}")
+
+    source = bibliography_source_status()
+    print("\nBibliography source:")
+    print(f"  Readiness: {source['status']}")
+    print(f"  Manifest: {BIBLIOGRAPHY_SOURCE_MANIFEST}")
+    if source["source_type"]:
+        print(f"  Source type: {source['source_type']}")
+    if source["manifest_state"]:
+        print(f"  Manifest state: {source['manifest_state']}")
+    if source["translator"]:
+        print(f"  Translator: {source['translator']}")
+    if source["export_mode"]:
+        print(f"  Export mode: {source['export_mode']}")
+    print(f"  Output: {source['target_path']}")
+    print(f"  Manuscript scope: {source['manuscript_scope_status']}")
+    if source["manuscript_scope_confirmed_on"]:
+        print(f"  Manuscript scope confirmed on: {source['manuscript_scope_confirmed_on']}")
+    if source["manuscript_scope_note"]:
+        print(f"  Manuscript scope note: {source['manuscript_scope_note']}")
+    if source["issues"]:
+        print("  Issues:")
+        for issue in source["issues"]:
+            print(f"    - {issue}")
+    if source["warnings"]:
+        print("  Warnings:")
+        for warning in source["warnings"]:
+            print(f"    - {warning}")
+    if source["manuscript_scope_issues"]:
+        print("  Manuscript scope issues:")
+        for issue in source["manuscript_scope_issues"]:
+            print(f"    - {issue}")
+    if source["manuscript_scope_warnings"]:
+        print("  Manuscript scope warnings:")
+        for warning in source["manuscript_scope_warnings"]:
+            print(f"    - {warning}")
 
     # Manuscript citations
     keys = extract_cite_keys_from_manuscript()
@@ -143,6 +180,35 @@ def cmd_validate(args: argparse.Namespace) -> int:
         all_ok = False
     else:
         print(f"Cross-reference: OK ({len(manuscript_keys)} keys resolved)")
+
+    source = bibliography_source_status()
+    if source["status"] == "ready":
+        print(
+            "Bibliography source: READY "
+            f"({source['source_type']} -> {source['target_path']})"
+        )
+    else:
+        print(f"Bibliography source: {source['status'].upper()}")
+        print(f"  Manifest: {source['manifest_path']}")
+        for issue in source["issues"]:
+            print(f"  - {issue}")
+        for warning in source["warnings"]:
+            print(f"  - {warning}")
+        all_ok = False
+
+    if source["manuscript_scope_status"] == "confirmed":
+        print("Bibliography manuscript scope: CONFIRMED")
+    elif source["manuscript_scope_status"] == "invalid":
+        print("Bibliography manuscript scope: INVALID")
+        for issue in source["manuscript_scope_issues"]:
+            print(f"  - {issue}")
+        all_ok = False
+    else:
+        print("Bibliography manuscript scope: UNCONFIRMED")
+        if source["manuscript_scope_note"]:
+            print(f"  - {source['manuscript_scope_note']}")
+        for warning in source["manuscript_scope_warnings"]:
+            print(f"  - {warning}")
 
     if all_ok:
         print("\nAll checks passed.")

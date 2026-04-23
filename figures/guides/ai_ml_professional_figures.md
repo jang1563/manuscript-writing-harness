@@ -1,13 +1,13 @@
 # AI/ML Professional Figures
 
-This guide prepares the figure harness for AI-for-science and AI/ML paper conventions.
+This guide prepares the figure layer for AI-for-science and AI/ML paper conventions.
 
 ## Goals
 
 - support top-conference and high-end methods-paper figure patterns
 - make model-comparison figures readable at single-column and double-column widths
 - preserve uncertainty, calibration, and ablation evidence rather than only headline metrics
-- keep figures claim-backed and source-data-backed like the rest of the harness
+- keep figures claim-backed and source-data-backed like the rest of the manuscript system
 
 ## Default visual rules
 
@@ -36,10 +36,10 @@ This guide prepares the figure harness for AI-for-science and AI/ML paper conven
 - annotating every point or every run in dense optimization curves
 - using t-SNE or UMAP projections without clarifying what the geometry should and should not imply
 
-## Harness implications
+## Figure-Layer Implications
 
 - every AI/ML figure class should declare canonical metric ordering and naming
 - manifests should record whether uncertainty, calibration, or repeated-seed evidence is shown
 - review checklists should ask whether the figure supports deployment-relevant claims or only leaderboard claims
 - future AI/ML classes should default to the `ai_ml_professional` style profile
-- the first implemented AI/ML class in this harness is `roc_pr_compound`, which sets the expected pattern for paired ROC/PR evaluation with uncertainty and operating points
+- the first implemented AI/ML class in this figure layer is `roc_pr_compound`, which sets the expected pattern for paired ROC/PR evaluation with uncertainty and operating points

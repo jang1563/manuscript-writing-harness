@@ -1,0 +1,16 @@
+name: NeurIPS
+verification:
+  last_verified: 2026-04-16
+  stale_after_days: 180
+  final_confirmation_required: true
+  source_summary: NeurIPS baseline was last checked against current public paper and reviewer guidance.
+required_sections:
+  - abstract
+  - main_text
+  - references
+special_assets:
+  - anonymization_check
+notes:
+  - "Based on current NeurIPS paper guidance: the main paper body is limited to 9 content pages, with additional pages for references, the paper checklist, and optional technical appendices."
+  - Supplementary material and linked code must preserve double-blind anonymity.
+  - Omit acknowledgements and other identifying metadata from submission-time builds; restore them for camera-ready.

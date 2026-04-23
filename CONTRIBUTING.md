@@ -1,6 +1,8 @@
 # Contributing
 
-Thanks for your interest in contributing. This project is an opinionated harness for high-quality scientific manuscripts, and contributions are welcome.
+Thanks for your interest in contributing. This project is an artifact-driven multi-agent manuscript system built on a deterministic harness substrate, and contributions are welcome.
+
+Participation in this project is governed by the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## Before you start
 
@@ -12,10 +14,13 @@ Thanks for your interest in contributing. This project is an opinionated harness
 
 ```bash
 # Python (3.10-3.12)
-python3 -m venv .venv
+# If your system python3 is older, point this at a specific supported interpreter.
+python3.11 -m venv .venv
 source .venv/bin/activate
-pip install -r env/requirements-myst.txt
-pip install -r env/requirements-phase2.txt
+python --version
+python scripts/check_runtime_support.py
+python -m pip install -r env/requirements-myst.txt
+python -m pip install -r env/requirements-phase2.txt
 
 # R figures (optional)
 Rscript env/install_r_figure_deps.R
@@ -28,12 +33,12 @@ Run the validation entrypoints to confirm setup:
 
 ```bash
 python3 scripts/check_scaffold.py
-python3 -m pytest tests/
+./.venv/bin/python -m pytest tests/
 ```
 
 ## Pull request checklist
 
-- [ ] All existing tests still pass: `python3 -m pytest tests/`
+- [ ] All existing tests still pass: `./.venv/bin/python -m pytest tests/`
 - [ ] New behavior has tests (unit, integration, or visual regression as appropriate)
 - [ ] CLI changes update the relevant module README and the top-level README quick-start
 - [ ] Schema changes update the affected YAML schema in `*/schemas/` and the corresponding `*_common.py` field constants
@@ -67,7 +72,9 @@ Open a GitHub issue with:
 
 ## Reporting security issues
 
-Do not open a public issue for security vulnerabilities. See [SECURITY.md](SECURITY.md) if present, or email **silveray1563@gmail.com** with details.
+Do not open a public issue for security vulnerabilities.
+
+Follow [SECURITY.md](SECURITY.md) for the private reporting process. The current supported intake path is email to **silveray1563@gmail.com**.
 
 ## Questions about commercial use
 

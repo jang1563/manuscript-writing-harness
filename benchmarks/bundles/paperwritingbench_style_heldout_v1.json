@@ -1,0 +1,75 @@
+{
+  "bundle_id": "paperwritingbench_style_heldout_v1",
+  "adapter_type": "paperwritingbench_style_bundle",
+  "benchmark_family": "paperwritingbench_style_bundle",
+  "reference_benchmark": "PaperWritingBench",
+  "description": "Held-out PaperWritingBench-style sample package for the multi-agent manuscript system that shifts emphasis from opening-response claims to model calibration and ranking evidence later in Results.",
+  "notes": [
+    "This is a tracked held-out sample package, not an official PaperWritingBench release.",
+    "The held-out case exercises a different real claim id so the benchmark matrix covers more than the opening response-kinetics path."
+  ],
+  "import_source": {
+    "package_dir": "benchmarks/packages/paperwritingbench_style_source_heldout_v1",
+    "manifest_path": "benchmarks/packages/paperwritingbench_style_source_heldout_v1/package_manifest.json"
+  },
+  "cases": [
+    {
+      "case_id": "heldout_bundle_calibration_authoring",
+      "kind": "paperwritingbench_style_authoring",
+      "dimension": "structured_authoring",
+      "weight": 0.7,
+      "description": "A held-out PaperWritingBench-style case should propagate a calibration-focused story into the Results section without relying on the original response-kinetics demo fixture.",
+      "source_materials": {
+        "venue_template": "icml",
+        "idea_summary": {
+          "title": "Calibration-aware foundation model ranking for imbalanced disease states",
+          "objective": "Use the model-comparison subsection to foreground probability quality before the broader ranking synthesis."
+        },
+        "experimental_log": "The held-out benchmark case emphasizes comparative model behavior under class imbalance.\nKeep the Results narrative focused on calibration quality before summarizing global ranking.",
+        "guidelines": "Prioritize the calibration-focused evidence before broader synthesis claims.\nAvoid rewriting the opening response-kinetics framing from the original demo bundle."
+      },
+      "mapping": {
+        "section_notes": {
+          "results": "Lead the mid-results narrative with the calibration-quality comparison."
+        },
+        "claim_notes": {
+          "claim_calibration_loss_mainly_affects_probability_quality": "Use this to anchor the probability-quality subsection before the broader ranking synthesis."
+        }
+      },
+      "author_inputs": {},
+      "expect": {
+        "topic": "Calibration-aware foundation model ranking for imbalanced disease states",
+        "claim_coverage_status": "ready",
+        "section_briefs_status": "ready",
+        "section_drafts_status": "ready",
+        "section_note_section": "results",
+        "section_note_contains": "calibration-quality comparison",
+        "claim_note_claim_id": "claim_calibration_loss_mainly_affects_probability_quality",
+        "claim_note_contains": "probability-quality subsection"
+      }
+    },
+    {
+      "case_id": "heldout_bundle_unknown_claim_guardrail",
+      "kind": "paperwritingbench_style_error",
+      "dimension": "guardrails",
+      "weight": 0.3,
+      "description": "The held-out PaperWritingBench-style path should preserve the same guardrail behavior when its mapping points to a claim id that does not exist in the repo.",
+      "source_materials": {
+        "venue_template": "icml",
+        "idea_summary": {
+          "title": "Held-out calibration guardrail case",
+          "objective": "Preserve the unknown-claim stop condition even when the package otherwise looks valid."
+        },
+        "experimental_log": "This negative case mirrors a real pre-writing package shape but points to an invalid claim id.",
+        "guidelines": "The importer and benchmark adapter should accept the package shape but the manuscript system must still block generation on the invalid claim reference."
+      },
+      "expect_error_contains": "unknown claim_ids",
+      "mapping": {
+        "claim_notes": {
+          "claim_not_in_repo_calibration": "This should still stop generation until the claim source is clarified."
+        }
+      },
+      "author_inputs": {}
+    }
+  ]
+}

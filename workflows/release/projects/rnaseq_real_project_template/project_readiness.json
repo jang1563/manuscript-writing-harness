@@ -1,0 +1,223 @@
+{
+  "project_id": "rnaseq_real_project_template",
+  "title": "RNA-seq Real Project Template",
+  "release_profile_id": "rnaseq_real_project_template_release",
+  "study_id": "msigdb_hallmark_demo",
+  "readiness": "provisional",
+  "blocking_issues": [],
+  "warnings": [
+    "rank preparation is ready; add the licensed MSigDB GMT to move this profile to ready",
+    "pathways_gmt not found: pathways/studies/msigdb_hallmark_demo/inputs/msigdb/msigdb_hallmark_demo_H_2026.1.Hs_gene_symbol.gmt",
+    "MSigDB GMT not found at pathways_gmt; download the licensed GMT and place it at the configured path",
+    "release_metadata.creators[1].name still contains a placeholder",
+    "release_metadata.creators[1].affiliation still contains a placeholder",
+    "licensed MSigDB GMT has not been placed at the expected study path",
+    "project study profile is not the active fgsea source yet"
+  ],
+  "venue_id": "nature",
+  "pathway_strategy": {
+    "provider": "msigdb",
+    "species": "human",
+    "collection": "H",
+    "version": "2026.1.Hs",
+    "identifier_type": "gene_symbol"
+  },
+  "release_metadata": {
+    "title": "RNA-seq Real Project Template",
+    "description": "Replace with a project-specific release summary for RNA-seq Real Project Template.",
+    "date_released": "2026-04-13",
+    "keywords": [
+      "manuscript",
+      "scientific writing",
+      "bioinformatics",
+      "fgsea",
+      "msigdb"
+    ],
+    "creators": [
+      {
+        "name": "Add Lead Author",
+        "affiliation": "Add Institution"
+      }
+    ]
+  },
+  "study_report": {
+    "study_id": "msigdb_hallmark_demo",
+    "config": "pathways/studies/msigdb_hallmark_demo/configs/fgsea.yml",
+    "readiness": "provisional",
+    "blocking_issues": [
+      "pathways_gmt not found: pathways/studies/msigdb_hallmark_demo/inputs/msigdb/msigdb_hallmark_demo_H_2026.1.Hs_gene_symbol.gmt",
+      "MSigDB GMT not found at pathways_gmt; download the licensed GMT and place it at the configured path"
+    ],
+    "warnings": [
+      "rank preparation is ready; add the licensed MSigDB GMT to move this profile to ready"
+    ],
+    "study_kind": "msigdb",
+    "active_profile": {
+      "is_active_source": false,
+      "active_config": "pathways/configs/fgsea_active.yml",
+      "source_profile": "pathways/studies/rnaseq_case_control_template/configs/fgsea.yml",
+      "figure_05_sync": {
+        "status": "inactive",
+        "synced_renderers": [],
+        "unsynced_renderers": [
+          "python",
+          "r"
+        ]
+      }
+    },
+    "inputs": {
+      "raw_input_table": "pathways/studies/msigdb_hallmark_demo/inputs/raw/msigdb_hallmark_demo_differential_expression.csv",
+      "raw_input_rows": 4,
+      "ranks_csv": "pathways/studies/msigdb_hallmark_demo/inputs/msigdb_hallmark_demo_ranks.csv",
+      "ranks_rows": 4,
+      "rank_prep_summary": "pathways/studies/msigdb_hallmark_demo/results/rank_prep/rank_prep_summary.json",
+      "pathways_gmt": "pathways/studies/msigdb_hallmark_demo/inputs/msigdb/msigdb_hallmark_demo_H_2026.1.Hs_gene_symbol.gmt",
+      "pathway_count": 0
+    },
+    "rank_prep": {
+      "study_id": "msigdb_hallmark_demo",
+      "status": "ready",
+      "config": "pathways/studies/msigdb_hallmark_demo/configs/rank_prep.yml",
+      "input_table": "pathways/studies/msigdb_hallmark_demo/inputs/raw/msigdb_hallmark_demo_differential_expression.csv",
+      "output_ranks_csv": "pathways/studies/msigdb_hallmark_demo/inputs/msigdb_hallmark_demo_ranks.csv",
+      "summary_json": "pathways/studies/msigdb_hallmark_demo/results/rank_prep/rank_prep_summary.json",
+      "summary_md": "pathways/studies/msigdb_hallmark_demo/results/rank_prep/rank_prep_summary.md",
+      "source_tool": "deseq2",
+      "method": "signed_neg_log10_significance",
+      "input_rows": 4,
+      "retained_rows": 4,
+      "duplicate_genes_removed": 0,
+      "dropped_missing_or_invalid": 0,
+      "top_positive": [
+        {
+          "gene": "IFIT1",
+          "stat": 4.09691
+        },
+        {
+          "gene": "STAT1",
+          "stat": 3.657577
+        },
+        {
+          "gene": "MCM5",
+          "stat": -2.545155
+        },
+        {
+          "gene": "CCNB1",
+          "stat": -2.769551
+        }
+      ],
+      "top_negative": [
+        {
+          "gene": "CCNB1",
+          "stat": -2.769551
+        },
+        {
+          "gene": "MCM5",
+          "stat": -2.545155
+        },
+        {
+          "gene": "STAT1",
+          "stat": 3.657577
+        },
+        {
+          "gene": "IFIT1",
+          "stat": 4.09691
+        }
+      ]
+    },
+    "fgsea": {
+      "status": "missing",
+      "summary_json": "pathways/studies/msigdb_hallmark_demo/results/fgsea/fgsea_summary.json",
+      "results_csv": "pathways/studies/msigdb_hallmark_demo/results/fgsea/fgsea_results.csv",
+      "figure_export_csv": "pathways/studies/msigdb_hallmark_demo/results/fgsea/fgsea_pathway_dot_export.csv"
+    },
+    "validation": {
+      "config": "pathways/studies/msigdb_hallmark_demo/configs/fgsea.yml",
+      "run_id": "msigdb_hallmark_demo",
+      "fgsea_available": true,
+      "raw_input_table": "pathways/studies/msigdb_hallmark_demo/inputs/raw/msigdb_hallmark_demo_differential_expression.csv",
+      "rank_prep_summary": "pathways/studies/msigdb_hallmark_demo/results/rank_prep/rank_prep_summary.json",
+      "ranks_csv": "pathways/studies/msigdb_hallmark_demo/inputs/msigdb_hallmark_demo_ranks.csv",
+      "pathways_gmt": "pathways/studies/msigdb_hallmark_demo/inputs/msigdb/msigdb_hallmark_demo_H_2026.1.Hs_gene_symbol.gmt",
+      "output_dir": "pathways/studies/msigdb_hallmark_demo/results/fgsea",
+      "figure_export_csv": "pathways/studies/msigdb_hallmark_demo/results/fgsea/fgsea_pathway_dot_export.csv",
+      "pathway_count": 0,
+      "gene_set_source": {
+        "provider": "msigdb",
+        "collection": "H",
+        "species": "human",
+        "version": "2026.1.Hs",
+        "identifier_type": "gene_symbol",
+        "registration_required": true,
+        "collection_label": "Hallmark",
+        "best_for": "compact first-pass pathway summaries"
+      },
+      "errors": [
+        "pathways_gmt not found: pathways/studies/msigdb_hallmark_demo/inputs/msigdb/msigdb_hallmark_demo_H_2026.1.Hs_gene_symbol.gmt",
+        "MSigDB GMT not found at pathways_gmt; download the licensed GMT and place it at the configured path"
+      ],
+      "status": "invalid"
+    },
+    "figure_05": {
+      "review_page": "figures/output/review/index.html",
+      "python_manifest": "figures/output/python/figure_05_pathway_enrichment_dot.manifest.json",
+      "r_manifest": "figures/output/r/figure_05_pathway_enrichment_dot.manifest.json",
+      "python_provenance": {
+        "run_id": "fgsea_active",
+        "status": "ready",
+        "config": "pathways/configs/fgsea_active.yml",
+        "source_profile": "pathways/studies/rnaseq_case_control_template/configs/fgsea.yml",
+        "raw_input_table": "pathways/studies/rnaseq_case_control_template/inputs/raw/rnaseq_case_control_template_differential_expression.csv",
+        "rank_prep_summary": "pathways/studies/rnaseq_case_control_template/results/rank_prep/rank_prep_summary.json",
+        "summary_json": "pathways/results/active_fgsea/fgsea_summary.json",
+        "figure_export_csv": "pathways/results/active_fgsea/fgsea_pathway_dot_export.csv",
+        "pathways_gmt": "pathways/studies/rnaseq_case_control_template/inputs/rnaseq_case_control_template_pathways.gmt",
+        "result_count": 3,
+        "figure_export_count": 3,
+        "gene_set_source": null,
+        "top_pathways": [
+          "Cell_Cycle_Proliferation",
+          "Interferon_Response",
+          "Antigen_Presentation"
+        ]
+      },
+      "r_provenance": {
+        "run_id": "fgsea_active",
+        "status": "ready",
+        "config": "pathways/configs/fgsea_active.yml",
+        "source_profile": "pathways/studies/rnaseq_case_control_template/configs/fgsea.yml",
+        "raw_input_table": "pathways/studies/rnaseq_case_control_template/inputs/raw/rnaseq_case_control_template_differential_expression.csv",
+        "rank_prep_summary": "pathways/studies/rnaseq_case_control_template/results/rank_prep/rank_prep_summary.json",
+        "summary_json": "pathways/results/active_fgsea/fgsea_summary.json",
+        "figure_export_csv": "pathways/results/active_fgsea/fgsea_pathway_dot_export.csv",
+        "pathways_gmt": "pathways/studies/rnaseq_case_control_template/inputs/rnaseq_case_control_template_pathways.gmt",
+        "result_count": 3,
+        "figure_export_count": 3,
+        "gene_set_source": {},
+        "top_pathways": [
+          "Cell_Cycle_Proliferation",
+          "Interferon_Response",
+          "Antigen_Presentation"
+        ]
+      },
+      "python_preview_png": "figures/output/python/figure_05_pathway_enrichment_dot.png",
+      "r_preview_png": "figures/output/r/figure_05_pathway_enrichment_dot.png"
+    }
+  },
+  "package_paths": [
+    "figures/output/review/index.html",
+    "pathways/studies/msigdb_hallmark_demo/configs/fgsea.yml",
+    "pathways/studies/msigdb_hallmark_demo/configs/rank_prep.yml",
+    "pathways/studies/msigdb_hallmark_demo/inputs/msigdb/README.md",
+    "pathways/studies/msigdb_hallmark_demo/inputs/raw/msigdb_hallmark_demo_differential_expression.csv",
+    "pathways/studies/msigdb_hallmark_demo/results/fgsea/fgsea_summary.json",
+    "workflows/release/policies/rnaseq_real_project_template.yml",
+    "workflows/release/profiles/profiles.yml",
+    "workflows/release/projects/rnaseq_real_project_template/README.md",
+    "workflows/release/projects/rnaseq_real_project_template/project.yml"
+  ],
+  "next_steps": [
+    "python3 scripts/run_msigdb_profile.py --config pathways/studies/msigdb_hallmark_demo/configs/fgsea.yml --prepare-ranks --build-phase2 --json",
+    "python3 scripts/check_project_release.py --project rnaseq_real_project_template --write --json"
+  ]
+}

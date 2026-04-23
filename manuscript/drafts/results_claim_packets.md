@@ -5,6 +5,7 @@
 - ready_claim_count: `20`
 - provisional_claim_count: `0`
 - blocked_claim_count: `0`
+- topic: not set
 
 ## claim_response_kinetics
 
@@ -202,13 +203,15 @@ Panel b shows signed pathway-enrichment scores for representative upregulated an
 
 ### Evidence Facts
 
-- `claim_pathway_effect_sizes_align_with_directionality`: Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs.
+- `claim_pathway_effect_sizes_align_with_directionality`: Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs, and the panel can be sourced directly from the active fgsea export rather than a hand-maintained summary table.
 
 ### Legend Summary
 
 ### Figure 5
 
 The pathway-enrichment dot plot summarizes gene ratio, significance strength, and directionality in a single panel for rapid comparison across representative pathways.
+
+In the default build, this panel preferentially consumes the active `fgsea` export when it exists, so the figure remains a downstream summary of the tracked preranked enrichment branch rather than a separately curated pathway table.
 
 ### Citation Links
 

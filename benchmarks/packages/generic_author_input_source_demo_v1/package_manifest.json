@@ -1,0 +1,37 @@
+{
+  "bundle_id": "generic_author_input_demo_v1",
+  "adapter_type": "generic_author_input_bundle",
+  "benchmark_family": "generic_author_input_bundle",
+  "reference_benchmark": "internal_generic_author_input",
+  "description": "Example generic author-input benchmark package that carries direct author guidance plus optional source notes into the multi-agent manuscript system without depending on PaperWritingBench-specific field names.",
+  "notes": [
+    "This package exercises a simpler external package shape built around direct author inputs.",
+    "The generic author-input adapter requires author_inputs.topic instead of deriving the topic from idea-summary materials."
+  ],
+  "cases": [
+    {
+      "case_id": "generic_author_input_authoring",
+      "kind": "generic_author_input_authoring",
+      "dimension": "structured_authoring",
+      "weight": 0.7,
+      "description": "A generic author-input package should be able to drive the manuscript system directly from author_inputs while still carrying supporting context in source materials.",
+      "source_material_files": {
+        "brief": "cases/generic_author_input_authoring/brief.md"
+      },
+      "author_inputs_file": "cases/generic_author_input_authoring/author_inputs.json",
+      "expect_file": "cases/generic_author_input_authoring/expect.json"
+    },
+    {
+      "case_id": "generic_author_input_unknown_claim",
+      "kind": "generic_author_input_error",
+      "dimension": "guardrails",
+      "weight": 0.3,
+      "description": "The generic adapter should preserve the same unknown-claim guardrail behavior when direct author inputs point to a non-existent claim id.",
+      "source_material_files": {
+        "brief": "cases/generic_author_input_unknown_claim/brief.md"
+      },
+      "author_inputs_file": "cases/generic_author_input_unknown_claim/author_inputs.json",
+      "expect_error_contains": "unknown claim_ids"
+    }
+  ]
+}

@@ -4,6 +4,8 @@ Reviewed: 2026-04-09
 
 ## Objective
 
+Forward-looking note: the current repo framing is captured in [13_agent_system_positioning.md](./13_agent_system_positioning.md). This note remains a historical review of external agent references against the deterministic figure harness substrate.
+
 Check whether there are any public bioinformatics AI agents with either:
 
 - strong public appraisal or adoption

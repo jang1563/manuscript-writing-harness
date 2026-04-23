@@ -46,7 +46,7 @@ Core commands:
 
 Human-readable catalog:
 
-- tracked snapshot: [guides/class_catalog.md](/Users/jak4013/Dropbox/Bioinformatics/Claude/Manuscript_writing_harness/figures/guides/class_catalog.md)
+- tracked snapshot: [guides/class_catalog.md](guides/class_catalog.md)
 - regenerate with `python3 scripts/figures_cli.py catalog --write figures/guides/class_catalog.md`
-- tracked cookbook: [guides/cookbook.md](/Users/jak4013/Dropbox/Bioinformatics/Claude/Manuscript_writing_harness/figures/guides/cookbook.md)
+- tracked cookbook: [guides/cookbook.md](guides/cookbook.md)
 - regenerate with `python3 scripts/figures_cli.py cookbook --write figures/guides/cookbook.md`

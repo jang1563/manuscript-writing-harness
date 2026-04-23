@@ -1,0 +1,29 @@
+name: Documentation improvement
+description: Request a docs clarification, correction, or onboarding improvement for the multi-agent manuscript system.
+title: "[documentation]: "
+labels:
+  - documentation
+body:
+  - type: textarea
+    id: gap
+    attributes:
+      label: What is unclear or missing?
+      description: Point to the file, section, or workflow that needs clearer documentation.
+      placeholder: README Quick Start does not explain...
+    validations:
+      required: true
+  - type: textarea
+    id: audience
+    attributes:
+      label: Who is blocked?
+      description: Describe the reader or contributor this affects.
+      placeholder: A new contributor setting up the repo for the first time.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: Share wording, structure, or examples that would make the docs clearer.
+    validations:
+      required: true

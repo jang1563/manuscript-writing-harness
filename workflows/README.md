@@ -4,6 +4,7 @@ This directory holds workflow metadata that should remain version-controlled and
 
 Current contents:
 
+- agent architecture metadata
 - venue configs
 - venue checklists
 - release notes scaffolding

@@ -2,6 +2,8 @@
   "package_id": "reference_integrity_package_v1",
   "readiness": "ready",
   "entry_count": 13,
+  "bibliography_source_status": "ready",
+  "bibliography_manuscript_scope_status": "unconfirmed",
   "claim_count": 20,
   "reference_node_count": 13,
   "edge_count": 26,
@@ -9,6 +11,7 @@
     "references/library.bib",
     "manuscript/plans/citation_graph.json",
     "manuscript/plans/display_item_map.json",
+    "references/metadata/bibliography_source.yml",
     "references/metadata/suggested_reference_candidates.json",
     "references/mappings/claim_reference_map.json"
   ]

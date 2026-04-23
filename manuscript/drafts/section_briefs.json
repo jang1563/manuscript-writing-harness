@@ -4,6 +4,7 @@
     "writing_plan": "manuscript/plans/writing_plan.json",
     "display_item_map": "manuscript/plans/display_item_map.json",
     "claim_packets": "manuscript/plans/claim_packets.json",
+    "author_content_inputs": "manuscript/plans/author_content_inputs.json",
     "reference_audit": "references/reports/reference_audit.json",
     "review_evidence": "review/reports/evidence_summary.json"
   },
@@ -31,6 +32,11 @@
         "included_studies": 25,
         "path": "review/reports/evidence_summary.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_notes": {}
+      },
       "drafting_guidance": [
         "Lead with the main scientific question, then name only the highest-signal result.",
         "Avoid introducing methods detail unless it is required to interpret scope or credibility."
@@ -55,6 +61,11 @@
         "readiness": "ready",
         "included_studies": 25,
         "path": "review/reports/evidence_summary.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_notes": {}
       },
       "drafting_guidance": [
         "Use literature-backed context to frame the gap before naming the study objective.",
@@ -129,6 +140,11 @@
         "included_studies": 25,
         "path": "review/reports/evidence_summary.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_notes": {}
+      },
       "drafting_guidance": [
         "Write in display order and keep each subsection anchored to visible evidence.",
         "Use claim packets as the first-pass source of truth before polishing prose."
@@ -154,6 +170,11 @@
         "included_studies": 25,
         "path": "review/reports/evidence_summary.json"
       },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_notes": {}
+      },
       "drafting_guidance": [
         "Interpret the strongest claims without simply restating figure legends.",
         "Separate implication, limitation, and external comparison into distinct paragraphs."
@@ -178,6 +199,11 @@
         "readiness": "ready",
         "included_studies": 25,
         "path": "review/reports/evidence_summary.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_notes": {}
       },
       "drafting_guidance": [
         "Document data provenance, analytic choices, and reproducibility hooks explicitly.",

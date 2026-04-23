@@ -1,0 +1,16 @@
+name: ACM SIGCONF
+verification:
+  last_verified: 2026-04-16
+  stale_after_days: 180
+  final_confirmation_required: true
+  source_summary: ACM SIGCONF baseline was last checked against current public ACM proceedings guidance.
+required_sections:
+  - abstract
+  - main_text
+  - references
+special_assets:
+  - anonymization_check
+notes:
+  - "Baseline for double-blind ACM proceedings tracks that use the ACM sigconf template; confirm the exact page limit and track-specific rules for the target event."
+  - Keep acknowledgements and author-identifying repository links out of anonymized submission builds.
+  - Use appendices or supporting files only when the target ACM venue explicitly allows them.

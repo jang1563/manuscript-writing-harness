@@ -1,4 +1,9 @@
-name: cell
+name: Cell
+verification:
+  last_verified: 2026-04-16
+  stale_after_days: 180
+  final_confirmation_required: true
+  source_summary: Baseline Cell Press requirements were last checked against current public author guidance.
 required_sections:
   - highlights
   - graphical_abstract
@@ -15,4 +20,3 @@ special_assets:
   - key_resources_table
 notes:
   - Map manuscript methods into STAR Methods during overlay generation.
-

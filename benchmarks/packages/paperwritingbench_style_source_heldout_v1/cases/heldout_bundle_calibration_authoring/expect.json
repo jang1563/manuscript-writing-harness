@@ -1,0 +1,10 @@
+{
+  "topic": "Calibration-aware foundation model ranking for imbalanced disease states",
+  "claim_coverage_status": "ready",
+  "section_briefs_status": "ready",
+  "section_drafts_status": "ready",
+  "section_note_section": "results",
+  "section_note_contains": "calibration-quality comparison",
+  "claim_note_claim_id": "claim_calibration_loss_mainly_affects_probability_quality",
+  "claim_note_contains": "probability-quality subsection"
+}

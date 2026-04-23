@@ -1,10 +1,10 @@
-# Manuscript Harness Research Index
+# Multi-Agent Manuscript System Research Index
 
 Reviewed: 2026-04-09
 
 ## Goal
 
-Design a research-first manuscript harness that can support:
+Design a research-first multi-agent manuscript system, built on a deterministic harness substrate, that can support:
 
 - high-end primary manuscripts
 - review and systematic review workflows
@@ -36,7 +36,7 @@ Current recommendation:
 Why this backbone:
 
 - MyST is the strongest fit for a journal-agnostic semantic manuscript source with a large template ecosystem and explicit scientific publishing intent.
-- Quarto remains excellent for computational notebooks and exploratory analysis, but the harness should not depend on a notebook-first authoring model for final papers.
+- Quarto remains excellent for computational notebooks and exploratory analysis, but the manuscript system should not depend on a notebook-first authoring model for final papers.
 - Manubot remains valuable for citation-heavy or continuously updated review articles, but is less attractive as the one universal substrate for multiple journal overlays.
 
 ## Research Notes
@@ -53,6 +53,7 @@ Why this backbone:
 - [10_public_bioinformatics_agents_for_figure_generation.md](./10_public_bioinformatics_agents_for_figure_generation.md)
 - [11_paperorchestra_review.md](./11_paperorchestra_review.md)
 - [12_ai_ml_professional_figure_track.md](./12_ai_ml_professional_figure_track.md)
+- [13_agent_system_positioning.md](./13_agent_system_positioning.md)
 
 ## Working Principles
 

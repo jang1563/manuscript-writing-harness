@@ -192,6 +192,103 @@ def validate_csv_columns(
     return []
 
 
+def validate_review_artifacts() -> dict[str, Any]:
+    """Validate the current review artifacts and summarize issues by stage."""
+    component_errors: dict[str, list[str]] = {
+        "protocol": [],
+        "queries": [],
+        "screening": [],
+        "extraction": [],
+        "bias": [],
+    }
+    component_status = {
+        "protocol": "ready",
+        "queries": "ready",
+        "screening": "not_started",
+        "extraction": "not_started",
+        "bias": "not_started",
+    }
+
+    try:
+        protocol = load_protocol()
+        component_errors["protocol"].extend(
+            validate_yaml_fields(protocol, PROTOCOL_REQUIRED_FIELDS, "protocol")
+        )
+    except FileNotFoundError:
+        component_status["protocol"] = "blocked"
+        component_errors["protocol"].append("protocol: file not found")
+
+    queries = load_queries()
+    for query in queries:
+        component_errors["queries"].extend(
+            validate_yaml_fields(
+                query,
+                QUERY_REQUIRED_FIELDS,
+                f"query:{query.get('query_id', '?')}",
+            )
+        )
+    component_status["queries"] = "ready" if not component_errors["queries"] else "blocked"
+
+    try:
+        screening = load_screening_log()
+        component_status["screening"] = "ready"
+        component_errors["screening"].extend(
+            validate_csv_columns(screening, SCREENING_REQUIRED_COLUMNS, "screening_log")
+        )
+    except FileNotFoundError:
+        screening = []
+
+    try:
+        extraction = load_extraction_table()
+        component_status["extraction"] = "ready"
+        component_errors["extraction"].extend(
+            validate_csv_columns(extraction, EXTRACTION_REQUIRED_COLUMNS, "extraction_table")
+        )
+        if not component_errors["extraction"]:
+            from review_extract import validate_extraction
+
+            component_errors["extraction"].extend(validate_extraction())
+    except FileNotFoundError:
+        extraction = []
+
+    try:
+        bias_rows = load_bias_assessments()
+        component_status["bias"] = "ready"
+        component_errors["bias"].extend(
+            validate_csv_columns(bias_rows, BIAS_REQUIRED_COLUMNS, "bias_assessments")
+        )
+        if not component_errors["bias"]:
+            from review_bias import validate_bias
+
+            component_errors["bias"].extend(validate_bias())
+    except FileNotFoundError:
+        bias_rows = []
+
+    for component, errors in component_errors.items():
+        if errors:
+            component_status[component] = "blocked"
+
+    issues = [
+        error
+        for component in ("protocol", "queries", "screening", "extraction", "bias")
+        for error in component_errors[component]
+    ]
+
+    return {
+        "overall_status": "ready" if not issues else "blocked",
+        "issue_count": len(issues),
+        "issues": issues,
+        "component_status": component_status,
+        "component_errors": component_errors,
+        "artifact_counts": {
+            "queries": len(queries),
+            "screening_rows": len(screening),
+            "extraction_rows": len(extraction),
+            "bias_rows": len(bias_rows),
+        },
+    }
+
+
 # ---------------------------------------------------------------------------
 # Loaders
 # ---------------------------------------------------------------------------

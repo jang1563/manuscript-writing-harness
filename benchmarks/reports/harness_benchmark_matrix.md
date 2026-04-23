@@ -1,0 +1,79 @@
+# Agent Evaluation Benchmark Matrix
+
+- matrix_id: `harness_benchmark_matrix`
+- readiness: `ready`
+- overall_score: `100.0`
+- benchmark_count: `4`
+- ready_benchmark_count: `4`
+- blocked_benchmark_count: `0`
+- total_case_count: `9`
+- total_passed_case_count: `9`
+- total_failed_case_count: `0`
+- include_suites: `True`
+- include_bundles: `True`
+
+## Definitions
+
+### paper_writing_bench_like_internal_v1
+
+- definition_type: `suite`
+- adapter_type: `none`
+- benchmark_family: `paper_writing_bench_like_internal`
+- reference_benchmark: `PaperWritingBench`
+- readiness: `ready`
+- overall_score: `100.0`
+- case_count: `3`
+- passed_case_count: `3`
+- failed_case_count: `0`
+- suite_path: `benchmarks/suites/paper_writing_bench_like_internal_v1.json`
+
+### generic_author_input_demo_v1
+
+- definition_type: `bundle`
+- adapter_type: `generic_author_input_bundle`
+- benchmark_family: `generic_author_input_bundle`
+- reference_benchmark: `internal_generic_author_input`
+- readiness: `ready`
+- overall_score: `100.0`
+- case_count: `2`
+- passed_case_count: `2`
+- failed_case_count: `0`
+- suite_path: `benchmarks/bundles/generic_author_input_demo_v1.json`
+
+### paperwritingbench_style_demo_v1
+
+- definition_type: `bundle`
+- adapter_type: `paperwritingbench_style_bundle`
+- benchmark_family: `paperwritingbench_style_bundle`
+- reference_benchmark: `PaperWritingBench`
+- readiness: `ready`
+- overall_score: `100.0`
+- case_count: `2`
+- passed_case_count: `2`
+- failed_case_count: `0`
+- suite_path: `benchmarks/bundles/paperwritingbench_style_demo_v1.json`
+
+### paperwritingbench_style_heldout_v1
+
+- definition_type: `bundle`
+- adapter_type: `paperwritingbench_style_bundle`
+- benchmark_family: `paperwritingbench_style_bundle`
+- reference_benchmark: `PaperWritingBench`
+- readiness: `ready`
+- overall_score: `100.0`
+- case_count: `2`
+- passed_case_count: `2`
+- failed_case_count: `0`
+- suite_path: `benchmarks/bundles/paperwritingbench_style_heldout_v1.json`
+
+## Package Paths
+
+- `benchmarks/bundles/generic_author_input_demo_v1.json`
+- `benchmarks/bundles/paperwritingbench_style_demo_v1.json`
+- `benchmarks/bundles/paperwritingbench_style_heldout_v1.json`
+- `benchmarks/suites/paper_writing_bench_like_internal_v1.json`
+- `scripts/check_harness_benchmark.py`
+- `scripts/harness_benchmark.py`
+- `tests/manuscript/test_harness_benchmark.py`
+- `scripts/check_harness_benchmark_matrix.py`
+- `tests/manuscript/test_harness_benchmark_matrix.py`

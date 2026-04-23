@@ -1,0 +1,22 @@
+source_type: zotero_better_bibtex_auto_export
+status: configured
+translator: Better BibTeX
+export_mode: keep_updated
+scope:
+  type: zotero_collection
+  name: manuscript-writing-harness
+  description: Accepted bibliography authority for this repository
+output:
+  path: references/library.bib
+  relative_to: repo_root
+  format: bibtex
+  encoding: utf-8
+policy:
+  allow_manual_edits: false
+  reconciliation_note: Emergency repair only; reflect any repair back into Zotero.
+notes:
+  - Suggested literature belongs in references/metadata/suggested_reference_candidates.json.
+  - Keep cite keys stable once a reference is used in manuscript text or claim mappings.
+manuscript_scope:
+  confirmed: false
+  note: Starter system bibliography still in place; replace it with the accepted manuscript Zotero Better BibTeX export and confirm before real submission.

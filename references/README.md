@@ -6,6 +6,7 @@ This directory contains the citation authority files and auxiliary metadata.
 
 - Manage references in Zotero
 - Export automatically to `library.bib` using Better BibTeX
+- Track the expected Better BibTeX auto-export settings in `metadata/bibliography_source.yml`
 - Never hand-edit `library.bib` except for emergency repair with a tracked follow-up back to Zotero
 - Keep suggested literature candidates separate from accepted bibliography authority in `metadata/suggested_reference_candidates.json`
 - Keep claim-to-reference linkage scaffolds in `mappings/claim_reference_map.json` until real bibliography keys are approved
@@ -19,7 +20,7 @@ references/
 │   ├── nature.csl
 │   ├── cell.csl
 │   └── science.csl
-├── metadata/       DOI enrichment, PMID mappings, dedup logs
+├── metadata/       DOI enrichment, source manifest, PMID mappings, dedup logs
 └── mappings/       claim-to-reference linkage scaffolds
 ```
 
@@ -42,7 +43,35 @@ python3 scripts/apply_claim_reference_map.py
 
 # Fail unless the reference layer is fully ready
 python3 scripts/check_reference_integrity.py --write --sync-graph --strict
+
+# Validate the tracked Better BibTeX source manifest plus bibliography health
+python3 scripts/references_cli.py validate
+
+# Fail unless the bibliography export has been confirmed for the real manuscript
+python3 scripts/check_reference_integrity.py --json --require-confirmed-manuscript-bibliography
 ```
+
+## Better BibTeX Auto-Export Wiring
+
+The repo-side contract for Zotero export lives in `references/metadata/bibliography_source.yml`.
+
+Use it as the checklist for Zotero setup:
+
+1. Install the Better BibTeX Zotero plugin.
+2. Create or choose the Zotero collection that represents accepted manuscript references.
+3. Configure Better BibTeX auto-export for that collection in `Keep updated` mode.
+4. Point the export target at `references/library.bib`.
+5. Keep `references/metadata/bibliography_source.yml` aligned with the actual Zotero export settings.
+6. After replacing the starter bibliography with the accepted manuscript export, confirm the tracked manuscript scope:
+
+```bash
+python3 scripts/confirm_bibliography_scope.py \
+  --note "Confirmed against the accepted manuscript Zotero Better BibTeX export." \
+  --dry-run \
+  --json
+```
+
+`python3 scripts/references_cli.py status` and `python3 scripts/references_cli.py validate` now surface whether the tracked source manifest still matches the expected repo output, and whether the current export has been confirmed as the real manuscript bibliography.
 
 ## What The Integrity Audit Checks
 
