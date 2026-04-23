@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import json
 from pathlib import Path, PurePosixPath
 import sys
@@ -39,6 +40,16 @@ REQUIRED_AGENT_FIELDS = {
 ALLOWED_IMPLEMENTATION_STATUS = {"implemented", "partial", "planned"}
 ALLOWED_RUNTIME_MODE = {"deterministic", "hybrid", "planned"}
 PATH_FIELDS = ("entrypoints", "consumes", "produces", "validators", "authoritative_outputs")
+GENERATED_ARTIFACT_PATTERNS = (
+    "figures/output/*",
+    "manuscript/_build/*",
+    "pathways/results/*",
+    "pathways/studies/*/results/*",
+    "reports/overnight/*",
+    "workflows/release/exports/*",
+    "workflows/release/manifests/*",
+    "workflows/release/reports/*",
+)
 
 
 def _relative(path: Path, repo_root: Path = REPO_ROOT) -> str:
@@ -78,18 +89,27 @@ def _repo_path(path_str: str) -> Path:
     return (REPO_ROOT / path_str).resolve()
 
 
+def _is_generated_artifact_path(path_str: str) -> bool:
+    return any(fnmatch.fnmatch(path_str, pattern) for pattern in GENERATED_ARTIFACT_PATTERNS)
+
+
 def _validate_repo_path(
     path_str: str,
     *,
     field: str,
     context: str,
     errors: list[str],
+    require_existing_file: bool = True,
 ) -> None:
     candidate = _repo_path(path_str)
     try:
         candidate.relative_to(REPO_ROOT.resolve())
     except ValueError:
         errors.append(f"{context}: {field} path escapes repo root: {path_str}")
+        return
+    if not require_existing_file:
+        if candidate.exists() and not candidate.is_file():
+            errors.append(f"{context}: {field} generated path must point to a file: {path_str}")
         return
     if not candidate.exists():
         errors.append(f"{context}: {field} path does not exist: {path_str}")
@@ -195,7 +215,17 @@ def validate_agent_registry(payload: dict[str, Any]) -> dict[str, Any]:
             values = _coerce_string_list(raw_agent.get(field, []), field=field, context=agent_context, errors=errors)
             normalized_agent[field] = values
             for value in values:
-                _validate_repo_path(value, field=field, context=agent_context, errors=errors)
+                require_existing_file = (
+                    field in {"entrypoints", "validators"}
+                    or not _is_generated_artifact_path(value)
+                )
+                _validate_repo_path(
+                    value,
+                    field=field,
+                    context=agent_context,
+                    errors=errors,
+                    require_existing_file=require_existing_file,
+                )
                 if field == "entrypoints":
                     _validate_entrypoint_path(value, context=agent_context, errors=errors)
                 if field == "validators":

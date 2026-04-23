@@ -14,7 +14,11 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-from check_agent_registry import load_agent_registry, validate_agent_registry
+from check_agent_registry import (
+    _is_generated_artifact_path,
+    load_agent_registry,
+    validate_agent_registry,
+)
 
 
 EXPECTED_AGENT_IDS = [
@@ -42,6 +46,14 @@ def test_agent_registry_validates_current_repo() -> None:
     assert report["status"] == "ready"
     assert report["errors"] == []
     assert report["agent_count"] == len(EXPECTED_AGENT_IDS)
+
+
+def test_agent_registry_allows_generated_artifact_paths_to_be_absent() -> None:
+    assert _is_generated_artifact_path("workflows/release/reports/nature_readiness.json")
+    assert _is_generated_artifact_path(
+        "pathways/studies/msigdb_hallmark_demo/results/study_dossier.json"
+    )
+    assert not _is_generated_artifact_path("workflows/agents/agent_registry.json")
 
 
 def test_check_agent_registry_cli_emits_json() -> None:
