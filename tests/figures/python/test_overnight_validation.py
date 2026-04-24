@@ -225,6 +225,18 @@ def test_detect_myst_hash_mode_and_morning_check_paths_fall_back_to_site_content
     assert checks["results"].endswith("manuscript/_build/site/content/results.json")
 
 
+def test_detect_myst_hash_mode_prefers_stable_site_content_when_html_exists(
+    tmp_path: Path,
+) -> None:
+    for relative in MYST_SITE_FALLBACK_HASH_GLOBS + MYST_HTML_HASH_GLOBS:
+        path = tmp_path / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("ok", encoding="utf-8")
+
+    assert detect_myst_hash_mode(tmp_path) == "site"
+    assert selected_myst_hash_globs(tmp_path) == MYST_SITE_FALLBACK_HASH_GLOBS
+
+
 def test_summary_includes_morning_paths_even_when_drift_exists(tmp_path: Path) -> None:
     workspace = tmp_path / "workspace"
     review = workspace / "figures/output/review/index.html"

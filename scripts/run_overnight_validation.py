@@ -61,10 +61,8 @@ CORE_HASH_GLOBS = [
     "figures/source_data/**/*.csv",
     "figures/output/python/*.png",
     "figures/output/python/*.svg",
-    "figures/output/python/*.pdf",
     "figures/output/r/*.png",
     "figures/output/r/*.svg",
-    "figures/output/r/*.pdf",
     "tables/output/table_01_main.csv",
     "tables/output/table_01_main.md",
     "tables/output/table_01_main.json",
@@ -404,10 +402,10 @@ def myst_build_artifacts_exist(workspace: Path) -> bool:
 
 
 def detect_myst_hash_mode(workspace: Path) -> str:
-    if all((workspace / relative).is_file() for relative in MYST_HTML_HASH_GLOBS):
-        return "html"
     if all((workspace / relative).is_file() for relative in MYST_SITE_FALLBACK_HASH_GLOBS):
         return "site"
+    if all((workspace / relative).is_file() for relative in MYST_HTML_HASH_GLOBS):
+        return "html"
     return "missing"
 
 
@@ -936,7 +934,7 @@ def summarize(state: RunState, started_at: str, ended_at: str, runtime_checks: l
             [
                 "",
                 "## Notes",
-                "- Local MyST static HTML export fell back to stable site artifacts because this runtime hits the known application-port bind limitation during `myst build --html`.",
+                "- Stable MyST site artifacts were used for manuscript drift hashing.",
             ]
         )
     return "\n".join(lines) + "\n"

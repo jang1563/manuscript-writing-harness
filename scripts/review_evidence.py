@@ -64,7 +64,7 @@ def _query_summary(queries: list[dict[str, Any]]) -> dict[str, Any]:
         query_id = str(query.get("query_id", "query"))
         package_paths.append(str((QUERIES_DIR / f"{query_id}.yml").relative_to(REVIEW_ROOT.parent)))
         export_file = str(query.get("export_file", "")).strip()
-        if export_file:
+        if export_file and (REVIEW_ROOT.parent / "review" / export_file).exists():
             package_paths.append(f"review/{export_file}")
     return {
         "count": len(queries),

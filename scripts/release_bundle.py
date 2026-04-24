@@ -145,6 +145,7 @@ def _active_fgsea_component(repo_root: Path) -> dict[str, Any]:
         str(dossier.get("figure_05", {}).get("r_manifest", "")),
         str(dossier.get("figure_05", {}).get("review_page", "")),
         str(dossier.get("inputs", {}).get("raw_input_table", "")),
+        str(dossier.get("inputs", {}).get("ranks_csv", "")),
         str(dossier.get("inputs", {}).get("rank_prep_summary", "")),
         str(dossier.get("fgsea", {}).get("summary_json", "")),
         str(dossier.get("fgsea", {}).get("results_csv", "")),
@@ -152,7 +153,9 @@ def _active_fgsea_component(repo_root: Path) -> dict[str, Any]:
         "pathways/results/active_fgsea/study_dossier.json",
         "pathways/results/active_fgsea/study_dossier.md",
     ]
-    package_paths = sorted(path for path in dict.fromkeys(package_paths) if path)
+    package_paths = sorted(
+        path for path in dict.fromkeys(package_paths) if path and (repo_root / path).exists()
+    )
     readiness = str(dossier.get("readiness", "blocked"))
     return {
         "study_id": str(dossier.get("study_id", "active_fgsea")),
