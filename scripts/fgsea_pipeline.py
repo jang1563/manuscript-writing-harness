@@ -188,7 +188,11 @@ def validate_config(config_path: Path) -> dict[str, Any]:
     if raw_input_path is not None and not raw_input_path.exists():
         errors.append(f"raw_input_table not found: {payload.get('raw_input_table', '')}")
 
-    if rank_prep_summary_path is not None and not rank_prep_summary_path.exists():
+    if (
+        rank_prep_summary_path is not None
+        and not rank_prep_summary_path.exists()
+        and not ranks_path.exists()
+    ):
         errors.append(f"rank_prep_summary not found: {payload.get('rank_prep_summary', '')}")
 
     source_errors, source_summary = _validate_gene_set_source(payload, gmt_exists=gmt_path.exists())

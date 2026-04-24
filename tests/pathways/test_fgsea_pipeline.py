@@ -31,6 +31,39 @@ def test_validate_fgsea_active_config() -> None:
     assert payload["figure_export_csv"].endswith("pathways/results/active_fgsea/fgsea_pathway_dot_export.csv")
 
 
+def test_validate_config_allows_generated_rank_summary_to_be_absent(tmp_path: Path) -> None:
+    ranks = tmp_path / "ranks.csv"
+    ranks.write_text("gene,stat\nA,1.0\nB,-1.0\n", encoding="utf-8")
+    gmt = tmp_path / "pathways.gmt"
+    gmt.write_text("demo\ttest\tA\tB\n", encoding="utf-8")
+    config = tmp_path / "fgsea.yml"
+    config.write_text(
+        "\n".join(
+            [
+                "run_id: clean_checkout",
+                f"ranks_csv: {ranks}",
+                f"rank_prep_summary: {tmp_path / 'rank_prep_summary.json'}",
+                f"pathways_gmt: {gmt}",
+                f"output_dir: {tmp_path / 'results'}",
+                f"figure_export_csv: {tmp_path / 'results' / 'fgsea_pathway_dot_export.csv'}",
+                "parameters:",
+                "  min_size: 1",
+                "  max_size: 500",
+                "  score_type: std",
+                "  eps: 0",
+                "  seed: 42",
+                "  top_n_per_direction: 3",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    payload = validate_config(config)
+
+    assert payload["status"] == "valid"
+
+
 def test_build_run_command_includes_expected_runner() -> None:
     command = build_run_command(
         REPO_ROOT / "pathways/configs/fgsea_demo.yml",

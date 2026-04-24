@@ -89,8 +89,13 @@ def _classify_readiness(
     validation: dict[str, Any],
     rank_prep_summary: dict[str, Any] | None,
     fgsea_summary: dict[str, Any] | None,
+    ranks_rows: int,
 ) -> tuple[str, list[str], list[str]]:
-    errors = list(validation.get("errors", []))
+    errors = [
+        error
+        for error in validation.get("errors", [])
+        if not (ranks_rows > 0 and str(error).startswith("rank_prep_summary not found:"))
+    ]
     warnings: list[str] = []
 
     if fgsea_summary and str(fgsea_summary.get("status")) == "ready":
@@ -101,7 +106,11 @@ def _classify_readiness(
     only_missing_gmt = bool(errors) and all(
         "pathways_gmt not found" in error or "MSigDB GMT not found" in error for error in errors
     )
-    if rank_prep_summary and str(rank_prep_summary.get("status")) == "ready" and only_missing_gmt:
+    ranks_prepared = (
+        rank_prep_summary is not None
+        and str(rank_prep_summary.get("status")) == "ready"
+    ) or ranks_rows > 0
+    if ranks_prepared and only_missing_gmt:
         warnings.append("rank preparation is ready; add the licensed MSigDB GMT to move this profile to ready")
         return "provisional", errors, warnings
 
@@ -128,7 +137,14 @@ def build_fgsea_study_dossier(config_path: Path) -> dict[str, Any]:
     fgsea_summary_path = output_dir / "fgsea_summary.json" if output_dir is not None else None
     fgsea_results_path = output_dir / "fgsea_results.csv" if output_dir is not None else None
 
+    ranks_rows = _count_csv_rows(ranks_path)
     rank_prep_summary = _load_json(rank_prep_summary_path)
+    if rank_prep_summary is None and ranks_rows > 0:
+        rank_prep_summary = {
+            "status": "ready",
+            "summary_json": _display_path(rank_prep_summary_path) if rank_prep_summary_path else None,
+            "note": "rank CSV is present; regenerate the rank-prep summary for a full dossier",
+        }
     fgsea_summary = _load_json(fgsea_summary_path)
     active_config = _load_yaml(ACTIVE_CONFIG_PATH)
     active_config_display_path = _display_path(ACTIVE_CONFIG_PATH.resolve())
@@ -143,7 +159,12 @@ def build_fgsea_study_dossier(config_path: Path) -> dict[str, Any]:
         "r": _load_manifest("r"),
     }
     manifest_sync = _manifest_sync_status(config_display_path, manifests, is_active_source=is_active_source)
-    readiness, blocking_issues, warnings = _classify_readiness(validation, rank_prep_summary, fgsea_summary)
+    readiness, blocking_issues, warnings = _classify_readiness(
+        validation,
+        rank_prep_summary,
+        fgsea_summary,
+        ranks_rows,
+    )
 
     report = {
         "study_id": study_id,
@@ -164,7 +185,7 @@ def build_fgsea_study_dossier(config_path: Path) -> dict[str, Any]:
             "raw_input_table": _display_path(raw_input_path) if raw_input_path else None,
             "raw_input_rows": _count_csv_rows(raw_input_path),
             "ranks_csv": _display_path(ranks_path) if ranks_path else None,
-            "ranks_rows": _count_csv_rows(ranks_path),
+            "ranks_rows": ranks_rows,
             "rank_prep_summary": _display_path(rank_prep_summary_path) if rank_prep_summary_path else None,
             "pathways_gmt": _display_path(pathways_gmt_path) if pathways_gmt_path else None,
             "pathway_count": _count_gmt_records(pathways_gmt_path),

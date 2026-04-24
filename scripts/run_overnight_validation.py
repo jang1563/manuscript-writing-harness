@@ -36,7 +36,7 @@ RSYNC_EXCLUDES = [
     "tables/output/",
     "review/retrieval/raw/",
     "review/screening/exports/",
-    "reports/",
+    "/reports/",
     "*.log",
 ]
 PYTHON_IMPORTS = [

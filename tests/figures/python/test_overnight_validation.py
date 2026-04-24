@@ -16,10 +16,16 @@ from scripts.run_overnight_validation import (
     normalize_warning_signature,
     MYST_HTML_HASH_GLOBS,
     MYST_SITE_FALLBACK_HASH_GLOBS,
+    RSYNC_EXCLUDES,
     selected_myst_hash_globs,
     stable_artifact_files,
     summarize,
 )
+
+
+def test_sandbox_excludes_only_root_reports_directory() -> None:
+    assert "/reports/" in RSYNC_EXCLUDES
+    assert "reports/" not in RSYNC_EXCLUDES
 
 
 def test_warning_normalization_and_expected_classification() -> None:
