@@ -50,9 +50,6 @@ def sanitize_public_text(text: str, *, repo_root: Path) -> str:
     repo = str(repo_root.resolve())
     if repo:
         sanitized = sanitized.replace(repo, ".")
-    home = str(Path.home())
-    if home:
-        sanitized = sanitized.replace(home, "~")
 
     replacements = (
         (r"/Users/[^\s`'\")]+", "<local-home>"),
@@ -66,4 +63,7 @@ def sanitize_public_text(text: str, *, repo_root: Path) -> str:
     )
     for pattern, replacement in replacements:
         sanitized = re.sub(pattern, replacement, sanitized)
+    home = str(Path.home())
+    if home:
+        sanitized = sanitized.replace(home, "~")
     return sanitized

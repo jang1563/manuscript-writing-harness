@@ -97,6 +97,26 @@ def test_public_artifact_safety_redacts_workspace_and_temp_paths(tmp_path: Path)
     assert "<github-temp>" in sanitized
 
 
+def test_public_artifact_safety_handles_github_runner_home(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        public_artifact_safety.Path,
+        "home",
+        classmethod(lambda cls: Path("/home/runner")),
+    )
+
+    sanitized = public_artifact_safety.sanitize_public_text(
+        "/home/runner/work/project/project /home/runner/work/_temp/setup",
+        repo_root=tmp_path,
+    )
+
+    assert "/home/runner/work" not in sanitized
+    assert "<github-workspace>" in sanitized
+    assert "<github-temp>" in sanitized
+
+
 def test_figure_manifests_do_not_embed_absolute_font_paths() -> None:
     manifest_paths = sorted((REPO_ROOT / "figures" / "output").glob("*/*.manifest.json"))
     if not manifest_paths:
