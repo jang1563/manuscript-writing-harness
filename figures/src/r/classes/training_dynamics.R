@@ -54,7 +54,7 @@ style_maps <- function(theme, models) {
 label_offsets <- function() {
   data.frame(
     model = c("Foundation model", "Hybrid GNN", "CNN baseline"),
-    dx = c(0.35, 0.35, 0.35),
+    dx = c(1.18, 1.18, 1.18),
     dy = c(0.0, -0.02, -0.04),
     stringsAsFactors = FALSE
   )
@@ -110,26 +110,26 @@ create_plot <- function(spec_path) {
       data = loss_labels,
       ggplot2::aes(x = label_x, y = label_y, label = model),
       inherit.aes = FALSE,
-      hjust = 0,
+      hjust = 1,
       size = as.numeric(theme$typography$annotation_font_size_pt) / 2.845,
       color = theme$palette$neutral[[1]]
     ) +
     ggplot2::annotate(
       "text",
-      x = max(loss_plot_rows$epoch) + 0.6,
+      x = max(loss_plot_rows$epoch) + 1.18,
       y = max(loss_plot_rows$loss) - 0.04,
       label = "solid = validation",
-      hjust = 0,
+      hjust = 1,
       vjust = 1,
       size = as.numeric(theme$typography$annotation_font_size_pt) / 2.845,
       color = theme$palette$neutral[[2]]
     ) +
     ggplot2::annotate(
       "text",
-      x = max(loss_plot_rows$epoch) + 0.6,
+      x = max(loss_plot_rows$epoch) + 1.18,
       y = max(loss_plot_rows$loss) - 0.12,
       label = "dashed = train",
-      hjust = 0,
+      hjust = 1,
       vjust = 1,
       size = as.numeric(theme$typography$annotation_font_size_pt) / 2.845,
       color = theme$palette$neutral[[2]]
@@ -167,7 +167,7 @@ create_plot <- function(spec_path) {
       data = metric_labels,
       ggplot2::aes(x = label_x, y = label_y, label = model),
       inherit.aes = FALSE,
-      hjust = 0,
+      hjust = 1,
       size = as.numeric(theme$typography$annotation_font_size_pt) / 2.845,
       color = theme$palette$neutral[[1]]
     ) +

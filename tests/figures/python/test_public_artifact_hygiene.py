@@ -14,6 +14,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import check_scaffold  # noqa: E402
+import check_generated_artifacts  # noqa: E402
 
 
 def test_figures_readme_uses_repo_safe_links() -> None:
@@ -59,3 +60,18 @@ def test_scaffold_required_paths_are_tracked_sources() -> None:
     )
 
     assert untracked_required_paths == []
+
+
+def test_pathway_annotation_minimum_tracks_active_export(monkeypatch: pytest.MonkeyPatch) -> None:
+    spec = {"figure_id": "figure_05_pathway_enrichment_dot"}
+
+    monkeypatch.setattr(
+        check_generated_artifacts,
+        "_expected_pathway_provenance",
+        lambda _spec: {"status": "ready", "figure_export_count": 3},
+    )
+
+    assert check_generated_artifacts._minimum_annotation_count(
+        spec,
+        {"min_annotation_count": 4},
+    ) == 3

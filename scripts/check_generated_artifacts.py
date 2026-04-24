@@ -108,6 +108,19 @@ def _allows_empty_pathway_export(spec: dict[str, Any]) -> bool:
     return str(provenance.get("status")) == "ready" and int(provenance.get("figure_export_count") or 0) == 0
 
 
+def _minimum_annotation_count(spec: dict[str, Any], rules: dict[str, Any]) -> int:
+    configured_minimum = int(rules.get("min_annotation_count", 0))
+    if spec["figure_id"] != "figure_05_pathway_enrichment_dot":
+        return configured_minimum
+    provenance = _expected_pathway_provenance(spec)
+    if not provenance or str(provenance.get("status")) != "ready":
+        return configured_minimum
+    figure_export_count = int(provenance.get("figure_export_count") or 0)
+    if figure_export_count <= 0:
+        return configured_minimum
+    return min(configured_minimum, figure_export_count)
+
+
 def _source_data_tokens(spec: dict[str, Any], column: str, *, limit: int = 2) -> list[str]:
     tokens: list[str] = []
     for panel_path in source_data_mapping(spec).values():
@@ -474,7 +487,8 @@ def _validate_class_specific_rules(
                 f"{renderer} manifest is missing required reference lines for {spec['figure_id']}"
             )
         annotation_count = int(metrics.get("annotation_count", 0))
-        if not allow_empty_pathway_export and annotation_count < int(rules.get("min_annotation_count", 0)):
+        min_annotation_count = _minimum_annotation_count(spec, rules)
+        if not allow_empty_pathway_export and annotation_count < min_annotation_count:
             raise ValueError(
                 f"{renderer} manifest is missing required annotations for {spec['figure_id']}"
             )
