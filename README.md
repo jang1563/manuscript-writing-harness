@@ -38,16 +38,17 @@ The current default architecture is:
 
 ## Current Phase
 
-This repository is now in `Phase 3: Figure, Venue, And Review Systems`.
+This repository has moved beyond the original figure/venue/review scaffold into
+`Phase 3+: Release, Acceptance, And Real-Project Handoff Systems`.
 
 What exists:
 
 - an explicit agent-architecture layer that maps the current repo into artifact-bounded specialized agents
 - research notes for the overall system design
-- a MyST-first manuscript skeleton
-- a planning layer for outline, display-item mapping, citation graph, and revision checks
-- venue configuration stubs for `nature`, `cell`, `science`, and `conference`
-- a shared manuscript content registry used to sanity-check venue requirements
+- a MyST-first manuscript project with generated HTML acceptance checks
+- a planning layer for outline, display-item mapping, citation graph, claim coverage, and revision checks
+- venue overlays for `nature`, `cell`, `science`, `conference`, `acm_sigconf`, `icml`, `ieee_vis`, and `neurips`
+- a shared manuscript content registry used to sanity-check venue requirements and submission-package manifests
 - a shared figure contract with Python and R renderers
 - a class-based figure library with a registry-driven CLI
 - a tracked figure-bundle engine that groups coherent figure sets above class and recipe layers
@@ -55,12 +56,16 @@ What exists:
 - a review-evidence layer that converts protocol, query, screening, extraction, bias, and PRISMA artifacts into a package-ready evidence summary
 - a reference-integrity layer that audits `references/library.bib`, synchronizes the citation graph, and separates suggested literature candidates from accepted references
 - a manuscript-claim layer that turns display items, fact sheets, legends, and citation coverage into draft-ready claim packets
+- an fgsea-oriented pathway-analysis layer with active-profile handoff reports for figure-backed enrichment outputs
+- release, archive, export, deposit, repo-maturity, nightly, and soak-acceptance checks for clean GitHub checkouts
+- a real-project handoff template that keeps MSigDB licensing, anonymized review, release policy, and project onboarding explicit
+- adapter-ready benchmark packages and scorecards for manuscript-system evaluation
 - an example multi-panel figure pipeline with source-data exports, fact sheets, and venue-aware exports
 - Wave 1 reusable bulk-omics figure classes for MA plots, sample PCA, and pathway-enrichment dot plots
 - an AI/ML professional figure track with implemented ROC/PR, calibration-reliability, training-dynamics, normalized-confusion, feature-importance, and ablation classes plus roadmap entries for uncertainty-focused classes
 - an example schema-backed main-table pipeline
-- CI scaffolding for HTML manuscript builds
-- structure and generated-artifact validation tooling
+- CI workflows for manuscript builds, figure bundles, review evidence, reference integrity, release packaging, labels, runtime compatibility, and repo maturity
+- structure, generated-artifact, and public-surface validation tooling
 
 What still needs installation before local builds work:
 
