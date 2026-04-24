@@ -8,13 +8,13 @@ from pathlib import Path
 from typing import Any
 
 try:  # pragma: no cover - import path differs between script and package use.
-    from .figures_bundle import load_bundle_manifest, load_bundle_manifests
+    from .figures_bundle import build_bundle_review_page, load_bundle_manifest, load_bundle_manifests
     from .figures_common import REPO_ROOT, load_json, load_yaml, write_text
     from .review_evidence import build_review_manifest, build_evidence_report
     from .reference_integrity import build_reference_report, build_reference_manifest
     from .venue_overlay import build_submission_manifest, evaluate_venue
 except ImportError:  # pragma: no cover
-    from figures_bundle import load_bundle_manifest, load_bundle_manifests
+    from figures_bundle import build_bundle_review_page, load_bundle_manifest, load_bundle_manifests
     from figures_common import REPO_ROOT, load_json, load_yaml, write_text
     from review_evidence import build_review_manifest, build_evidence_report
     from reference_integrity import build_reference_report, build_reference_manifest
@@ -89,6 +89,8 @@ def _bundle_component(bundle_id: str, repo_root: Path) -> dict[str, Any]:
     bundle = load_bundle_manifest(bundle_id, repo_root=repo_root)
     summary_path = repo_root / str(bundle["bundle_outputs"]["summary_json"])
     review_path = repo_root / str(bundle["bundle_outputs"]["review_page"])
+    if not summary_path.exists() or not review_path.exists():
+        build_bundle_review_page(bundle_id, repo_root=repo_root)
     if not summary_path.exists():
         raise ValueError(f"{bundle_id} bundle summary is missing at {summary_path}")
     summary = load_json(summary_path)

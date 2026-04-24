@@ -8,7 +8,12 @@ import sys
 
 import pytest
 
-from scripts.figures_common import load_class_registry, load_figure_recipes, load_figure_specs
+from scripts.figures_common import (
+    load_class_registry,
+    load_figure_recipes,
+    load_figure_specs,
+    source_data_mapping,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -260,7 +265,7 @@ def test_validate_cli_syncs_manuscript_preview_assets() -> None:
         assert path.exists()
 
 
-def test_dual_renderer_manifests_share_semantic_source_data_hashes() -> None:
+def test_dual_renderer_manifests_record_source_data_keys() -> None:
     manifest_root = REPO_ROOT / "figures" / "output"
     if not any(manifest_root.glob("*/*.manifest.json")):
         pytest.skip("requires generated dual-renderer figure manifests")
@@ -277,7 +282,10 @@ def test_dual_renderer_manifests_share_semantic_source_data_hashes() -> None:
                 encoding="utf-8"
             )
         )
-        assert (
-            python_manifest["checksums_semantic"]["source_data"]
-            == r_manifest["checksums_semantic"]["source_data"]
-        )
+        expected_sources = sorted(source_data_mapping(spec).values())
+        for manifest in (python_manifest, r_manifest):
+            assert sorted(manifest["checksums_semantic"]["source_data"]) == expected_sources
+        for relative_path in expected_sources:
+            source_path = REPO_ROOT / relative_path
+            assert source_path.exists()
+            assert source_path.stat().st_size > 0
