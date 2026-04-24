@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-packages <- c(
+required_packages <- c(
   "BiocManager",
   "ggplot2",
   "patchwork",
@@ -10,9 +10,14 @@ packages <- c(
   "jsonlite",
   "systemfonts",
   "ggrepel",
-  "testthat",
+  "testthat"
+)
+
+optional_packages <- c(
   "vdiffr"
 )
+
+packages <- c(required_packages, optional_packages)
 
 install_github_actions_system_deps <- function() {
   if (!identical(Sys.getenv("GITHUB_ACTIONS"), "true")) {
@@ -32,7 +37,8 @@ install_github_actions_system_deps <- function() {
     "libharfbuzz-dev",
     "libjpeg-dev",
     "libpng-dev",
-    "libtiff-dev"
+    "libtiff-dev",
+    "libuv1-dev"
   )
   status <- system2("sudo", c("apt-get", "update", "-y", "-qq"))
   if (!identical(as.integer(status), 0L)) {
@@ -93,12 +99,14 @@ for (pkg in bioc_packages) {
   cat(sprintf("  - %s: %s\n", pkg, requireNamespace(pkg, quietly = TRUE)))
 }
 
-missing_after_install <- packages[!vapply(packages, requireNamespace, logical(1), quietly = TRUE)]
-if (length(missing_after_install) > 0) {
+missing_required_after_install <- required_packages[
+  !vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)
+]
+if (length(missing_required_after_install) > 0) {
   stop(
     sprintf(
       "Required R packages are unavailable after installation: %s",
-      paste(missing_after_install, collapse = ", ")
+      paste(missing_required_after_install, collapse = ", ")
     )
   )
 }
