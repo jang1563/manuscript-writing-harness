@@ -7,6 +7,8 @@ import sys
 import tarfile
 import zipfile
 
+import pytest
+
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 SCRIPTS_DIR = REPO_ROOT / "scripts"
@@ -14,6 +16,15 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import export_bundle
+
+
+GENERATED_BUNDLE_SUMMARY = (
+    REPO_ROOT / "figures/output/bundles/bundle_bulk_omics_deg_exemplar/summary.json"
+)
+pytestmark = pytest.mark.skipif(
+    not GENERATED_BUNDLE_SUMMARY.exists(),
+    reason="requires generated figure-bundle outputs from build_phase2.py",
+)
 
 
 def test_build_export_bundle_is_ready_for_integrated_demo() -> None:

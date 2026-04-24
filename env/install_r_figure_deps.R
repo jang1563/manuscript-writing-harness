@@ -14,6 +14,49 @@ packages <- c(
   "vdiffr"
 )
 
+install_github_actions_system_deps <- function() {
+  if (!identical(Sys.getenv("GITHUB_ACTIONS"), "true")) {
+    return(invisible(FALSE))
+  }
+  if (!identical(Sys.info()[["sysname"]], "Linux")) {
+    return(invisible(FALSE))
+  }
+  if (!nzchar(Sys.which("sudo")) || !nzchar(Sys.which("apt-get"))) {
+    return(invisible(FALSE))
+  }
+
+  system_packages <- c(
+    "libfontconfig1-dev",
+    "libfreetype6-dev",
+    "libfribidi-dev",
+    "libharfbuzz-dev",
+    "libjpeg-dev",
+    "libpng-dev",
+    "libtiff-dev"
+  )
+  status <- system2("sudo", c("apt-get", "update", "-y", "-qq"))
+  if (!identical(as.integer(status), 0L)) {
+    stop("apt-get update failed while preparing R system dependencies")
+  }
+  status <- system2(
+    "sudo",
+    c(
+      "env",
+      "DEBIAN_FRONTEND=noninteractive",
+      "apt-get",
+      "install",
+      "-y",
+      system_packages
+    )
+  )
+  if (!identical(as.integer(status), 0L)) {
+    stop("apt-get install failed while preparing R system dependencies")
+  }
+  invisible(TRUE)
+}
+
+install_github_actions_system_deps()
+
 missing <- packages[!vapply(packages, requireNamespace, logical(1), quietly = TRUE)]
 
 if (length(missing) > 0) {
@@ -48,4 +91,14 @@ for (pkg in packages) {
 }
 for (pkg in bioc_packages) {
   cat(sprintf("  - %s: %s\n", pkg, requireNamespace(pkg, quietly = TRUE)))
+}
+
+missing_after_install <- packages[!vapply(packages, requireNamespace, logical(1), quietly = TRUE)]
+if (length(missing_after_install) > 0) {
+  stop(
+    sprintf(
+      "Required R packages are unavailable after installation: %s",
+      paste(missing_after_install, collapse = ", ")
+    )
+  )
 }

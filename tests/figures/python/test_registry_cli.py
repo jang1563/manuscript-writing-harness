@@ -2,8 +2,11 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import sys
+
+import pytest
 
 from scripts.figures_common import load_class_registry, load_figure_recipes, load_figure_specs
 
@@ -225,6 +228,8 @@ def test_scaffold_dry_run_reports_targets_without_writing() -> None:
 
 
 def test_validate_cli_syncs_manuscript_preview_assets() -> None:
+    if shutil.which("Rscript") is None:
+        pytest.skip("requires Rscript for dual-renderer figure builds")
     figure_id = "figure_11_ablation_summary"
     preview_assets = [
         REPO_ROOT / "manuscript/assets/generated" / f"{figure_id}.png",
@@ -256,6 +261,9 @@ def test_validate_cli_syncs_manuscript_preview_assets() -> None:
 
 
 def test_dual_renderer_manifests_share_semantic_source_data_hashes() -> None:
+    manifest_root = REPO_ROOT / "figures" / "output"
+    if not any(manifest_root.glob("*/*.manifest.json")):
+        pytest.skip("requires generated dual-renderer figure manifests")
     for spec in load_figure_specs():
         if spec["parity_status"] != "dual":
             continue

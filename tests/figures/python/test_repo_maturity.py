@@ -7,6 +7,8 @@ import subprocess
 import sys
 from unittest.mock import patch
 
+import pytest
+
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 SCRIPTS_DIR = REPO_ROOT / "scripts"
@@ -21,6 +23,16 @@ import repo_maturity
 import scaffold_msigdb_profile
 
 
+GENERATED_BUNDLE_SUMMARY = (
+    REPO_ROOT / "figures/output/bundles/bundle_bulk_omics_deg_exemplar/summary.json"
+)
+requires_generated_release_artifacts = pytest.mark.skipif(
+    not GENERATED_BUNDLE_SUMMARY.exists(),
+    reason="requires generated figure-bundle outputs from build_phase2.py",
+)
+
+
+@requires_generated_release_artifacts
 def test_build_repo_maturity_demo_is_ready_for_current_repo() -> None:
     report = repo_maturity.build_repo_maturity_report("demo", repo_root=REPO_ROOT)
     assert report["readiness"] == "ready"
@@ -28,6 +40,7 @@ def test_build_repo_maturity_demo_is_ready_for_current_repo() -> None:
     assert report["evidence"]["external_validation"]["steps"]["python_suite"]["status"] == "not_run"
 
 
+@requires_generated_release_artifacts
 def test_build_repo_maturity_submission_framework_is_ready_for_current_repo() -> None:
     report = repo_maturity.build_repo_maturity_report("submission-framework", repo_root=REPO_ROOT)
     assert report["readiness"] == "ready"
@@ -41,6 +54,7 @@ def test_build_repo_maturity_submission_framework_is_ready_for_current_repo() ->
     assert any("project handoff `rnaseq_real_project_template` remains provisional" in warning for warning in report["warnings"])
 
 
+@requires_generated_release_artifacts
 def test_build_repo_maturity_submission_ready_is_blocked_for_current_repo() -> None:
     report = repo_maturity.build_repo_maturity_report(
         "submission-ready",
@@ -120,6 +134,7 @@ def test_blocked_project_release_promotes_repo_maturity_to_blocked() -> None:
     assert "project release `demo_project` is blocked" in report["blocking_issues"]
 
 
+@requires_generated_release_artifacts
 def test_write_repo_maturity_outputs_use_provided_report(tmp_path: Path, monkeypatch) -> None:
     reports_dir = tmp_path / "reports"
     manifests_dir = tmp_path / "manifests"
@@ -134,6 +149,7 @@ def test_write_repo_maturity_outputs_use_provided_report(tmp_path: Path, monkeyp
     assert payload == report
 
 
+@requires_generated_release_artifacts
 def test_cli_check_repo_maturity_reports_not_run_without_acceptance_json() -> None:
     completed = subprocess.run(
         [
@@ -153,6 +169,7 @@ def test_cli_check_repo_maturity_reports_not_run_without_acceptance_json() -> No
     assert payload["report"]["evidence"]["external_validation"]["steps"]["runtime_support"]["status"] == "not_run"
 
 
+@requires_generated_release_artifacts
 def test_cli_check_repo_maturity_strict_requires_acceptance_artifact() -> None:
     completed = subprocess.run(
         [

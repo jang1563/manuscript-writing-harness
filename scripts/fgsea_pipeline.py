@@ -128,14 +128,17 @@ def detect_fgsea_available() -> bool | None:
     env = os.environ.copy()
     if LOCAL_R_LIBS.exists():
         env["R_LIBS_USER"] = str(LOCAL_R_LIBS)
-    result = subprocess.run(
-        ["Rscript", "-e", 'cat(requireNamespace("fgsea", quietly=TRUE))'],
-        cwd=REPO_ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-        env=env,
-    )
+    try:
+        result = subprocess.run(
+            ["Rscript", "-e", 'cat(requireNamespace("fgsea", quietly=TRUE))'],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+            env=env,
+        )
+    except FileNotFoundError:
+        return None
     if result.returncode != 0:
         return None
     stdout = result.stdout.strip().lower()

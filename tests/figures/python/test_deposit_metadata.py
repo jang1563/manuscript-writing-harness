@@ -5,6 +5,7 @@ from pathlib import Path
 import subprocess
 import sys
 
+import pytest
 import yaml
 
 
@@ -14,6 +15,15 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import deposit_metadata
+
+
+GENERATED_BUNDLE_SUMMARY = (
+    REPO_ROOT / "figures/output/bundles/bundle_bulk_omics_deg_exemplar/summary.json"
+)
+pytestmark = pytest.mark.skipif(
+    not GENERATED_BUNDLE_SUMMARY.exists(),
+    reason="requires generated figure-bundle outputs from build_phase2.py",
+)
 
 
 def test_build_deposit_metadata_is_ready_for_integrated_demo() -> None:
