@@ -16,6 +16,11 @@ import time
 from typing import Any
 from uuid import uuid4
 
+from public_artifact_safety import (
+    public_command,
+    public_environment_path,
+    sanitize_public_text,
+)
 from repo_maturity import REPORTS_DIR, MANIFESTS_DIR, _relative, _maturity_stem
 from repo_maturity_acceptance_summary import (
     load_json_payload,
@@ -99,12 +104,29 @@ def _acceptance_manifest_path(profile: str, manifests_dir: Path) -> Path:
     return manifests_dir / f"{_maturity_stem(profile)}_acceptance.json"
 
 
+def _artifact_root(*paths: Path) -> Path:
+    return Path(os.path.commonpath([str(path.resolve()) for path in paths]))
+
+
+def _public_artifact_path(path: Path, *, artifact_root: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(REPO_ROOT.resolve()))
+    except ValueError:
+        pass
+    try:
+        return str(resolved.relative_to(artifact_root.resolve()))
+    except ValueError:
+        return public_environment_path(str(path), repo_root=REPO_ROOT)
+
+
 def _run_step(
     step_id: str,
     command: list[str],
     *,
     stdout_path: Path,
     stderr_path: Path,
+    artifact_root: Path,
 ) -> dict[str, Any]:
     started = _utc_now()
     started_monotonic = time.monotonic()
@@ -117,8 +139,14 @@ def _run_step(
     )
     finished = _utc_now()
     stdout_path.parent.mkdir(parents=True, exist_ok=True)
-    stdout_path.write_text(completed.stdout, encoding="utf-8")
-    stderr_path.write_text(completed.stderr, encoding="utf-8")
+    stdout_path.write_text(
+        sanitize_public_text(completed.stdout, repo_root=REPO_ROOT),
+        encoding="utf-8",
+    )
+    stderr_path.write_text(
+        sanitize_public_text(completed.stderr, repo_root=REPO_ROOT),
+        encoding="utf-8",
+    )
     status = "ready"
     if completed.returncode == 1:
         status = "blocked"
@@ -127,10 +155,10 @@ def _run_step(
     return {
         "step_id": step_id,
         "status": status,
-        "command": command,
+        "command": public_command(command, repo_root=REPO_ROOT),
         "exit_code": completed.returncode,
-        "stdout_path": _relative(stdout_path),
-        "stderr_path": _relative(stderr_path),
+        "stdout_path": _public_artifact_path(stdout_path, artifact_root=artifact_root),
+        "stderr_path": _public_artifact_path(stderr_path, artifact_root=artifact_root),
         "started_at_utc": _utc_iso(started),
         "finished_at_utc": _utc_iso(finished),
         "duration_seconds": round(time.monotonic() - started_monotonic, 3),
@@ -142,6 +170,12 @@ def _write_json(path: Path, payload: dict[str, Any]) -> None:
     tmp_path = path.parent / f".{path.name}.tmp-{uuid4().hex}"
     tmp_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     tmp_path.replace(path)
+
+
+def _initialize_step_logs(logs_dir: Path) -> None:
+    for step_id in FINAL_ACCEPTANCE_STEP_IDS:
+        for suffix in ("stdout", "stderr"):
+            (logs_dir / f"{step_id}.{suffix}").write_text("", encoding="utf-8")
 
 
 def _base_acceptance_payload(profile: str, venue: str | None) -> dict[str, Any]:
@@ -193,15 +227,21 @@ def _collect_environment_metadata(
     return {
         "controller_python_version": platform.python_version(),
         "controller_python_implementation": platform.python_implementation(),
-        "controller_python_executable": sys.executable,
-        "requested_python_executable": python_executable,
-        "requested_rscript_executable": rscript_executable,
+        "controller_python_executable": public_environment_path(sys.executable, repo_root=repo_root),
+        "requested_python_executable": public_environment_path(python_executable, repo_root=repo_root),
+        "requested_rscript_executable": public_environment_path(
+            rscript_executable,
+            repo_root=repo_root,
+        ),
         "platform": platform_label,
         "machine": platform.machine(),
-        "repo_root": str(repo_root.resolve()),
-        "invocation": " ".join(shlex.quote(arg) for arg in sys.argv),
-        "git_commit": git_commit,
-        "git_branch": git_branch,
+        "repo_root": _relative(repo_root, repo_root),
+        "invocation": sanitize_public_text(
+            " ".join(shlex.quote(arg) for arg in sys.argv),
+            repo_root=repo_root,
+        ),
+        "git_commit": sanitize_public_text(git_commit, repo_root=repo_root),
+        "git_branch": sanitize_public_text(git_branch, repo_root=repo_root),
         "git_dirty": bool(git_status) if git_commit else None,
     }
 
@@ -217,14 +257,30 @@ def _acceptance_outputs(
     *,
     reports_dir: Path,
     manifests_dir: Path,
+    artifact_root: Path,
 ) -> dict[str, str]:
     return {
-        "acceptance_manifest": _relative(manifest_path),
-        "acceptance_logs_dir": _relative(logs_dir),
-        "report_json": _relative(reports_dir / f"{_maturity_stem(profile)}.json"),
-        "report_md": _relative(reports_dir / f"{_maturity_stem(profile)}.md"),
-        "report_manifest": _relative(manifests_dir / f"{_maturity_stem(profile)}.json"),
-        "acceptance_summary_md": _relative(_acceptance_summary_path(profile, reports_dir)),
+        "acceptance_manifest": _public_artifact_path(
+            manifest_path,
+            artifact_root=artifact_root,
+        ),
+        "acceptance_logs_dir": _public_artifact_path(logs_dir, artifact_root=artifact_root),
+        "report_json": _public_artifact_path(
+            reports_dir / f"{_maturity_stem(profile)}.json",
+            artifact_root=artifact_root,
+        ),
+        "report_md": _public_artifact_path(
+            reports_dir / f"{_maturity_stem(profile)}.md",
+            artifact_root=artifact_root,
+        ),
+        "report_manifest": _public_artifact_path(
+            manifests_dir / f"{_maturity_stem(profile)}.json",
+            artifact_root=artifact_root,
+        ),
+        "acceptance_summary_md": _public_artifact_path(
+            _acceptance_summary_path(profile, reports_dir),
+            artifact_root=artifact_root,
+        ),
     }
 
 
@@ -274,7 +330,9 @@ def run_repo_maturity_acceptance(
     python_executable = python_executable or _default_python_executable()
     logs_dir = _acceptance_logs_dir(profile, reports_dir)
     logs_dir.mkdir(parents=True, exist_ok=True)
+    _initialize_step_logs(logs_dir)
     manifest_path = _acceptance_manifest_path(profile, manifests_dir)
+    artifact_root = _artifact_root(reports_dir, manifests_dir)
     started = _utc_now()
     acceptance_payload = _base_acceptance_payload(profile, venue)
     acceptance_payload["started_at_utc"] = _utc_iso(started)
@@ -289,6 +347,7 @@ def run_repo_maturity_acceptance(
         logs_dir,
         reports_dir=reports_dir,
         manifests_dir=manifests_dir,
+        artifact_root=artifact_root,
     )
     _refresh_acceptance_state(acceptance_payload)
     _write_json(manifest_path, acceptance_payload)
@@ -310,6 +369,7 @@ def run_repo_maturity_acceptance(
             step_commands[step_id],
             stdout_path=logs_dir / f"{step_id}.stdout",
             stderr_path=logs_dir / f"{step_id}.stderr",
+            artifact_root=artifact_root,
         )
         acceptance_payload["current_step_id"] = None
         acceptance_payload["last_completed_step_id"] = step_id
@@ -344,6 +404,7 @@ def run_repo_maturity_acceptance(
         repo_maturity_command,
         stdout_path=logs_dir / "repo_maturity.stdout",
         stderr_path=logs_dir / "repo_maturity.stderr",
+        artifact_root=artifact_root,
     )
     acceptance_payload["steps"]["repo_maturity"] = repo_maturity_step
     acceptance_payload["current_step_id"] = None
@@ -358,6 +419,7 @@ def run_repo_maturity_acceptance(
         logs_dir,
         reports_dir=reports_dir,
         manifests_dir=manifests_dir,
+        artifact_root=artifact_root,
     )
     finished = _utc_now()
     acceptance_payload["finished_at_utc"] = _utc_iso(finished)

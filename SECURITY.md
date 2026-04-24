@@ -13,7 +13,7 @@ Older snapshots, stale generated artifacts, and long-lived forks may need to be 
 
 Do not open a public GitHub issue, discussion, or pull request for an undisclosed security vulnerability.
 
-Report vulnerabilities privately by email to **silveray1563@gmail.com** with the subject line `Security report: manuscript-writing-harness`.
+Report vulnerabilities through GitHub private vulnerability reporting for this repository when that channel is available. If the private reporting channel is unavailable, contact a maintainer privately through their GitHub profile before sharing exploit details.
 
 Please include:
 
@@ -33,4 +33,4 @@ Please include:
 
 - Accidental secret disclosure should be reported immediately, and any exposed credential should also be rotated.
 - Licensing questions, feature requests, and ordinary correctness bugs should use the normal public issue flow unless they create a real security risk.
-- GitHub private advisories are not the primary intake channel for this repository yet; email is the supported private route.
+- Public artifacts, logs, screenshots, and pull requests should not include credentials, private data, proprietary source data, or local-only filesystem paths.

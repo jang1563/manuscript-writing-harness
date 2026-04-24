@@ -93,7 +93,12 @@ def test_run_repo_maturity_acceptance_writes_manifest_and_repo_step(tmp_path: Pa
                 json.dumps(repo_maturity.build_repo_maturity_manifest(report_payload), indent=2) + "\n",
                 encoding="utf-8",
             )
-        return subprocess.CompletedProcess(command, 0, stdout='{"ok": true}\n', stderr="")
+        return subprocess.CompletedProcess(
+            command,
+            0,
+            stdout=f'{{"ok": true, "path": "{tmp_path}"}}\n',
+            stderr=f"checked from {tmp_path}\n",
+        )
 
     monkeypatch.setattr(run_repo_maturity_acceptance.subprocess, "run", fake_run)
 
@@ -109,10 +114,9 @@ def test_run_repo_maturity_acceptance_writes_manifest_and_repo_step(tmp_path: Pa
     assert exit_code == 0
     assert payload["profile"] == "submission-framework"
     assert payload["environment"]["controller_python_version"]
-    assert (
-        payload["environment"]["requested_python_executable"]
-        == run_repo_maturity_acceptance._default_python_executable()
-    )
+    assert payload["environment"]["repo_root"] == "."
+    assert payload["environment"]["requested_python_executable"]
+    assert not Path(payload["environment"]["requested_python_executable"]).is_absolute()
     assert payload["environment"]["requested_rscript_executable"] == "Rscript"
     assert payload["status"] == "ready"
     assert payload["current_step_id"] is None
@@ -153,6 +157,18 @@ def test_run_repo_maturity_acceptance_writes_manifest_and_repo_step(tmp_path: Pa
     assert payload["steps"]["runtime_support"]["finished_at_utc"]
     assert payload["steps"]["runtime_support"]["duration_seconds"] is not None
     assert payload["steps"]["repo_maturity"]["status"] == "ready"
+    for step in payload["steps"].values():
+        assert all(not Path(token).is_absolute() for token in step["command"])
+    manifest_text = json.dumps(payload)
+    assert str(tmp_path) not in manifest_text
+    assert "/Users/" not in manifest_text
+    runtime_stdout = (
+        tmp_path
+        / "reports"
+        / "repo_maturity_submission-framework_acceptance"
+        / "runtime_support.stdout"
+    ).read_text(encoding="utf-8")
+    assert str(tmp_path) not in runtime_stdout
     assert any("scripts/check_repo_maturity.py" in " ".join(command) for command in commands)
 
 

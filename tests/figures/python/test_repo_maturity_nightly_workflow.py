@@ -16,6 +16,9 @@ def test_repo_maturity_nightly_workflow_targets_nightly_runner() -> None:
     workflow_on = payload.get("on", payload.get(True))
     assert "schedule" in workflow_on
     assert "workflow_dispatch" in workflow_on
+    assert "actions/setup-node@v4" in workflow_text
+    assert "scripts/build_phase2.py" in workflow_text
+    assert "myst build --html" in workflow_text
     assert "scripts/run_repo_maturity_nightly.py" in workflow_text
     assert "scripts/check_repo_maturity_nightly.py" in workflow_text
     assert "--profile submission-framework" in workflow_text

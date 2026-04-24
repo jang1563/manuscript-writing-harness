@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import re
 import subprocess
 import sys
 
@@ -15,6 +16,24 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 import check_scaffold  # noqa: E402
 import check_generated_artifacts  # noqa: E402
+import public_artifact_safety  # noqa: E402
+
+
+PUBLIC_DOC_PATHS = (
+    REPO_ROOT / "SECURITY.md",
+    REPO_ROOT / "CONTRIBUTING.md",
+    REPO_ROOT / "CODE_OF_CONDUCT.md",
+)
+
+LOCAL_ONLY_PATTERNS = (
+    "/Users/",
+    "Dropbox/Bioinformatics/Claude",
+    "/private/var/folders",
+    "/var/folders",
+    "/home/runner/work",
+    "/opt/hostedtoolcache",
+    "pytest-of-",
+)
 
 
 def test_figures_readme_uses_repo_safe_links() -> None:
@@ -24,6 +43,58 @@ def test_figures_readme_uses_repo_safe_links() -> None:
     assert "Dropbox/Bioinformatics/Claude" not in readme
     assert "[guides/class_catalog.md](guides/class_catalog.md)" in readme
     assert "[guides/cookbook.md](guides/cookbook.md)" in readme
+
+
+def test_public_security_docs_do_not_expose_personal_contact_details() -> None:
+    email_pattern = re.compile(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}")
+
+    for path in PUBLIC_DOC_PATHS:
+        text = path.read_text(encoding="utf-8")
+        assert "silveray1563@gmail.com" not in text
+        assert email_pattern.search(text) is None
+
+
+def test_repo_maturity_public_artifacts_do_not_embed_local_paths() -> None:
+    artifact_roots = (
+        REPO_ROOT / "workflows" / "release" / "reports",
+        REPO_ROOT / "workflows" / "release" / "manifests",
+    )
+    artifact_paths = sorted(
+        path
+        for root in artifact_roots
+        if root.exists()
+        for path in root.rglob("*")
+        if path.is_file() and "repo_maturity_submission-framework" in str(path.relative_to(REPO_ROOT))
+    )
+    if not artifact_paths:
+        pytest.skip("requires generated repo-maturity artifacts")
+
+    for path in artifact_paths:
+        text = path.read_text(encoding="utf-8")
+        for pattern in LOCAL_ONLY_PATTERNS:
+            assert pattern not in text, f"{path.relative_to(REPO_ROOT)} contains {pattern}"
+
+
+def test_public_artifact_safety_redacts_workspace_and_temp_paths(tmp_path: Path) -> None:
+    repo_root = tmp_path / "repo"
+    repo_root.mkdir()
+    text = (
+        f"{repo_root}/scripts/check_repo_maturity.py "
+        "/Users/example/work/project "
+        "/private/var/folders/aa/bb/T/pytest-of-user/case "
+        "/home/runner/work/project/project "
+        "/home/runner/work/_temp/setup"
+    )
+
+    sanitized = public_artifact_safety.sanitize_public_text(text, repo_root=repo_root)
+
+    assert str(repo_root) not in sanitized
+    assert "/Users/" not in sanitized
+    assert "/private/var/folders" not in sanitized
+    assert "/home/runner/work" not in sanitized
+    assert "<local-temp>" in sanitized
+    assert "<github-workspace>" in sanitized
+    assert "<github-temp>" in sanitized
 
 
 def test_figure_manifests_do_not_embed_absolute_font_paths() -> None:

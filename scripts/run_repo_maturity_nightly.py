@@ -15,6 +15,17 @@ import time
 from typing import Any
 from uuid import uuid4
 
+from public_artifact_safety import (
+    public_command,
+    public_environment_path,
+    sanitize_public_text,
+)
+from harness_benchmark import (
+    build_harness_benchmark_manifest,
+    build_public_benchmark_runs_manifest,
+    render_harness_benchmark_markdown,
+    render_public_benchmark_runs_markdown,
+)
 from repo_maturity_acceptance_summary import resolve_step_summary_path
 from repo_maturity import _maturity_stem
 
@@ -61,6 +72,18 @@ def _relative(path: Path, repo_root: Path = REPO_ROOT) -> str:
         return str(path.relative_to(repo_root))
     except ValueError:
         return str(path)
+
+
+def _public_artifact_path(path: Path, *, artifact_root: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(REPO_ROOT.resolve()))
+    except ValueError:
+        pass
+    try:
+        return str(resolved.relative_to(artifact_root.resolve()))
+    except ValueError:
+        return public_environment_path(str(path), repo_root=REPO_ROOT)
 
 
 def _default_output_dir(profile: str) -> Path:
@@ -211,15 +234,21 @@ def _collect_environment_metadata(
     return {
         "controller_python_version": platform.python_version(),
         "controller_python_implementation": platform.python_implementation(),
-        "controller_python_executable": sys.executable,
-        "requested_python_executable": python_executable,
-        "requested_rscript_executable": rscript_executable,
+        "controller_python_executable": public_environment_path(sys.executable, repo_root=repo_root),
+        "requested_python_executable": public_environment_path(python_executable, repo_root=repo_root),
+        "requested_rscript_executable": public_environment_path(
+            rscript_executable,
+            repo_root=repo_root,
+        ),
         "platform": platform_label,
         "machine": platform.machine(),
-        "repo_root": str(repo_root.resolve()),
-        "invocation": " ".join(shlex.quote(arg) for arg in sys.argv),
-        "git_commit": git_commit,
-        "git_branch": git_branch,
+        "repo_root": _relative(repo_root, repo_root),
+        "invocation": sanitize_public_text(
+            " ".join(shlex.quote(arg) for arg in sys.argv),
+            repo_root=repo_root,
+        ),
+        "git_commit": sanitize_public_text(git_commit, repo_root=repo_root),
+        "git_branch": sanitize_public_text(git_branch, repo_root=repo_root),
         "git_dirty": bool(git_status) if git_commit else None,
     }
 
@@ -236,6 +265,7 @@ def _run_step(
     *,
     stdout_path: Path,
     stderr_path: Path,
+    artifact_root: Path,
 ) -> dict[str, Any]:
     started = _utc_now()
     started_monotonic = time.monotonic()
@@ -248,15 +278,21 @@ def _run_step(
     )
     finished = _utc_now()
     stdout_path.parent.mkdir(parents=True, exist_ok=True)
-    stdout_path.write_text(completed.stdout, encoding="utf-8")
-    stderr_path.write_text(completed.stderr, encoding="utf-8")
+    stdout_path.write_text(
+        sanitize_public_text(completed.stdout, repo_root=REPO_ROOT),
+        encoding="utf-8",
+    )
+    stderr_path.write_text(
+        sanitize_public_text(completed.stderr, repo_root=REPO_ROOT),
+        encoding="utf-8",
+    )
     return {
         "step_id": step_id,
         "status": _step_status(completed.returncode),
-        "command": command,
+        "command": public_command(command, repo_root=REPO_ROOT),
         "exit_code": completed.returncode,
-        "stdout_path": _relative(stdout_path),
-        "stderr_path": _relative(stderr_path),
+        "stdout_path": _public_artifact_path(stdout_path, artifact_root=artifact_root),
+        "stderr_path": _public_artifact_path(stderr_path, artifact_root=artifact_root),
         "started_at_utc": _utc_iso(started),
         "finished_at_utc": _utc_iso(finished),
         "duration_seconds": round(time.monotonic() - started_monotonic, 3),
@@ -275,23 +311,105 @@ def _load_json_payload(path: Path) -> tuple[Any | None, str | None]:
         return None, f"{path.name} contained invalid JSON: {exc}"
 
 
-def _coerce_write_path(value: Any) -> str | None:
+def _coerce_write_path(value: Any, *, artifact_root: Path) -> str | None:
     if not isinstance(value, str):
         return None
     text = value.strip()
-    if not text:
+    if not text or text.startswith("<"):
         return None
-    return _relative(Path(text))
+    raw_path = Path(text)
+    candidates = [raw_path] if raw_path.is_absolute() else [artifact_root / raw_path, REPO_ROOT / raw_path]
+    for candidate in candidates:
+        if candidate.exists():
+            return _public_artifact_path(candidate, artifact_root=artifact_root)
+    return None
 
 
-def _record_optional_artifact(payload: dict[str, Any], key: str, value: Any) -> None:
-    coerced = _coerce_write_path(value)
+def _record_optional_artifact(
+    payload: dict[str, Any],
+    key: str,
+    value: Any,
+    *,
+    artifact_root: Path,
+) -> None:
+    coerced = _coerce_write_path(value, artifact_root=artifact_root)
     if coerced is not None:
         payload["artifacts"][key] = coerced
 
 
-def _setdefault_artifact_path(payload: dict[str, Any], key: str, path: Path) -> None:
-    payload["artifacts"].setdefault(key, _relative(path))
+def _setdefault_artifact_path(
+    payload: dict[str, Any],
+    key: str,
+    path: Path,
+    *,
+    artifact_root: Path,
+) -> None:
+    payload["artifacts"].setdefault(
+        key,
+        _public_artifact_path(path, artifact_root=artifact_root),
+    )
+
+
+def _sanitize_public_payload_paths(value: Any, *, artifact_root: Path) -> Any:
+    if isinstance(value, dict):
+        return {
+            key: _sanitize_public_payload_paths(item, artifact_root=artifact_root)
+            for key, item in value.items()
+        }
+    if isinstance(value, list):
+        return [
+            _sanitize_public_payload_paths(item, artifact_root=artifact_root)
+            for item in value
+        ]
+    if isinstance(value, str):
+        text = value.strip()
+        if text.startswith("/") and not any(character.isspace() for character in text):
+            return _public_artifact_path(Path(text), artifact_root=artifact_root)
+        return sanitize_public_text(value, repo_root=REPO_ROOT)
+    return value
+
+
+def _sanitize_public_run_outputs(public_runs_dir: Path, *, artifact_root: Path) -> dict[str, Any] | None:
+    for run_dir in sorted(path for path in public_runs_dir.iterdir() if path.is_dir()):
+        metadata_path = run_dir / "run_metadata.json"
+        metadata_payload, metadata_error = _load_json_payload(metadata_path)
+        if metadata_error is None and isinstance(metadata_payload, dict):
+            sanitized_metadata = _sanitize_public_payload_paths(
+                metadata_payload,
+                artifact_root=artifact_root,
+            )
+            _write_json(metadata_path, sanitized_metadata)
+
+        report_path = run_dir / "report.json"
+        report_payload, report_error = _load_json_payload(report_path)
+        if report_error is None and isinstance(report_payload, dict):
+            sanitized_report = _sanitize_public_payload_paths(
+                report_payload,
+                artifact_root=artifact_root,
+            )
+            _write_json(report_path, sanitized_report)
+            _write_text(run_dir / "report.md", render_harness_benchmark_markdown(sanitized_report))
+            _write_json(run_dir / "manifest.json", build_harness_benchmark_manifest(sanitized_report))
+
+    summary_path = public_runs_dir / "public_benchmark_runs_summary.json"
+    summary_payload, summary_error = _load_json_payload(summary_path)
+    if summary_error is not None or not isinstance(summary_payload, dict):
+        return None
+
+    sanitized_summary = _sanitize_public_payload_paths(
+        summary_payload,
+        artifact_root=artifact_root,
+    )
+    _write_json(summary_path, sanitized_summary)
+    _write_text(
+        public_runs_dir / "public_benchmark_runs_summary.md",
+        render_public_benchmark_runs_markdown(sanitized_summary),
+    )
+    _write_json(
+        public_runs_dir / "public_benchmark_runs_summary_manifest.json",
+        build_public_benchmark_runs_manifest(sanitized_summary),
+    )
+    return sanitized_summary
 
 
 def _summary_line(lines: list[str], label: str, value: Any) -> None:
@@ -431,6 +549,7 @@ def run_repo_maturity_nightly(
     session_id = started.strftime("%Y%m%dt%H%M%SZ").lower() + f"_{uuid4().hex[:8]}"
 
     output_dir.mkdir(parents=True, exist_ok=True)
+    artifact_root = output_dir.resolve()
     public_runs_root_dir = public_runs_dir
     public_runs_dir = _session_public_runs_dir(public_runs_root_dir, session_id)
     public_runs_dir.mkdir(parents=True, exist_ok=True)
@@ -459,11 +578,17 @@ def run_repo_maturity_nightly(
         "current_step_id": None,
         "last_completed_step_id": None,
         "last_updated_at_utc": _utc_iso(started),
-        "output_dir": _relative(output_dir),
-        "public_runs_dir": _relative(public_runs_dir),
-        "sample_package_dir": _relative(sample_package_dir.resolve()),
+        "output_dir": _public_artifact_path(output_dir, artifact_root=artifact_root),
+        "public_runs_dir": _public_artifact_path(public_runs_dir, artifact_root=artifact_root),
+        "sample_package_dir": _public_artifact_path(
+            sample_package_dir.resolve(),
+            artifact_root=artifact_root,
+        ),
         "sample_run_id": sample_run_id,
-        "invocation": " ".join(shlex.quote(arg) for arg in sys.argv),
+        "invocation": sanitize_public_text(
+            " ".join(shlex.quote(arg) for arg in sys.argv),
+            repo_root=REPO_ROOT,
+        ),
         "environment": _collect_environment_metadata(
             repo_root=REPO_ROOT,
             python_executable=python_executable,
@@ -471,17 +596,44 @@ def run_repo_maturity_nightly(
         ),
         "steps": {},
         "artifacts": {
-            "manifest_json": _relative(paths["manifest"]),
-            "summary_md": _relative(paths["summary"]),
-            "repo_maturity_acceptance_manifest": _relative(acceptance_manifest_path),
-            "repo_maturity_acceptance_summary_md": _relative(acceptance_summary_path),
-            "repo_maturity_report_json": _relative(acceptance_report_json_path),
-            "repo_maturity_report_md": _relative(acceptance_report_md_path),
-            "benchmark_matrix_report_json": _relative(benchmark_report_json_path),
-            "benchmark_matrix_report_md": _relative(benchmark_report_md_path),
-            "benchmark_matrix_manifest": _relative(benchmark_manifest_path),
-            "public_run_check_json": _relative(paths["public_run_check_json"]),
-            "public_runs_dir": _relative(public_runs_dir),
+            "manifest_json": _public_artifact_path(paths["manifest"], artifact_root=artifact_root),
+            "summary_md": _public_artifact_path(paths["summary"], artifact_root=artifact_root),
+            "repo_maturity_acceptance_manifest": _public_artifact_path(
+                acceptance_manifest_path,
+                artifact_root=artifact_root,
+            ),
+            "repo_maturity_acceptance_summary_md": _public_artifact_path(
+                acceptance_summary_path,
+                artifact_root=artifact_root,
+            ),
+            "repo_maturity_report_json": _public_artifact_path(
+                acceptance_report_json_path,
+                artifact_root=artifact_root,
+            ),
+            "repo_maturity_report_md": _public_artifact_path(
+                acceptance_report_md_path,
+                artifact_root=artifact_root,
+            ),
+            "benchmark_matrix_report_json": _public_artifact_path(
+                benchmark_report_json_path,
+                artifact_root=artifact_root,
+            ),
+            "benchmark_matrix_report_md": _public_artifact_path(
+                benchmark_report_md_path,
+                artifact_root=artifact_root,
+            ),
+            "benchmark_matrix_manifest": _public_artifact_path(
+                benchmark_manifest_path,
+                artifact_root=artifact_root,
+            ),
+            "public_run_check_json": _public_artifact_path(
+                paths["public_run_check_json"],
+                artifact_root=artifact_root,
+            ),
+            "public_runs_dir": _public_artifact_path(
+                public_runs_dir,
+                artifact_root=artifact_root,
+            ),
         },
     }
     _write_json(paths["manifest"], payload)
@@ -569,7 +721,13 @@ def run_repo_maturity_nightly(
         payload["current_step_id"] = step_id
         _refresh_state(payload, status="running")
         _write_json(paths["manifest"], payload)
-        step = _run_step(step_id, command, stdout_path=stdout_path, stderr_path=stderr_path)
+        step = _run_step(
+            step_id,
+            command,
+            stdout_path=stdout_path,
+            stderr_path=stderr_path,
+            artifact_root=artifact_root,
+        )
         payload["steps"][step_id] = step
         payload["current_step_id"] = None
         payload["last_completed_step_id"] = step_id
@@ -583,14 +741,40 @@ def run_repo_maturity_nightly(
     public_run_payload, public_run_error = _load_json_payload(paths["public_run_json"])
     public_run_check_payload, public_run_check_error = _load_json_payload(paths["public_run_check_json"])
     public_runs_summary_payload, public_runs_summary_error = _load_json_payload(paths["public_runs_summary_json"])
+    sanitized_public_runs_report = _sanitize_public_run_outputs(
+        public_runs_dir,
+        artifact_root=artifact_root,
+    )
+    if sanitized_public_runs_report is not None and isinstance(public_runs_summary_payload, dict):
+        public_runs_summary_payload["report"] = sanitized_public_runs_report
 
     if isinstance(public_run_payload, dict):
         public_run_writes = public_run_payload.get("writes", {})
         if isinstance(public_run_writes, dict):
-            _record_optional_artifact(payload, "public_run_report_json", public_run_writes.get("report_json"))
-            _record_optional_artifact(payload, "public_run_report_md", public_run_writes.get("report_md"))
-            _record_optional_artifact(payload, "public_run_manifest", public_run_writes.get("manifest"))
-            _record_optional_artifact(payload, "public_run_metadata_json", public_run_writes.get("run_metadata"))
+            _record_optional_artifact(
+                payload,
+                "public_run_report_json",
+                public_run_writes.get("report_json"),
+                artifact_root=artifact_root,
+            )
+            _record_optional_artifact(
+                payload,
+                "public_run_report_md",
+                public_run_writes.get("report_md"),
+                artifact_root=artifact_root,
+            )
+            _record_optional_artifact(
+                payload,
+                "public_run_manifest",
+                public_run_writes.get("manifest"),
+                artifact_root=artifact_root,
+            )
+            _record_optional_artifact(
+                payload,
+                "public_run_metadata_json",
+                public_run_writes.get("run_metadata"),
+                artifact_root=artifact_root,
+            )
         public_run_metadata = public_run_payload.get("run_metadata", {})
         public_run_id = (
             public_run_metadata.get("run_id")
@@ -599,13 +783,29 @@ def run_repo_maturity_nightly(
         ) or sample_run_id
         if isinstance(public_run_id, str) and public_run_id.strip():
             public_run_dir = public_runs_dir / public_run_id.strip()
-            _setdefault_artifact_path(payload, "public_run_report_json", public_run_dir / "report.json")
-            _setdefault_artifact_path(payload, "public_run_report_md", public_run_dir / "report.md")
-            _setdefault_artifact_path(payload, "public_run_manifest", public_run_dir / "manifest.json")
+            _setdefault_artifact_path(
+                payload,
+                "public_run_report_json",
+                public_run_dir / "report.json",
+                artifact_root=artifact_root,
+            )
+            _setdefault_artifact_path(
+                payload,
+                "public_run_report_md",
+                public_run_dir / "report.md",
+                artifact_root=artifact_root,
+            )
+            _setdefault_artifact_path(
+                payload,
+                "public_run_manifest",
+                public_run_dir / "manifest.json",
+                artifact_root=artifact_root,
+            )
             _setdefault_artifact_path(
                 payload,
                 "public_run_metadata_json",
                 public_run_dir / "run_metadata.json",
+                artifact_root=artifact_root,
             )
     if isinstance(public_runs_summary_payload, dict):
         public_summary_writes = public_runs_summary_payload.get("writes", {})
@@ -614,31 +814,37 @@ def run_repo_maturity_nightly(
                 payload,
                 "public_runs_summary_report_json",
                 public_summary_writes.get("report_json"),
+                artifact_root=artifact_root,
             )
             _record_optional_artifact(
                 payload,
                 "public_runs_summary_report_md",
                 public_summary_writes.get("report_md"),
+                artifact_root=artifact_root,
             )
             _record_optional_artifact(
                 payload,
                 "public_runs_summary_manifest",
                 public_summary_writes.get("manifest"),
+                artifact_root=artifact_root,
             )
         _setdefault_artifact_path(
             payload,
             "public_runs_summary_report_json",
             public_runs_dir / "public_benchmark_runs_summary.json",
+            artifact_root=artifact_root,
         )
         _setdefault_artifact_path(
             payload,
             "public_runs_summary_report_md",
             public_runs_dir / "public_benchmark_runs_summary.md",
+            artifact_root=artifact_root,
         )
         _setdefault_artifact_path(
             payload,
             "public_runs_summary_manifest",
             public_runs_dir / "public_benchmark_runs_summary_manifest.json",
+            artifact_root=artifact_root,
         )
 
     finished = _utc_now()

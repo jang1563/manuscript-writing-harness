@@ -74,7 +74,7 @@ Open a GitHub issue with:
 
 Do not open a public issue for security vulnerabilities.
 
-Follow [SECURITY.md](SECURITY.md) for the private reporting process. The current supported intake path is email to **silveray1563@gmail.com**.
+Follow [SECURITY.md](SECURITY.md) for the private reporting process. Do not paste credentials, private data, proprietary source data, exploit details, or local-only filesystem paths into public issues, pull requests, logs, screenshots, or generated artifacts.
 
 ## Questions about commercial use
 

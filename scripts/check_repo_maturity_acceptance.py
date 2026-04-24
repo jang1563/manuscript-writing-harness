@@ -41,11 +41,27 @@ def _relative(path: Path, repo_root: Path = REPO_ROOT) -> str:
         return str(path)
 
 
-def _resolve_from_repo_root(value: str, repo_root: Path) -> Path:
+def _resolve_artifact_path(value: str, *, repo_root: Path, artifact_root: Path | None) -> Path:
     raw_path = Path(value)
     if raw_path.is_absolute():
         return raw_path.resolve()
-    return (repo_root / raw_path).resolve()
+
+    candidates: list[Path] = []
+    if artifact_root is not None:
+        candidates.append((artifact_root / raw_path).resolve())
+    candidates.append((repo_root / raw_path).resolve())
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[0]
+
+
+def _artifact_root_for_acceptance_path(acceptance_path: Path) -> Path:
+    parent = acceptance_path.resolve().parent
+    if parent.name in {"manifests", "repo_maturity_manifests"}:
+        return parent.parent
+    return parent
 
 
 def _is_within(path: Path, root: Path) -> bool:
@@ -147,6 +163,7 @@ def evaluate_acceptance_artifact(
 ) -> dict[str, Any]:
     issues: list[str] = []
     warnings: list[str] = []
+    artifact_root = _artifact_root_for_acceptance_path(acceptance_path)
 
     profile = str(acceptance_payload.get("profile", "")).strip()
     explicit_status = str(acceptance_payload.get("status", "")).strip()
@@ -205,7 +222,11 @@ def evaluate_acceptance_artifact(
                 continue
             if not str(raw_path or "").strip():
                 continue
-            candidate = _resolve_from_repo_root(str(raw_path), repo_root)
+            candidate = _resolve_artifact_path(
+                str(raw_path),
+                repo_root=repo_root,
+                artifact_root=artifact_root,
+            )
             step_log_paths.append((step_id, path_field, candidate))
             if explicit_status in {"ready", "blocked", "error"} and not candidate.exists():
                 issues.append(f"step `{step_id}` expects `{path_field}` to exist")
@@ -258,7 +279,11 @@ def evaluate_acceptance_artifact(
             issues.append(f"`outputs.{key}` is required")
 
     resolved_output_paths = {
-        key: _resolve_from_repo_root(str(value), repo_root)
+        key: _resolve_artifact_path(
+            str(value),
+            repo_root=repo_root,
+            artifact_root=artifact_root,
+        )
         for key, value in outputs.items()
         if isinstance(value, str) and value.strip()
     }

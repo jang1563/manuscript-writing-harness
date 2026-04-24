@@ -187,6 +187,8 @@ def test_run_repo_maturity_nightly_writes_artifacts_and_summary(
     assert payload["last_completed_step_id"] == "public_benchmark_runs_summary"
     assert payload["session_id"]
     assert payload["last_updated_at_utc"]
+    assert payload["output_dir"] == "."
+    assert payload["public_runs_dir"].startswith("public_runs/nightly_session_")
     assert payload["environment"]["git_commit"] == "abc123"
     assert payload["artifacts"]["repo_maturity_acceptance_manifest"].endswith(
         "repo_maturity_manifests/repo_maturity_submission-framework_acceptance.json"
@@ -203,19 +205,19 @@ def test_run_repo_maturity_nightly_writes_artifacts_and_summary(
     assert payload["artifacts"]["public_run_check_json"].endswith(
         "repo-maturity-public-run-check.json"
     )
-    assert "/public_runs/nightly_session_" in payload["artifacts"]["public_run_report_json"]
+    assert "public_runs/nightly_session_" in payload["artifacts"]["public_run_report_json"]
     assert payload["artifacts"]["public_run_report_json"].endswith(
         "/nightly_public_package_sample/report.json"
     )
-    assert "/public_runs/nightly_session_" in payload["artifacts"]["public_run_metadata_json"]
+    assert "public_runs/nightly_session_" in payload["artifacts"]["public_run_metadata_json"]
     assert payload["artifacts"]["public_run_metadata_json"].endswith(
         "/nightly_public_package_sample/run_metadata.json"
     )
-    assert "/public_runs/nightly_session_" in payload["artifacts"]["public_runs_summary_report_json"]
+    assert "public_runs/nightly_session_" in payload["artifacts"]["public_runs_summary_report_json"]
     assert payload["artifacts"]["public_runs_summary_report_json"].endswith(
         "/public_benchmark_runs_summary.json"
     )
-    assert "/public_runs/nightly_session_" in payload["artifacts"]["public_runs_summary_manifest"]
+    assert "public_runs/nightly_session_" in payload["artifacts"]["public_runs_summary_manifest"]
     assert payload["artifacts"]["public_runs_summary_manifest"].endswith(
         "/public_benchmark_runs_summary_manifest.json"
     )
@@ -239,6 +241,11 @@ def test_run_repo_maturity_nightly_writes_artifacts_and_summary(
     assert "- public_runs_summary_total_case_count: `2`" in summary_text
     assert "- controller_python_version: `3.11.2`" in summary_text
     assert step_summary.read_text(encoding="utf-8") == summary_text
+    payload_text = json.dumps(payload)
+    assert str(tmp_path) not in payload_text
+    assert "/Users/" not in payload_text
+    for step in payload["steps"].values():
+        assert all(not Path(token).is_absolute() for token in step["command"])
     acceptance_command = next(
         command for command in commands if any("run_repo_maturity_acceptance.py" in part for part in command)
     )

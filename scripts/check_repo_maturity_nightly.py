@@ -51,11 +51,20 @@ def _relative(path: Path, repo_root: Path = REPO_ROOT) -> str:
         return str(path)
 
 
-def _resolve_from_repo_root(value: str, repo_root: Path) -> Path:
+def _resolve_artifact_path(value: str, *, repo_root: Path, artifact_root: Path | None) -> Path:
     raw_path = Path(value)
     if raw_path.is_absolute():
         return raw_path.resolve()
-    return (repo_root / raw_path).resolve()
+
+    candidates: list[Path] = []
+    if artifact_root is not None:
+        candidates.append((artifact_root / raw_path).resolve())
+    candidates.append((repo_root / raw_path).resolve())
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[0]
 
 
 def _is_within(path: Path, root: Path) -> bool:
@@ -147,6 +156,7 @@ def evaluate_nightly_artifact(
 ) -> dict[str, Any]:
     issues: list[str] = []
     warnings: list[str] = []
+    artifact_root = nightly_path.resolve().parent
 
     profile = str(nightly_payload.get("profile", "")).strip()
     session_id = str(nightly_payload.get("session_id", "")).strip()
@@ -202,7 +212,11 @@ def evaluate_nightly_artifact(
             if explicit_status in {"ready", "blocked", "error"} and not str(raw_path or "").strip():
                 issues.append(f"step `{step_id}` is missing `{path_field}`")
             elif str(raw_path or "").strip():
-                candidate = _resolve_from_repo_root(str(raw_path), repo_root)
+                candidate = _resolve_artifact_path(
+                    str(raw_path),
+                    repo_root=repo_root,
+                    artifact_root=artifact_root,
+                )
                 step_log_paths.append((step_id, path_field, candidate))
                 if explicit_status in {"ready", "blocked", "error"} and not candidate.exists():
                     issues.append(f"step `{step_id}` expects `{path_field}` to exist")
@@ -287,9 +301,21 @@ def evaluate_nightly_artifact(
     output_dir_raw = str(nightly_payload.get("output_dir", "")).strip()
     if not output_dir_raw:
         issues.append("`output_dir` is required")
-    resolved_output_dir = _resolve_from_repo_root(output_dir_raw, repo_root) if output_dir_raw else None
+    resolved_output_dir = (
+        _resolve_artifact_path(
+            output_dir_raw,
+            repo_root=repo_root,
+            artifact_root=artifact_root,
+        )
+        if output_dir_raw
+        else None
+    )
     resolved_artifact_paths = {
-        key: _resolve_from_repo_root(str(value), repo_root)
+        key: _resolve_artifact_path(
+            str(value),
+            repo_root=repo_root,
+            artifact_root=artifact_root,
+        )
         for key, value in artifacts.items()
         if isinstance(value, str) and value.strip()
     }
@@ -385,7 +411,11 @@ def evaluate_nightly_artifact(
             if not report_runs_dir_raw:
                 issues.append("`artifacts.public_runs_summary_report_json` must include `runs_dir`")
             elif resolved_public_runs_dir is not None:
-                resolved_report_runs_dir = _resolve_from_repo_root(report_runs_dir_raw, repo_root)
+                resolved_report_runs_dir = _resolve_artifact_path(
+                    report_runs_dir_raw,
+                    repo_root=repo_root,
+                    artifact_root=artifact_root,
+                )
                 if resolved_report_runs_dir != resolved_public_runs_dir.resolve():
                     issues.append(
                         "`artifacts.public_runs_summary_report_json.runs_dir` does not match "

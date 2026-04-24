@@ -9,6 +9,12 @@ An artifact-driven multi-agent manuscript system built on a deterministic harnes
 - journal-specific submission packaging
 - collaborative GitHub-based scientific writing
 
+## Repository Status
+
+The default branch is maintained as the canonical public surface for the framework. Push-triggered GitHub Actions are the primary acceptance signal; scheduled repo-maturity nightlies are monitoring canaries that can surface deferred release-readiness gates separately from the push CI result.
+
+Generated reports, manifests, and logs are intended to be reproducible from tracked scripts and configuration. Public artifacts should avoid credentials, private data, proprietary source inputs, personal contact details, and local-only filesystem paths.
+
 The current default architecture is:
 
 - `MyST Markdown` for semantic manuscript authoring
