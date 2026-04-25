@@ -79,7 +79,9 @@ create_plot <- function(spec_path) {
   plot_theme <- build_theme(theme, resolved_font) +
     ggplot2::theme(
       legend.position = "bottom",
-      legend.box = "horizontal",
+      legend.box = "vertical",
+      legend.direction = "horizontal",
+      legend.spacing.y = grid::unit(0.04, "in"),
       plot.margin = ggplot2::margin(8, 14, 10, 8)
     )
 
@@ -118,6 +120,10 @@ create_plot <- function(spec_path) {
     ggplot2::scale_color_manual(values = palette) +
     ggplot2::scale_shape_manual(values = c("Cohort A" = 16, "Cohort B" = 15, "Cohort C" = 17)) +
     ggplot2::scale_size_continuous(range = c(1.6, 3.5), guide = "none") +
+    ggplot2::guides(
+      shape = ggplot2::guide_legend(order = 1, nrow = 1),
+      color = ggplot2::guide_legend(order = 2, nrow = 1)
+    ) +
     ggplot2::labs(title = "Embedding projection", x = "UMAP 1", y = "UMAP 2", color = "State", shape = "Domain") +
     plot_theme +
     ggplot2::theme(legend.title = ggplot2::element_text(size = as.numeric(theme$typography$annotation_font_size_pt)))
