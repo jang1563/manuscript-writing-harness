@@ -24,7 +24,7 @@ You need a commercial license if you (or the entity you work for) want to use th
 
 ## How to obtain a commercial license
 
-Email **silveray1563@gmail.com** with:
+Contact the maintainer privately through the repository profile or project homepage with:
 
 1. **Company name** and a brief description of your organization
 2. **Intended use case** -- what you want to build or run
