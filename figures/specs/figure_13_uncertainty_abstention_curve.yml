@@ -1,0 +1,45 @@
+figure_id: "figure_13_uncertainty_abstention_curve"
+class_id: "uncertainty_abstention_curve"
+class_version: 1
+title: "Uncertainty-guided abstention and coverage-risk behavior"
+theme_id: "manuscript_default"
+font_policy_id: "publication_sans"
+style_profile: "ai_ml_professional"
+target_profile: "nature_main_double_column"
+qa_profile: "uncertainty_abstention_curve_dual"
+review_preset: "uncertainty_abstention_curve_dual"
+parity_status: "dual"
+claim_ids:
+  - "claim_uncertainty_abstention_reduces_deployment_risk"
+  - "claim_foundation_model_retains_higher_coverage_at_target_risk"
+fact_sheet: "figures/fact_sheets/figure_13_uncertainty_abstention_curve.json"
+visualization_plan: "figures/plans/visualization_plan.json"
+legend_path: "manuscript/legends/figure_13_uncertainty_abstention_curve.md"
+size:
+  width_mm: 183
+  height_mm: 90
+data_inputs:
+  - "figures/data/uncertainty_abstention_curve.csv"
+  - "figures/data/uncertainty_abstention_summary.csv"
+source_data_outputs:
+  a: "figures/source_data/figure_13_panel_a.csv"
+  b: "figures/source_data/figure_13_panel_b.csv"
+panels:
+  - id: "a"
+    title: "Coverage-risk curve"
+    chart_type: "coverage_risk_curve"
+    x: "coverage"
+    y: "risk"
+  - id: "b"
+    title: "Target-risk coverage"
+    chart_type: "target_risk_coverage_summary"
+    x: "coverage_at_target_risk"
+    y: "model"
+renderers:
+  python:
+    enabled: true
+    output_dir: "figures/output/python"
+  r:
+    enabled: true
+    output_dir: "figures/output/r"
+caption_stub: "The uncertainty-abstention figure should show whether selective prediction reduces risk while preserving useful coverage at a deployment-relevant target-risk threshold."

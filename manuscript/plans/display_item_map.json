@@ -182,6 +182,40 @@
       ]
     },
     {
+      "display_item_id": "figure_12_embedding_projection",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_embedding_projection_preserves_state_structure",
+        "claim_embedding_structure_has_cross_domain_support"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_12_embedding_projection.png",
+      "spec_path": "figures/specs/figure_12_embedding_projection.yml",
+      "fact_sheet": "figures/fact_sheets/figure_12_embedding_projection.json",
+      "legend_path": "manuscript/legends/figure_12_embedding_projection.md",
+      "source_data": [
+        "figures/source_data/figure_12_panel_a.csv",
+        "figures/source_data/figure_12_panel_b.csv"
+      ]
+    },
+    {
+      "display_item_id": "figure_13_uncertainty_abstention_curve",
+      "type": "figure",
+      "manuscript_section": "results",
+      "claim_ids": [
+        "claim_uncertainty_abstention_reduces_deployment_risk",
+        "claim_foundation_model_retains_higher_coverage_at_target_risk"
+      ],
+      "preview_asset": "manuscript/assets/generated/figure_13_uncertainty_abstention_curve.png",
+      "spec_path": "figures/specs/figure_13_uncertainty_abstention_curve.yml",
+      "fact_sheet": "figures/fact_sheets/figure_13_uncertainty_abstention_curve.json",
+      "legend_path": "manuscript/legends/figure_13_uncertainty_abstention_curve.md",
+      "source_data": [
+        "figures/source_data/figure_13_panel_a.csv",
+        "figures/source_data/figure_13_panel_b.csv"
+      ]
+    },
+    {
       "display_item_id": "table_01_main",
       "type": "table",
       "manuscript_section": "results",

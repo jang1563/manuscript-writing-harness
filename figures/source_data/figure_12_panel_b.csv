@@ -1,0 +1,5 @@
+biological_state,centroid_x,centroid_y,display_order,sample_count,cross_domain_fraction,label_cluster
+Quiescent,-3.01,-1.18,1,8,0.63,yes
+Inflammatory,-1.04,2.18,2,8,0.71,yes
+Proliferative,2.15,1.41,3,8,0.67,yes
+Fibrotic,3.18,-1.15,4,8,0.58,yes

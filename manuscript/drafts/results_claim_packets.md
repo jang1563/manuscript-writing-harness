@@ -1,8 +1,8 @@
 # Results Claim Draft Packets
 
 - overall_status: `ready`
-- claim_count: `20`
-- ready_claim_count: `20`
+- claim_count: `24`
+- ready_claim_count: `24`
 - provisional_claim_count: `0`
 - blocked_claim_count: `0`
 - topic: not set
@@ -570,6 +570,126 @@ Panel a shows the AUROC drop for each ablated variant relative to the full model
 ### Citation Links
 
 - `guoEtAl2017Calibration`
+
+### Drafting Guidance
+
+- State the claim in one sentence before interpreting mechanism or implication.
+- Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.
+- Use only citation keys already linked in the citation graph if you add background context.
+- Keep the first results sentence display-backed; move broader context to the Discussion.
+
+## claim_embedding_projection_preserves_state_structure
+
+- status: `ready`
+- manuscript_section: `results`
+- display_item: `figure_12_embedding_projection`
+- preview_asset: `manuscript/assets/generated/figure_12_embedding_projection.png`
+- fact_sheet: `figures/fact_sheets/figure_12_embedding_projection.json`
+
+### Evidence Facts
+
+- `claim_embedding_projection_preserves_state_structure`: The projection organizes quiescent, inflammatory, proliferative, and fibrotic samples into compact regions with density-aware direct labels rather than relying on a detached legend alone.
+
+### Legend Summary
+
+### figure_12_embedding_projection
+
+Embedding projection of AI/ML representation structure. Panel a shows samples on the first two embedding coordinates, with biological state encoded by color and source domain encoded by marker shape. Direct centroid labels are placed only on dense state regions. Panel b summarizes the cross-domain support fraction for each state so projected separation is interpreted together with cohort coverage.
+
+### Citation Links
+
+- `abdiWilliams2010PCA`
+- `liptonSteinhardt2018TroublingTrends`
+
+### Drafting Guidance
+
+- State the claim in one sentence before interpreting mechanism or implication.
+- Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.
+- Use only citation keys already linked in the citation graph if you add background context.
+- Keep the first results sentence display-backed; move broader context to the Discussion.
+
+## claim_embedding_structure_has_cross_domain_support
+
+- status: `ready`
+- manuscript_section: `results`
+- display_item: `figure_12_embedding_projection`
+- preview_asset: `manuscript/assets/generated/figure_12_embedding_projection.png`
+- fact_sheet: `figures/fact_sheets/figure_12_embedding_projection.json`
+
+### Evidence Facts
+
+- `claim_embedding_structure_has_cross_domain_support`: Each represented state retains samples from multiple cohorts, with cross-domain support fractions ranging from 58% to 71%.
+
+### Legend Summary
+
+### figure_12_embedding_projection
+
+Embedding projection of AI/ML representation structure. Panel a shows samples on the first two embedding coordinates, with biological state encoded by color and source domain encoded by marker shape. Direct centroid labels are placed only on dense state regions. Panel b summarizes the cross-domain support fraction for each state so projected separation is interpreted together with cohort coverage.
+
+### Citation Links
+
+- `abdiWilliams2010PCA`
+- `liptonSteinhardt2018TroublingTrends`
+
+### Drafting Guidance
+
+- State the claim in one sentence before interpreting mechanism or implication.
+- Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.
+- Use only citation keys already linked in the citation graph if you add background context.
+- Keep the first results sentence display-backed; move broader context to the Discussion.
+
+## claim_uncertainty_abstention_reduces_deployment_risk
+
+- status: `ready`
+- manuscript_section: `results`
+- display_item: `figure_13_uncertainty_abstention_curve`
+- preview_asset: `manuscript/assets/generated/figure_13_uncertainty_abstention_curve.png`
+- fact_sheet: `figures/fact_sheets/figure_13_uncertainty_abstention_curve.json`
+
+### Evidence Facts
+
+- `claim_uncertainty_abstention_reduces_deployment_risk`: Risk declines monotonically as lower-confidence predictions are abstained, with operating points marked at 80% coverage for each model.
+
+### Legend Summary
+
+### figure_13_uncertainty_abstention_curve
+
+Uncertainty-guided abstention for selective prediction. Panel a shows the coverage-risk tradeoff for each model with uncertainty intervals and an 8% target-risk reference. Markers indicate the 80% coverage operating point. Panel b summarizes how much coverage each model retains at the target-risk threshold and annotates the corresponding 80% coverage risk.
+
+### Citation Links
+
+- `guoEtAl2017Calibration`
+- `niculescuMizilCaruana2005Probabilities`
+
+### Drafting Guidance
+
+- State the claim in one sentence before interpreting mechanism or implication.
+- Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.
+- Use only citation keys already linked in the citation graph if you add background context.
+- Keep the first results sentence display-backed; move broader context to the Discussion.
+
+## claim_foundation_model_retains_higher_coverage_at_target_risk
+
+- status: `ready`
+- manuscript_section: `results`
+- display_item: `figure_13_uncertainty_abstention_curve`
+- preview_asset: `manuscript/assets/generated/figure_13_uncertainty_abstention_curve.png`
+- fact_sheet: `figures/fact_sheets/figure_13_uncertainty_abstention_curve.json`
+
+### Evidence Facts
+
+- `claim_foundation_model_retains_higher_coverage_at_target_risk`: At the target risk threshold, the foundation model retains 82% coverage compared with 66% for the hybrid GNN and 52% for the CNN baseline.
+
+### Legend Summary
+
+### figure_13_uncertainty_abstention_curve
+
+Uncertainty-guided abstention for selective prediction. Panel a shows the coverage-risk tradeoff for each model with uncertainty intervals and an 8% target-risk reference. Markers indicate the 80% coverage operating point. Panel b summarizes how much coverage each model retains at the target-risk threshold and annotates the corresponding 80% coverage risk.
+
+### Citation Links
+
+- `guoEtAl2017Calibration`
+- `niculescuMizilCaruana2005Probabilities`
 
 ### Drafting Guidance
 

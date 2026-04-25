@@ -1,0 +1,14 @@
+### figure_12_embedding_projection
+
+```{figure} assets/generated/figure_12_embedding_projection.png
+:alt: Two-panel embedding projection showing biological-state structure and cross-domain support fractions.
+:width: 100%
+
+Figure 12. Embedding projection with representation structure and domain support. Panel a shows quiescent, inflammatory, proliferative, and fibrotic samples organized into compact labeled regions in the learned representation space. Panel b reports cross-domain support for each labeled state region, showing that the projected structure is not driven by a single cohort alone.
+```
+
+Audit artifacts:
+
+- `figures/fact_sheets/figure_12_embedding_projection.json`
+- `manuscript/legends/figure_12_embedding_projection.md`
+- `figures/plans/visualization_plan.json`

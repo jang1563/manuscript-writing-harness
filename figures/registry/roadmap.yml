@@ -9,7 +9,7 @@ families:
       - "sample_pca"
       - "pathway_enrichment_dot"
   ai_ml_professional:
-    status: "in_progress"
+    status: "implemented"
     expertise_track: "ai_for_science"
     default_style_profile: "ai_ml_professional"
     description: "Planned figure classes for AI/ML papers, AI-for-science manuscripts, and top-conference model evaluation figures."
@@ -19,17 +19,7 @@ families:
       - "training_dynamics"
       - "confusion_matrix_normalized"
       - "feature_importance_summary"
+      - "embedding_projection"
       - "ablation_summary"
-    planned_classes:
-      - class_id: "embedding_projection"
-        priority: "wave_3"
-        intent: "UMAP/t-SNE/PCA embedding with label-density-aware annotation."
-        target_claims:
-          - "representation structure"
-          - "cross-domain separation"
-      - class_id: "uncertainty_abstention_curve"
-        priority: "wave_3"
-        intent: "Coverage-risk or abstention-performance curve for selective prediction."
-        target_claims:
-          - "uncertainty usefulness"
-          - "safe deployment behavior"
+      - "uncertainty_abstention_curve"
+    planned_classes: []

@@ -68,7 +68,7 @@ What exists:
 - adapter-ready benchmark packages and scorecards for manuscript-system evaluation
 - an example multi-panel figure pipeline with source-data exports, fact sheets, and venue-aware exports
 - Wave 1 reusable bulk-omics figure classes for MA plots, sample PCA, and pathway-enrichment dot plots
-- an AI/ML professional figure track with implemented ROC/PR, calibration-reliability, training-dynamics, normalized-confusion, feature-importance, and ablation classes plus roadmap entries for uncertainty-focused classes
+- an AI/ML professional figure track with implemented ROC/PR, calibration-reliability, training-dynamics, normalized-confusion, feature-importance, embedding-projection, ablation, and uncertainty-abstention classes
 - an example schema-backed main-table pipeline
 - CI workflows for manuscript builds, figure bundles, review evidence, reference integrity, release packaging, labels, runtime compatibility, and repo maturity
 - structure, generated-artifact, and public-surface validation tooling

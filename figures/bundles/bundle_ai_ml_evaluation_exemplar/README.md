@@ -14,5 +14,7 @@ Bundle slots:
 - `error_modes` -> `figure_09_confusion_matrix_normalized`
 - `interpretation` -> `figure_10_feature_importance_summary`
 - `design_justification` -> `figure_11_ablation_summary`
+- `representation` -> `figure_12_embedding_projection`
+- `selective_prediction` -> `figure_13_uncertainty_abstention_curve`
 
-This bundle captures the methods-paper or top-conference evaluation arc from discrimination and calibration through optimization, failure modes, interpretation, and ablation support.
+This bundle captures the methods-paper or top-conference evaluation arc from discrimination and calibration through optimization, failure modes, interpretation, ablation support, representation geometry, and selective-prediction behavior.

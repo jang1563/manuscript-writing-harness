@@ -1,0 +1,28 @@
+{
+  "figure_id": "figure_12_embedding_projection",
+  "claim_ids": [
+    "claim_embedding_projection_preserves_state_structure",
+    "claim_embedding_structure_has_cross_domain_support"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_embedding_projection_preserves_state_structure",
+      "statement": "The projection organizes quiescent, inflammatory, proliferative, and fibrotic samples into compact regions with density-aware direct labels rather than relying on a detached legend alone.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_12_panel_a.csv",
+      "evidence_type": "embedding_coordinate_projection_with_cluster_labels"
+    },
+    {
+      "fact_id": "claim_embedding_structure_has_cross_domain_support",
+      "statement": "Each represented state retains samples from multiple cohorts, with cross-domain support fractions ranging from 58% to 71%.",
+      "panel_id": "b",
+      "source_data": "figures/source_data/figure_12_panel_b.csv",
+      "evidence_type": "state_level_cross_domain_support_summary"
+    }
+  ],
+  "design_notes": [
+    "Treat embedding geometry as a representation diagnostic rather than a quantitative distance proof.",
+    "Encode biological state and source domain with separate channels so cluster identity is not confused with cohort structure.",
+    "Use sparse centroid labels and a support panel to keep dense scatter annotations readable."
+  ]
+}

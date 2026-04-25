@@ -21,7 +21,7 @@ def test_claim_packets_cover_all_display_claims() -> None:
     packets = build_claim_packets()
     claim_ids = [packet["claim_id"] for packet in packets["claims"]]
     assert packets["claim_count"] == len(claim_ids)
-    assert packets["claim_count"] == 20
+    assert packets["claim_count"] == 24
     assert packets["blocked_claim_count"] == 0
 
 

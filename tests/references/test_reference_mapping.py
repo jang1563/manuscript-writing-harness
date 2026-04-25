@@ -19,8 +19,8 @@ from reference_mapping import apply_claim_reference_map, build_claim_reference_m
 
 def test_claim_reference_map_covers_all_claims() -> None:
     payload = build_claim_reference_map(sync_graph=False)
-    assert payload["claim_count"] == 20
-    assert len(payload["mappings"]) == 20
+    assert payload["claim_count"] == 24
+    assert len(payload["mappings"]) == 24
 
 
 def test_claim_reference_map_status_is_valid() -> None:

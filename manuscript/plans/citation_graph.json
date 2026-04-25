@@ -77,6 +77,22 @@
       "section": "results"
     },
     {
+      "id": "claim_embedding_projection_preserves_state_structure",
+      "section": "results"
+    },
+    {
+      "id": "claim_embedding_structure_has_cross_domain_support",
+      "section": "results"
+    },
+    {
+      "id": "claim_uncertainty_abstention_reduces_deployment_risk",
+      "section": "results"
+    },
+    {
+      "id": "claim_foundation_model_retains_higher_coverage_at_target_risk",
+      "section": "results"
+    },
+    {
       "id": "claim_model_ranking",
       "section": "results"
     }
@@ -180,6 +196,26 @@
       "relation": "background_context"
     },
     {
+      "from": "claim_embedding_projection_preserves_state_structure",
+      "to": "abdiWilliams2010PCA",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_embedding_projection_preserves_state_structure",
+      "to": "liptonSteinhardt2018TroublingTrends",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_embedding_structure_has_cross_domain_support",
+      "to": "abdiWilliams2010PCA",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_embedding_structure_has_cross_domain_support",
+      "to": "liptonSteinhardt2018TroublingTrends",
+      "relation": "background_context"
+    },
+    {
       "from": "claim_endpoint_shift",
       "to": "weissgerberEtAl2015BeyondBar",
       "relation": "background_context"
@@ -212,6 +248,16 @@
     {
       "from": "claim_foundation_model_reaches_higher_validation_auroc",
       "to": "smithTopin2017SuperConvergence",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_foundation_model_retains_higher_coverage_at_target_risk",
+      "to": "guoEtAl2017Calibration",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_foundation_model_retains_higher_coverage_at_target_risk",
+      "to": "niculescuMizilCaruana2005Probabilities",
       "relation": "background_context"
     },
     {
@@ -277,6 +323,16 @@
     {
       "from": "claim_terminal_states_remain_distinct",
       "to": "stehman1997ClassificationAccuracy",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_uncertainty_abstention_reduces_deployment_risk",
+      "to": "guoEtAl2017Calibration",
+      "relation": "background_context"
+    },
+    {
+      "from": "claim_uncertainty_abstention_reduces_deployment_risk",
+      "to": "niculescuMizilCaruana2005Probabilities",
       "relation": "background_context"
     }
   ]

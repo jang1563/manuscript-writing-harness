@@ -33,7 +33,7 @@ The tracked demo manuscript should remain structurally ready across claim covera
 
 #### Checks
 
-- `claim_count`: `pass` | expected `20` | actual `20`
+- `claim_count`: `pass` | expected `24` | actual `24`
 - `claim_coverage_status`: `pass` | expected `ready` | actual `ready`
 - `section_briefs_status`: `pass` | expected `ready` | actual `ready`
 - `section_drafts_status`: `pass` | expected `ready` | actual `ready`

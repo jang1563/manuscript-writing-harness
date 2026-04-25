@@ -1,8 +1,8 @@
 # Claim Reference Map
 
 - overall_status: `ready`
-- claim_count: `20`
-- mapped_claim_count: `20`
+- claim_count: `24`
+- mapped_claim_count: `24`
 - placeholder_claim_count: `0`
 - unmapped_claim_count: `0`
 
@@ -137,6 +137,34 @@
 - status: `mapped`
 - display_item_id: `figure_11_ablation_summary`
 - current_reference_ids: `guoEtAl2017Calibration`
+- accepted_relation: `background_context`
+
+## claim_embedding_projection_preserves_state_structure
+
+- status: `mapped`
+- display_item_id: `figure_12_embedding_projection`
+- current_reference_ids: `abdiWilliams2010PCA, liptonSteinhardt2018TroublingTrends`
+- accepted_relation: `background_context`
+
+## claim_embedding_structure_has_cross_domain_support
+
+- status: `mapped`
+- display_item_id: `figure_12_embedding_projection`
+- current_reference_ids: `abdiWilliams2010PCA, liptonSteinhardt2018TroublingTrends`
+- accepted_relation: `background_context`
+
+## claim_uncertainty_abstention_reduces_deployment_risk
+
+- status: `mapped`
+- display_item_id: `figure_13_uncertainty_abstention_curve`
+- current_reference_ids: `guoEtAl2017Calibration, niculescuMizilCaruana2005Probabilities`
+- accepted_relation: `background_context`
+
+## claim_foundation_model_retains_higher_coverage_at_target_risk
+
+- status: `mapped`
+- display_item_id: `figure_13_uncertainty_abstention_curve`
+- current_reference_ids: `guoEtAl2017Calibration, niculescuMizilCaruana2005Probabilities`
 - accepted_relation: `background_context`
 
 ## claim_model_ranking

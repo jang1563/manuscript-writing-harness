@@ -1,0 +1,45 @@
+figure_id: "figure_12_embedding_projection"
+class_id: "embedding_projection"
+class_version: 1
+title: "Embedding projection with representation structure and domain support"
+theme_id: "manuscript_default"
+font_policy_id: "publication_sans"
+style_profile: "ai_ml_professional"
+target_profile: "nature_main_double_column"
+qa_profile: "embedding_projection_dual"
+review_preset: "embedding_projection_dual"
+parity_status: "dual"
+claim_ids:
+  - "claim_embedding_projection_preserves_state_structure"
+  - "claim_embedding_structure_has_cross_domain_support"
+fact_sheet: "figures/fact_sheets/figure_12_embedding_projection.json"
+visualization_plan: "figures/plans/visualization_plan.json"
+legend_path: "manuscript/legends/figure_12_embedding_projection.md"
+size:
+  width_mm: 183
+  height_mm: 92
+data_inputs:
+  - "figures/data/embedding_projection_coordinates.csv"
+  - "figures/data/embedding_projection_cluster_summary.csv"
+source_data_outputs:
+  a: "figures/source_data/figure_12_panel_a.csv"
+  b: "figures/source_data/figure_12_panel_b.csv"
+panels:
+  - id: "a"
+    title: "Embedding projection"
+    chart_type: "density_aware_embedding_scatter"
+    x: "embedding_1"
+    y: "embedding_2"
+  - id: "b"
+    title: "Cross-domain support"
+    chart_type: "domain_support_summary"
+    x: "cross_domain_fraction"
+    y: "biological_state"
+renderers:
+  python:
+    enabled: true
+    output_dir: "figures/output/python"
+  r:
+    enabled: true
+    output_dir: "figures/output/r"
+caption_stub: "The embedding projection should show whether representation geometry separates biological states while preserving cross-domain support within each labeled region."

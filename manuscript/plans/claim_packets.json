@@ -21,8 +21,8 @@
     "claim_note_count": 0
   },
   "overall_status": "ready",
-  "claim_count": 20,
-  "ready_claim_count": 20,
+  "claim_count": 24,
+  "ready_claim_count": 24,
   "provisional_claim_count": 0,
   "blocked_claim_count": 0,
   "claims": [
@@ -1788,6 +1788,394 @@
       "citations": {
         "reference_ids": [
           "guoEtAl2017Calibration"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_embedding_projection_preserves_state_structure",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_12_embedding_projection",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_12_embedding_projection.png",
+        "spec_path": "figures/specs/figure_12_embedding_projection.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_12_embedding_projection.json",
+        "legend_path": "manuscript/legends/figure_12_embedding_projection.md",
+        "source_data": [
+          "figures/source_data/figure_12_panel_a.csv",
+          "figures/source_data/figure_12_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_embedding_projection_preserves_state_structure",
+          "statement": "The projection organizes quiescent, inflammatory, proliferative, and fibrotic samples into compact regions with density-aware direct labels rather than relying on a detached legend alone.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_12_panel_a.csv",
+          "evidence_type": "embedding_coordinate_projection_with_cluster_labels"
+        }
+      ],
+      "legend_summary": "### figure_12_embedding_projection\n\nEmbedding projection of AI/ML representation structure. Panel a shows samples on the first two embedding coordinates, with biological state encoded by color and source domain encoded by marker shape. Direct centroid labels are placed only on dense state regions. Panel b summarizes the cross-domain support fraction for each state so projected separation is interpreted together with cohort coverage.",
+      "citations": {
+        "reference_ids": [
+          "abdiWilliams2010PCA",
+          "liptonSteinhardt2018TroublingTrends"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_embedding_structure_has_cross_domain_support",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_12_embedding_projection",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_12_embedding_projection.png",
+        "spec_path": "figures/specs/figure_12_embedding_projection.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_12_embedding_projection.json",
+        "legend_path": "manuscript/legends/figure_12_embedding_projection.md",
+        "source_data": [
+          "figures/source_data/figure_12_panel_a.csv",
+          "figures/source_data/figure_12_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_embedding_structure_has_cross_domain_support",
+          "statement": "Each represented state retains samples from multiple cohorts, with cross-domain support fractions ranging from 58% to 71%.",
+          "panel_id": "b",
+          "source_data": "figures/source_data/figure_12_panel_b.csv",
+          "evidence_type": "state_level_cross_domain_support_summary"
+        }
+      ],
+      "legend_summary": "### figure_12_embedding_projection\n\nEmbedding projection of AI/ML representation structure. Panel a shows samples on the first two embedding coordinates, with biological state encoded by color and source domain encoded by marker shape. Direct centroid labels are placed only on dense state regions. Panel b summarizes the cross-domain support fraction for each state so projected separation is interpreted together with cohort coverage.",
+      "citations": {
+        "reference_ids": [
+          "abdiWilliams2010PCA",
+          "liptonSteinhardt2018TroublingTrends"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_uncertainty_abstention_reduces_deployment_risk",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_13_uncertainty_abstention_curve",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_13_uncertainty_abstention_curve.png",
+        "spec_path": "figures/specs/figure_13_uncertainty_abstention_curve.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_13_uncertainty_abstention_curve.json",
+        "legend_path": "manuscript/legends/figure_13_uncertainty_abstention_curve.md",
+        "source_data": [
+          "figures/source_data/figure_13_panel_a.csv",
+          "figures/source_data/figure_13_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_uncertainty_abstention_reduces_deployment_risk",
+          "statement": "Risk declines monotonically as lower-confidence predictions are abstained, with operating points marked at 80% coverage for each model.",
+          "panel_id": "a",
+          "source_data": "figures/source_data/figure_13_panel_a.csv",
+          "evidence_type": "coverage_risk_curve_with_uncertainty_interval"
+        }
+      ],
+      "legend_summary": "### figure_13_uncertainty_abstention_curve\n\nUncertainty-guided abstention for selective prediction. Panel a shows the coverage-risk tradeoff for each model with uncertainty intervals and an 8% target-risk reference. Markers indicate the 80% coverage operating point. Panel b summarizes how much coverage each model retains at the target-risk threshold and annotates the corresponding 80% coverage risk.",
+      "citations": {
+        "reference_ids": [
+          "guoEtAl2017Calibration",
+          "niculescuMizilCaruana2005Probabilities"
+        ],
+        "reference_layer_readiness": "ready"
+      },
+      "drafting_guidance": [
+        "State the claim in one sentence before interpreting mechanism or implication.",
+        "Anchor the prose to the fact-sheet statement instead of rephrasing the legend from memory.",
+        "Use only citation keys already linked in the citation graph if you add background context.",
+        "Keep the first results sentence display-backed; move broader context to the Discussion."
+      ],
+      "revision_checks": [
+        {
+          "check_id": "claim_display_alignment",
+          "status": "required",
+          "question": "Does each main claim map to a figure, table, or validated citation?"
+        },
+        {
+          "check_id": "display_item_evidence_alignment",
+          "status": "required",
+          "question": "Do figure and table fact sheets match the planned claims and rendered artifacts?"
+        },
+        {
+          "check_id": "venue_compliance_review",
+          "status": "required",
+          "question": "Do the current assets satisfy the chosen venue profile and section requirements?"
+        },
+        {
+          "check_id": "claim_packet_coverage",
+          "status": "required",
+          "question": "Does every drafted claim have a claim packet with display evidence, fact statements, and visible citation status?"
+        },
+        {
+          "check_id": "section_brief_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting brief with scope, evidence context, and visible readiness?"
+        },
+        {
+          "check_id": "section_draft_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have a drafting scaffold that can be turned into prose without inventing unsupported claims?"
+        },
+        {
+          "check_id": "section_prose_coverage",
+          "status": "required",
+          "question": "Does every major manuscript section have editable generated prose that remains aligned with the current drafting scaffolds?"
+        },
+        {
+          "check_id": "section_prose_apply_integrity",
+          "status": "required",
+          "question": "Do managed prose blocks in canonical manuscript sections point to the current generated section bodies without overwriting freeform content?"
+        }
+      ],
+      "supporting_context": {
+        "review_evidence_readiness": "ready",
+        "review_evidence_path": "review/reports/evidence_summary.json",
+        "reference_audit_path": "references/reports/reference_audit.json"
+      },
+      "author_input": {
+        "topic": "",
+        "section_note": "",
+        "claim_note": ""
+      },
+      "status": "ready",
+      "blocking_issues": [],
+      "warnings": []
+    },
+    {
+      "claim_id": "claim_foundation_model_retains_higher_coverage_at_target_risk",
+      "manuscript_section": "results",
+      "section_purpose": "Present display-item-backed claims in a controlled order.",
+      "display_item": {
+        "display_item_id": "figure_13_uncertainty_abstention_curve",
+        "type": "figure",
+        "preview_asset": "manuscript/assets/generated/figure_13_uncertainty_abstention_curve.png",
+        "spec_path": "figures/specs/figure_13_uncertainty_abstention_curve.yml",
+        "schema_path": null,
+        "fact_sheet": "figures/fact_sheets/figure_13_uncertainty_abstention_curve.json",
+        "legend_path": "manuscript/legends/figure_13_uncertainty_abstention_curve.md",
+        "source_data": [
+          "figures/source_data/figure_13_panel_a.csv",
+          "figures/source_data/figure_13_panel_b.csv"
+        ],
+        "manifest_path": null
+      },
+      "evidence_facts": [
+        {
+          "fact_id": "claim_foundation_model_retains_higher_coverage_at_target_risk",
+          "statement": "At the target risk threshold, the foundation model retains 82% coverage compared with 66% for the hybrid GNN and 52% for the CNN baseline.",
+          "panel_id": "b",
+          "source_data": "figures/source_data/figure_13_panel_b.csv",
+          "evidence_type": "target_risk_coverage_summary"
+        }
+      ],
+      "legend_summary": "### figure_13_uncertainty_abstention_curve\n\nUncertainty-guided abstention for selective prediction. Panel a shows the coverage-risk tradeoff for each model with uncertainty intervals and an 8% target-risk reference. Markers indicate the 80% coverage operating point. Panel b summarizes how much coverage each model retains at the target-risk threshold and annotates the corresponding 80% coverage risk.",
+      "citations": {
+        "reference_ids": [
+          "guoEtAl2017Calibration",
+          "niculescuMizilCaruana2005Probabilities"
         ],
         "reference_layer_readiness": "ready"
       },

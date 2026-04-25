@@ -39,3 +39,17 @@ Use `figure_11_ablation_summary` to draft the final Results prose for this bundl
 
 ```{include} ../figure_11_ablation_summary.md.txt
 ```
+
+### Bundle claim 7. Representation geometry should preserve state structure without hiding domain support
+
+Use `figure_12_embedding_projection` to draft the final Results prose for this bundle slot.
+
+```{include} ../figure_12_embedding_projection.md.txt
+```
+
+### Bundle claim 8. Abstention curves should pair risk reduction with retained coverage
+
+Use `figure_13_uncertainty_abstention_curve` to draft the final Results prose for this bundle slot.
+
+```{include} ../figure_13_uncertainty_abstention_curve.md.txt
+```

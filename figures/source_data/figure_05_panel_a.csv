@@ -1,1 +1,4 @@
 pathway,gene_ratio,neg_log10_fdr,gene_count,direction,highlight_order
+Interferon_Response,1,6.04712,10,up,1
+Cell_Cycle_Proliferation,1,6.487817,10,down,3
+Antigen_Presentation,0,0,0,up,2

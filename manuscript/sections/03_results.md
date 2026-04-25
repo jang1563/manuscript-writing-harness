@@ -26,6 +26,7 @@ The treated condition separates from control over time, and by the late measurem
 
 
 
+
 ### Claim 9. Deterministic tabular outputs should preserve the evidence path behind ranking claims
 
 The example table shows how an artifact-driven multi-agent manuscript system should present ranked model-performance summaries: the ordering is deterministic, the JSON output remains machine-readable, and the fact sheet captures the specific claim the table is expected to support.

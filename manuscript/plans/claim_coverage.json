@@ -1,7 +1,7 @@
 {
   "overall_status": "ready",
-  "claim_count": 20,
-  "ready_claim_count": 20,
+  "claim_count": 24,
+  "ready_claim_count": 24,
   "provisional_claim_count": 0,
   "blocked_claim_count": 0,
   "blocked_claim_ids": [],
@@ -18,6 +18,8 @@
     "figure_09_confusion_matrix_normalized",
     "figure_10_feature_importance_summary",
     "figure_11_ablation_summary",
+    "figure_12_embedding_projection",
+    "figure_13_uncertainty_abstention_curve",
     "table_01_main"
   ],
   "claims_with_citation_edges": [
@@ -25,12 +27,15 @@
     "claim_cell_cycle_pathway_suppression",
     "claim_condition_drives_primary_sample_separation",
     "claim_context_encoder_and_fusion_drive_primary_performance",
+    "claim_embedding_projection_preserves_state_structure",
+    "claim_embedding_structure_has_cross_domain_support",
     "claim_endpoint_shift",
     "claim_errors_are_localized_to_adjacent_states",
     "claim_foundation_model_best_calibrated",
     "claim_foundation_model_improves_discrimination",
     "claim_foundation_model_optimizes_stably",
     "claim_foundation_model_reaches_higher_validation_auroc",
+    "claim_foundation_model_retains_higher_coverage_at_target_risk",
     "claim_foundation_model_retains_precision_under_imbalance",
     "claim_high_abundance_interferon_shift",
     "claim_high_confidence_support_is_not_tail_only",
@@ -40,6 +45,7 @@
     "claim_pathway_effect_sizes_align_with_directionality",
     "claim_response_kinetics",
     "claim_signed_feature_effects_align_with_domain_expectation",
-    "claim_terminal_states_remain_distinct"
+    "claim_terminal_states_remain_distinct",
+    "claim_uncertainty_abstention_reduces_deployment_risk"
   ]
 }

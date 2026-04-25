@@ -6,8 +6,8 @@
     "suggested_candidates": "references/metadata/suggested_reference_candidates.json"
   },
   "overall_status": "ready",
-  "claim_count": 20,
-  "mapped_claim_count": 20,
+  "claim_count": 24,
+  "mapped_claim_count": 24,
   "placeholder_claim_count": 0,
   "unmapped_claim_count": 0,
   "mappings": [
@@ -693,6 +693,158 @@
         "yuEtAl2012ClusterProfiler"
       ],
       "notes": "Calibration-loss ablations are tied back to the calibration literature."
+    },
+    {
+      "claim_id": "claim_embedding_projection_preserves_state_structure",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_12_embedding_projection",
+      "fact_sheet": "figures/fact_sheets/figure_12_embedding_projection.json",
+      "legend_path": "manuscript/legends/figure_12_embedding_projection.md",
+      "current_reference_ids": [
+        "abdiWilliams2010PCA",
+        "liptonSteinhardt2018TroublingTrends"
+      ],
+      "current_relations": [
+        "background_context",
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "abdiWilliams2010PCA",
+        "liptonSteinhardt2018TroublingTrends"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Use the PCA reference for projection interpretation and the ML-scholarship reference to keep representation-geometry claims from overclaiming visual separation."
+    },
+    {
+      "claim_id": "claim_embedding_structure_has_cross_domain_support",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_12_embedding_projection",
+      "fact_sheet": "figures/fact_sheets/figure_12_embedding_projection.json",
+      "legend_path": "manuscript/legends/figure_12_embedding_projection.md",
+      "current_reference_ids": [
+        "abdiWilliams2010PCA",
+        "liptonSteinhardt2018TroublingTrends"
+      ],
+      "current_relations": [
+        "background_context",
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "abdiWilliams2010PCA",
+        "liptonSteinhardt2018TroublingTrends"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Use projection and evaluation-caution references for the domain-support panel, which is intended as context for embedding interpretation rather than a standalone causal proof."
+    },
+    {
+      "claim_id": "claim_uncertainty_abstention_reduces_deployment_risk",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_13_uncertainty_abstention_curve",
+      "fact_sheet": "figures/fact_sheets/figure_13_uncertainty_abstention_curve.json",
+      "legend_path": "manuscript/legends/figure_13_uncertainty_abstention_curve.md",
+      "current_reference_ids": [
+        "guoEtAl2017Calibration",
+        "niculescuMizilCaruana2005Probabilities"
+      ],
+      "current_relations": [
+        "background_context",
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "guoEtAl2017Calibration",
+        "niculescuMizilCaruana2005Probabilities"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Use calibration and probability-quality references for uncertainty-thresholded abstention behavior."
+    },
+    {
+      "claim_id": "claim_foundation_model_retains_higher_coverage_at_target_risk",
+      "status": "mapped",
+      "manuscript_section": "results",
+      "display_item_id": "figure_13_uncertainty_abstention_curve",
+      "fact_sheet": "figures/fact_sheets/figure_13_uncertainty_abstention_curve.json",
+      "legend_path": "manuscript/legends/figure_13_uncertainty_abstention_curve.md",
+      "current_reference_ids": [
+        "guoEtAl2017Calibration",
+        "niculescuMizilCaruana2005Probabilities"
+      ],
+      "current_relations": [
+        "background_context",
+        "background_context"
+      ],
+      "accepted_reference_ids": [
+        "guoEtAl2017Calibration",
+        "niculescuMizilCaruana2005Probabilities"
+      ],
+      "accepted_relation": "background_context",
+      "reference_candidates": [],
+      "allowed_bibliography_keys": [
+        "abdiWilliams2010PCA",
+        "davisGoadrich2006PRROC",
+        "fgseaBioconductorPackage",
+        "guoEtAl2017Calibration",
+        "liptonSteinhardt2018TroublingTrends",
+        "loveEtAl2014DESeq2",
+        "lundbergLee2017SHAP",
+        "niculescuMizilCaruana2005Probabilities",
+        "smithTopin2017SuperConvergence",
+        "stehman1997ClassificationAccuracy",
+        "subramanianEtAl2005GSEA",
+        "weissgerberEtAl2015BeyondBar",
+        "yuEtAl2012ClusterProfiler"
+      ],
+      "notes": "Use calibration and probability-quality references for retained-coverage comparisons at a target-risk threshold."
     },
     {
       "claim_id": "claim_model_ranking",

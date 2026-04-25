@@ -40,6 +40,8 @@
     "figure_09_confusion_matrix_normalized",
     "figure_10_feature_importance_summary",
     "figure_11_ablation_summary",
+    "figure_12_embedding_projection",
+    "figure_13_uncertainty_abstention_curve",
     "table_01_main"
   ],
   "visualization_plan_refs": [

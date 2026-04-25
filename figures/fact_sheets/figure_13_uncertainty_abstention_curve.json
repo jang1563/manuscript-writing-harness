@@ -1,0 +1,28 @@
+{
+  "figure_id": "figure_13_uncertainty_abstention_curve",
+  "claim_ids": [
+    "claim_uncertainty_abstention_reduces_deployment_risk",
+    "claim_foundation_model_retains_higher_coverage_at_target_risk"
+  ],
+  "facts": [
+    {
+      "fact_id": "claim_uncertainty_abstention_reduces_deployment_risk",
+      "statement": "Risk declines monotonically as lower-confidence predictions are abstained, with operating points marked at 80% coverage for each model.",
+      "panel_id": "a",
+      "source_data": "figures/source_data/figure_13_panel_a.csv",
+      "evidence_type": "coverage_risk_curve_with_uncertainty_interval"
+    },
+    {
+      "fact_id": "claim_foundation_model_retains_higher_coverage_at_target_risk",
+      "statement": "At the target risk threshold, the foundation model retains 82% coverage compared with 66% for the hybrid GNN and 52% for the CNN baseline.",
+      "panel_id": "b",
+      "source_data": "figures/source_data/figure_13_panel_b.csv",
+      "evidence_type": "target_risk_coverage_summary"
+    }
+  ],
+  "design_notes": [
+    "Show the full coverage-risk tradeoff rather than only a chosen abstention threshold.",
+    "Mark operating points directly so selective prediction choices remain auditable.",
+    "Pair risk reduction with retained coverage so safety-oriented behavior is not confused with simply rejecting most samples."
+  ]
+}

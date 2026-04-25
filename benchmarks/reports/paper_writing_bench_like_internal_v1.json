@@ -31,8 +31,8 @@
         {
           "label": "claim_count",
           "passed": true,
-          "actual": 20,
-          "expected": 20
+          "actual": 24,
+          "expected": 24
         },
         {
           "label": "claim_coverage_status",
@@ -90,7 +90,7 @@
         }
       ],
       "metrics": {
-        "claim_count": 20,
+        "claim_count": 24,
         "claim_coverage_status": "ready",
         "section_briefs_status": "ready",
         "section_drafts_status": "ready",

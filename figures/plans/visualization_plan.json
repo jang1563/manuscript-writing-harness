@@ -299,6 +299,64 @@
           "evidence_source": "figures/source_data/figure_11_panel_b.csv"
         }
       ]
+    },
+    {
+      "figure_id": "figure_12_embedding_projection",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_ai_ml_evaluation_exemplar",
+      "spec_path": "figures/specs/figure_12_embedding_projection.yml",
+      "fact_sheet": "figures/fact_sheets/figure_12_embedding_projection.json",
+      "claim_ids": [
+        "claim_embedding_projection_preserves_state_structure",
+        "claim_embedding_structure_has_cross_domain_support"
+      ],
+      "design_rules": [
+        "use sparse density-aware labels rather than annotating every embedded point",
+        "encode biological state and source domain with separate channels",
+        "pair embedding geometry with a support summary so cross-domain coverage remains visible",
+        "preserve source-data exports separately for coordinates and cluster-level support"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show representation structure in embedding space while keeping centroid labels sparse and readable.",
+          "evidence_source": "figures/source_data/figure_12_panel_a.csv"
+        },
+        {
+          "panel_id": "b",
+          "purpose": "Show whether each labeled state region has cross-domain support rather than being driven by one cohort.",
+          "evidence_source": "figures/source_data/figure_12_panel_b.csv"
+        }
+      ]
+    },
+    {
+      "figure_id": "figure_13_uncertainty_abstention_curve",
+      "manuscript_section": "results",
+      "bundle_id": "bundle_ai_ml_evaluation_exemplar",
+      "spec_path": "figures/specs/figure_13_uncertainty_abstention_curve.yml",
+      "fact_sheet": "figures/fact_sheets/figure_13_uncertainty_abstention_curve.json",
+      "claim_ids": [
+        "claim_uncertainty_abstention_reduces_deployment_risk",
+        "claim_foundation_model_retains_higher_coverage_at_target_risk"
+      ],
+      "design_rules": [
+        "show the full coverage-risk curve rather than only reporting a selected threshold",
+        "draw the deployment-relevant target-risk reference explicitly",
+        "mark operating points directly on the curve so threshold choices are auditable",
+        "pair risk reduction with retained coverage to reveal excessive-abstention failure modes"
+      ],
+      "panels": [
+        {
+          "panel_id": "a",
+          "purpose": "Show how observed risk changes as lower-confidence predictions are abstained.",
+          "evidence_source": "figures/source_data/figure_13_panel_a.csv"
+        },
+        {
+          "panel_id": "b",
+          "purpose": "Show how much coverage each model retains at the selected risk threshold.",
+          "evidence_source": "figures/source_data/figure_13_panel_b.csv"
+        }
+      ]
     }
   ]
 }

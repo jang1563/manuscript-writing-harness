@@ -52,13 +52,15 @@ def test_apply_bundles_preview_keeps_standalone_assets_outside_managed_block() -
         "figure_02_volcano_pathway",
         "figure_05_pathway_enrichment_dot",
     ]
-    assert refs[5:11] == [
+    assert refs[5:13] == [
         "figure_06_roc_pr_compound",
         "figure_07_calibration_reliability",
         "figure_08_training_dynamics",
         "figure_09_confusion_matrix_normalized",
         "figure_10_feature_importance_summary",
         "figure_11_ablation_summary",
+        "figure_12_embedding_projection",
+        "figure_13_uncertainty_abstention_curve",
     ]
     assert "../display_items/_bundles/bundle_bulk_omics_deg_exemplar.md.txt" in preview["results_text"]
     assert "../display_items/_bundles/bundle_ai_ml_evaluation_exemplar.md.txt" in preview["results_text"]
@@ -92,6 +94,8 @@ def test_cli_shows_bundle_detail() -> None:
     )
     assert "discrimination -> figure_06_roc_pr_compound" in completed.stdout
     assert "design_justification -> figure_11_ablation_summary" in completed.stdout
+    assert "representation -> figure_12_embedding_projection" in completed.stdout
+    assert "selective_prediction -> figure_13_uncertainty_abstention_curve" in completed.stdout
 
 
 def test_scaffold_bundle_dry_run_reports_bundle_targets_without_writing() -> None:

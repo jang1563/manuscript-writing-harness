@@ -15,7 +15,7 @@
       "weight": 0.5,
       "description": "The tracked demo manuscript should remain structurally ready across claim coverage, section scaffolding, references, review evidence, and the cross-cutting audit while still distinguishing real-submission gates from general repo health.",
       "expect": {
-        "claim_count": 20,
+        "claim_count": 24,
         "claim_coverage_status": "ready",
         "section_briefs_status": "ready",
         "section_drafts_status": "ready",

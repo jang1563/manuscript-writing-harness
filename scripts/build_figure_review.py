@@ -629,6 +629,16 @@ def checklist_for_class(class_id: str) -> str:
             "Does the signed-effect panel make directionality and zero-centered interpretation obvious?",
             "Are nuisance covariates clearly lower-priority than biologically salient features?",
         ],
+        "embedding_projection": [
+            "Are state labels sparse enough to avoid turning the embedding into a label cloud?",
+            "Is domain encoded separately from biological state so cohort structure can be inspected?",
+            "Does the support panel keep the projection from overclaiming geometry alone?",
+        ],
+        "uncertainty_abstention_curve": [
+            "Does the curve show the full coverage-risk tradeoff instead of only one threshold?",
+            "Are operating points and target-risk references visible enough to audit deployment choices?",
+            "Does the retained-coverage panel prevent safety claims from hiding excessive abstention?",
+        ],
         "ablation_summary": [
             "Do the largest primary-metric penalties stand out immediately against the full-model baseline?",
             "Does the secondary panel separate ranking penalties from calibration penalties rather than mixing them together?",

@@ -12,6 +12,8 @@ figure_order:
   - "figure_09_confusion_matrix_normalized"
   - "figure_10_feature_importance_summary"
   - "figure_11_ablation_summary"
+  - "figure_12_embedding_projection"
+  - "figure_13_uncertainty_abstention_curve"
 figures:
   - slot_id: "discrimination"
     class_id: "roc_pr_compound"
@@ -97,6 +99,34 @@ figures:
     source_data:
       - "figures/source_data/figure_11_panel_a.csv"
       - "figures/source_data/figure_11_panel_b.csv"
+  - slot_id: "representation"
+    class_id: "embedding_projection"
+    figure_id: "figure_12_embedding_projection"
+    role: "Representation geometry and cross-domain support"
+    display_order: 7
+    claim_ids:
+      - "claim_embedding_projection_preserves_state_structure"
+      - "claim_embedding_structure_has_cross_domain_support"
+    spec_path: "figures/specs/figure_12_embedding_projection.yml"
+    fact_sheet: "figures/fact_sheets/figure_12_embedding_projection.json"
+    legend_path: "manuscript/legends/figure_12_embedding_projection.md"
+    source_data:
+      - "figures/source_data/figure_12_panel_a.csv"
+      - "figures/source_data/figure_12_panel_b.csv"
+  - slot_id: "selective_prediction"
+    class_id: "uncertainty_abstention_curve"
+    figure_id: "figure_13_uncertainty_abstention_curve"
+    role: "Uncertainty-guided abstention and retained-coverage behavior"
+    display_order: 8
+    claim_ids:
+      - "claim_uncertainty_abstention_reduces_deployment_risk"
+      - "claim_foundation_model_retains_higher_coverage_at_target_risk"
+    spec_path: "figures/specs/figure_13_uncertainty_abstention_curve.yml"
+    fact_sheet: "figures/fact_sheets/figure_13_uncertainty_abstention_curve.json"
+    legend_path: "manuscript/legends/figure_13_uncertainty_abstention_curve.md"
+    source_data:
+      - "figures/source_data/figure_13_panel_a.csv"
+      - "figures/source_data/figure_13_panel_b.csv"
 bundle_outputs:
   review_page: "figures/output/review/bundles/bundle_ai_ml_evaluation_exemplar/index.html"
   summary_json: "figures/output/bundles/bundle_ai_ml_evaluation_exemplar/summary.json"

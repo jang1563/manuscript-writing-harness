@@ -391,6 +391,96 @@ classes:
     authoritative_output_formats:
       - "pdf"
       - "svg"
+  embedding_projection:
+    class_id: "embedding_projection"
+    class_version: 1
+    family: "ai_ml_professional"
+    expertise_track: "ai_for_science"
+    status: "implemented"
+    default_style_profile: "ai_ml_professional"
+    intent: "Two-panel representation figure combining a density-aware embedding projection with state-level cross-domain support."
+    required_inputs:
+      - name: "embedding_coordinates"
+        format: "csv"
+        columns:
+          - "sample_id"
+          - "biological_state"
+          - "domain"
+          - "embedding_1"
+          - "embedding_2"
+          - "local_density"
+          - "highlight_label"
+      - name: "cluster_summary"
+        format: "csv"
+        columns:
+          - "biological_state"
+          - "centroid_x"
+          - "centroid_y"
+          - "display_order"
+          - "sample_count"
+          - "cross_domain_fraction"
+          - "label_cluster"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 183
+      height_mm: 92
+    qa_profile: "embedding_projection_dual"
+    review_preset: "embedding_projection_dual"
+    scaffold_templates:
+      spec: "embedding_projection"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
+  uncertainty_abstention_curve:
+    class_id: "uncertainty_abstention_curve"
+    class_version: 1
+    family: "ai_ml_professional"
+    expertise_track: "ai_for_science"
+    status: "implemented"
+    default_style_profile: "ai_ml_professional"
+    intent: "Two-panel selective-prediction figure combining coverage-risk curves with target-risk retained-coverage summaries."
+    required_inputs:
+      - name: "coverage_risk_curves"
+        format: "csv"
+        columns:
+          - "model"
+          - "display_order"
+          - "coverage"
+          - "risk"
+          - "risk_lower"
+          - "risk_upper"
+          - "operating_point"
+      - name: "abstention_summary"
+        format: "csv"
+        columns:
+          - "model"
+          - "display_order"
+          - "risk_at_full_coverage"
+          - "risk_at_80_coverage"
+          - "coverage_at_target_risk"
+          - "abstained_fraction_at_target"
+          - "label_model"
+    supported_renderers:
+      - "python"
+      - "r"
+    default_size_mm:
+      width_mm: 183
+      height_mm: 90
+    qa_profile: "uncertainty_abstention_curve_dual"
+    review_preset: "uncertainty_abstention_curve_dual"
+    scaffold_templates:
+      spec: "uncertainty_abstention_curve"
+      fact_sheet: "generic_fact_sheet"
+      legend: "generic_legend"
+      display_item: "generic_display_item"
+    authoritative_output_formats:
+      - "pdf"
+      - "svg"
   ablation_summary:
     class_id: "ablation_summary"
     class_version: 1

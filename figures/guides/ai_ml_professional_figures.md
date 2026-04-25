@@ -43,3 +43,5 @@ This guide prepares the figure layer for AI-for-science and AI/ML paper conventi
 - review checklists should ask whether the figure supports deployment-relevant claims or only leaderboard claims
 - future AI/ML classes should default to the `ai_ml_professional` style profile
 - the first implemented AI/ML class in this figure layer is `roc_pr_compound`, which sets the expected pattern for paired ROC/PR evaluation with uncertainty and operating points
+- `embedding_projection` should pair representation geometry with domain-support context so projections do not overclaim separation by eye alone
+- `uncertainty_abstention_curve` should pair risk reduction with retained coverage so selective-prediction claims do not hide excessive abstention

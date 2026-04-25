@@ -203,6 +203,18 @@ SVG_TOKEN_RULES = {
         "AUROC drop vs full model",
         "Secondary metric shifts",
     ],
+    "figure_12_embedding_projection": [
+        "Quiescent",
+        "Inflammatory",
+        "Embedding projection",
+        "Cross-domain support",
+    ],
+    "figure_13_uncertainty_abstention_curve": [
+        "Foundation model",
+        "Coverage-risk curve",
+        "Target-risk coverage",
+        "8% target risk",
+    ],
 }
 
 CLASS_DESIGN_FEATURES = {
@@ -271,6 +283,21 @@ CLASS_DESIGN_FEATURES = {
         "zero_centered_effect_reference",
         "vector_first_export",
     ],
+    "embedding_projection": [
+        "density_aware_cluster_labels",
+        "domain_shape_encoding",
+        "state_color_encoding_not_geometry_only",
+        "cross_domain_support_panel",
+        "vector_first_export",
+    ],
+    "uncertainty_abstention_curve": [
+        "coverage_risk_curve_panel",
+        "uncertainty_band_for_risk",
+        "operating_point_markers_and_direct_labels",
+        "target_risk_reference",
+        "selective_prediction_summary_panel",
+        "vector_first_export",
+    ],
     "ablation_summary": [
         "ranked_primary_metric_drop_panel",
         "secondary_metric_shift_panel",
@@ -323,6 +350,18 @@ CLASS_QA_RULES = {
         "max_highlight_labels": 6,
         "required_reference_line_count": 1,
         "min_annotation_count": 10,
+    },
+    "embedding_projection": {
+        "max_highlight_labels": 4,
+        "required_reference_line_count": 3,
+        "min_annotation_count": 8,
+    },
+    "uncertainty_abstention_curve": {
+        "max_highlight_labels": 3,
+        "required_reference_line_count": 3,
+        "min_annotation_count": 8,
+        "min_operating_point_count": 3,
+        "min_uncertainty_band_count": 3,
     },
     "ablation_summary": {
         "max_highlight_labels": 5,

@@ -32,6 +32,8 @@ def test_class_registry_contains_wave1_classes() -> None:
         "training_dynamics",
         "confusion_matrix_normalized",
         "feature_importance_summary",
+        "embedding_projection",
+        "uncertainty_abstention_curve",
         "ablation_summary",
     }.issubset(registry)
 
@@ -51,6 +53,8 @@ def test_specs_align_with_registry() -> None:
         "figure_09_confusion_matrix_normalized",
         "figure_10_feature_importance_summary",
         "figure_11_ablation_summary",
+        "figure_12_embedding_projection",
+        "figure_13_uncertainty_abstention_curve",
     }.issubset(figure_ids)
 
 
@@ -72,6 +76,8 @@ def test_cli_lists_classes() -> None:
     assert "roc_pr_compound" in completed.stdout
     assert "confusion_matrix_normalized" in completed.stdout
     assert "feature_importance_summary" in completed.stdout
+    assert "embedding_projection" in completed.stdout
+    assert "uncertainty_abstention_curve" in completed.stdout
     assert "ablation_summary" in completed.stdout
     assert "instances:" in completed.stdout
 
@@ -101,6 +107,8 @@ def test_cli_lists_roadmap() -> None:
     assert "roc_pr_compound" in completed.stdout
     assert "confusion_matrix_normalized" in completed.stdout
     assert "feature_importance_summary" in completed.stdout
+    assert "embedding_projection" in completed.stdout
+    assert "uncertainty_abstention_curve" in completed.stdout
     assert "ablation_summary" in completed.stdout
 
 

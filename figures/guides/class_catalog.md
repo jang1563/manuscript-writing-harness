@@ -1,7 +1,7 @@
 # Figure Library Catalog
 
-- implemented classes: `11`
-- figure instances: `11`
+- implemented classes: `13`
+- figure instances: `13`
 
 ## ablation_summary
 
@@ -53,6 +53,23 @@ Required inputs:
 
 Instances:
 - `figure_09_confusion_matrix_normalized`: Normalized confusion structure and dominant error pathways for phenotype classification (style `ai_ml_professional`, parity `dual`)
+
+## embedding_projection
+
+- family: `ai_ml_professional`
+- expertise: `ai_for_science`
+- status: `implemented`
+- style profile: `ai_ml_professional`
+- renderers: `python, r`
+- instance count: `1`
+- intent: Two-panel representation figure combining a density-aware embedding projection with state-level cross-domain support.
+
+Required inputs:
+- `embedding_coordinates` (csv): sample_id, biological_state, domain, embedding_1, embedding_2, local_density, highlight_label
+- `cluster_summary` (csv): biological_state, centroid_x, centroid_y, display_order, sample_count, cross_domain_fraction, label_cluster
+
+Instances:
+- `figure_12_embedding_projection`: Embedding projection with representation structure and domain support (style `ai_ml_professional`, parity `dual`)
 
 ## feature_importance_summary
 
@@ -168,6 +185,23 @@ Required inputs:
 
 Instances:
 - `figure_08_training_dynamics`: Training and validation dynamics for AI/ML models (style `ai_ml_professional`, parity `dual`)
+
+## uncertainty_abstention_curve
+
+- family: `ai_ml_professional`
+- expertise: `ai_for_science`
+- status: `implemented`
+- style profile: `ai_ml_professional`
+- renderers: `python, r`
+- instance count: `1`
+- intent: Two-panel selective-prediction figure combining coverage-risk curves with target-risk retained-coverage summaries.
+
+Required inputs:
+- `coverage_risk_curves` (csv): model, display_order, coverage, risk, risk_lower, risk_upper, operating_point
+- `abstention_summary` (csv): model, display_order, risk_at_full_coverage, risk_at_80_coverage, coverage_at_target_risk, abstained_fraction_at_target, label_model
+
+Instances:
+- `figure_13_uncertainty_abstention_curve`: Uncertainty-guided abstention and coverage-risk behavior (style `ai_ml_professional`, parity `dual`)
 
 ## volcano_pathway_compound
 
