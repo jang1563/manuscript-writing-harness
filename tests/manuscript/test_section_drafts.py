@@ -27,8 +27,12 @@ def test_section_drafts_follow_manuscript_order() -> None:
 def test_results_section_draft_contains_display_backed_subsections() -> None:
     drafts = build_section_drafts()
     results = next(section for section in drafts["sections"] if section["section_id"] == "results")
-    assert len(results["subsection_plan"]) == 20
+    assert len(results["subsection_plan"]) == 24
     assert results["subsection_plan"][0]["display_item_id"] == "figure_01_example"
+    assert any(
+        item["display_item_id"] == "figure_13_uncertainty_abstention_curve"
+        for item in results["subsection_plan"]
+    )
     assert results["subsection_plan"][-1]["display_item_id"] == "table_01_main"
 
 

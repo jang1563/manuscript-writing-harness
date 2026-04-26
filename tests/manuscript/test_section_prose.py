@@ -26,8 +26,12 @@ def test_section_prose_covers_all_sections() -> None:
 def test_results_section_contains_many_subsections() -> None:
     prose = build_section_prose()
     results = next(section for section in prose["sections"] if section["section_id"] == "results")
-    assert len(results["subsections"]) == 20
+    assert len(results["subsections"]) == 24
     assert results["subsections"][0]["display_item_id"] == "figure_01_example"
+    assert any(
+        item["display_item_id"] == "figure_13_uncertainty_abstention_curve"
+        for item in results["subsections"]
+    )
     assert results["subsections"][-1]["display_item_id"] == "table_01_main"
 
 

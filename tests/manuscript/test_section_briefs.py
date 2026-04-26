@@ -27,9 +27,10 @@ def test_section_briefs_follow_manuscript_order() -> None:
 def test_results_section_brief_covers_display_backed_results() -> None:
     briefs = build_section_briefs()
     results = next(section for section in briefs["sections"] if section["section_id"] == "results")
-    assert results["claim_packet_count"] == 20
+    assert results["claim_packet_count"] == 24
     assert "figure_01_example" in results["display_item_ids"]
     assert "figure_11_ablation_summary" in results["display_item_ids"]
+    assert "figure_13_uncertainty_abstention_curve" in results["display_item_ids"]
     assert "table_01_main" in results["display_item_ids"]
 
 
