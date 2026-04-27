@@ -99,6 +99,64 @@ def test_confirm_manuscript_scope_requires_nonblank_note(tmp_path: Path) -> None
         raise AssertionError("Expected blank note to raise ValueError")
 
 
+def test_confirm_manuscript_scope_can_require_ready_preflight(monkeypatch, tmp_path: Path) -> None:
+    manifest = tmp_path / "manuscript" / "plans" / "manuscript_scope.json"
+    _write_scope(manifest)
+
+    monkeypatch.setattr(
+        confirm_manuscript_scope,
+        "build_real_manuscript_preflight",
+        lambda **_kwargs: {
+            "readiness": "ready",
+            "blocking_issues": [],
+            "checks": [],
+        },
+    )
+
+    payload = confirm_manuscript_scope.confirm_manuscript_scope(
+        note="Confirmed against the finalized manuscript package for submission.",
+        confirmed_on="2026-04-21",
+        dry_run=True,
+        manifest_path=manifest,
+        require_preflight=True,
+    )
+
+    assert payload["real_manuscript_preflight"]["readiness"] == "ready"
+    assert payload["manuscript_scope_after"]["scope_status"] == "real"
+
+
+def test_confirm_manuscript_scope_blocks_when_required_preflight_is_blocked(
+    monkeypatch,
+    tmp_path: Path,
+) -> None:
+    manifest = tmp_path / "manuscript" / "plans" / "manuscript_scope.json"
+    _write_scope(manifest)
+
+    monkeypatch.setattr(
+        confirm_manuscript_scope,
+        "build_real_manuscript_preflight",
+        lambda **_kwargs: {
+            "readiness": "blocked",
+            "blocking_issues": ["bibliography scope is not confirmed"],
+            "checks": [],
+        },
+    )
+
+    try:
+        confirm_manuscript_scope.confirm_manuscript_scope(
+            note="Confirmed against the finalized manuscript package for submission.",
+            confirmed_on="2026-04-21",
+            dry_run=True,
+            manifest_path=manifest,
+            require_preflight=True,
+        )
+    except ValueError as exc:
+        assert "real manuscript preflight is blocked" in str(exc)
+        assert "bibliography scope is not confirmed" in str(exc)
+    else:
+        raise AssertionError("Expected blocked real-manuscript preflight to raise ValueError")
+
+
 def test_cli_confirm_manuscript_scope_json(monkeypatch, tmp_path: Path) -> None:
     manifest = tmp_path / "manuscript" / "plans" / "manuscript_scope.json"
     _write_scope(manifest)

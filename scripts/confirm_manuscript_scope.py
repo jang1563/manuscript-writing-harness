@@ -12,6 +12,7 @@ from typing import Any
 
 from figures_common import REPO_ROOT, write_text
 from manuscript_scope_common import MANUSCRIPT_SCOPE_PATH
+from real_manuscript_preflight import PREFLIGHT_CONFIG_PATH, build_real_manuscript_preflight
 
 
 def _relative(path: Path, repo_root: Path = REPO_ROOT) -> str:
@@ -44,6 +45,8 @@ def confirm_manuscript_scope(
     confirmed_on: str | None = None,
     dry_run: bool = False,
     manifest_path: Path | None = None,
+    require_preflight: bool = False,
+    preflight_config_path: Path | None = None,
 ) -> dict[str, Any]:
     resolved_manifest_path = manifest_path or MANUSCRIPT_SCOPE_PATH
     payload = _load_scope_payload(resolved_manifest_path)
@@ -51,6 +54,15 @@ def confirm_manuscript_scope(
     normalized_note = note.strip()
     if not normalized_note:
         raise ValueError("note must not be blank")
+
+    preflight = None
+    if require_preflight:
+        preflight = build_real_manuscript_preflight(
+            config_path=preflight_config_path or PREFLIGHT_CONFIG_PATH
+        )
+        if preflight["readiness"] != "ready":
+            issue = preflight["blocking_issues"][0] if preflight["blocking_issues"] else "unknown issue"
+            raise ValueError(f"real manuscript preflight is blocked: {issue}")
 
     manuscript_scope_before = {
         "scope_status": payload.get("scope_status"),
@@ -74,6 +86,7 @@ def confirm_manuscript_scope(
         "updated": not dry_run,
         "manuscript_scope_before": manuscript_scope_before,
         "manuscript_scope_after": manuscript_scope_after,
+        "real_manuscript_preflight": preflight,
     }
 
 
@@ -90,6 +103,16 @@ def parse_args() -> argparse.Namespace:
         help="Confirmation date in YYYY-MM-DD format. Defaults to today.",
     )
     parser.add_argument("--dry-run", action="store_true", help="Preview the updated manuscript scope without writing.")
+    parser.add_argument(
+        "--require-preflight",
+        action="store_true",
+        help="Require real-manuscript preflight readiness before promotion.",
+    )
+    parser.add_argument(
+        "--preflight-config",
+        type=Path,
+        help="Optional real-manuscript preflight config path.",
+    )
     parser.add_argument("--json", action="store_true", help="Emit JSON instead of a plain-text summary.")
     return parser.parse_args()
 
@@ -100,6 +123,8 @@ def main() -> int:
         note=args.note,
         confirmed_on=args.confirmed_on,
         dry_run=args.dry_run,
+        require_preflight=args.require_preflight,
+        preflight_config_path=args.preflight_config,
     )
     if args.json:
         print(json.dumps(payload, indent=2))

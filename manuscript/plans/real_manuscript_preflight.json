@@ -1,0 +1,20 @@
+{
+  "preflight_id": "real_manuscript_preflight_v1",
+  "project_id": "rnaseq_real_project_template",
+  "release_profile_id": "rnaseq_real_project_template_release",
+  "venue_id": "nature",
+  "target_scope_status": "real",
+  "requirements": {
+    "manuscript_scope_metadata": "valid",
+    "bibliography_scope_status": "confirmed",
+    "venue_verification_status": "current",
+    "project_release_readiness": "ready",
+    "project_handoff_readiness": "ready",
+    "active_project_study_source": true,
+    "release_metadata_placeholders": "absent"
+  },
+  "notes": [
+    "This preflight is intended to run before promoting manuscript/plans/manuscript_scope.json to real.",
+    "The manuscript scope itself may still be exemplar or mixed when this preflight runs; promotion to real happens only after all external gates are ready."
+  ]
+}
