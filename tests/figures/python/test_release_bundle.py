@@ -14,6 +14,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import release_bundle
+from check_release_bundle import release_bundle_exit_code
 
 
 GENERATED_BUNDLE_SUMMARY = (
@@ -104,3 +105,9 @@ def test_cli_check_release_bundle_strict_json() -> None:
     )
     payload = json.loads(completed.stdout)
     assert payload["report"]["readiness"] == "ready"
+
+
+def test_release_bundle_exit_code_can_fail_on_warnings() -> None:
+    report = {"readiness": "ready", "warnings": ["bundle warning"]}
+    assert release_bundle_exit_code(report, strict=True) == 0
+    assert release_bundle_exit_code(report, strict=True, fail_on_warnings=True) == 1

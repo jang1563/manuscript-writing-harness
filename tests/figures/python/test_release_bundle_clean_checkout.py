@@ -47,6 +47,30 @@ def test_bundle_component_builds_missing_bundle_outputs(tmp_path, monkeypatch) -
                     "manuscript_wiring_status": "applied",
                     "clipping_risk_counts": {"low": 2},
                     "font_status_counts": {"preferred": 2},
+                    "members": [
+                        {
+                            "figure_id": "figure_demo",
+                            "slot_id": "demo",
+                            "role": "demo",
+                            "renderers": ["python", "r"],
+                            "renderer_qa": [
+                                {
+                                    "renderer": "python",
+                                    "font_status": "preferred",
+                                    "font_note": "Preferred font resolved.",
+                                    "clipping_risk": "low",
+                                    "clipping_reason": "No clipping hotspot detected",
+                                },
+                                {
+                                    "renderer": "r",
+                                    "font_status": "preferred",
+                                    "font_note": "Preferred font resolved.",
+                                    "clipping_risk": "low",
+                                    "clipping_reason": "No clipping hotspot detected",
+                                },
+                            ],
+                        }
+                    ],
                 }
             ),
             encoding="utf-8",
@@ -61,4 +85,64 @@ def test_bundle_component_builds_missing_bundle_outputs(tmp_path, monkeypatch) -
 
     assert component["bundle_id"] == "bundle_demo"
     assert component["blocking_issues"] == []
+    assert component["warnings"] == []
+    assert component["quality_warnings"] == []
     assert component["summary_json"] == "figures/output/bundles/bundle_demo/summary.json"
+
+
+def test_bundle_component_reports_renderer_quality_warning_details(tmp_path, monkeypatch) -> None:
+    summary_path = tmp_path / "figures/output/bundles/bundle_demo/summary.json"
+    review_path = tmp_path / "figures/output/review/bundles/bundle_demo/index.html"
+    bundle = {
+        "bundle_id": "bundle_demo",
+        "recipe_id": "demo_recipe",
+        "acceptance_tier": "acceptance",
+        "_bundle_path": "figures/bundles/bundle_demo/bundle.yml",
+        "figures": [{"figure_id": "figure_demo"}],
+        "bundle_outputs": {
+            "summary_json": "figures/output/bundles/bundle_demo/summary.json",
+            "review_page": "figures/output/review/bundles/bundle_demo/index.html",
+        },
+    }
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
+    review_path.parent.mkdir(parents=True, exist_ok=True)
+    summary_path.write_text(
+        json.dumps(
+            {
+                "member_count": 1,
+                "figure_ids": ["figure_demo"],
+                "renderers_present": ["python"],
+                "manuscript_wiring_status": "applied",
+                "clipping_risk_counts": {"moderate": 1},
+                "font_status_counts": {"fallback": 1},
+                "members": [
+                    {
+                        "figure_id": "figure_demo",
+                        "slot_id": "demo",
+                        "role": "demo",
+                        "renderers": ["python"],
+                        "renderer_qa": [
+                            {
+                                "renderer": "python",
+                                "font_status": "fallback",
+                                "font_note": "Resolved file suggests fallback use.",
+                                "clipping_risk": "moderate",
+                                "clipping_reason": "left gap 4px",
+                            }
+                        ],
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    review_path.write_text("<html>bundle review</html>", encoding="utf-8")
+
+    monkeypatch.setattr(release_bundle, "load_bundle_manifest", lambda _bundle_id, repo_root: bundle)
+
+    component = release_bundle._bundle_component("bundle_demo", tmp_path)
+
+    assert len(component["quality_warnings"]) == 2
+    assert any("figure_demo [python]" in warning for warning in component["warnings"])
+    assert any("clipping_risk moderate" in warning for warning in component["warnings"])
+    assert any("font_status fallback" in warning for warning in component["warnings"])

@@ -15,7 +15,25 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--write", action="store_true", help="Write release report and manifest.")
     parser.add_argument("--json", action="store_true", help="Emit JSON to stdout.")
     parser.add_argument("--strict", action="store_true", help="Exit non-zero unless release readiness is ready.")
+    parser.add_argument(
+        "--fail-on-warnings",
+        action="store_true",
+        help="Exit non-zero when release warnings are present, even if readiness is ready.",
+    )
     return parser.parse_args()
+
+
+def release_bundle_exit_code(
+    report: dict[str, object],
+    *,
+    strict: bool = False,
+    fail_on_warnings: bool = False,
+) -> int:
+    if strict and report["readiness"] != "ready":
+        return 1
+    if fail_on_warnings and report.get("warnings"):
+        return 1
+    return 0
 
 
 def main() -> int:
@@ -28,9 +46,11 @@ def main() -> int:
         print(json.dumps(payload, indent=2))
     else:
         print(render_release_markdown(report))
-    if args.strict and report["readiness"] != "ready":
-        return 1
-    return 0
+    return release_bundle_exit_code(
+        report,
+        strict=args.strict,
+        fail_on_warnings=args.fail_on_warnings,
+    )
 
 
 if __name__ == "__main__":

@@ -484,6 +484,7 @@ def build_bundle_summary(bundle_id: str, repo_root: Path = REPO_ROOT) -> dict[st
         figure_id = str(item["figure_id"])
         spec = spec_map[figure_id]
         renderer_map: dict[str, dict[str, Any]] = {}
+        renderer_qa: list[dict[str, Any]] = []
         for renderer in enabled_renderers(spec):
             manifest_path = repo_root / figure_output_paths(spec, renderer)["manifest"]
             if not manifest_path.exists():
@@ -497,12 +498,26 @@ def build_bundle_summary(bundle_id: str, repo_root: Path = REPO_ROOT) -> dict[st
             }
             font_counts[analysis["font"]["status"]] += 1
             clipping_counts[analysis["png"]["clipping_risk"]] += 1
+            renderer_qa.append(
+                {
+                    "renderer": renderer,
+                    "manifest": _rel(repo_root, manifest_path),
+                    "png": str(manifest["outputs"]["png"]),
+                    "font_status": analysis["font"]["status"],
+                    "font_note": analysis["font"]["note"],
+                    "clipping_risk": analysis["png"]["clipping_risk"],
+                    "clipping_reason": analysis["png"]["clipping_reason"],
+                    "edge_gaps_px": analysis["png"]["edge_gaps_px"],
+                    "hotspot_edge": analysis["png"]["hotspot_edge"],
+                }
+            )
         members.append(
             {
                 "figure_id": figure_id,
                 "slot_id": item["slot_id"],
                 "role": item["role"],
                 "renderers": sorted(renderer_map),
+                "renderer_qa": sorted(renderer_qa, key=lambda qa: str(qa["renderer"])),
             }
         )
     return {

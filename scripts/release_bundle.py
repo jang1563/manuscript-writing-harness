@@ -96,20 +96,59 @@ def _bundle_component(bundle_id: str, repo_root: Path) -> dict[str, Any]:
     summary = load_json(summary_path)
     warnings: list[str] = []
     blocking: list[str] = []
+    quality_warnings: list[dict[str, Any]] = []
     if summary.get("manuscript_wiring_status") != "applied":
         blocking.append(f"{bundle_id} manuscript wiring is not applied")
     if not review_path.exists():
         blocking.append(f"{bundle_id} review page is missing")
-    clipping_counts = summary.get("clipping_risk_counts", {})
-    if isinstance(clipping_counts, dict):
-        non_low = {key: value for key, value in clipping_counts.items() if key != "low"}
-        if non_low:
-            warnings.append(f"{bundle_id} has non-low clipping risk counts: {non_low}")
-    font_counts = summary.get("font_status_counts", {})
-    if isinstance(font_counts, dict):
-        non_preferred = {key: value for key, value in font_counts.items() if key != "preferred"}
-        if non_preferred:
-            warnings.append(f"{bundle_id} has non-preferred font counts: {non_preferred}")
+    for member in summary.get("members", []):
+        if not isinstance(member, dict):
+            continue
+        figure_id = str(member.get("figure_id", "unknown"))
+        for qa in member.get("renderer_qa", []):
+            if not isinstance(qa, dict):
+                continue
+            renderer = str(qa.get("renderer", "unknown"))
+            clipping_risk = str(qa.get("clipping_risk", "unknown"))
+            if clipping_risk != "low":
+                quality_warnings.append(
+                    {
+                        "kind": "clipping_risk",
+                        "figure_id": figure_id,
+                        "renderer": renderer,
+                        "status": clipping_risk,
+                        "detail": str(qa.get("clipping_reason", "")),
+                    }
+                )
+            font_status = str(qa.get("font_status", "unknown"))
+            if font_status != "preferred":
+                quality_warnings.append(
+                    {
+                        "kind": "font_status",
+                        "figure_id": figure_id,
+                        "renderer": renderer,
+                        "status": font_status,
+                        "detail": str(qa.get("font_note", "")),
+                    }
+                )
+    if quality_warnings:
+        for item in quality_warnings:
+            detail = f": {item['detail']}" if item["detail"] else ""
+            warnings.append(
+                f"{bundle_id} {item['kind']} {item['status']} for "
+                f"{item['figure_id']} [{item['renderer']}]{detail}"
+            )
+    else:
+        clipping_counts = summary.get("clipping_risk_counts", {})
+        if isinstance(clipping_counts, dict):
+            non_low = {key: value for key, value in clipping_counts.items() if key != "low"}
+            if non_low:
+                warnings.append(f"{bundle_id} has non-low clipping risk counts: {non_low}")
+        font_counts = summary.get("font_status_counts", {})
+        if isinstance(font_counts, dict):
+            non_preferred = {key: value for key, value in font_counts.items() if key != "preferred"}
+            if non_preferred:
+                warnings.append(f"{bundle_id} has non-preferred font counts: {non_preferred}")
     return {
         "bundle_id": bundle_id,
         "recipe_id": bundle["recipe_id"],
@@ -120,6 +159,7 @@ def _bundle_component(bundle_id: str, repo_root: Path) -> dict[str, Any]:
         "manuscript_wiring_status": str(summary.get("manuscript_wiring_status", "unknown")),
         "summary_json": _relative(summary_path, repo_root),
         "review_page": _relative(review_path, repo_root),
+        "quality_warnings": quality_warnings,
         "warnings": warnings,
         "blocking_issues": blocking,
         "package_paths": [
