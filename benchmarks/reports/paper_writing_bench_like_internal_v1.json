@@ -29,10 +29,10 @@
       "passed_check_count": 10,
       "checks": [
         {
-          "label": "claim_count",
+          "label": "claim_count_matches_display_map",
           "passed": true,
-          "actual": 24,
-          "expected": 24
+          "actual": true,
+          "expected": true
         },
         {
           "label": "claim_coverage_status",
@@ -91,6 +91,8 @@
       ],
       "metrics": {
         "claim_count": 24,
+        "display_item_claim_count": 24,
+        "claim_count_matches_display_map": true,
         "claim_coverage_status": "ready",
         "section_briefs_status": "ready",
         "section_drafts_status": "ready",

@@ -15,13 +15,14 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 from manuscript_claims import build_claim_coverage, build_claim_packets, render_results_claim_packets_markdown, write_claim_outputs
+from manuscript_narrative_clusters import result_display_claim_ids
 
 
 def test_claim_packets_cover_all_display_claims() -> None:
     packets = build_claim_packets()
     claim_ids = [packet["claim_id"] for packet in packets["claims"]]
     assert packets["claim_count"] == len(claim_ids)
-    assert packets["claim_count"] == 24
+    assert packets["claim_count"] == len(result_display_claim_ids())
     assert packets["blocked_claim_count"] == 0
 
 

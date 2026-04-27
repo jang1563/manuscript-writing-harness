@@ -15,12 +15,13 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 from reference_mapping import apply_claim_reference_map, build_claim_reference_map, write_claim_reference_map
+from reference_graph_common import all_display_claim_ids
 
 
 def test_claim_reference_map_covers_all_claims() -> None:
     payload = build_claim_reference_map(sync_graph=False)
-    assert payload["claim_count"] == 24
-    assert len(payload["mappings"]) == 24
+    assert payload["claim_count"] == len(all_display_claim_ids())
+    assert len(payload["mappings"]) == len(all_display_claim_ids())
 
 
 def test_claim_reference_map_status_is_valid() -> None:

@@ -15,6 +15,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 from manuscript_section_drafts import build_section_drafts, render_section_drafts_markdown, write_section_draft_outputs
+from manuscript_narrative_clusters import result_display_item_ids
 
 
 def test_section_drafts_follow_manuscript_order() -> None:
@@ -27,13 +28,15 @@ def test_section_drafts_follow_manuscript_order() -> None:
 def test_results_section_draft_contains_display_backed_subsections() -> None:
     drafts = build_section_drafts()
     results = next(section for section in drafts["sections"] if section["section_id"] == "results")
-    assert len(results["subsection_plan"]) == 24
-    assert results["subsection_plan"][0]["display_item_id"] == "figure_01_example"
+    expected_display_ids = result_display_item_ids()
+    assert len(results["subsection_plan"]) == len(expected_display_ids)
+    assert results["subsection_plan"][0]["display_item_id"] == expected_display_ids[0]
     assert any(
         item["display_item_id"] == "figure_13_uncertainty_abstention_curve"
         for item in results["subsection_plan"]
     )
-    assert results["subsection_plan"][-1]["display_item_id"] == "table_01_main"
+    assert results["subsection_plan"][-1]["display_item_id"] == expected_display_ids[-1]
+    assert all("claim_ids" in item for item in results["subsection_plan"])
 
 
 def test_section_drafts_are_ready_when_inputs_are_ready() -> None:

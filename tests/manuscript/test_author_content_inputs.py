@@ -57,10 +57,10 @@ def test_author_content_inputs_propagate_through_results_pipeline(tmp_path, monk
     drafts = manuscript_section_drafts.build_section_drafts()
     results_draft = next(section for section in drafts["sections"] if section["section_id"] == "results")
     first_subsection = next(
-        item for item in results_draft["subsection_plan"] if item["claim_id"] == "claim_response_kinetics"
+        item for item in results_draft["subsection_plan"] if "claim_response_kinetics" in item["claim_ids"]
     )
     assert results_draft["manuscript_topic"] == "Therapy response trajectories in a multimodal benchmark"
-    assert first_subsection["author_note"].startswith("Use this as the opening sentence")
+    assert first_subsection["claim_author_notes"]["claim_response_kinetics"].startswith("Use this")
 
 
 def test_unknown_author_claim_ids_raise_clear_error(tmp_path, monkeypatch) -> None:

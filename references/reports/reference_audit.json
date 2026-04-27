@@ -24,9 +24,9 @@
     "uncited_keys": []
   },
   "citation_graph": {
-    "claim_count": 20,
+    "claim_count": 24,
     "reference_node_count": 13,
-    "edge_count": 26,
+    "edge_count": 34,
     "unlinked_claim_ids": [],
     "unresolved_reference_nodes": []
   },
@@ -61,8 +61,8 @@
   },
   "claim_reference_mapping": {
     "status": "ready",
-    "claim_count": 20,
-    "mapped_claim_count": 20,
+    "claim_count": 24,
+    "mapped_claim_count": 24,
     "placeholder_claim_count": 0,
     "unmapped_claim_count": 0,
     "mapping_store": "references/mappings/claim_reference_map.json"

@@ -13,6 +13,7 @@
 - purpose: State the main scientific question and the top-line claim.
 - display_item_ids: `none`
 - claim_packet_count: `0`
+- narrative_cluster_count: `0`
 - reference_readiness: `ready`
 - review_evidence_readiness: `ready`
 - topic: not set
@@ -29,6 +30,7 @@
 - purpose: Frame the background and why the problem matters.
 - display_item_ids: `none`
 - claim_packet_count: `0`
+- narrative_cluster_count: `0`
 - reference_readiness: `ready`
 - review_evidence_readiness: `ready`
 - topic: not set
@@ -43,8 +45,9 @@
 - status: `ready`
 - source: `manuscript/sections/03_results.md`
 - purpose: Present display-item-backed claims in a controlled order.
-- display_item_ids: `figure_01_example, figure_04_sample_pca, figure_03_ma_plot, figure_02_volcano_pathway, figure_05_pathway_enrichment_dot, figure_06_roc_pr_compound, figure_07_calibration_reliability, figure_08_training_dynamics, figure_09_confusion_matrix_normalized, figure_10_feature_importance_summary, figure_11_ablation_summary, table_01_main`
-- claim_packet_count: `20`
+- display_item_ids: `figure_01_example, figure_04_sample_pca, figure_03_ma_plot, figure_02_volcano_pathway, figure_05_pathway_enrichment_dot, figure_06_roc_pr_compound, figure_07_calibration_reliability, figure_08_training_dynamics, figure_09_confusion_matrix_normalized, figure_10_feature_importance_summary, figure_11_ablation_summary, figure_12_embedding_projection, figure_13_uncertainty_abstention_curve, table_01_main`
+- claim_packet_count: `24`
+- narrative_cluster_count: `14`
 - reference_readiness: `ready`
 - review_evidence_readiness: `ready`
 - topic: not set
@@ -61,6 +64,7 @@
 - purpose: Interpret the main findings and their limits.
 - display_item_ids: `none`
 - claim_packet_count: `0`
+- narrative_cluster_count: `0`
 - reference_readiness: `ready`
 - review_evidence_readiness: `ready`
 - topic: not set
@@ -77,6 +81,7 @@
 - purpose: Document data provenance, analytical choices, and reproducibility details.
 - display_item_ids: `none`
 - claim_packet_count: `0`
+- narrative_cluster_count: `0`
 - reference_readiness: `ready`
 - review_evidence_readiness: `ready`
 - topic: not set

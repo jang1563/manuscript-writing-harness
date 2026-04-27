@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from manuscript_claims import CLAIM_PACKETS_PATH, build_claim_packets
+from manuscript_narrative_clusters import NARRATIVE_CLUSTERS_PATH, build_result_narrative_clusters
 from manuscript_section_briefs import SECTION_BRIEFS_JSON_PATH, build_section_briefs
 
 
@@ -68,27 +69,34 @@ def _claim_packets_payload() -> dict[str, Any]:
 
 def _results_subsections(section_packets: list[dict[str, Any]]) -> list[dict[str, Any]]:
     subsections: list[dict[str, Any]] = []
-    for packet in section_packets:
-        evidence_facts = packet.get("evidence_facts", [])
-        lead_statement = (
-            str(evidence_facts[0].get("statement"))
-            if evidence_facts
-            else f"State {packet.get('claim_id')} directly from the display-backed evidence."
-        )
+    cluster_report = build_result_narrative_clusters(section_packets)
+    for cluster in cluster_report.get("clusters", []):
+        display_item_ids = list(cluster.get("display_item_ids", []))
+        display_label = ", ".join(f"`{display_item_id}`" for display_item_id in display_item_ids)
         subsections.append(
             {
-                "subsection_id": str(packet.get("claim_id")),
-                "display_item_id": str(packet.get("display_item", {}).get("display_item_id")),
-                "claim_id": str(packet.get("claim_id")),
-                "lead_sentence_target": lead_statement,
+                "subsection_id": str(cluster.get("cluster_id")),
+                "display_item_id": str(cluster.get("display_item_id", "")),
+                "display_item_ids": display_item_ids,
+                "claim_ids": list(cluster.get("claim_ids", [])),
+                "lead_claim_id": str(cluster.get("lead_claim_id", "")),
+                "heading": str(cluster.get("heading", "")),
+                "narrative_role": str(cluster.get("narrative_role", "")),
+                "paragraph_goal": str(cluster.get("paragraph_goal", "")),
+                "lead_sentence_target": str(cluster.get("lead_sentence_target", "")),
+                "evidence_sentences": list(cluster.get("evidence_sentences", [])),
                 "support_points": [
-                    f"Reference `{packet.get('display_item', {}).get('display_item_id')}` before expanding interpretation.",
+                    f"Reference {display_label or 'the display item'} before expanding interpretation.",
+                    "Synthesize all claims in the cluster before starting the next Results subsection.",
                     "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-                    "Do not add external references beyond the citation graph allowances in the packet.",
+                    "Do not add external references beyond the citation graph allowances in the cluster.",
                 ],
-                "linked_reference_ids": list(packet.get("citations", {}).get("reference_ids", [])),
-                "author_note": str(packet.get("author_input", {}).get("claim_note", "")),
-                "status": str(packet.get("status", "ready")),
+                "linked_reference_ids": list(cluster.get("linked_reference_ids", [])),
+                "claim_author_notes": dict(cluster.get("claim_author_notes", {})),
+                "author_note": str(cluster.get("lead_author_note", "")),
+                "status": str(cluster.get("status", "ready")),
+                "warnings": list(cluster.get("warnings", [])),
+                "blocking_issues": list(cluster.get("blocking_issues", [])),
             }
         )
     return subsections
@@ -193,6 +201,7 @@ def build_section_drafts() -> dict[str, Any]:
         "generated_from": {
             "section_briefs": _relative_or_absolute(SECTION_BRIEFS_JSON_PATH),
             "claim_packets": _relative_or_absolute(CLAIM_PACKETS_PATH),
+            "narrative_clusters": _relative_or_absolute(NARRATIVE_CLUSTERS_PATH),
             "reference_audit": str(REFERENCE_AUDIT_PATH.relative_to(REPO_ROOT)),
             "review_evidence": str(REVIEW_EVIDENCE_PATH.relative_to(REPO_ROOT)),
         },
@@ -235,8 +244,12 @@ def render_section_drafts_markdown(drafts: dict[str, Any]) -> str:
             lines.extend(["### Author Inputs", "", f"- section_note: {section['section_note']}", ""])
         for item in section.get("subsection_plan", []):
             if "subsection_id" in item:
+                heading = str(item.get("heading", "")).strip()
+                label = f"`{item['subsection_id']}`"
+                if heading:
+                    label += f" ({heading})"
                 line = (
-                    f"- `{item['subsection_id']}` via `{item.get('display_item_id')}`: "
+                    f"- {label} via `{item.get('display_item_id')}`: "
                     f"{item.get('lead_sentence_target')}"
                 )
                 if item.get("author_note"):

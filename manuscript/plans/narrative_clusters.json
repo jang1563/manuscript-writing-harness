@@ -1,0 +1,146 @@
+{
+  "cluster_strategy": "display_item",
+  "missing_display_item_mode": "default_display_item_cluster",
+  "clusters": [
+    {
+      "cluster_id": "cluster_response_trajectory",
+      "display_item_ids": [
+        "figure_01_example"
+      ],
+      "lead_claim_id": "claim_response_kinetics",
+      "heading": "Response trajectory separates early kinetics and endpoint shift",
+      "narrative_role": "Open the Results with the strongest response-dynamics display.",
+      "paragraph_goal": "Tie the early trajectory and endpoint claims together as one response-pattern result."
+    },
+    {
+      "cluster_id": "cluster_sample_separation",
+      "display_item_ids": [
+        "figure_04_sample_pca"
+      ],
+      "lead_claim_id": "claim_condition_drives_primary_sample_separation",
+      "heading": "Condition drives primary sample separation",
+      "narrative_role": "Bridge response dynamics into global sample structure.",
+      "paragraph_goal": "State the sample-level separation before moving into gene-level contrasts."
+    },
+    {
+      "cluster_id": "cluster_abundance_shift",
+      "display_item_ids": [
+        "figure_03_ma_plot"
+      ],
+      "lead_claim_id": "claim_high_abundance_interferon_shift",
+      "heading": "High-abundance genes show an interferon-skewed shift",
+      "narrative_role": "Introduce the gene-level abundance pattern.",
+      "paragraph_goal": "Keep the interpretation close to the abundance-dependent differential-expression display."
+    },
+    {
+      "cluster_id": "cluster_interferon_and_cell_cycle",
+      "display_item_ids": [
+        "figure_02_volcano_pathway"
+      ],
+      "lead_claim_id": "claim_interferon_gene_activation",
+      "heading": "Interferon activation coincides with cell-cycle suppression",
+      "narrative_role": "Summarize the paired directional biology in the volcano-pathway display.",
+      "paragraph_goal": "Present the activated and suppressed programs as one coordinated biological contrast."
+    },
+    {
+      "cluster_id": "cluster_pathway_directionality",
+      "display_item_ids": [
+        "figure_05_pathway_enrichment_dot"
+      ],
+      "lead_claim_id": "claim_pathway_effect_sizes_align_with_directionality",
+      "heading": "Pathway effect sizes preserve biological directionality",
+      "narrative_role": "Close the biological track with the fgsea-backed pathway summary.",
+      "paragraph_goal": "Explain how the pathway export preserves direction and magnitude without rehashing the volcano display."
+    },
+    {
+      "cluster_id": "cluster_discrimination_and_precision",
+      "display_item_ids": [
+        "figure_06_roc_pr_compound"
+      ],
+      "lead_claim_id": "claim_foundation_model_improves_discrimination",
+      "heading": "Foundation-model discrimination remains strong under imbalance",
+      "narrative_role": "Open the AI/ML evaluation track with paired ROC and precision-recall evidence.",
+      "paragraph_goal": "Combine discrimination and imbalanced precision evidence into a single model-performance result."
+    },
+    {
+      "cluster_id": "cluster_calibration_and_confidence",
+      "display_item_ids": [
+        "figure_07_calibration_reliability"
+      ],
+      "lead_claim_id": "claim_foundation_model_best_calibrated",
+      "heading": "Calibration improves without relying only on tail confidence",
+      "narrative_role": "Move from ranking metrics into probability quality.",
+      "paragraph_goal": "Tie calibration quality to the high-confidence support pattern."
+    },
+    {
+      "cluster_id": "cluster_training_dynamics",
+      "display_item_ids": [
+        "figure_08_training_dynamics"
+      ],
+      "lead_claim_id": "claim_foundation_model_optimizes_stably",
+      "heading": "Optimization is stable and reaches higher validation AUROC",
+      "narrative_role": "Show that final performance is supported by training dynamics.",
+      "paragraph_goal": "Connect stable optimization behavior with the validation AUROC trajectory."
+    },
+    {
+      "cluster_id": "cluster_error_topology",
+      "display_item_ids": [
+        "figure_09_confusion_matrix_normalized"
+      ],
+      "lead_claim_id": "claim_errors_are_localized_to_adjacent_states",
+      "heading": "Errors localize to adjacent states while terminal states stay distinct",
+      "narrative_role": "Characterize where classification mistakes occur.",
+      "paragraph_goal": "Describe the confusion-matrix pattern as structured error rather than diffuse failure."
+    },
+    {
+      "cluster_id": "cluster_feature_attribution",
+      "display_item_ids": [
+        "figure_10_feature_importance_summary"
+      ],
+      "lead_claim_id": "claim_model_relies_on_biologically_salient_features",
+      "heading": "Feature attribution highlights biologically salient and directionally coherent signals",
+      "narrative_role": "Interpret model behavior through feature-level evidence.",
+      "paragraph_goal": "Pair salience and signed directionality while avoiding claims beyond the attribution display."
+    },
+    {
+      "cluster_id": "cluster_ablation_sensitivity",
+      "display_item_ids": [
+        "figure_11_ablation_summary"
+      ],
+      "lead_claim_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+      "heading": "Context encoding and fusion drive performance more than calibration loss",
+      "narrative_role": "Summarize component sensitivity from ablation evidence.",
+      "paragraph_goal": "Separate primary performance drivers from probability-quality effects."
+    },
+    {
+      "cluster_id": "cluster_embedding_structure",
+      "display_item_ids": [
+        "figure_12_embedding_projection"
+      ],
+      "lead_claim_id": "claim_embedding_projection_preserves_state_structure",
+      "heading": "Embedding structure preserves state organization with cross-domain support",
+      "narrative_role": "Extend model evaluation into representation structure.",
+      "paragraph_goal": "Connect state separation in the projection with cross-domain support fractions."
+    },
+    {
+      "cluster_id": "cluster_uncertainty_abstention",
+      "display_item_ids": [
+        "figure_13_uncertainty_abstention_curve"
+      ],
+      "lead_claim_id": "claim_uncertainty_abstention_reduces_deployment_risk",
+      "heading": "Uncertainty-guided abstention reduces risk while preserving coverage",
+      "narrative_role": "Close AI/ML evaluation with deployment-facing selective prediction evidence.",
+      "paragraph_goal": "Tie the risk-coverage curve to retained coverage at the target risk threshold."
+    },
+    {
+      "cluster_id": "cluster_model_ranking",
+      "display_item_ids": [
+        "table_01_main"
+      ],
+      "lead_claim_id": "claim_model_ranking",
+      "heading": "Aggregate model ranking favors the foundation model",
+      "narrative_role": "Summarize the table-level model comparison after the supporting figures.",
+      "paragraph_goal": "Use the table as the compact ranking summary rather than introducing new evidence."
+    }
+  ]
+}

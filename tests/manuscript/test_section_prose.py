@@ -15,6 +15,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 from manuscript_section_prose import build_section_prose, render_section_prose_markdown, write_section_prose_outputs
+from manuscript_narrative_clusters import result_display_item_ids
 
 
 def test_section_prose_covers_all_sections() -> None:
@@ -26,13 +27,15 @@ def test_section_prose_covers_all_sections() -> None:
 def test_results_section_contains_many_subsections() -> None:
     prose = build_section_prose()
     results = next(section for section in prose["sections"] if section["section_id"] == "results")
-    assert len(results["subsections"]) == 24
-    assert results["subsections"][0]["display_item_id"] == "figure_01_example"
+    expected_display_ids = result_display_item_ids()
+    assert len(results["subsections"]) == len(expected_display_ids)
+    assert results["subsections"][0]["display_item_id"] == expected_display_ids[0]
     assert any(
         item["display_item_id"] == "figure_13_uncertainty_abstention_curve"
         for item in results["subsections"]
     )
-    assert results["subsections"][-1]["display_item_id"] == "table_01_main"
+    assert results["subsections"][-1]["display_item_id"] == expected_display_ids[-1]
+    assert all("claim_ids" in item for item in results["subsections"])
 
 
 def test_prose_markdown_mentions_introduction_and_results() -> None:

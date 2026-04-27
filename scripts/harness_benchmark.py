@@ -21,6 +21,7 @@ try:  # pragma: no cover - import path differs between script and package use.
     from .manuscript_section_briefs import build_section_briefs
     from .manuscript_section_drafts import build_section_drafts
     from .pre_submission_audit import build_pre_submission_audit
+    from .reference_graph_common import all_display_claim_ids
     from .reference_integrity import build_reference_report
     from .review_common import validate_review_artifacts
     from .review_evidence import build_evidence_report
@@ -33,6 +34,7 @@ except ImportError:  # pragma: no cover
     from manuscript_section_briefs import build_section_briefs
     from manuscript_section_drafts import build_section_drafts
     from pre_submission_audit import build_pre_submission_audit
+    from reference_graph_common import all_display_claim_ids
     from reference_integrity import build_reference_report
     from review_common import validate_review_artifacts
     from review_evidence import build_evidence_report
@@ -1361,6 +1363,7 @@ def list_benchmark_definition_refs(
 def _baseline_metrics(selected_venues: list[str] | None = None) -> dict[str, Any]:
     packets = build_claim_packets()
     coverage = build_claim_coverage(packets)
+    display_claim_count = len(all_display_claim_ids())
     briefs = build_section_briefs()
     drafts = build_section_drafts()
     reference_report = build_reference_report()
@@ -1369,6 +1372,8 @@ def _baseline_metrics(selected_venues: list[str] | None = None) -> dict[str, Any
     pre_submission = build_pre_submission_audit(REPO_ROOT, selected_venues=selected_venues)
     return {
         "claim_count": packets["claim_count"],
+        "display_item_claim_count": display_claim_count,
+        "claim_count_matches_display_map": packets["claim_count"] == display_claim_count,
         "claim_coverage_status": coverage["overall_status"],
         "section_briefs_status": briefs["overall_status"],
         "section_drafts_status": drafts["overall_status"],
@@ -1425,7 +1430,12 @@ def _find_section(sections: list[dict[str, Any]], section_id: str) -> dict[str, 
 
 
 def _find_results_subsection(section: dict[str, Any], claim_id: str) -> dict[str, Any]:
-    return next(item for item in section.get("subsection_plan", []) if str(item.get("claim_id")) == claim_id)
+    return next(
+        item
+        for item in section.get("subsection_plan", [])
+        if str(item.get("claim_id")) == claim_id
+        or claim_id in [str(raw_claim_id) for raw_claim_id in item.get("claim_ids", [])]
+    )
 
 
 def _run_author_input_propagation_case(case: dict[str, Any]) -> dict[str, Any]:
@@ -1452,7 +1462,12 @@ def _run_author_input_propagation_case(case: dict[str, Any]) -> dict[str, Any]:
         "section_drafts_status": drafts["overall_status"],
         "section_note": str(results_brief.get("author_input", {}).get("section_note", "")),
         "claim_packet_note": str(packet_lookup.get(claim_note_claim_id, {}).get("author_input", {}).get("claim_note", "")),
-        "draft_subsection_note": str(subsection.get("author_note", "")),
+        "draft_subsection_note": str(
+            subsection.get("claim_author_notes", {}).get(
+                claim_note_claim_id,
+                subsection.get("author_note", ""),
+            )
+        ),
     }
 
     checks = [

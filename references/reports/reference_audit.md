@@ -3,10 +3,10 @@
 - readiness: `ready`
 - bibliography entries: `13`
 - bibliography source: `ready`
-- citation-graph claims: `20`
-- citation-graph edges: `26`
+- citation-graph claims: `24`
+- citation-graph edges: `34`
 - literature-intelligence candidates: `0`
-- claim-reference mappings: `20` mapped / `0` unmapped
+- claim-reference mappings: `24` mapped / `0` unmapped
 
 ## Bibliography
 

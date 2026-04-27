@@ -4,9 +4,9 @@
   "entry_count": 13,
   "bibliography_source_status": "ready",
   "bibliography_manuscript_scope_status": "unconfirmed",
-  "claim_count": 20,
+  "claim_count": 24,
   "reference_node_count": 13,
-  "edge_count": 26,
+  "edge_count": 34,
   "package_paths": [
     "references/library.bib",
     "manuscript/plans/citation_graph.json",

@@ -2,6 +2,7 @@
   "generated_from": {
     "section_briefs": "manuscript/drafts/section_briefs.json",
     "claim_packets": "manuscript/plans/claim_packets.json",
+    "narrative_clusters": "manuscript/plans/narrative_clusters.json",
     "reference_audit": "references/reports/reference_audit.json",
     "review_evidence": "review/reports/evidence_summary.json"
   },
@@ -123,6 +124,8 @@
         "figure_09_confusion_matrix_normalized",
         "figure_10_feature_importance_summary",
         "figure_11_ablation_summary",
+        "figure_12_embedding_projection",
+        "figure_13_uncertainty_abstention_curve",
         "table_01_main"
       ],
       "claim_ids": [
@@ -145,334 +148,559 @@
         "claim_signed_feature_effects_align_with_domain_expectation",
         "claim_context_encoder_and_fusion_drive_primary_performance",
         "claim_calibration_loss_mainly_affects_probability_quality",
+        "claim_embedding_projection_preserves_state_structure",
+        "claim_embedding_structure_has_cross_domain_support",
+        "claim_uncertainty_abstention_reduces_deployment_risk",
+        "claim_foundation_model_retains_higher_coverage_at_target_risk",
         "claim_model_ranking"
       ],
       "subsection_plan": [
         {
-          "subsection_id": "claim_response_kinetics",
+          "subsection_id": "cluster_response_trajectory",
           "display_item_id": "figure_01_example",
-          "claim_id": "claim_response_kinetics",
+          "display_item_ids": [
+            "figure_01_example"
+          ],
+          "claim_ids": [
+            "claim_response_kinetics",
+            "claim_endpoint_shift"
+          ],
+          "lead_claim_id": "claim_response_kinetics",
+          "heading": "Response trajectory separates early kinetics and endpoint shift",
+          "narrative_role": "Open the Results with the strongest response-dynamics display.",
+          "paragraph_goal": "Tie the early trajectory and endpoint claims together as one response-pattern result.",
           "lead_sentence_target": "The treated condition separates from control over time, with a larger mean normalized signal visible by the 4- and 6-hour measurements.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_response_kinetics",
+              "statement": "The treated condition separates from control over time, with a larger mean normalized signal visible by the 4- and 6-hour measurements."
+            },
+            {
+              "claim_id": "claim_endpoint_shift",
+              "statement": "At 6 hours, the treated condition has a higher endpoint response than control, and the replicate-level points show the effect is not driven by a single sample."
+            }
+          ],
           "support_points": [
             "Reference `figure_01_example` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "weissgerberEtAl2015BeyondBar"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_endpoint_shift",
-          "display_item_id": "figure_01_example",
-          "claim_id": "claim_endpoint_shift",
-          "lead_sentence_target": "At 6 hours, the treated condition has a higher endpoint response than control, and the replicate-level points show the effect is not driven by a single sample.",
-          "support_points": [
-            "Reference `figure_01_example` before expanding interpretation.",
-            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
-          ],
-          "linked_reference_ids": [
-            "weissgerberEtAl2015BeyondBar"
-          ],
-          "author_note": "",
-          "status": "ready"
-        },
-        {
-          "subsection_id": "claim_condition_drives_primary_sample_separation",
+          "subsection_id": "cluster_sample_separation",
           "display_item_id": "figure_04_sample_pca",
-          "claim_id": "claim_condition_drives_primary_sample_separation",
+          "display_item_ids": [
+            "figure_04_sample_pca"
+          ],
+          "claim_ids": [
+            "claim_condition_drives_primary_sample_separation"
+          ],
+          "lead_claim_id": "claim_condition_drives_primary_sample_separation",
+          "heading": "Condition drives primary sample separation",
+          "narrative_role": "Bridge response dynamics into global sample structure.",
+          "paragraph_goal": "State the sample-level separation before moving into gene-level contrasts.",
           "lead_sentence_target": "The primary sample separation occurs along PC1, where treatment samples occupy positive scores and control samples occupy negative scores while batch remains secondary.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_condition_drives_primary_sample_separation",
+              "statement": "The primary sample separation occurs along PC1, where treatment samples occupy positive scores and control samples occupy negative scores while batch remains secondary."
+            }
+          ],
           "support_points": [
             "Reference `figure_04_sample_pca` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "abdiWilliams2010PCA"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_high_abundance_interferon_shift",
+          "subsection_id": "cluster_abundance_shift",
           "display_item_id": "figure_03_ma_plot",
-          "claim_id": "claim_high_abundance_interferon_shift",
+          "display_item_ids": [
+            "figure_03_ma_plot"
+          ],
+          "claim_ids": [
+            "claim_high_abundance_interferon_shift"
+          ],
+          "lead_claim_id": "claim_high_abundance_interferon_shift",
+          "heading": "High-abundance genes show an interferon-skewed shift",
+          "narrative_role": "Introduce the gene-level abundance pattern.",
+          "paragraph_goal": "Keep the interpretation close to the abundance-dependent differential-expression display.",
           "lead_sentence_target": "Highly expressed interferon-response genes remain positively shifted in the MA plot, while negative fold changes cluster among proliferation-associated genes.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_high_abundance_interferon_shift",
+              "statement": "Highly expressed interferon-response genes remain positively shifted in the MA plot, while negative fold changes cluster among proliferation-associated genes."
+            }
+          ],
           "support_points": [
             "Reference `figure_03_ma_plot` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "loveEtAl2014DESeq2"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_interferon_gene_activation",
+          "subsection_id": "cluster_interferon_and_cell_cycle",
           "display_item_id": "figure_02_volcano_pathway",
-          "claim_id": "claim_interferon_gene_activation",
+          "display_item_ids": [
+            "figure_02_volcano_pathway"
+          ],
+          "claim_ids": [
+            "claim_interferon_gene_activation",
+            "claim_cell_cycle_pathway_suppression"
+          ],
+          "lead_claim_id": "claim_interferon_gene_activation",
+          "heading": "Interferon activation coincides with cell-cycle suppression",
+          "narrative_role": "Summarize the paired directional biology in the volcano-pathway display.",
+          "paragraph_goal": "Present the activated and suppressed programs as one coordinated biological contrast.",
           "lead_sentence_target": "The strongest positive differential-expression signals cluster in interferon-associated genes including CXCL10, IFIT1, and MX1, which exceed both the fold-change and false-discovery thresholds.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_interferon_gene_activation",
+              "statement": "The strongest positive differential-expression signals cluster in interferon-associated genes including CXCL10, IFIT1, and MX1, which exceed both the fold-change and false-discovery thresholds."
+            },
+            {
+              "claim_id": "claim_cell_cycle_pathway_suppression",
+              "statement": "Negative enrichment scores for cell-cycle checkpoint, mitotic spindle, and DNA replication indicate coordinated suppression of proliferative programs relative to the upregulated immune-response pathways."
+            }
+          ],
           "support_points": [
             "Reference `figure_02_volcano_pathway` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "fgseaBioconductorPackage",
             "subramanianEtAl2005GSEA",
             "yuEtAl2012ClusterProfiler"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_cell_cycle_pathway_suppression",
-          "display_item_id": "figure_02_volcano_pathway",
-          "claim_id": "claim_cell_cycle_pathway_suppression",
-          "lead_sentence_target": "Negative enrichment scores for cell-cycle checkpoint, mitotic spindle, and DNA replication indicate coordinated suppression of proliferative programs relative to the upregulated immune-response pathways.",
-          "support_points": [
-            "Reference `figure_02_volcano_pathway` before expanding interpretation.",
-            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
-          ],
-          "linked_reference_ids": [
-            "fgseaBioconductorPackage",
-            "subramanianEtAl2005GSEA",
-            "yuEtAl2012ClusterProfiler"
-          ],
-          "author_note": "",
-          "status": "ready"
-        },
-        {
-          "subsection_id": "claim_pathway_effect_sizes_align_with_directionality",
+          "subsection_id": "cluster_pathway_directionality",
           "display_item_id": "figure_05_pathway_enrichment_dot",
-          "claim_id": "claim_pathway_effect_sizes_align_with_directionality",
+          "display_item_ids": [
+            "figure_05_pathway_enrichment_dot"
+          ],
+          "claim_ids": [
+            "claim_pathway_effect_sizes_align_with_directionality"
+          ],
+          "lead_claim_id": "claim_pathway_effect_sizes_align_with_directionality",
+          "heading": "Pathway effect sizes preserve biological directionality",
+          "narrative_role": "Close the biological track with the fgsea-backed pathway summary.",
+          "paragraph_goal": "Explain how the pathway export preserves direction and magnitude without rehashing the volcano display.",
           "lead_sentence_target": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs, and the panel can be sourced directly from the active fgsea export rather than a hand-maintained summary table.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_pathway_effect_sizes_align_with_directionality",
+              "statement": "Pathways with larger gene ratios and stronger significance annotations are directionally consistent with the upregulated immune processes and downregulated cell-cycle programs, and the panel can be sourced directly from the active fgsea export rather than a hand-maintained summary table."
+            }
+          ],
           "support_points": [
             "Reference `figure_05_pathway_enrichment_dot` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "fgseaBioconductorPackage",
             "yuEtAl2012ClusterProfiler"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_foundation_model_improves_discrimination",
+          "subsection_id": "cluster_discrimination_and_precision",
           "display_item_id": "figure_06_roc_pr_compound",
-          "claim_id": "claim_foundation_model_improves_discrimination",
+          "display_item_ids": [
+            "figure_06_roc_pr_compound"
+          ],
+          "claim_ids": [
+            "claim_foundation_model_improves_discrimination",
+            "claim_foundation_model_retains_precision_under_imbalance"
+          ],
+          "lead_claim_id": "claim_foundation_model_improves_discrimination",
+          "heading": "Foundation-model discrimination remains strong under imbalance",
+          "narrative_role": "Open the AI/ML evaluation track with paired ROC and precision-recall evidence.",
+          "paragraph_goal": "Combine discrimination and imbalanced precision evidence into a single model-performance result.",
           "lead_sentence_target": "The foundation model yields the strongest ROC profile and the highest AUROC, maintaining higher true-positive rate than the comparator models across clinically relevant false-positive rates.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_foundation_model_improves_discrimination",
+              "statement": "The foundation model yields the strongest ROC profile and the highest AUROC, maintaining higher true-positive rate than the comparator models across clinically relevant false-positive rates."
+            },
+            {
+              "claim_id": "claim_foundation_model_retains_precision_under_imbalance",
+              "statement": "Under class imbalance, the foundation model preserves precision better than the comparator models across the recall range and remains far above the prevalence baseline, yielding the highest AUPRC."
+            }
+          ],
           "support_points": [
             "Reference `figure_06_roc_pr_compound` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "davisGoadrich2006PRROC"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_foundation_model_retains_precision_under_imbalance",
-          "display_item_id": "figure_06_roc_pr_compound",
-          "claim_id": "claim_foundation_model_retains_precision_under_imbalance",
-          "lead_sentence_target": "Under class imbalance, the foundation model preserves precision better than the comparator models across the recall range and remains far above the prevalence baseline, yielding the highest AUPRC.",
-          "support_points": [
-            "Reference `figure_06_roc_pr_compound` before expanding interpretation.",
-            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
-          ],
-          "linked_reference_ids": [
-            "davisGoadrich2006PRROC"
-          ],
-          "author_note": "",
-          "status": "ready"
-        },
-        {
-          "subsection_id": "claim_foundation_model_best_calibrated",
+          "subsection_id": "cluster_calibration_and_confidence",
           "display_item_id": "figure_07_calibration_reliability",
-          "claim_id": "claim_foundation_model_best_calibrated",
+          "display_item_ids": [
+            "figure_07_calibration_reliability"
+          ],
+          "claim_ids": [
+            "claim_foundation_model_best_calibrated",
+            "claim_high_confidence_support_is_not_tail_only"
+          ],
+          "lead_claim_id": "claim_foundation_model_best_calibrated",
+          "heading": "Calibration improves without relying only on tail confidence",
+          "narrative_role": "Move from ranking metrics into probability quality.",
+          "paragraph_goal": "Tie calibration quality to the high-confidence support pattern.",
           "lead_sentence_target": "The foundation model tracks the identity line more closely than the comparator models across confidence bins and has the lowest expected calibration error.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_foundation_model_best_calibrated",
+              "statement": "The foundation model tracks the identity line more closely than the comparator models across confidence bins and has the lowest expected calibration error."
+            },
+            {
+              "claim_id": "claim_high_confidence_support_is_not_tail_only",
+              "statement": "The high-confidence calibration conclusion is supported by non-trivial prediction mass across upper-confidence bins rather than a sparse extreme tail."
+            }
+          ],
           "support_points": [
             "Reference `figure_07_calibration_reliability` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "guoEtAl2017Calibration",
             "niculescuMizilCaruana2005Probabilities"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_high_confidence_support_is_not_tail_only",
-          "display_item_id": "figure_07_calibration_reliability",
-          "claim_id": "claim_high_confidence_support_is_not_tail_only",
-          "lead_sentence_target": "The high-confidence calibration conclusion is supported by non-trivial prediction mass across upper-confidence bins rather than a sparse extreme tail.",
-          "support_points": [
-            "Reference `figure_07_calibration_reliability` before expanding interpretation.",
-            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
-          ],
-          "linked_reference_ids": [
-            "guoEtAl2017Calibration"
-          ],
-          "author_note": "",
-          "status": "ready"
-        },
-        {
-          "subsection_id": "claim_foundation_model_optimizes_stably",
+          "subsection_id": "cluster_training_dynamics",
           "display_item_id": "figure_08_training_dynamics",
-          "claim_id": "claim_foundation_model_optimizes_stably",
+          "display_item_ids": [
+            "figure_08_training_dynamics"
+          ],
+          "claim_ids": [
+            "claim_foundation_model_optimizes_stably",
+            "claim_foundation_model_reaches_higher_validation_auroc"
+          ],
+          "lead_claim_id": "claim_foundation_model_optimizes_stably",
+          "heading": "Optimization is stable and reaches higher validation AUROC",
+          "narrative_role": "Show that final performance is supported by training dynamics.",
+          "paragraph_goal": "Connect stable optimization behavior with the validation AUROC trajectory.",
           "lead_sentence_target": "The foundation model shows the lowest validation loss with minimal late-epoch divergence from training loss, indicating the most stable optimization profile among the compared models.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_foundation_model_optimizes_stably",
+              "statement": "The foundation model shows the lowest validation loss with minimal late-epoch divergence from training loss, indicating the most stable optimization profile among the compared models."
+            },
+            {
+              "claim_id": "claim_foundation_model_reaches_higher_validation_auroc",
+              "statement": "The foundation model improves validation AUROC faster and plateaus at the highest level, while the comparator models saturate earlier at lower performance."
+            }
+          ],
           "support_points": [
             "Reference `figure_08_training_dynamics` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "smithTopin2017SuperConvergence"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_foundation_model_reaches_higher_validation_auroc",
-          "display_item_id": "figure_08_training_dynamics",
-          "claim_id": "claim_foundation_model_reaches_higher_validation_auroc",
-          "lead_sentence_target": "The foundation model improves validation AUROC faster and plateaus at the highest level, while the comparator models saturate earlier at lower performance.",
-          "support_points": [
-            "Reference `figure_08_training_dynamics` before expanding interpretation.",
-            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
-          ],
-          "linked_reference_ids": [
-            "smithTopin2017SuperConvergence"
-          ],
-          "author_note": "",
-          "status": "ready"
-        },
-        {
-          "subsection_id": "claim_errors_are_localized_to_adjacent_states",
+          "subsection_id": "cluster_error_topology",
           "display_item_id": "figure_09_confusion_matrix_normalized",
-          "claim_id": "claim_errors_are_localized_to_adjacent_states",
+          "display_item_ids": [
+            "figure_09_confusion_matrix_normalized"
+          ],
+          "claim_ids": [
+            "claim_errors_are_localized_to_adjacent_states",
+            "claim_terminal_states_remain_distinct"
+          ],
+          "lead_claim_id": "claim_errors_are_localized_to_adjacent_states",
+          "heading": "Errors localize to adjacent states while terminal states stay distinct",
+          "narrative_role": "Characterize where classification mistakes occur.",
+          "paragraph_goal": "Describe the confusion-matrix pattern as structured error rather than diffuse failure.",
           "lead_sentence_target": "Residual classifier errors are concentrated between inflammatory and proliferative states rather than being broadly distributed across all labels, indicating local ambiguity instead of global label collapse.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_errors_are_localized_to_adjacent_states",
+              "statement": "Residual classifier errors are concentrated between inflammatory and proliferative states rather than being broadly distributed across all labels, indicating local ambiguity instead of global label collapse."
+            },
+            {
+              "claim_id": "claim_terminal_states_remain_distinct",
+              "statement": "Healthy and fibrotic states retain the strongest diagonal mass, indicating that terminal phenotypes remain well separated even when intermediate inflammatory and proliferative states are occasionally confused."
+            }
+          ],
           "support_points": [
             "Reference `figure_09_confusion_matrix_normalized` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "stehman1997ClassificationAccuracy"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_terminal_states_remain_distinct",
-          "display_item_id": "figure_09_confusion_matrix_normalized",
-          "claim_id": "claim_terminal_states_remain_distinct",
-          "lead_sentence_target": "Healthy and fibrotic states retain the strongest diagonal mass, indicating that terminal phenotypes remain well separated even when intermediate inflammatory and proliferative states are occasionally confused.",
-          "support_points": [
-            "Reference `figure_09_confusion_matrix_normalized` before expanding interpretation.",
-            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
-          ],
-          "linked_reference_ids": [
-            "stehman1997ClassificationAccuracy"
-          ],
-          "author_note": "",
-          "status": "ready"
-        },
-        {
-          "subsection_id": "claim_model_relies_on_biologically_salient_features",
+          "subsection_id": "cluster_feature_attribution",
           "display_item_id": "figure_10_feature_importance_summary",
-          "claim_id": "claim_model_relies_on_biologically_salient_features",
+          "display_item_ids": [
+            "figure_10_feature_importance_summary"
+          ],
+          "claim_ids": [
+            "claim_model_relies_on_biologically_salient_features",
+            "claim_signed_feature_effects_align_with_domain_expectation"
+          ],
+          "lead_claim_id": "claim_model_relies_on_biologically_salient_features",
+          "heading": "Feature attribution highlights biologically salient and directionally coherent signals",
+          "narrative_role": "Interpret model behavior through feature-level evidence.",
+          "paragraph_goal": "Pair salience and signed directionality while avoiding claims beyond the attribution display.",
           "lead_sentence_target": "The highest-ranked features are fibrosis, inflammatory, proliferative, and interferon-related programs, while nuisance covariates such as batch score remain much lower in importance.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_model_relies_on_biologically_salient_features",
+              "statement": "The highest-ranked features are fibrosis, inflammatory, proliferative, and interferon-related programs, while nuisance covariates such as batch score remain much lower in importance."
+            },
+            {
+              "claim_id": "claim_signed_feature_effects_align_with_domain_expectation",
+              "statement": "The dominant feature effects point in biologically coherent directions: fibrosis, inflammatory, and interferon signals increase predicted response, while proliferative activity suppresses it."
+            }
+          ],
           "support_points": [
             "Reference `figure_10_feature_importance_summary` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "lundbergLee2017SHAP"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_signed_feature_effects_align_with_domain_expectation",
-          "display_item_id": "figure_10_feature_importance_summary",
-          "claim_id": "claim_signed_feature_effects_align_with_domain_expectation",
-          "lead_sentence_target": "The dominant feature effects point in biologically coherent directions: fibrosis, inflammatory, and interferon signals increase predicted response, while proliferative activity suppresses it.",
-          "support_points": [
-            "Reference `figure_10_feature_importance_summary` before expanding interpretation.",
-            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
-          ],
-          "linked_reference_ids": [
-            "lundbergLee2017SHAP"
-          ],
-          "author_note": "",
-          "status": "ready"
-        },
-        {
-          "subsection_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+          "subsection_id": "cluster_ablation_sensitivity",
           "display_item_id": "figure_11_ablation_summary",
-          "claim_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+          "display_item_ids": [
+            "figure_11_ablation_summary"
+          ],
+          "claim_ids": [
+            "claim_context_encoder_and_fusion_drive_primary_performance",
+            "claim_calibration_loss_mainly_affects_probability_quality"
+          ],
+          "lead_claim_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+          "heading": "Context encoding and fusion drive performance more than calibration loss",
+          "narrative_role": "Summarize component sensitivity from ablation evidence.",
+          "paragraph_goal": "Separate primary performance drivers from probability-quality effects.",
           "lead_sentence_target": "Removing the context encoder or multi-scale fusion causes the largest AUROC drops, indicating that architectural context integration is the main driver of top-line discrimination.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_context_encoder_and_fusion_drive_primary_performance",
+              "statement": "Removing the context encoder or multi-scale fusion causes the largest AUROC drops, indicating that architectural context integration is the main driver of top-line discrimination."
+            },
+            {
+              "claim_id": "claim_calibration_loss_mainly_affects_probability_quality",
+              "statement": "Removing the calibration loss causes only a modest AUROC drop but the largest increase in calibration error, indicating that this objective contributes more to probability quality than to raw discrimination."
+            }
+          ],
           "support_points": [
             "Reference `figure_11_ablation_summary` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
+            "liptonSteinhardt2018TroublingTrends",
+            "guoEtAl2017Calibration"
+          ],
+          "claim_author_notes": {},
+          "author_note": "",
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
+        },
+        {
+          "subsection_id": "cluster_embedding_structure",
+          "display_item_id": "figure_12_embedding_projection",
+          "display_item_ids": [
+            "figure_12_embedding_projection"
+          ],
+          "claim_ids": [
+            "claim_embedding_projection_preserves_state_structure",
+            "claim_embedding_structure_has_cross_domain_support"
+          ],
+          "lead_claim_id": "claim_embedding_projection_preserves_state_structure",
+          "heading": "Embedding structure preserves state organization with cross-domain support",
+          "narrative_role": "Extend model evaluation into representation structure.",
+          "paragraph_goal": "Connect state separation in the projection with cross-domain support fractions.",
+          "lead_sentence_target": "The projection organizes quiescent, inflammatory, proliferative, and fibrotic samples into compact regions with density-aware direct labels rather than relying on a detached legend alone.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_embedding_projection_preserves_state_structure",
+              "statement": "The projection organizes quiescent, inflammatory, proliferative, and fibrotic samples into compact regions with density-aware direct labels rather than relying on a detached legend alone."
+            },
+            {
+              "claim_id": "claim_embedding_structure_has_cross_domain_support",
+              "statement": "Each represented state retains samples from multiple cohorts, with cross-domain support fractions ranging from 58% to 71%."
+            }
+          ],
+          "support_points": [
+            "Reference `figure_12_embedding_projection` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
+            "Keep the first sentence observational and move mechanism/implication to the second sentence.",
+            "Do not add external references beyond the citation graph allowances in the cluster."
+          ],
+          "linked_reference_ids": [
+            "abdiWilliams2010PCA",
             "liptonSteinhardt2018TroublingTrends"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_calibration_loss_mainly_affects_probability_quality",
-          "display_item_id": "figure_11_ablation_summary",
-          "claim_id": "claim_calibration_loss_mainly_affects_probability_quality",
-          "lead_sentence_target": "Removing the calibration loss causes only a modest AUROC drop but the largest increase in calibration error, indicating that this objective contributes more to probability quality than to raw discrimination.",
+          "subsection_id": "cluster_uncertainty_abstention",
+          "display_item_id": "figure_13_uncertainty_abstention_curve",
+          "display_item_ids": [
+            "figure_13_uncertainty_abstention_curve"
+          ],
+          "claim_ids": [
+            "claim_uncertainty_abstention_reduces_deployment_risk",
+            "claim_foundation_model_retains_higher_coverage_at_target_risk"
+          ],
+          "lead_claim_id": "claim_uncertainty_abstention_reduces_deployment_risk",
+          "heading": "Uncertainty-guided abstention reduces risk while preserving coverage",
+          "narrative_role": "Close AI/ML evaluation with deployment-facing selective prediction evidence.",
+          "paragraph_goal": "Tie the risk-coverage curve to retained coverage at the target risk threshold.",
+          "lead_sentence_target": "Risk declines monotonically as lower-confidence predictions are abstained, with operating points marked at 80% coverage for each model.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_uncertainty_abstention_reduces_deployment_risk",
+              "statement": "Risk declines monotonically as lower-confidence predictions are abstained, with operating points marked at 80% coverage for each model."
+            },
+            {
+              "claim_id": "claim_foundation_model_retains_higher_coverage_at_target_risk",
+              "statement": "At the target risk threshold, the foundation model retains 82% coverage compared with 66% for the hybrid GNN and 52% for the CNN baseline."
+            }
+          ],
           "support_points": [
-            "Reference `figure_11_ablation_summary` before expanding interpretation.",
+            "Reference `figure_13_uncertainty_abstention_curve` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
-            "guoEtAl2017Calibration"
+            "guoEtAl2017Calibration",
+            "niculescuMizilCaruana2005Probabilities"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         },
         {
-          "subsection_id": "claim_model_ranking",
+          "subsection_id": "cluster_model_ranking",
           "display_item_id": "table_01_main",
-          "claim_id": "claim_model_ranking",
+          "display_item_ids": [
+            "table_01_main"
+          ],
+          "claim_ids": [
+            "claim_model_ranking"
+          ],
+          "lead_claim_id": "claim_model_ranking",
+          "heading": "Aggregate model ranking favors the foundation model",
+          "narrative_role": "Summarize the table-level model comparison after the supporting figures.",
+          "paragraph_goal": "Use the table as the compact ranking summary rather than introducing new evidence.",
           "lead_sentence_target": "The highest-ranked model by AUROC appears first after deterministic sorting, preserving a reproducible performance ordering.",
+          "evidence_sentences": [
+            {
+              "claim_id": "claim_model_ranking",
+              "statement": "The highest-ranked model by AUROC appears first after deterministic sorting, preserving a reproducible performance ordering."
+            }
+          ],
           "support_points": [
             "Reference `table_01_main` before expanding interpretation.",
+            "Synthesize all claims in the cluster before starting the next Results subsection.",
             "Keep the first sentence observational and move mechanism/implication to the second sentence.",
-            "Do not add external references beyond the citation graph allowances in the packet."
+            "Do not add external references beyond the citation graph allowances in the cluster."
           ],
           "linked_reference_ids": [
             "davisGoadrich2006PRROC"
           ],
+          "claim_author_notes": {},
           "author_note": "",
-          "status": "ready"
+          "status": "ready",
+          "warnings": [],
+          "blocking_issues": []
         }
       ],
       "drafting_constraints": [

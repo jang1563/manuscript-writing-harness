@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from manuscript_claims import AUTHOR_CONTENT_INPUTS_PATH, CLAIM_PACKETS_PATH, WRITING_PLAN_PATH, build_claim_packets
+from manuscript_narrative_clusters import build_result_narrative_clusters
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -126,6 +127,16 @@ def build_section_briefs() -> dict[str, Any]:
                 for reference_id in packet.get("citations", {}).get("reference_ids", [])
             }
         )
+        narrative_cluster_report = (
+            build_result_narrative_clusters(section_packets)
+            if section_id == "results"
+            else None
+        )
+        narrative_clusters = (
+            list(narrative_cluster_report.get("clusters", []))
+            if narrative_cluster_report
+            else []
+        )
         status = "ready"
         warnings: list[str] = []
         blocking_issues: list[str] = []
@@ -133,6 +144,9 @@ def build_section_briefs() -> dict[str, Any]:
         if section_id == "results" and section_display_items and not section_packets:
             status = "blocked"
             blocking_issues.append("results has display items but no claim packets")
+        elif section_id == "results" and narrative_cluster_report and narrative_cluster_report["overall_status"] == "blocked":
+            status = "blocked"
+            blocking_issues.append("one or more result narrative clusters are blocked")
         elif any(packet.get("status") == "blocked" for packet in section_packets):
             status = "blocked"
             blocking_issues.append("one or more result claims are blocked")
@@ -155,6 +169,12 @@ def build_section_briefs() -> dict[str, Any]:
                 status = "provisional"
         if section_id == "results" and section_packets and not citation_refs:
             warnings.append("results section currently lacks citation-linked claims")
+        if section_id == "results" and narrative_cluster_report:
+            if narrative_cluster_report["overall_status"] == "provisional" and status != "blocked":
+                status = "provisional"
+            for cluster in narrative_clusters:
+                warnings.extend(str(item) for item in cluster.get("warnings", []))
+                blocking_issues.extend(str(item) for item in cluster.get("blocking_issues", []))
 
         brief = {
             "section_id": section_id,
@@ -164,6 +184,12 @@ def build_section_briefs() -> dict[str, Any]:
             "display_item_ids": [str(item.get("display_item_id")) for item in section_display_items],
             "claim_ids": claim_ids,
             "claim_packet_count": len(section_packets),
+            "narrative_cluster_count": len(narrative_clusters),
+            "narrative_cluster_ids": [
+                str(cluster.get("cluster_id", ""))
+                for cluster in narrative_clusters
+                if cluster.get("cluster_id")
+            ],
             "reference_context": {
                 "readiness": reference_audit.get("readiness") if reference_audit else "absent",
                 "citation_edge_count": len(citation_refs),
@@ -239,6 +265,7 @@ def render_section_briefs_markdown(briefs: dict[str, Any]) -> str:
                 f"- purpose: {brief.get('purpose')}",
                 f"- display_item_ids: `{', '.join(brief.get('display_item_ids', [])) or 'none'}`",
                 f"- claim_packet_count: `{brief.get('claim_packet_count', 0)}`",
+                f"- narrative_cluster_count: `{brief.get('narrative_cluster_count', 0)}`",
                 f"- reference_readiness: `{brief.get('reference_context', {}).get('readiness')}`",
                 f"- review_evidence_readiness: `{brief.get('review_context', {}).get('readiness')}`",
                 f"- topic: {brief.get('author_input', {}).get('topic') or 'not set'}",

@@ -76,25 +76,52 @@ RESULTS_SPECIAL_CASES = {
 }
 
 
-def _results_sections(section: dict[str, Any]) -> list[dict[str, str]]:
-    subsections: list[dict[str, str]] = []
+def _results_sections(section: dict[str, Any]) -> list[dict[str, Any]]:
+    subsections: list[dict[str, Any]] = []
     for item in section.get("subsection_plan", []):
-        claim_id = str(item.get("claim_id", item.get("subsection_id", "")))
-        display_item_id = str(item.get("display_item_id", ""))
+        claim_ids = [
+            str(claim_id)
+            for claim_id in item.get("claim_ids", [])
+            if str(claim_id).strip()
+        ]
+        legacy_claim_id = str(item.get("claim_id", "")).strip()
+        if not claim_ids and legacy_claim_id:
+            claim_ids = [legacy_claim_id]
+        lead_claim_id = str(item.get("lead_claim_id", claim_ids[0] if claim_ids else "")).strip()
+        subsection_id = str(item.get("subsection_id", lead_claim_id))
+        display_item_ids = [
+            str(display_item_id)
+            for display_item_id in item.get("display_item_ids", [])
+            if str(display_item_id).strip()
+        ]
+        display_item_id = str(item.get("display_item_id", display_item_ids[0] if display_item_ids else ""))
+        if not display_item_ids and display_item_id:
+            display_item_ids = [display_item_id]
         lead = str(item.get("lead_sentence_target", "")).strip()
-        second = RESULTS_SPECIAL_CASES.get(
-            claim_id,
-            (
-                f"This pattern is shown directly in `{display_item_id}`, so the immediate interpretation should stay close to the visible evidence before broader implications are introduced."
-                if display_item_id
-                else "The next sentence should stay close to the visible evidence before broader implications are introduced."
-            ),
-        )
+        special_case = RESULTS_SPECIAL_CASES.get(lead_claim_id, "")
+        if special_case:
+            second = special_case
+        elif display_item_ids:
+            display_label = ", ".join(f"`{display_item}`" for display_item in display_item_ids)
+            paragraph_goal = str(item.get("paragraph_goal", "")).strip()
+            second = (
+                f"This pattern is shown directly in {display_label}, so the immediate interpretation should stay close to the visible evidence before broader implications are introduced."
+            )
+            if paragraph_goal:
+                second = f"{second} {paragraph_goal}"
+        else:
+            second = "The next sentence should stay close to the visible evidence before broader implications are introduced."
         subsections.append(
             {
-                "subsection_id": claim_id,
+                "subsection_id": subsection_id,
                 "display_item_id": display_item_id,
-                "heading": claim_id.replace("claim_", "").replace("_", " ").capitalize(),
+                "display_item_ids": display_item_ids,
+                "claim_ids": claim_ids,
+                "lead_claim_id": lead_claim_id,
+                "heading": str(
+                    item.get("heading")
+                    or lead_claim_id.replace("claim_", "").replace("_", " ").capitalize()
+                ),
                 "paragraph": f"{lead} {second}".strip(),
             }
         )
